@@ -772,20 +772,51 @@ PROVIDER_GEO_UPDATES = {
     "prov-psych-barasat": ("Barasat, North 24 Parganas", 22.7200, 88.4800, "https://chatterjeemindclinic.mindbridge.care"),
     "prov-psych-barasat2": ("Barasat, North 24 Parganas", 22.7280, 88.4900, "https://bosemindcare.mindbridge.care"),
     "prov-psych-barasat3": ("Barasat, North 24 Parganas", 22.7150, 88.4720, "https://rupsadutta.mindbridge.care"),
+    "prov-psych-narayana": ("Salt Lake, Kolkata", 22.5850, 88.4150, "https://narayana.mindbridge.care/book/dr-arindam-ghosh"),
+    "prov-psych-apollo": ("EM Bypass, Kolkata", 22.5000, 88.3900, "https://apollo.mindbridge.care/book/dr-priyanka-sen"),
+}
+
+# Clinic phone number + affiliated hospital (dropdown selection) for every provider
+PROVIDER_CONTACT = {
+    "prov-1": ("+91 11 4102 5566", None),
+    "prov-2": ("+91 33 2337 1122", "clinic-kolkata-neuro"),
+    "prov-3": ("+91 22 2640 3344", None),
+    "prov-4": ("+91 80 4155 6677", "clinic-nimhans"),
+    "prov-5": ("+91 33 4004 1155", None),
+    "prov-psych-delhi": ("+91 11 4288 9900", "clinic-saket"),
+    "prov-psych-mumbai": ("+91 22 2673 4455", "clinic-andheri"),
+    "prov-psych-kolkata": ("+91 33 2461 8899", "clinic-kolkata-neuro"),
+    "prov-psych-bengaluru": ("+91 80 4123 7788", "clinic-nimhans"),
+    "prov-psych-chennai": ("+91 44 4211 3344", "clinic-chennai"),
+    "prov-psych-hyderabad": ("+91 40 2331 5566", "clinic-hyd-neuro"),
+    "prov-psych-pune": ("+91 20 2721 4455", "clinic-pune-bhc"),
+    "prov-psych-jaipur": ("+91 141 236 7788", "clinic-jaipur-cmc"),
+    "prov-psych-online": ("+91 80 4004 1188", None),
+    "prov-psych-barasat": ("+91 33 2562 1144", "clinic-barasat-dh"),
+    "prov-psych-barasat2": ("+91 33 2562 2255", "clinic-barasat-dh"),
+    "prov-psych-barasat3": ("+91 33 2562 3366", "clinic-barasat-mind"),
+    "prov-psych-narayana": ("+91 33 6680 1122", "clinic-narayana"),
+    "prov-psych-apollo": ("+91 33 6600 2233", "clinic-apollo"),
 }
 
 
 def apply_provider_geo_updates(cursor):
-    """Backfill locality, coordinates and booking website for all providers (idempotent)."""
+    """Backfill locality, coordinates, website, phone, hospital + strip stock model photos (idempotent)."""
     for pid, (locality, lat, lon, website) in PROVIDER_GEO_UPDATES.items():
         cursor.execute("""
         UPDATE providers
         SET locality = ?, latitude = ?, longitude = ?, website_url = ?
         WHERE id = ?
         """, (locality, lat, lon, website, pid))
+    for pid, (phone, hospital_id) in PROVIDER_CONTACT.items():
+        cursor.execute("""
+        UPDATE providers SET phone = ?, hospital_id = ? WHERE id = ?
+        """, (phone, hospital_id, pid))
     # Seniority bumps so the Experience filter (25+/30+) has real matches
     for pid, years in (("prov-psych-kolkata", 26), ("prov-2", 18)):
         cursor.execute("UPDATE providers SET experience_years = ? WHERE id = ?", (years, pid))
+    # Never show stock/model photos — blank DP unless a REAL doctor photo exists
+    cursor.execute("UPDATE providers SET avatar_url = NULL WHERE avatar_url LIKE '%unsplash%'")
 
 
 def seed_clinics(cursor):
