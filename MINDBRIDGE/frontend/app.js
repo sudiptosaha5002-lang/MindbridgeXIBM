@@ -4213,28 +4213,7 @@ function initEmergencyModeInteractive() {
     });
   }
 
-  // 2. Nearby Clinical Hospitals Auto-Detector
-  const findClinicsBtn = document.getElementById('findNearbyClinicsBtn');
-  if (findClinicsBtn && !findClinicsBtn.dataset.bound) {
-    findClinicsBtn.dataset.bound = 'true';
-    findClinicsBtn.addEventListener('click', () => {
-      findClinicsBtn.disabled = true;
-      findClinicsBtn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Scanning Regional Emergency Hospitals...';
-      if (window.lucide) window.lucide.createIcons();
-
-      setTimeout(() => {
-        findClinicsBtn.disabled = false;
-        findClinicsBtn.innerHTML = '<i data-lucide="check"></i> Emergency Facilities Nearby';
-        const d1 = document.getElementById('dist-nimhans');
-        const d2 = document.getElementById('dist-aiims');
-        const d3 = document.getElementById('dist-fortis');
-        if (d1) d1.innerHTML = '<i data-lucide="navigation"></i> <span>1.8 km (Closest Inpatient Crisis Ward)</span>';
-        if (d2) d2.innerHTML = '<i data-lucide="navigation"></i> <span>3.4 km (24/7 Casualty & Triage)</span>';
-        if (d3) d3.innerHTML = '<i data-lucide="navigation"></i> <span>4.9 km (Dedicated Ambulance Station)</span>';
-        if (window.lucide) window.lucide.createIcons();
-      }, 700);
-    });
-  }
+  // 2. Nearby Clinical Hospitals Auto-Detector → handled by initEmergencyDoctorLocator (shared universal search)
 
   // 3. Quick nav pills smooth scroll
   document.querySelectorAll('.emergency-nav-pill').forEach(pill => {
