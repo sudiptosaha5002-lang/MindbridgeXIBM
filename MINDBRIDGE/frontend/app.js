@@ -4621,6 +4621,60 @@ function escapeHtml(str) {
   }[c]));
 }
 
+// WhatsApp-style blank avatar: never show stock/model photos
+const AVATAR_BLANK_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" preserveAspectRatio="xMidYMid slice"><rect width="128" height="128" fill="#e5e7eb"/><circle cx="64" cy="50" r="21" fill="#9ca3af"/><path d="M24 116c5-21 23-33 40-33s35 12 40 33z" fill="#9ca3af"/></svg>';
+const AVATAR_BLANK_URI = `data:image/svg+xml;utf8,${encodeURIComponent(AVATAR_BLANK_SVG)}`;
+
+function hasRealPhoto(p) {
+  const u = p && p.avatar_url;
+  if (typeof u !== 'string' || !u) return false;
+  if (/unsplash|placeholder|randomuser|pravatar|ui-avatars|model|stock|gravatar/i.test(u)) return false;
+  return /^https?:\/\//i.test(u) || u.startsWith('data:');
+}
+
+function avatarHtml(p, extraClass = '') {
+  const cls = `doc-avatar-img ${extraClass}`.trim();
+  if (hasRealPhoto(p)) {
+    return `<img src="${escapeHtml(p.avatar_url)}" alt="${escapeHtml(p.name)}" class="${cls}" loading="lazy">`;
+  }
+  return `<span class="${cls} doc-avatar-blank" role="img" aria-label="${escapeHtml(p.name)}">${AVATAR_BLANK_SVG}</span>`;
+}
+
+function hospitalOf(p) {
+  if (!p || !p.hospital_id || !state.emergencyClinics.length) return null;
+  return state.emergencyClinics.find(c => c.id === p.hospital_id) || null;
+}
+
+// Book Appointment → opens the doctor's OWN website (external) first;
+// in-app modal only as fallback when no website is known.
+function openProviderBooking(providerOrId) {
+  const p = typeof providerOrId === 'string'
+    ? (state.providers.find(x => x.id === providerOrId)
+       || state.emergencyProviders.find(x => x.id === providerOrId)
+       || state.allProvidersFallback?.find(x => x.id === providerOrId))
+    : providerOrId;
+  if (!p) return;
+  if (p.website_url) {
+    window.open(p.website_url, '_blank', 'noopener');
+  } else {
+    openBookingModal(p.id);
+  }
+}
+
+function populateHospitalFilters() {
+  if (!state.emergencyClinics.length) return;
+  const opts = state.emergencyClinics
+    .map(c => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name)}</option>`).join('');
+  const fill = (sel, restoreVal) => {
+    if (!sel || sel.dataset.filled) return;
+    sel.dataset.filled = '1';
+    sel.insertAdjacentHTML('beforeend', opts);
+    if (restoreVal) sel.value = restoreVal;
+  };
+  fill(elements.emergencyHospitalFilter, state.emergencyHospital);
+  fill(elements.filterHospital, '');
+}
+
 // Group items across MULTIPLE search locations:
 // 1) strong textual match on locality/city/address, 2) proximity within SEARCH_RADIUS_KM,
 // 3) everything else → "Other Locations & Online".
