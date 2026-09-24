@@ -122,16 +122,20 @@ def init_db():
         locality TEXT,
         latitude REAL,
         longitude REAL,
-        website_url TEXT
+        website_url TEXT,
+        phone TEXT,
+        hospital_id TEXT
     )
     """)
 
-    # Migration for existing databases: fine-grained location + booking website
+    # Migration for existing databases: fine-grained location + booking website + contact
     for col_def in (
         "locality TEXT",
         "latitude REAL",
         "longitude REAL",
         "website_url TEXT",
+        "phone TEXT",
+        "hospital_id TEXT",
     ):
         try:
             cursor.execute(f"ALTER TABLE providers ADD COLUMN {col_def}")
