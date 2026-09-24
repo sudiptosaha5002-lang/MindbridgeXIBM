@@ -4641,6 +4641,9 @@ async function fetchEmergencyClinics() {
     state.emergencyClinics = data.clinics || [];
     populateHospitalFilters();
     renderEmergencyClinics();
+    // Hospital lookup needs clinic data — refresh cards that were built before this arrived
+    if (state.providers.length) renderProviders(state.providers);
+    if (state.emergencyProviders.length) renderEmergencyDoctors();
   } catch (err) {
     console.error('Failed to fetch emergency clinics:', err);
     if (elements.clinicCountBadge) {
