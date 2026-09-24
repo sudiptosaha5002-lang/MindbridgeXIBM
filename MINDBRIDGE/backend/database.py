@@ -265,6 +265,7 @@ def init_db():
 
     conn.commit()
     seed_providers(cursor)
+    seed_emergency_psychiatrists(cursor)
     conn.commit()
     conn.close()
 
