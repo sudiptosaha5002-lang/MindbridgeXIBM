@@ -4650,8 +4650,7 @@ function hospitalOf(p) {
 function openProviderBooking(providerOrId) {
   const p = typeof providerOrId === 'string'
     ? (state.providers.find(x => x.id === providerOrId)
-       || state.emergencyProviders.find(x => x.id === providerOrId)
-       || state.allProvidersFallback?.find(x => x.id === providerOrId))
+       || state.emergencyProviders.find(x => x.id === providerOrId))
     : providerOrId;
   if (!p) return;
   if (p.website_url) {
