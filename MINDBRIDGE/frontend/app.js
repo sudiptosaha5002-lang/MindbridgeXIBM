@@ -4512,14 +4512,31 @@ function initEmergencyDoctorLocator() {
     });
   }
 
+  // Hospital / clinic dropdown (Narayana, Apollo, etc.)
+  if (elements.emergencyHospitalFilter && !elements.emergencyHospitalFilter.dataset.bound) {
+    elements.emergencyHospitalFilter.dataset.bound = 'true';
+    if (state.emergencyHospital) elements.emergencyHospitalFilter.value = state.emergencyHospital;
+    elements.emergencyHospitalFilter.addEventListener('change', () => {
+      state.emergencyHospital = elements.emergencyHospitalFilter.value;
+      localStorage.setItem('mb_emergency_hospital', state.emergencyHospital);
+      renderEmergencyDoctors();
+    });
+  }
+
   // Book buttons inside dynamically rendered groups
   if (elements.emergencyDocsGroups && !elements.emergencyDocsGroups.dataset.bound) {
     elements.emergencyDocsGroups.dataset.bound = 'true';
     elements.emergencyDocsGroups.addEventListener('click', e => {
+      const inApp = e.target.closest('.emergency-inapp-btn');
+      if (inApp) {
+        const id = inApp.getAttribute('data-id');
+        if (id) openBookingModal(id);
+        return;
+      }
       const btn = e.target.closest('.emergency-book-btn');
       if (!btn) return;
       const docId = btn.getAttribute('data-id');
-      if (docId) openBookingModal(docId);
+      if (docId) openProviderBooking(docId);
     });
   }
 }
@@ -4595,6 +4612,7 @@ async function fetchEmergencyClinics() {
     const res = await fetch('/api/clinics');
     const data = await res.json();
     state.emergencyClinics = data.clinics || [];
+    populateHospitalFilters();
     renderEmergencyClinics();
   } catch (err) {
     console.error('Failed to fetch emergency clinics:', err);
@@ -4855,6 +4873,7 @@ function renderEmergencyDoctors() {
   let filtered = state.emergencyProviders.filter(p => matchesEmergencySpec(p, spec));
   if (minExp) filtered = filtered.filter(p => (p.experience_years || 0) >= minExp);
   if (minRating) filtered = filtered.filter(p => (p.rating || 0) >= minRating);
+  if (state.emergencyHospital) filtered = filtered.filter(p => p.hospital_id === state.emergencyHospital);
 
   let html = '';
   const locs = state.searchLocations;
