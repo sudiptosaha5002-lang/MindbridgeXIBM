@@ -1016,6 +1016,36 @@ def seed_clinics(cursor):
             "website_url": "https://jaipurchildmind.mindbridge.care",
             "features": json.dumps(["Adolescent Crisis Desk", "School Refusal Programme", "Play & Art Therapy Rooms", "Parent Guidance Clinic"]),
             "rating": 4.7
+        },
+        {
+            "id": "clinic-narayana",
+            "name": "Narayana Multispeciality Hospital",
+            "type_pill": "Multi-Speciality Hospital · Salt Lake",
+            "address": "Sector II, Bidhannagar, Salt Lake, Kolkata, West Bengal 700091",
+            "locality": "Salt Lake, Kolkata",
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "latitude": 22.5870,
+            "longitude": 88.4180,
+            "phone": "+91 33 6680 0000",
+            "website_url": "https://narayana.mindbridge.care",
+            "features": json.dumps(["24/7 Emergency Dept", "Psychiatry & Behavioural Sciences", "In-patient Psychiatric Beds", "Online Hospital Appointments"]),
+            "rating": 4.7
+        },
+        {
+            "id": "clinic-apollo",
+            "name": "Apollo Multispeciality Hospital",
+            "type_pill": "Multi-Speciality Hospital · EM Bypass",
+            "address": "11/1 Block A, EM Bypass, Kolkata, West Bengal 700099",
+            "locality": "EM Bypass, Kolkata",
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "latitude": 22.5010,
+            "longitude": 88.3920,
+            "phone": "+91 33 6600 0000",
+            "website_url": "https://apollo.mindbridge.care",
+            "features": json.dumps(["24/7 Casualty & Trauma", "Department of Psychiatry", "Hospital Website Booking", "Critical Care & Neuro Sciences"]),
+            "rating": 4.8
         }
     ]
 
@@ -1061,6 +1091,9 @@ def get_all_providers(filters=None):
         if filters.get("min_rating"):
             query += " AND rating >= ?"
             params.append(filters["min_rating"])
+        if filters.get("hospital"):
+            query += " AND hospital_id = ?"
+            params.append(filters["hospital"])
 
     query += " ORDER BY rating DESC"
     cursor.execute(query, params)

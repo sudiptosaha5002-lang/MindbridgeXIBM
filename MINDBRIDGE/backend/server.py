@@ -538,6 +538,7 @@ def get_providers():
         "language": request.args.get("language"),
         "mode": request.args.get("mode"),
         "location": request.args.get("location"),
+        "hospital": request.args.get("hospital"),
         "min_experience": request.args.get("min_experience", type=int),
         "min_rating": request.args.get("min_rating", type=float),
         "max_price": request.args.get("max_price", type=int)
