@@ -53,8 +53,18 @@ const state = {
   providers: [],
   selectedProvider: null,
   emergencyProviders: [],
-  emergencyCity: localStorage.getItem('mb_emergency_city') || '',
+  emergencyClinics: [],
+  searchLocations: (() => {
+    try {
+      const parsed = JSON.parse(localStorage.getItem('mb_search_locations'));
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      return [];
+    }
+  })(),
   emergencySpec: localStorage.getItem('mb_emergency_spec') || 'psychiatrist',
+  emergencyMinExp: localStorage.getItem('mb_emergency_min_exp') || '',
+  emergencyMinRating: localStorage.getItem('mb_emergency_min_rating') || '',
   breathingInterval: null,
   breathingActive: false,
   soundscapeActive: localStorage.getItem('mb_music_pref') || 'off',
