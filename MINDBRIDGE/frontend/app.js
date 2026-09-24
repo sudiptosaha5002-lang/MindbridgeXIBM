@@ -65,6 +65,7 @@ const state = {
   emergencySpec: localStorage.getItem('mb_emergency_spec') || 'psychiatrist',
   emergencyMinExp: localStorage.getItem('mb_emergency_min_exp') || '',
   emergencyMinRating: localStorage.getItem('mb_emergency_min_rating') || '',
+  emergencyHospital: localStorage.getItem('mb_emergency_hospital') || '',
   breathingInterval: null,
   breathingActive: false,
   soundscapeActive: localStorage.getItem('mb_music_pref') || 'off',
@@ -153,6 +154,7 @@ const elements = {
   filterLanguage: document.getElementById('filterLanguage'),
   filterMode: document.getElementById('filterMode'),
   filterMaxPrice: document.getElementById('filterMaxPrice'),
+  filterHospital: document.getElementById('filterHospital'),
   resetFiltersBtn: document.getElementById('resetFiltersBtn'),
   providerCountBadge: document.getElementById('providerCountBadge'),
 
@@ -183,6 +185,7 @@ const elements = {
   emergencySpecChips: document.getElementById('emergencySpecChips'),
   emergencyExpFilter: document.getElementById('emergencyExpFilter'),
   emergencyRatingFilter: document.getElementById('emergencyRatingFilter'),
+  emergencyHospitalFilter: document.getElementById('emergencyHospitalFilter'),
   emergencyDocsCount: document.getElementById('emergencyDocsCount'),
   emergencyDocsGroups: document.getElementById('emergencyDocsGroups'),
 
