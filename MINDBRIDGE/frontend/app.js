@@ -4238,6 +4238,282 @@ function initEmergencyModeInteractive() {
       });
     }
   });
+
+  // 4. Emergency Psychiatrist / Doctor location listings
+  initEmergencyDoctorLocator();
+  fetchEmergencyDoctors();
+}
+
+// ==========================================================================
+// EMERGENCY MODE: LOCATION-BASED PSYCHIATRIST / DOCTOR APPOINTMENTS
+// ==========================================================================
+
+const EMERGENCY_CITY_COORDS = [
+  { name: 'New Delhi', lat: 28.6139, lon: 77.2090 },
+  { name: 'Mumbai', lat: 19.0760, lon: 72.8777 },
+  { name: 'Kolkata', lat: 22.5726, lon: 88.3639 },
+  { name: 'Bengaluru', lat: 12.9716, lon: 77.5946 },
+  { name: 'Chennai', lat: 13.0827, lon: 80.2707 },
+  { name: 'Hyderabad', lat: 17.3850, lon: 78.4867 },
+  { name: 'Pune', lat: 18.5204, lon: 73.8567 },
+  { name: 'Jaipur', lat: 26.9124, lon: 75.7873 }
+];
+
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function nearestEmergencyCity(lat, lon) {
+  let best = EMERGENCY_CITY_COORDS[0];
+  let bestDist = Infinity;
+  EMERGENCY_CITY_COORDS.forEach(city => {
+    const d = haversineKm(lat, lon, city.lat, city.lon);
+    if (d < bestDist) {
+      bestDist = d;
+      best = city;
+    }
+  });
+  return best.name;
+}
+
+function setEmergencyCity(city, { persist = true } = {}) {
+  state.emergencyCity = city || '';
+  if (persist) {
+    localStorage.setItem('mb_emergency_city', state.emergencyCity);
+  }
+  if (elements.emergencyCitySelect) {
+    elements.emergencyCitySelect.value = state.emergencyCity;
+  }
+}
+
+function initEmergencyDoctorLocator() {
+  if (elements.emergencyCitySelect && !elements.emergencyCitySelect.dataset.bound) {
+    elements.emergencyCitySelect.dataset.bound = 'true';
+    elements.emergencyCitySelect.value = state.emergencyCity;
+    elements.emergencyCitySelect.addEventListener('change', () => {
+      setEmergencyCity(elements.emergencyCitySelect.value);
+      renderEmergencyDoctors();
+    });
+  }
+
+  if (elements.detectEmergencyLocationBtn && !elements.detectEmergencyLocationBtn.dataset.bound) {
+    elements.detectEmergencyLocationBtn.dataset.bound = 'true';
+    elements.detectEmergencyLocationBtn.addEventListener('click', detectEmergencyLocation);
+  }
+
+  if (elements.findMyCityPsychBtn && !elements.findMyCityPsychBtn.dataset.bound) {
+    elements.findMyCityPsychBtn.dataset.bound = 'true';
+    elements.findMyCityPsychBtn.addEventListener('click', () => {
+      document.getElementById('section-doctor-service')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      detectEmergencyLocation();
+    });
+  }
+
+  if (elements.emergencySpecChips && !elements.emergencySpecChips.dataset.bound) {
+    elements.emergencySpecChips.dataset.bound = 'true';
+    elements.emergencySpecChips.querySelectorAll('.emergency-spec-chip').forEach(chip => {
+      if (chip.dataset.spec === state.emergencySpec) chip.classList.add('active-chip');
+      else chip.classList.remove('active-chip');
+      chip.addEventListener('click', () => {
+        state.emergencySpec = chip.dataset.spec;
+        localStorage.setItem('mb_emergency_spec', state.emergencySpec);
+        elements.emergencySpecChips.querySelectorAll('.emergency-spec-chip').forEach(c => c.classList.remove('active-chip'));
+        chip.classList.add('active-chip');
+        renderEmergencyDoctors();
+      });
+    });
+  }
+
+  // Delegate booking clicks for all dynamically rendered emergency doctor cards
+  const grids = [elements.emergencyLocalDoctorsGrid, elements.emergencyOtherDoctorsGrid].filter(Boolean);
+  grids.forEach(grid => {
+    if (grid.dataset.bound) return;
+    grid.dataset.bound = 'true';
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('.emergency-book-btn');
+      if (!btn) return;
+      const docId = btn.getAttribute('data-id');
+      if (docId) openBookingModal(docId);
+    });
+  });
+}
+
+function detectEmergencyLocation() {
+  const btn = elements.detectEmergencyLocationBtn;
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Detecting...';
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  const finish = (city, note) => {
+    setEmergencyCity(city);
+    renderEmergencyDoctors();
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = `<i data-lucide="check-circle-2"></i> ${city}${note ? '' : ''}`;
+      if (window.lucide) window.lucide.createIcons();
+      setTimeout(() => {
+        btn.innerHTML = '<i data-lucide="crosshair"></i> Detect My Location';
+        if (window.lucide) window.lucide.createIcons();
+      }, 6000);
+    }
+    const target = document.getElementById('emergencyLocalDocsGroup');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      pos => finish(nearestEmergencyCity(pos.coords.latitude, pos.coords.longitude)),
+      () => finish('New Delhi'),
+      { timeout: 5000 }
+    );
+  } else {
+    finish('New Delhi');
+  }
+}
+
+async function fetchEmergencyDoctors() {
+  try {
+    const res = await fetch('/api/providers');
+    const data = await res.json();
+    const providers = data.providers || [];
+    state.emergencyProviders = providers;
+
+    // Merge into global providers so openBookingModal() works from emergency cards
+    providers.forEach(p => {
+      const idx = state.providers.findIndex(x => x.id === p.id);
+      if (idx >= 0) state.providers[idx] = p;
+      else state.providers.push(p);
+    });
+
+    renderEmergencyDoctors();
+  } catch (err) {
+    console.error('Failed to fetch emergency doctors:', err);
+    if (elements.emergencyDocsCount) {
+      elements.emergencyDocsCount.innerHTML = '<i data-lucide="alert-triangle"></i> Could not load doctors';
+    }
+  }
+}
+
+function matchesEmergencySpec(p, spec) {
+  if (!spec || spec === 'all') return true;
+  const title = (p.title || '').toLowerCase();
+  const qual = (p.qualification || '').toLowerCase();
+  const specs = (p.specializations || []).join(' ').toLowerCase();
+  const hay = `${title} ${qual} ${specs}`;
+  if (spec === 'psychiatrist') return /psychiat/.test(hay);
+  if (spec === 'psychologist') return !/psychiat/.test(title) && /psycholog|therapist|counsel|psychotherap/.test(hay);
+  return true;
+}
+
+function escapeHtml(str) {
+  return String(str ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function buildEmergencyDocCard(p) {
+  const specs = (p.specializations || []).slice(0, 3)
+    .map(s => `<span class="doc-tag">${escapeHtml(s)}</span>`).join('');
+  const mapsQ = encodeURIComponent(p.clinic_address || p.location_city || 'psychiatrist near me');
+  const online = (p.consultation_modes || []).includes('online');
+  const badge = online ? '<span class="doc-live-badge"><i data-lucide="video"></i> Online</span>'
+                       : '<span class="doc-live-badge doc-badge-clinic"><i data-lucide="hospital"></i> Clinic</span>';
+
+  return `
+    <div class="emergency-doc-card">
+      <div class="doc-card-top">
+        <div class="doc-avatar-wrap">
+          <img src="${escapeHtml(p.avatar_url)}" alt="${escapeHtml(p.name)}" class="doc-avatar-img">
+          ${badge}
+        </div>
+        <div class="doc-meta-info">
+          <div class="doc-rating"><i data-lucide="star"></i> ${p.rating} <span>(${p.reviews_count} reviews)</span></div>
+          <h4 class="doc-name">${escapeHtml(p.name)}</h4>
+          <p class="doc-role">${escapeHtml(p.title)}</p>
+          <p class="doc-edu">${escapeHtml(p.qualification)} • ${p.experience_years} yrs exp</p>
+          <p class="doc-loc-chip"><i data-lucide="map-pin"></i> ${escapeHtml(p.location_city)}</p>
+        </div>
+      </div>
+      <div class="doc-tags">${specs}</div>
+      <div class="doc-actions">
+        <button type="button" class="btn-doc-book emergency-book-btn" data-id="${escapeHtml(p.id)}">
+          <i data-lucide="calendar"></i> Book Appointment (₹${Number(p.fee_per_session).toLocaleString()})
+        </button>
+        <a href="https://maps.google.com/?q=${mapsQ}" target="_blank" rel="noopener noreferrer" class="btn-doc-call" title="Clinic Directions">
+          <i data-lucide="map"></i>
+        </a>
+      </div>
+    </div>`;
+}
+
+function renderEmergencyDoctors() {
+  const localGrid = elements.emergencyLocalDoctorsGrid;
+  const otherGrid = elements.emergencyOtherDoctorsGrid;
+  if (!localGrid || !otherGrid) return;
+
+  const city = state.emergencyCity;
+  const spec = state.emergencySpec;
+  const filtered = state.emergencyProviders.filter(p => matchesEmergencySpec(p, spec));
+
+  let localDocs = [];
+  let otherDocs = [];
+  if (city) {
+    const needle = city.toLowerCase();
+    localDocs = filtered.filter(p => (p.location_city || '').toLowerCase().includes(needle));
+    otherDocs = filtered.filter(p => !(p.location_city || '').toLowerCase().includes(needle));
+  } else {
+    localDocs = filtered;
+    otherDocs = [];
+  }
+
+  // Local group
+  if (elements.emergencyLocalDocsTitle) {
+    elements.emergencyLocalDocsTitle.innerHTML = city
+      ? `<i data-lucide="map-pin"></i> Doctors in ${escapeHtml(city)}`
+      : `<i data-lucide="map-pin"></i> All Verified Doctors (Nationwide)`;
+  }
+  if (elements.emergencyLocalDocsSub) {
+    elements.emergencyLocalDocsSub.textContent = city
+      ? `${localDocs.length} available for appointment`
+      : `${localDocs.length} verified specialists · select a location to prioritise yours`;
+  }
+
+  localGrid.innerHTML = localDocs.length
+    ? localDocs.map(buildEmergencyDocCard).join('')
+    : `<div class="emergency-docs-empty">
+         <i data-lucide="user-x"></i>
+         <h4>No doctors found in ${escapeHtml(city || 'this filter')}</h4>
+         <p>Doctors from other locations are listed below — all offer secure online emergency appointments.</p>
+       </div>`;
+
+  // Other locations group
+  if (elements.emergencyOtherDocsGroup) {
+    elements.emergencyOtherDocsGroup.style.display = (city && otherDocs.length) ? '' : 'none';
+  }
+  if (elements.emergencyOtherDocsTitle) {
+    elements.emergencyOtherDocsTitle.innerHTML = city
+      ? `<i data-lucide="globe"></i> Doctors from Other Locations`
+      : `<i data-lucide="globe"></i> Other Locations`;
+  }
+  if (elements.emergencyOtherDocsSub) {
+    elements.emergencyOtherDocsSub.textContent = `${otherDocs.length} doctors available online from other cities`;
+  }
+  otherGrid.innerHTML = otherDocs.map(buildEmergencyDocCard).join('');
+
+  if (elements.emergencyDocsCount) {
+    const total = localDocs.length + otherDocs.length;
+    elements.emergencyDocsCount.innerHTML = `<i data-lucide="users"></i> ${total} doctor${total === 1 ? '' : 's'} available`;
+  }
+
+  if (window.lucide) window.lucide.createIcons();
 }
 
 // ==========================================================================
