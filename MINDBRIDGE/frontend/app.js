@@ -3929,6 +3929,9 @@ async function fetchProviders() {
   if (elements.filterMaxPrice && elements.filterMaxPrice.value) {
     params.append('max_price', elements.filterMaxPrice.value);
   }
+  if (elements.filterHospital && elements.filterHospital.value) {
+    params.append('hospital', elements.filterHospital.value);
+  }
 
   try {
     const res = await fetch(`/api/providers?${params.toString()}`);
