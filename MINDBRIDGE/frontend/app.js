@@ -52,6 +52,9 @@ const state = {
   recognition: null,
   providers: [],
   selectedProvider: null,
+  emergencyProviders: [],
+  emergencyCity: localStorage.getItem('mb_emergency_city') || '',
+  emergencySpec: localStorage.getItem('mb_emergency_spec') || 'psychiatrist',
   breathingInterval: null,
   breathingActive: false,
   soundscapeActive: localStorage.getItem('mb_music_pref') || 'off',
@@ -160,6 +163,21 @@ const elements = {
   closeEmergencyModalBtn: document.getElementById('closeEmergencyModalBtn'),
   modalDismissBtn: document.getElementById('modalDismissBtn'),
   modalGroundingBtn: document.getElementById('modalGroundingBtn'),
+
+  // Emergency Doctor / Psychiatrist Location Listings
+  emergencyCitySelect: document.getElementById('emergencyCitySelect'),
+  detectEmergencyLocationBtn: document.getElementById('detectEmergencyLocationBtn'),
+  findMyCityPsychBtn: document.getElementById('findMyCityPsychBtn'),
+  emergencySpecChips: document.getElementById('emergencySpecChips'),
+  emergencyDocsCount: document.getElementById('emergencyDocsCount'),
+  emergencyLocalDocsGroup: document.getElementById('emergencyLocalDocsGroup'),
+  emergencyOtherDocsGroup: document.getElementById('emergencyOtherDocsGroup'),
+  emergencyLocalDocsTitle: document.getElementById('emergencyLocalDocsTitle'),
+  emergencyOtherDocsTitle: document.getElementById('emergencyOtherDocsTitle'),
+  emergencyLocalDocsSub: document.getElementById('emergencyLocalDocsSub'),
+  emergencyOtherDocsSub: document.getElementById('emergencyOtherDocsSub'),
+  emergencyLocalDoctorsGrid: document.getElementById('emergencyLocalDoctorsGrid'),
+  emergencyOtherDoctorsGrid: document.getElementById('emergencyOtherDoctorsGrid'),
 
   // Breathing Pacer
   breathingCircle: document.getElementById('breathingCircle'),
