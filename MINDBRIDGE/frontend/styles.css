@@ -11076,3 +11076,86 @@ body.dark-theme .gc-name {
   text-decoration: none;
 }
 
+/* Dedicated Auxiliary National Crisis Helplines Drawer (Separated from Local Emergency Grid) */
+.national-helplines-drawer {
+  background: rgba(248, 250, 252, 0.85);
+  border: 1px dashed rgba(14, 165, 233, 0.35);
+  border-radius: 16px;
+  padding: 0.85rem 1.15rem;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+[data-theme="dark"] .national-helplines-drawer {
+  background: rgba(30, 41, 59, 0.55);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.nhd-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-navyblue, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+[data-theme="dark"] .nhd-title {
+  color: #94a3b8;
+}
+
+.nhd-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.nhd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  color: #0284c7 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .nhd-chip {
+  background: rgba(14, 165, 233, 0.14);
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.nhd-chip:hover {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
+}
+
+.nhd-chip-police {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #dc2626 !important;
+}
+
+[data-theme="dark"] .nhd-chip-police {
+  background: rgba(239, 68, 68, 0.14);
+  color: #f87171 !important;
+}
+
+.nhd-chip-police:hover {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
+}
+
+
