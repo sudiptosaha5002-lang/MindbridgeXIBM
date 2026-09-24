@@ -531,12 +531,13 @@ def check_safety():
 def get_providers():
     """
     Filterable directory of verified mental health professionals.
-    Supports query params: specialty, language, mode, max_price
+    Supports query params: specialty, language, mode, max_price, location
     """
     filters = {
         "specialty": request.args.get("specialty"),
         "language": request.args.get("language"),
         "mode": request.args.get("mode"),
+        "location": request.args.get("location"),
         "max_price": request.args.get("max_price", type=int)
     }
     # Remove None values

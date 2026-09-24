@@ -391,6 +391,199 @@ def seed_providers(cursor):
             p.get("is_verified", 1), p["available_days"], p["available_slots"]
         ))
 
+
+def seed_emergency_psychiatrists(cursor):
+    """Ensure city-wise psychiatrist specialists exist for Emergency Mode location listings (idempotent)."""
+    emergency_psychiatrists = [
+        {
+            "id": "prov-psych-delhi",
+            "name": "Dr. Sana Qureshi",
+            "title": "Consultant Psychiatrist",
+            "qualification": "MBBS, MD (Psychiatry), Member IPS",
+            "experience_years": 14,
+            "specializations": json.dumps(["Acute Anxiety & Panic", "Depression Crisis", "Suicidal Ideation Triage", "Medication Management"]),
+            "languages": json.dumps(["English", "Hindi", "Urdu"]),
+            "location_city": "New Delhi / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Astitva Mind Clinic, Saket, New Delhi",
+            "fee_per_session": 2100,
+            "rating": 4.94,
+            "reviews_count": 188,
+            "avatar_url": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Qureshi provides emergency psychiatric evaluations, crisis de-escalation, and rapid medication review for patients experiencing severe anxiety, depressive episodes, or acute distress.",
+            "available_days": json.dumps(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday"]),
+            "available_slots": json.dumps(["09:00 AM", "12:00 PM", "04:00 PM", "07:00 PM"])
+        },
+        {
+            "id": "prov-psych-mumbai",
+            "name": "Dr. Arjun Deshmukh",
+            "title": "Consultant Psychiatrist",
+            "qualification": "MBBS, DNB (Psychiatry), Certified Crisis Interventionist",
+            "experience_years": 15,
+            "specializations": json.dumps(["Bipolar Crisis", "Substance Use & Detox", "Panic Disorders", "Emergency Psychiatric Assessment"]),
+            "languages": json.dumps(["English", "Hindi", "Marathi"]),
+            "location_city": "Mumbai / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Sanjeevani Neuropsychiatry Centre, Andheri West, Mumbai",
+            "fee_per_session": 2400,
+            "rating": 4.93,
+            "reviews_count": 231,
+            "avatar_url": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Deshmukh specialises in 24/7 acute psychiatric triage, bipolar mood stabilization, and supervised detox planning with compassionate, evidence-based care.",
+            "available_days": json.dumps(["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]),
+            "available_slots": json.dumps(["10:00 AM", "01:00 PM", "05:00 PM", "08:00 PM"])
+        },
+        {
+            "id": "prov-psych-kolkata",
+            "name": "Dr. Sanjay Mehrotra",
+            "title": "Senior Consultant Psychiatrist",
+            "qualification": "MBBS, MD (Psychiatry - NIMHANS), FMH",
+            "experience_years": 20,
+            "specializations": json.dumps(["Severe Depression", "Psychosis Early Intervention", "Geriatric Psychiatry", "Crisis Counselling"]),
+            "languages": json.dumps(["English", "Hindi", "Bengali"]),
+            "location_city": "Kolkata / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Mehrotra Mind Hospital, Ballygunge, Kolkata",
+            "fee_per_session": 2500,
+            "rating": 4.97,
+            "reviews_count": 305,
+            "avatar_url": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80",
+            "bio": "With two decades of emergency psychiatry experience, Dr. Mehrotra handles complex crisis presentations, treatment-resistant depression, and early psychotic interventions.",
+            "available_days": json.dumps(["Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"]),
+            "available_slots": json.dumps(["11:00 AM", "02:00 PM", "06:00 PM", "07:30 PM"])
+        },
+        {
+            "id": "prov-psych-bengaluru",
+            "name": "Dr. Vikramaditya Rao",
+            "title": "Consultant Neuro-Psychiatrist",
+            "qualification": "MBBS, MD (Psychiatry), DM (Neuropsychiatry)",
+            "experience_years": 13,
+            "specializations": json.dumps(["Neuropsychiatric Emergencies", "Severe OCD", "ADHD & Focus", "Sleep Crisis"]),
+            "languages": json.dumps(["English", "Hindi", "Kannada", "Telugu"]),
+            "location_city": "Bengaluru / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Nirvana Neuropsychiatry Clinic, Koramangala, Bengaluru",
+            "fee_per_session": 2300,
+            "rating": 4.95,
+            "reviews_count": 176,
+            "avatar_url": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Rao combines psychiatric emergency evaluation with advanced neuropsychiatric diagnostics, offering rapid relief pathways for acute distress and sleep collapse.",
+            "available_days": json.dumps(["Monday", "Tuesday", "Thursday", "Friday", "Saturday"]),
+            "available_slots": json.dumps(["09:30 AM", "01:30 PM", "04:30 PM", "07:00 PM"])
+        },
+        {
+            "id": "prov-psych-chennai",
+            "name": "Dr. Lakshmi Narayan",
+            "title": "Consultant Psychiatrist",
+            "qualification": "MBBS, MD (Psychiatry), Certificate in Emergency Mental Health",
+            "experience_years": 11,
+            "specializations": json.dumps(["Women's Mental Health", "Postpartum Crisis", "Anxiety & Panic", "Trauma-Informed Psychiatry"]),
+            "languages": json.dumps(["English", "Tamil", "Hindi"]),
+            "location_city": "Chennai / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Serene Mind Psychiatry, Adyar, Chennai",
+            "fee_per_session": 1900,
+            "rating": 4.91,
+            "reviews_count": 142,
+            "avatar_url": "https://images.unsplash.com/photo-1594824813593-138382d56a34?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Narayan offers 24/7 on-call psychiatric support with special focus on perinatal mental health emergencies, panic attacks, and trauma-sensitive stabilisation.",
+            "available_days": json.dumps(["Monday", "Wednesday", "Friday", "Saturday", "Sunday"]),
+            "available_slots": json.dumps(["10:30 AM", "12:30 PM", "03:30 PM", "06:30 PM"])
+        },
+        {
+            "id": "prov-psych-hyderabad",
+            "name": "Dr. Imran Haider",
+            "title": "Consultant Psychiatrist & De-addiction Specialist",
+            "qualification": "MBBS, MD (Psychiatry), FIAPM",
+            "experience_years": 12,
+            "specializations": json.dumps(["Addiction Crisis", "Withdrawal Management", "Depression", "Anger & Impulse Control"]),
+            "languages": json.dumps(["English", "Hindi", "Telugu", "Urdu"]),
+            "location_city": "Hyderabad / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Haider Mind Care, Banjara Hills, Hyderabad",
+            "fee_per_session": 2000,
+            "rating": 4.90,
+            "reviews_count": 158,
+            "avatar_url": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Haider leads emergency de-addiction and withdrawal management pathways, combining psychiatric medication oversight with structured relapse-prevention therapy.",
+            "available_days": json.dumps(["Monday", "Tuesday", "Wednesday", "Friday", "Saturday"]),
+            "available_slots": json.dumps(["09:00 AM", "12:00 PM", "05:00 PM", "07:30 PM"])
+        },
+        {
+            "id": "prov-psych-pune",
+            "name": "Dr. Neha Bhatt",
+            "title": "Consultant Psychiatrist",
+            "qualification": "MBBS, DNB (Psychiatry), Certified CBT Psychiatrist",
+            "experience_years": 10,
+            "specializations": json.dumps(["Burnout & Exhaustion", "Exam & Performance Anxiety", "Insomnia", "Mood Disorders"]),
+            "languages": json.dumps(["English", "Hindi", "Marathi", "Gujarati"]),
+            "location_city": "Pune / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "MindSpring Psychiatry, Baner, Pune",
+            "fee_per_session": 1800,
+            "rating": 4.92,
+            "reviews_count": 124,
+            "avatar_url": "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Bhatt integrates psychiatric medication planning with CBT techniques for rapid relief from burnout, performance anxiety, and acute sleep disturbance.",
+            "available_days": json.dumps(["Monday", "Tuesday", "Thursday", "Friday", "Sunday"]),
+            "available_slots": json.dumps(["10:00 AM", "01:00 PM", "04:00 PM", "06:00 PM"])
+        },
+        {
+            "id": "prov-psych-jaipur",
+            "name": "Dr. Ritu Agarwal",
+            "title": "Child & Adolescent Psychiatrist",
+            "qualification": "MBBS, MD (Psychiatry), Fellowship in Child Psychiatry",
+            "experience_years": 9,
+            "specializations": json.dumps(["Adolescent Crisis", "Self-Harm Risk Assessment", "School Refusal", "Family Crisis Support"]),
+            "languages": json.dumps(["English", "Hindi"]),
+            "location_city": "Jaipur / Online Pan-India",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Ujjwal Child & Mind Clinic, C-Scheme, Jaipur",
+            "fee_per_session": 1700,
+            "rating": 4.89,
+            "reviews_count": 96,
+            "avatar_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Agarwal handles adolescent psychiatric emergencies including self-harm risk assessment, school refusal, and family-inclusive crisis stabilisation plans.",
+            "available_days": json.dumps(["Monday", "Wednesday", "Thursday", "Saturday", "Sunday"]),
+            "available_slots": json.dumps(["11:00 AM", "02:00 PM", "05:00 PM", "07:00 PM"])
+        },
+        {
+            "id": "prov-psych-online",
+            "name": "Dr. Kavya Iyer",
+            "title": "Tele-Psychiatrist & Crisis Triage Specialist",
+            "qualification": "MBBS, MD (Psychiatry), Tele-psychiatry Certified",
+            "experience_years": 8,
+            "specializations": json.dumps(["Pan-India Tele-psychiatry", "Same-day Crisis Consult", "Anxiety & Panic", "Prescription Review"]),
+            "languages": json.dumps(["English", "Hindi", "Tamil", "Malayalam"]),
+            "location_city": "Online Pan-India",
+            "consultation_modes": json.dumps(["online"]),
+            "clinic_address": "Virtual Crisis Psychiatric Desk, Pan-India",
+            "fee_per_session": 1400,
+            "rating": 4.93,
+            "reviews_count": 210,
+            "avatar_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Iyer operates a same-day tele-psychiatry desk for patients anywhere in India who need immediate psychiatric consultation, triage, and prescription review.",
+            "available_days": json.dumps(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]),
+            "available_slots": json.dumps(["08:00 AM", "12:00 PM", "04:00 PM", "08:00 PM", "10:00 PM"])
+        }
+    ]
+
+    for p in emergency_psychiatrists:
+        cursor.execute("""
+        INSERT OR IGNORE INTO providers (
+            id, name, title, qualification, experience_years, specializations,
+            languages, location_city, consultation_modes, clinic_address,
+            fee_per_session, rating, reviews_count, avatar_url, bio, is_verified,
+            available_days, available_slots
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            p["id"], p["name"], p["title"], p["qualification"], p["experience_years"],
+            p["specializations"], p["languages"], p["location_city"],
+            p["consultation_modes"], p["clinic_address"], p["fee_per_session"],
+            p["rating"], p["reviews_count"], p["avatar_url"], p["bio"],
+            p.get("is_verified", 1), p["available_days"], p["available_slots"]
+        ))
+
 # Provider Query Helpers
 def get_all_providers(filters=None):
     conn = get_db_connection()
@@ -412,6 +605,9 @@ def get_all_providers(filters=None):
         if filters.get("max_price"):
             query += " AND fee_per_session <= ?"
             params.append(filters["max_price"])
+        if filters.get("location"):
+            query += " AND location_city LIKE ?"
+            params.append(f"%{filters['location']}%")
 
     query += " ORDER BY rating DESC"
     cursor.execute(query, params)
