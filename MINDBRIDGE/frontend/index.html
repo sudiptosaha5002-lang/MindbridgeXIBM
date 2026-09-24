@@ -1170,7 +1170,7 @@
                   <h3 class="emergency-overlay-title">Rapid Response Ambulance & Acute Crisis Unit</h3>
                   <p class="emergency-overlay-desc">Direct emergency line connects directly with verified national healthcare ambulances and suicide crisis centers.</p>
                   <div class="emergency-action-cta-group">
-                    <a href="tel:112" class="emergency-cta-btn emergency-btn-ambulance">
+                    <a href="tel:112" class="emergency-cta-btn emergency-btn-ambulance" id="emergencyAmbulanceBtn">
                       <i data-lucide="siren"></i> Call Emergency Ambulance (112 / 102)
                     </a>
                     <button type="button" class="emergency-cta-btn emergency-btn-dispatch" id="sosLocationDispatchBtn">
@@ -1184,15 +1184,15 @@
             <!-- Verified 24/7 Emergency Helplines Grid -->
             <div class="emergency-cards-grid">
               <!-- Card 1 -->
-              <div class="hotline-pro-card priority-high">
+              <div class="hotline-pro-card priority-high" id="emergencyAmbulanceCard">
                 <div class="hotline-pro-top">
                   <div class="hotline-pro-icon"><i data-lucide="ambulance"></i></div>
-                  <span class="hotline-status-chip online">Active Dispatch</span>
+                  <span class="hotline-status-chip online" id="ambulanceCardStatus">Active Dispatch</span>
                 </div>
-                <h4 class="hotline-pro-name">National Emergency Services (Ambulance / Police)</h4>
-                <div class="hotline-pro-number">112 / 102</div>
-                <p class="hotline-pro-desc">Immediate government emergency response, medical dispatch, and ambulance routing across India.</p>
-                <a href="tel:112" class="hotline-pro-call-btn">
+                <h4 class="hotline-pro-name" id="ambulanceCardName">National Emergency Services (Ambulance / Police)</h4>
+                <div class="hotline-pro-number" id="ambulanceCardNumber">112 / 102</div>
+                <p class="hotline-pro-desc" id="ambulanceCardDesc">Immediate government emergency response, medical dispatch, and ambulance routing across India.</p>
+                <a href="tel:112" class="hotline-pro-call-btn" id="ambulanceCardCallBtn">
                   <i data-lucide="phone-call"></i> Call 112 Now
                 </a>
               </div>
