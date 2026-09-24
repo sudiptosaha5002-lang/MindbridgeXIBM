@@ -5008,6 +5008,15 @@ body {
   .emergency-doc-count { margin-left: 0; justify-content: center; }
 }
 
+.spin {
+  animation: emergency-spin 0.9s linear infinite;
+}
+
+@keyframes emergency-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .emergency-grounding-box {
   margin-top: 1rem;
 }
