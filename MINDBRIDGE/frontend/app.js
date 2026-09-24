@@ -4243,16 +4243,85 @@ function initEmergencyModeInteractive() {
 // EMERGENCY MODE: LOCATION-BASED PSYCHIATRIST / DOCTOR APPOINTMENTS
 // ==========================================================================
 
-const EMERGENCY_CITY_COORDS = [
-  { name: 'New Delhi', lat: 28.6139, lon: 77.2090 },
-  { name: 'Mumbai', lat: 19.0760, lon: 72.8777 },
+// Fine-grained universal locality dataset — cities, districts & neighbourhoods.
+// GPS detection resolves to the CLOSEST entry (e.g., Barasat instead of Kolkata).
+const INDIA_LOCALITIES = [
+  // West Bengal — finest granularity first
+  { name: 'Barasat', lat: 22.7200, lon: 88.4800 },
+  { name: 'Barrackpore', lat: 22.7850, lon: 88.3700 },
+  { name: 'Naihati', lat: 22.8900, lon: 88.4200 },
+  { name: 'Kalyani', lat: 22.9750, lon: 88.4340 },
+  { name: 'Krishnanagar', lat: 23.4000, lon: 88.7000 },
+  { name: 'Berhampore', lat: 24.1000, lon: 88.2500 },
+  { name: 'Malda', lat: 25.0100, lon: 88.1400 },
+  { name: 'Siliguri', lat: 26.7271, lon: 88.3953 },
+  { name: 'Darjeeling', lat: 27.0360, lon: 88.2627 },
+  { name: 'Dum Dum', lat: 22.6170, lon: 88.4220 },
+  { name: 'Salt Lake', lat: 22.5850, lon: 88.4150 },
+  { name: 'Sealdah', lat: 22.5680, lon: 88.3690 },
+  { name: 'Howrah', lat: 22.5950, lon: 88.2630 },
   { name: 'Kolkata', lat: 22.5726, lon: 88.3639 },
-  { name: 'Bengaluru', lat: 12.9716, lon: 77.5946 },
-  { name: 'Chennai', lat: 13.0827, lon: 80.2707 },
-  { name: 'Hyderabad', lat: 17.3850, lon: 78.4867 },
+  { name: 'Haldia', lat: 22.0600, lon: 88.1100 },
+  { name: 'Kharagpur', lat: 22.3460, lon: 87.2320 },
+  { name: 'Durgapur', lat: 23.5200, lon: 87.3100 },
+  { name: 'Asansol', lat: 23.6850, lon: 86.9800 },
+  { name: 'Bardhaman', lat: 23.2400, lon: 87.8600 },
+  // Delhi NCR
+  { name: 'New Delhi', lat: 28.6139, lon: 77.2090 },
+  { name: 'Saket', lat: 28.5240, lon: 77.2060 },
+  { name: 'Vasant Vihar', lat: 28.5590, lon: 77.1600 },
+  { name: 'Dwarka', lat: 28.5921, lon: 77.0460 },
+  { name: 'Gurugram', lat: 28.4595, lon: 77.0266 },
+  { name: 'Noida', lat: 28.5355, lon: 77.3910 },
+  { name: 'Faridabad', lat: 28.4089, lon: 77.3178 },
+  { name: 'Ghaziabad', lat: 28.6692, lon: 77.4538 },
+  // Maharashtra
+  { name: 'Mumbai', lat: 19.0760, lon: 72.8777 },
+  { name: 'Bandra', lat: 19.0590, lon: 72.8290 },
+  { name: 'Andheri', lat: 19.1350, lon: 72.8260 },
+  { name: 'Thane', lat: 19.2180, lon: 72.9780 },
+  { name: 'Navi Mumbai', lat: 19.0330, lon: 73.0290 },
   { name: 'Pune', lat: 18.5204, lon: 73.8567 },
-  { name: 'Jaipur', lat: 26.9124, lon: 75.7873 }
+  { name: 'Baner', lat: 18.5640, lon: 73.7770 },
+  { name: 'Nagpur', lat: 21.1458, lon: 79.0882 },
+  // Karnataka
+  { name: 'Bengaluru', lat: 12.9716, lon: 77.5946 },
+  { name: 'Koramangala', lat: 12.9350, lon: 77.6240 },
+  { name: 'Indiranagar', lat: 12.9780, lon: 77.6400 },
+  { name: 'Whitefield', lat: 12.9698, lon: 77.7500 },
+  { name: 'Electronic City', lat: 12.8452, lon: 77.6602 },
+  // Tamil Nadu
+  { name: 'Chennai', lat: 13.0827, lon: 80.2707 },
+  { name: 'Adyar', lat: 13.0010, lon: 80.2560 },
+  { name: 'Tambaram', lat: 12.9249, lon: 80.1000 },
+  { name: 'Coimbatore', lat: 11.0168, lon: 76.9558 },
+  // Telangana / Andhra
+  { name: 'Hyderabad', lat: 17.3850, lon: 78.4867 },
+  { name: 'Banjara Hills', lat: 17.4120, lon: 78.4350 },
+  { name: 'Hitec City', lat: 17.4435, lon: 78.3772 },
+  { name: 'Visakhapatnam', lat: 17.6868, lon: 83.2185 },
+  // North / Central / East / West / South India
+  { name: 'Jaipur', lat: 26.9124, lon: 75.7873 },
+  { name: 'Lucknow', lat: 26.8467, lon: 80.9462 },
+  { name: 'Varanasi', lat: 25.3176, lon: 82.9739 },
+  { name: 'Meerut', lat: 28.9845, lon: 77.7064 },
+  { name: 'Patna', lat: 25.5941, lon: 85.1376 },
+  { name: 'Ranchi', lat: 23.3441, lon: 85.3096 },
+  { name: 'Jamshedpur', lat: 22.8046, lon: 86.2029 },
+  { name: 'Bhopal', lat: 23.2599, lon: 77.4126 },
+  { name: 'Indore', lat: 22.7196, lon: 75.8577 },
+  { name: 'Ahmedabad', lat: 23.0225, lon: 72.5714 },
+  { name: 'Surat', lat: 21.1702, lon: 72.8311 },
+  { name: 'Chandigarh', lat: 30.7333, lon: 76.7794 },
+  { name: 'Amritsar', lat: 31.6340, lon: 74.8723 },
+  { name: 'Dehradun', lat: 30.3165, lon: 78.0322 },
+  { name: 'Guwahati', lat: 26.1445, lon: 91.7362 },
+  { name: 'Bhubaneswar', lat: 20.2961, lon: 85.8245 },
+  { name: 'Kochi', lat: 9.9312, lon: 76.2673 }
 ];
+
+// Doctors/clinics within this km radius of a searched location are grouped "near" it
+const SEARCH_RADIUS_KM = 80;
 
 function haversineKm(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -4264,27 +4333,84 @@ function haversineKm(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-function nearestEmergencyCity(lat, lon) {
-  let best = EMERGENCY_CITY_COORDS[0];
+function nearestLocality(lat, lon) {
+  let best = null;
   let bestDist = Infinity;
-  EMERGENCY_CITY_COORDS.forEach(city => {
-    const d = haversineKm(lat, lon, city.lat, city.lon);
+  INDIA_LOCALITIES.forEach(loc => {
+    const d = haversineKm(lat, lon, loc.lat, loc.lon);
     if (d < bestDist) {
       bestDist = d;
-      best = city;
+      best = loc;
     }
   });
-  return best.name;
+  return best ? { name: best.name, lat: best.lat, lon: best.lon } : null;
 }
 
-function setEmergencyCity(city, { persist = true } = {}) {
-  state.emergencyCity = city || '';
-  if (persist) {
-    localStorage.setItem('mb_emergency_city', state.emergencyCity);
+function resolveLocationQuery(text) {
+  const q = (text || '').trim().replace(/\s+/g, ' ');
+  if (!q) return null;
+  const ql = q.toLowerCase();
+  let hit = INDIA_LOCALITIES.find(l => l.name.toLowerCase() === ql);
+  if (!hit) hit = INDIA_LOCALITIES.find(l => l.name.toLowerCase().includes(ql) || ql.includes(l.name.toLowerCase()));
+  if (hit) return { name: hit.name, lat: hit.lat, lon: hit.lon, source: 'search' };
+  return { name: q, lat: null, lon: null, source: 'search' };
+}
+
+function persistSearchLocations() {
+  localStorage.setItem('mb_search_locations', JSON.stringify(state.searchLocations));
+}
+
+function addSearchLocation(loc) {
+  if (!loc || !loc.name) return;
+  const key = loc.name.toLowerCase();
+  state.searchLocations = state.searchLocations.filter(l => {
+    if (l.name.toLowerCase() === key) return false;
+    if (loc.source === 'detected' && l.source === 'detected') return false;
+    return true;
+  });
+  const entry = {
+    name: loc.name,
+    lat: (loc.lat === undefined ? null : loc.lat),
+    lon: (loc.lon === undefined ? null : loc.lon),
+    source: loc.source || 'search'
+  };
+  if (entry.source === 'detected') {
+    state.searchLocations.unshift(entry);
+  } else {
+    const detIdx = state.searchLocations.findIndex(l => l.source === 'detected');
+    state.searchLocations.splice(detIdx + 1, 0, entry);
   }
-  if (elements.emergencyCitySelect) {
-    elements.emergencyCitySelect.value = state.emergencyCity;
-  }
+  persistSearchLocations();
+  renderAllLocationSearches();
+}
+
+function removeSearchLocation(name) {
+  const key = (name || '').toLowerCase();
+  state.searchLocations = state.searchLocations.filter(l => l.name.toLowerCase() !== key);
+  persistSearchLocations();
+  renderAllLocationSearches();
+}
+
+function renderLocationChips() {
+  const html = state.searchLocations.length
+    ? state.searchLocations.map(l => `
+        <span class="emergency-loc-chip ${l.source === 'detected' ? 'chip-detected' : ''}">
+          <i data-lucide="${l.source === 'detected' ? 'crosshair' : 'map-pin'}"></i>
+          ${escapeHtml(l.name)}
+          <button type="button" class="loc-chip-remove" data-name="${escapeHtml(l.name)}" title="Remove location">&times;</button>
+        </span>`).join('')
+    : `<span class="emergency-loc-chip chip-hint">
+         <i data-lucide="info"></i> No location selected — showing nationwide results. Detect your location or add areas (e.g., Barasat, Kolkata).
+       </span>`;
+  [elements.emergencyLocChips, elements.clinicLocChips].forEach(el => {
+    if (el) el.innerHTML = html;
+  });
+}
+
+function renderAllLocationSearches() {
+  renderLocationChips();
+  renderEmergencyDoctors();
+  renderEmergencyClinics();
 }
 
 function initEmergencyDoctorLocator() {
