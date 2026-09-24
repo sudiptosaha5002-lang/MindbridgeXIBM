@@ -3968,13 +3968,23 @@ function renderProviders(providers) {
 
     const specBadges = p.specializations.map(s => `<span class="spec-badge">${s}</span>`).join('');
     const langList = p.languages.join(', ');
-    const modeBadge = p.consultation_modes.includes('online') && p.consultation_modes.includes('in-person') 
+    const modeBadge = p.consultation_modes.includes('online') && p.consultation_modes.includes('in-person')
       ? 'Online & In-Person' : (p.consultation_modes.includes('online') ? 'Online Video Call' : 'Clinic Visit');
+    const hosp = hospitalOf(p);
+    const phoneLine = p.phone
+      ? `<span><i data-lucide="phone" class="inline-icon text-teal"></i> <a href="tel:${escapeHtml(String(p.phone).replace(/\s+/g, ''))}" class="doc-phone-link">${p.phone}</a></span>`
+      : '';
+    const addrLine = p.clinic_address
+      ? `<span><i data-lucide="building-2" class="inline-icon text-amber"></i> ${p.clinic_address}</span>`
+      : '';
+    const hospLine = hosp
+      ? `<span><i data-lucide="hospital" class="inline-icon text-lavender"></i> <strong>${hosp.name}</strong> · ${hosp.address}${hosp.phone ? ` · ${hosp.phone}` : ''}</span>`
+      : '';
 
     card.innerHTML = `
       <div>
         <div class="doc-card-top">
-          <img src="${p.avatar_url}" alt="${p.name}" class="doc-avatar-img">
+          ${avatarHtml(p)}
           <div class="doc-meta-right">
             <h3 class="doc-name">${p.name}</h3>
             <span class="doc-title">${p.title}</span>
@@ -3996,16 +4006,24 @@ function renderProviders(providers) {
           <span><i data-lucide="globe" class="inline-icon text-teal"></i> <strong>Languages:</strong> ${langList}</span>
           <span><i data-lucide="video" class="inline-icon text-lavender"></i> <strong>Modes:</strong> ${modeBadge}</span>
           <span><i data-lucide="map-pin" class="inline-icon text-amber"></i> ${p.location_city}</span>
+          ${addrLine}
+          ${hospLine}
+          ${phoneLine}
         </div>
       </div>
 
       <div class="doc-footer-row">
         <div class="doc-fee">
-          ₹${p.fee_per_session.toLocaleString()} <span>/ 50-min session</span>
+          Fee may be around ₹${p.fee_per_session.toLocaleString()} <span>· as listed on website</span>
         </div>
-        <button class="btn btn-primary book-doctor-btn" data-id="${p.id}">
-          <i data-lucide="calendar"></i> Book Slot
-        </button>
+        <div class="doc-footer-btns">
+          <button class="btn btn-primary book-doctor-btn" data-id="${p.id}">
+            <i data-lucide="calendar"></i> Book Appointment
+          </button>
+          <button class="btn btn-secondary book-inapp-btn" data-id="${p.id}">
+            <i data-lucide="calendar-check"></i> Book in App
+          </button>
+        </div>
       </div>
     `;
 
@@ -4014,8 +4032,12 @@ function renderProviders(providers) {
 
   document.querySelectorAll('.book-doctor-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      const docId = e.currentTarget.getAttribute('data-id');
-      openBookingModal(docId);
+      openProviderBooking(e.currentTarget.getAttribute('data-id'));
+    });
+  });
+  document.querySelectorAll('.book-inapp-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      openBookingModal(e.currentTarget.getAttribute('data-id'));
     });
   });
 
@@ -4026,12 +4048,14 @@ if (elements.filterSpecialty) elements.filterSpecialty.addEventListener('change'
 if (elements.filterLanguage) elements.filterLanguage.addEventListener('change', fetchProviders);
 if (elements.filterMode) elements.filterMode.addEventListener('change', fetchProviders);
 if (elements.filterMaxPrice) elements.filterMaxPrice.addEventListener('change', fetchProviders);
+if (elements.filterHospital) elements.filterHospital.addEventListener('change', fetchProviders);
 if (elements.resetFiltersBtn) {
   elements.resetFiltersBtn.addEventListener('click', () => {
     elements.filterSpecialty.value = '';
     elements.filterLanguage.value = '';
     elements.filterMode.value = '';
     elements.filterMaxPrice.value = '';
+    if (elements.filterHospital) elements.filterHospital.value = '';
     fetchProviders();
   });
 }
@@ -4048,7 +4072,7 @@ function openBookingModal(providerId) {
   elements.bookProviderId.value = provider.id;
   elements.bookDocName.textContent = provider.name;
   elements.bookDocTitle.textContent = provider.title;
-  elements.bookDocAvatar.src = provider.avatar_url;
+  elements.bookDocAvatar.src = hasRealPhoto(provider) ? provider.avatar_url : AVATAR_BLANK_URI;
   elements.bookDocMeta.innerHTML = `
     <span><i data-lucide="map-pin"></i> ${provider.location_city}</span> • 
     <span><i data-lucide="wallet"></i> ₹${provider.fee_per_session.toLocaleString()} / session</span>
