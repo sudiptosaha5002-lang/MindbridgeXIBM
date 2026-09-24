@@ -10380,3 +10380,176 @@ body.dark-theme .gc-name {
   margin-top: -0.5rem;
   text-align: center;
 }
+/* ---------- Doctor cards: blank avatar, fee wording, phone, hospital ---------- */
+.doc-avatar-blank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.doc-avatar-blank svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.doc-hospital-line,
+.doc-phone-line,
+.doc-fee-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.73rem;
+  line-height: 1.4;
+  margin-bottom: 0.55rem;
+}
+
+.doc-hospital-line {
+  color: var(--text-sub);
+}
+
+.doc-hospital-line i {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: #a78bfa;
+  margin-top: 1px;
+}
+
+.doc-hospital-line strong {
+  color: var(--text-pure);
+}
+
+.doc-phone-line {
+  color: #2dd4bf;
+  text-decoration: none;
+  font-weight: 700;
+  align-items: center;
+}
+
+.doc-phone-line:hover {
+  text-decoration: underline;
+}
+
+.doc-phone-line i {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.doc-fee-line {
+  color: var(--text-sub);
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.doc-fee-line i {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: #fbbf24;
+  margin-top: 1px;
+}
+
+/* In-app booking = secondary action next to website booking */
+.emergency-inapp-btn {
+  border-style: dashed !important;
+  border-color: rgba(251, 191, 36, 0.55) !important;
+  color: #fbbf24 !important;
+}
+
+.emergency-inapp-btn:hover {
+  background: rgba(251, 191, 36, 0.12) !important;
+  border-style: solid !important;
+}
+
+/* Providers tab: two-button footer + fee wording */
+.doc-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.doc-fee {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-pure);
+}
+
+.doc-fee span {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.doc-footer-btns {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.doc-meta-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.doc-title,
+.doc-qual {
+  font-size: 0.74rem;
+  color: var(--text-sub);
+  line-height: 1.3;
+}
+
+.doc-bio {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+  margin: 0.7rem 0;
+}
+
+.doc-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+.spec-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(13, 148, 136, 0.12);
+  border: 1px solid rgba(13, 148, 136, 0.3);
+  color: #2dd4bf;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+.doc-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  margin-top: 0.15rem;
+}
+
+.rating-star {
+  color: #eab308;
+  font-weight: 800;
+}
+
+.doc-phone-link {
+  color: #2dd4bf;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.doc-phone-link:hover {
+  text-decoration: underline;
+}
