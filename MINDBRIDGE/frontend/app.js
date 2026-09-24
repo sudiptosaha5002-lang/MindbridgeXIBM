@@ -4414,28 +4414,56 @@ function renderAllLocationSearches() {
 }
 
 function initEmergencyDoctorLocator() {
-  if (elements.emergencyCitySelect && !elements.emergencyCitySelect.dataset.bound) {
-    elements.emergencyCitySelect.dataset.bound = 'true';
-    elements.emergencyCitySelect.value = state.emergencyCity;
-    elements.emergencyCitySelect.addEventListener('change', () => {
-      setEmergencyCity(elements.emergencyCitySelect.value);
-      renderEmergencyDoctors();
+  // Datalist suggestions for universal search inputs
+  const datalist = document.getElementById('emergencyLocSuggestions');
+  if (datalist && !datalist.childElementCount) {
+    datalist.innerHTML = INDIA_LOCALITIES
+      .map(l => `<option value="${escapeHtml(l.name)}"></option>`).join('');
+  }
+
+  // Add location manually (doctors + clinics bars share state.searchLocations)
+  const bindAdd = (input, btn) => {
+    if (!input || input.dataset.bound) return;
+    input.dataset.bound = 'true';
+    const addIt = () => {
+      const loc = resolveLocationQuery(input.value);
+      if (!loc) return;
+      addSearchLocation(loc);
+      input.value = '';
+    };
+    if (btn) btn.addEventListener('click', addIt);
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        addIt();
+      }
     });
-  }
+  };
+  bindAdd(elements.emergencyLocInput, elements.addEmergencyLocBtn);
+  bindAdd(elements.clinicLocInput, elements.addClinicLocBtn);
 
-  if (elements.detectEmergencyLocationBtn && !elements.detectEmergencyLocationBtn.dataset.bound) {
-    elements.detectEmergencyLocationBtn.dataset.bound = 'true';
-    elements.detectEmergencyLocationBtn.addEventListener('click', detectEmergencyLocation);
-  }
-
-  if (elements.findMyCityPsychBtn && !elements.findMyCityPsychBtn.dataset.bound) {
-    elements.findMyCityPsychBtn.dataset.bound = 'true';
-    elements.findMyCityPsychBtn.addEventListener('click', () => {
-      document.getElementById('section-doctor-service')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      detectEmergencyLocation();
+  // Chip remove (delegated on both containers)
+  [elements.emergencyLocChips, elements.clinicLocChips].forEach(container => {
+    if (!container || container.dataset.bound) return;
+    container.dataset.bound = 'true';
+    container.addEventListener('click', e => {
+      const rm = e.target.closest('.loc-chip-remove');
+      if (rm) removeSearchLocation(rm.getAttribute('data-name'));
     });
-  }
+  });
 
+  // GPS detection — all detect buttons share the same universal search
+  const bindDetect = (btn, opts = {}) => {
+    if (!btn || btn.dataset.bound) return;
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', () => detectMyLocation(btn, opts));
+  };
+  bindDetect(elements.detectEmergencyLocationBtn, { scrollDoctors: true });
+  bindDetect(elements.detectClinicLocationBtn, { scrollClinics: true });
+  bindDetect(elements.findNearbyClinicsBtn, { scrollClinics: true });
+  bindDetect(elements.findMyCityPsychBtn, { scrollDoctors: true });
+
+  // Specialty chips
   if (elements.emergencySpecChips && !elements.emergencySpecChips.dataset.bound) {
     elements.emergencySpecChips.dataset.bound = 'true';
     elements.emergencySpecChips.querySelectorAll('.emergency-spec-chip').forEach(chip => {
@@ -4451,52 +4479,80 @@ function initEmergencyDoctorLocator() {
     });
   }
 
-  // Delegate booking clicks for all dynamically rendered emergency doctor cards
-  const grids = [elements.emergencyLocalDoctorsGrid, elements.emergencyOtherDoctorsGrid].filter(Boolean);
-  grids.forEach(grid => {
-    if (grid.dataset.bound) return;
-    grid.dataset.bound = 'true';
-    grid.addEventListener('click', (e) => {
+  // Experience filter (basic: 5/10/15/20/25/30+ years)
+  if (elements.emergencyExpFilter && !elements.emergencyExpFilter.dataset.bound) {
+    elements.emergencyExpFilter.dataset.bound = 'true';
+    elements.emergencyExpFilter.value = state.emergencyMinExp;
+    elements.emergencyExpFilter.addEventListener('change', () => {
+      state.emergencyMinExp = elements.emergencyExpFilter.value;
+      localStorage.setItem('mb_emergency_min_exp', state.emergencyMinExp);
+      renderEmergencyDoctors();
+    });
+  }
+
+  // Rating / reviews filter
+  if (elements.emergencyRatingFilter && !elements.emergencyRatingFilter.dataset.bound) {
+    elements.emergencyRatingFilter.dataset.bound = 'true';
+    elements.emergencyRatingFilter.value = state.emergencyMinRating;
+    elements.emergencyRatingFilter.addEventListener('change', () => {
+      state.emergencyMinRating = elements.emergencyRatingFilter.value;
+      localStorage.setItem('mb_emergency_min_rating', state.emergencyMinRating);
+      renderEmergencyDoctors();
+    });
+  }
+
+  // Book buttons inside dynamically rendered groups
+  if (elements.emergencyDocsGroups && !elements.emergencyDocsGroups.dataset.bound) {
+    elements.emergencyDocsGroups.dataset.bound = 'true';
+    elements.emergencyDocsGroups.addEventListener('click', e => {
       const btn = e.target.closest('.emergency-book-btn');
       if (!btn) return;
       const docId = btn.getAttribute('data-id');
       if (docId) openBookingModal(docId);
     });
-  });
+  }
 }
 
-function detectEmergencyLocation() {
-  const btn = elements.detectEmergencyLocationBtn;
+function detectMyLocation(btn, opts = {}) {
+  const prevHtml = btn ? btn.innerHTML : '';
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Detecting...';
+    btn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Detecting locality...';
     if (window.lucide) window.lucide.createIcons();
   }
 
-  const finish = (city) => {
-    setEmergencyCity(city);
-    renderEmergencyDoctors();
+  const finish = (resolved) => {
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = `<i data-lucide="check-circle-2"></i> ${city}`;
+      btn.innerHTML = `<i data-lucide="check-circle-2"></i> ${escapeHtml(resolved.name)}`;
       if (window.lucide) window.lucide.createIcons();
       setTimeout(() => {
-        btn.innerHTML = '<i data-lucide="crosshair"></i> Detect My Location';
+        btn.innerHTML = prevHtml;
         if (window.lucide) window.lucide.createIcons();
       }, 6000);
     }
-    const target = document.getElementById('emergencyLocalDocsGroup');
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    addSearchLocation(resolved);
+    if (opts.scrollDoctors) {
+      document.getElementById('section-doctor-service')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (opts.scrollClinics) {
+      document.getElementById('section-clinical-service')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      pos => finish(nearestEmergencyCity(pos.coords.latitude, pos.coords.longitude)),
-      () => finish('New Delhi'),
+      pos => {
+        const local = nearestLocality(pos.coords.latitude, pos.coords.longitude);
+        finish(local
+          ? { ...local, source: 'detected' }
+          : { name: 'New Delhi', lat: 28.6139, lon: 77.2090, source: 'detected' });
+      },
+      () => finish({ name: 'New Delhi', lat: 28.6139, lon: 77.2090, source: 'detected' }),
       { timeout: 5000 }
     );
   } else {
-    finish('New Delhi');
+    finish({ name: 'New Delhi', lat: 28.6139, lon: 77.2090, source: 'detected' });
   }
 }
 
