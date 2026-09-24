@@ -4056,6 +4056,12 @@ function openBookingModal(providerId) {
     elements.bookSlot.appendChild(opt);
   });
 
+  // Default booking mode: OFFLINE / in-person clinic visit first (not online video)
+  if (elements.bookMode) {
+    const modes = provider.consultation_modes || [];
+    elements.bookMode.value = modes.includes('in-person') ? 'in-person' : (modes.includes('online') ? 'online' : 'in-person');
+  }
+
   elements.bookingModal.style.display = 'flex';
   if (window.lucide) window.lucide.createIcons();
 }
@@ -4234,9 +4240,11 @@ function initEmergencyModeInteractive() {
     }
   });
 
-  // 4. Emergency Psychiatrist / Doctor location listings
+  // 4. Emergency Psychiatrist / Doctor + Clinic universal location listings
   initEmergencyDoctorLocator();
   fetchEmergencyDoctors();
+  fetchEmergencyClinics();
+  renderLocationChips();
 }
 
 // ==========================================================================
