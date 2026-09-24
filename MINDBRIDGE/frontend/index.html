@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=12.1">
+  <link rel="stylesheet" href="styles.css?v=13.0">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -1271,90 +1271,29 @@
               </div>
             </div>
 
-            <!-- Clinical Facilities List -->
-            <div class="clinical-centers-grid" id="clinicalCentersList">
-              <!-- Center 1 -->
-              <div class="clinical-center-card">
-                <div class="clinical-card-header">
-                  <div>
-                    <span class="clinical-type-pill">National Apex Institute · 24/7 Emergency</span>
-                    <h4 class="clinical-name">National Institute of Mental Health & Neuro Sciences (NIMHANS)</h4>
-                    <p class="clinical-address"><i data-lucide="map-pin"></i> Hosur Road, Lakkasandra, Bengaluru, Karnataka 560029</p>
+            <!-- Shared Universal Location Search Bar (same locations as Doctor section) -->
+            <div class="emergency-doc-toolbar clinical-loc-toolbar">
+              <div class="emergency-location-bar">
+                <div class="emergency-loc-field">
+                  <label for="clinicLocInput"><i data-lucide="globe"></i> Search Clinics by Area / District</label>
+                  <div class="emergency-loc-input-row">
+                    <input type="text" id="clinicLocInput" class="emergency-loc-input" list="emergencyLocSuggestions"
+                      placeholder="e.g., Barasat, North 24 Parganas" autocomplete="off">
+                    <button type="button" class="emergency-add-loc-btn" id="addClinicLocBtn">
+                      <i data-lucide="plus"></i> Add
+                    </button>
                   </div>
-                  <div class="clinical-distance-badge" id="dist-nimhans">
-                    <i data-lucide="milestone"></i> <span>2.1 km away</span>
-                  </div>
                 </div>
-                <div class="clinical-specs">
-                  <span class="spec-tag"><i data-lucide="bed"></i> 24/7 Crisis Inpatient Beds</span>
-                  <span class="spec-tag"><i data-lucide="activity"></i> Psychiatric Casualty</span>
-                  <span class="spec-tag"><i data-lucide="stethoscope"></i> Resident Psychiatrists</span>
-                  <span class="spec-tag"><i data-lucide="shield"></i> Govt. Subsidized</span>
-                </div>
-                <div class="clinical-card-actions">
-                  <a href="tel:+918026995000" class="btn-clinical-call">
-                    <i data-lucide="phone"></i> Call Casualty: +91 80 2699 5000
-                  </a>
-                  <a href="https://maps.google.com/?q=NIMHANS+Hospital+Emergency" target="_blank" class="btn-clinical-nav">
-                    <i data-lucide="map"></i> Directions
-                  </a>
-                </div>
+                <button type="button" class="emergency-detect-btn clinical-detect-btn" id="detectClinicLocationBtn">
+                  <i data-lucide="crosshair"></i> Detect My Location
+                </button>
+                <span class="emergency-doc-count" id="clinicCountBadge"><i data-lucide="hospital"></i> Loading clinics...</span>
               </div>
-
-              <!-- Center 2 -->
-              <div class="clinical-center-card">
-                <div class="clinical-card-header">
-                  <div>
-                    <span class="clinical-type-pill">Comprehensive Care Center · Emergency Dept</span>
-                    <h4 class="clinical-name">AIIMS Department of Psychiatry & Emergency Behavioral Ward</h4>
-                    <p class="clinical-address"><i data-lucide="map-pin"></i> Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029</p>
-                  </div>
-                  <div class="clinical-distance-badge" id="dist-aiims">
-                    <i data-lucide="milestone"></i> <span>3.8 km away</span>
-                  </div>
-                </div>
-                <div class="clinical-specs">
-                  <span class="spec-tag"><i data-lucide="bed"></i> Intensive Psychiatric Care (IPC)</span>
-                  <span class="spec-tag"><i data-lucide="activity"></i> Neuro-toxicology & Crisis</span>
-                  <span class="spec-tag"><i data-lucide="clock"></i> 24-Hour Emergency Triage</span>
-                </div>
-                <div class="clinical-card-actions">
-                  <a href="tel:+911126588500" class="btn-clinical-call">
-                    <i data-lucide="phone"></i> Call Emergency: +91 11 2658 8500
-                  </a>
-                  <a href="https://maps.google.com/?q=AIIMS+Psychiatry+Emergency" target="_blank" class="btn-clinical-nav">
-                    <i data-lucide="map"></i> Directions
-                  </a>
-                </div>
-              </div>
-
-              <!-- Center 3 -->
-              <div class="clinical-center-card">
-                <div class="clinical-card-header">
-                  <div>
-                    <span class="clinical-type-pill">Multi-Specialty Private Care · Rapid Triage</span>
-                    <h4 class="clinical-name">Fortis Mental Health & Emergency Clinical Sciences</h4>
-                    <p class="clinical-address"><i data-lucide="map-pin"></i> Sector 44, Opposite Huda City Centre, Gurugram / Pan-Metro</p>
-                  </div>
-                  <div class="clinical-distance-badge" id="dist-fortis">
-                    <i data-lucide="milestone"></i> <span>5.4 km away</span>
-                  </div>
-                </div>
-                <div class="clinical-specs">
-                  <span class="spec-tag"><i data-lucide="bed"></i> Private Suites & Crisis Ward</span>
-                  <span class="spec-tag"><i data-lucide="heart-pulse"></i> 24/7 Dedicated Ambulance</span>
-                  <span class="spec-tag"><i data-lucide="award"></i> Certified Clinical Psychologists</span>
-                </div>
-                <div class="clinical-card-actions">
-                  <a href="tel:1066" class="btn-clinical-call">
-                    <i data-lucide="phone"></i> Call Emergency: 1066
-                  </a>
-                  <a href="https://maps.google.com/?q=Fortis+Mental+Health+Emergency" target="_blank" class="btn-clinical-nav">
-                    <i data-lucide="map"></i> Directions
-                  </a>
-                </div>
-              </div>
+              <div class="emergency-loc-chips" id="clinicLocChips"></div>
             </div>
+
+            <!-- Clinical Facilities List (location-grouped, rendered by app.js) -->
+            <div class="clinical-centers-grid" id="clinicalCentersList"></div>
           </div>
 
           <!-- ============================================== -->
@@ -1886,8 +1825,8 @@
           <div class="form-group">
             <label for="bookMode">Consultation Mode *</label>
             <select id="bookMode" required>
-              <option value="online">Secure Tele-health Video Call</option>
-              <option value="in-person">In-Person Clinic Consultation</option>
+              <option value="in-person" selected>In-Person Clinic Consultation (Offline)</option>
+              <option value="online">Online Video Call (Tele-health)</option>
             </select>
           </div>
         </div>
@@ -2661,7 +2600,7 @@
   <script src="voicebox.js?v=1.0"></script>
 
   <!-- Custom Scripts -->
-  <script src="app.js?v=14.1"></script>
+  <script src="app.js?v=15.0"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) {
