@@ -4638,56 +4638,11 @@ function updateEmergencyMapUI(userLat, userLon, address, providers, nearest, gma
 
 function renderDynamicNearbyProviders(providers, nearest, userLat, userLon) {
   const grid = document.getElementById('emergencyCardsGrid');
-  if (!grid) return;
+  if (!grid || !Array.isArray(providers) || providers.length === 0) return;
 
-  // Keep National Hotlines Tele-MANAS, Vandrevala, AASRA at the bottom
-  const nationalHotlinesHtml = `
-    <!-- Tele-MANAS Card -->
-    <div class="hotline-pro-card">
-      <div class="hotline-pro-top">
-        <div class="hotline-pro-icon"><i data-lucide="shield-check"></i></div>
-        <span class="hotline-status-chip toll-free">Toll-Free 24/7</span>
-      </div>
-      <h4 class="hotline-pro-name">Tele-MANAS (Ministry of Health & NIMHANS)</h4>
-      <div class="hotline-pro-number">14416 / 1800 891 4416</div>
-      <p class="hotline-pro-desc">Government of India 24/7 mental health crisis hotline with trained clinical counselors in 20+ languages.</p>
-      <a href="tel:14416" class="hotline-pro-call-btn">
-        <i data-lucide="phone-call"></i> Call Tele-MANAS
-      </a>
-    </div>
-
-    <!-- Vandrevala Foundation Helpline -->
-    <div class="hotline-pro-card">
-      <div class="hotline-pro-top">
-        <div class="hotline-pro-icon"><i data-lucide="heart-handshake"></i></div>
-        <span class="hotline-status-chip counseling">Crisis Counselors</span>
-      </div>
-      <h4 class="hotline-pro-name">Vandrevala Foundation Helpline</h4>
-      <div class="hotline-pro-number">+91 9999 666 555</div>
-      <p class="hotline-pro-desc">Free, confidential 24/7 mental health crisis intervention and non-judgmental compassionate de-escalation.</p>
-      <a href="tel:+919999666555" class="hotline-pro-call-btn">
-        <i data-lucide="phone-call"></i> Call Vandrevala
-      </a>
-    </div>
-
-    <!-- AASRA Suicide & Crisis Prevention -->
-    <div class="hotline-pro-card">
-      <div class="hotline-pro-top">
-        <div class="hotline-pro-icon"><i data-lucide="life-buoy"></i></div>
-        <span class="hotline-status-chip suicide-prevention">Suicide Support</span>
-      </div>
-      <h4 class="hotline-pro-name">AASRA Suicide & Crisis Prevention</h4>
-      <div class="hotline-pro-number">+91 98204 66726</div>
-      <p class="hotline-pro-desc">24-hour dedicated crisis intervention service offering empathetic, confidential listening and emotional lifeline.</p>
-      <a href="tel:+919820466726" class="hotline-pro-call-btn">
-        <i data-lucide="phone-call"></i> Call AASRA
-      </a>
-    </div>
-  `;
-
-  // Render top nearby providers (up to 3 distinct ambulance units)
+  // Render ONLY verified nearby emergency ambulance and trauma providers strictly in the user's vicinity
   let ambulanceCardsHtml = '';
-  providers.slice(0, 3).forEach((prov, idx) => {
+  providers.slice(0, 6).forEach((prov, idx) => {
     const isTop = (idx === 0);
     const gmapsDir = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLon}&destination=${prov.lat},${prov.lon}&travelmode=driving`;
     ambulanceCardsHtml += `
@@ -4702,14 +4657,14 @@ function renderDynamicNearbyProviders(providers, nearest, userLat, userLon) {
         <div class="hotline-pro-number" ${isTop ? 'id="ambulanceCardNumber"' : ''}>${escapeHtml(prov.phone_display || prov.primary_phone)}</div>
         <p class="hotline-pro-desc" ${isTop ? 'id="ambulanceCardDesc"' : ''}>
           <strong>Immediate active unit:</strong> Stationed ${prov.distance_km} km from your location (${escapeHtml(prov.hospital || prov.locality)}).<br/>
-          Equipped with ${escapeHtml(prov.vehicle_type || 'ACLS ICU Mobile Unit')}. Arrival in ~${escapeHtml(prov.eta)}.
+          Equipped with ${escapeHtml(prov.vehicle_type || 'ACLS ICU Mobile Unit')}. Rapid arrival in ~${escapeHtml(prov.eta)}.
           <div class="ambulance-broadcast-badge">
             <i data-lucide="map-pin"></i> Station: ${escapeHtml(prov.locality || prov.city)} • <a href="${gmapsDir}" target="_blank" rel="noopener" style="color:#10b981; text-decoration:underline;">Directions in Google Maps ↗</a>
           </div>
         </p>
         <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
           <a href="tel:${prov.phone_clean || prov.primary_phone || '102'}" class="hotline-pro-call-btn" style="flex:1;" ${isTop ? 'id="ambulanceCardCallBtn"' : ''}>
-            <i data-lucide="phone-call"></i> Call ${escapeHtml(prov.short_name || 'Ambulance')} Now
+            <i data-lucide="phone-call"></i> Call ${escapeHtml(prov.short_name || 'Emergency Ambulance')} Now
           </a>
           <a href="${gmapsDir}" target="_blank" rel="noopener" class="hotline-pro-call-btn" style="background:rgba(14,165,233,0.15); color:#0284c7; border:1px solid rgba(14,165,233,0.3); padding:0.6rem 0.8rem;" title="View exact driving route on Google Maps">
             <i data-lucide="navigation"></i>
@@ -4719,7 +4674,8 @@ function renderDynamicNearbyProviders(providers, nearest, userLat, userLon) {
     `;
   });
 
-  grid.innerHTML = ambulanceCardsHtml + nationalHotlinesHtml;
+  // Purely nearby emergency ambulance and trauma providers - NO irrelevant distant hotlines!
+  grid.innerHTML = ambulanceCardsHtml;
   if (window.lucide) window.lucide.createIcons();
 }
 
@@ -4808,6 +4764,13 @@ function initEmergencyModeInteractive() {
   fetchEmergencyDoctors();
   fetchEmergencyClinics();
   renderLocationChips();
+
+  // 5. Auto-populate initial nearby emergency ambulance providers for user's detected location
+  if (!lastDispatchedCoords.lat) {
+    setTimeout(() => {
+      broadcastGpsAndDispatchAmbulance(null, null, null, true);
+    }, 400);
+  }
 }
 
 // ==========================================================================
