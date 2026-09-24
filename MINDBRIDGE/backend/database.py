@@ -118,7 +118,43 @@ def init_db():
         bio TEXT,
         is_verified INTEGER DEFAULT 1,
         available_days TEXT NOT NULL, -- JSON array
-        available_slots TEXT NOT NULL -- JSON array
+        available_slots TEXT NOT NULL, -- JSON array
+        locality TEXT,
+        latitude REAL,
+        longitude REAL,
+        website_url TEXT
+    )
+    """)
+
+    # Migration for existing databases: fine-grained location + booking website
+    for col_def in (
+        "locality TEXT",
+        "latitude REAL",
+        "longitude REAL",
+        "website_url TEXT",
+    ):
+        try:
+            cursor.execute(f"ALTER TABLE providers ADD COLUMN {col_def}")
+        except sqlite3.OperationalError:
+            pass
+
+    # Clinics / Hospitals Table (location-aware emergency clinical search)
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS clinics (
+        id TEXT PRIMARY KEY,
+        name TEXT NOT NULL,
+        type_pill TEXT NOT NULL,
+        address TEXT NOT NULL,
+        locality TEXT,
+        city TEXT NOT NULL,
+        state TEXT,
+        latitude REAL,
+        longitude REAL,
+        phone TEXT,
+        website_url TEXT,
+        features TEXT NOT NULL, -- JSON array
+        rating REAL DEFAULT 4.7,
+        is_verified INTEGER DEFAULT 1
     )
     """)
 
@@ -266,6 +302,8 @@ def init_db():
     conn.commit()
     seed_providers(cursor)
     seed_emergency_psychiatrists(cursor)
+    apply_provider_geo_updates(cursor)
+    seed_clinics(cursor)
     conn.commit()
     conn.close()
 
