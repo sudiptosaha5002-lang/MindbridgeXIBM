@@ -1,0 +1,5 @@
+Flask>=3.0.0
+flask-cors>=4.0.0
+google-genai>=1.0.0
+# Optional high-performance STT/TTS engine for Apple Silicon (macOS M-series):
+# mlx-audio (https://github.com/Blaizzy/mlx-audio)

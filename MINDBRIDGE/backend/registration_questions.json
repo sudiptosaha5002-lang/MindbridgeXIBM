@@ -1,0 +1,142 @@
+[
+    {
+        "id": "Q01",
+        "domain": "Current Emotional State",
+        "en": "If you had to describe how you’re feeling right now in three words, what would they be?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q02",
+        "domain": "Current Emotional State",
+        "en": "When you experience strong or overwhelming emotions, how do you usually deal with them?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q03",
+        "domain": "Current Emotional State",
+        "en": "Are there any emotions that you tend to keep inside or avoid expressing? If so, what makes you hold them back?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q04",
+        "domain": "Stress, Anxiety & Emotional Well-being",
+        "en": "Are there particular situations, thoughts, or experiences that tend to trigger stress or anxiety for you?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q05",
+        "domain": "Stress, Anxiety & Emotional Well-being",
+        "en": "What do you do to take care of your emotional well-being when you’re feeling stressed or emotionally tired?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q06",
+        "domain": "Stress, Anxiety & Emotional Well-being",
+        "en": "When you start overthinking, how do you usually handle it? Does it make it harder for you to relax or switch off your mind?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q07",
+        "domain": "Thoughts & Self-Perception",
+        "en": "When you have self-critical thoughts, how do you usually deal with them? How do they affect the way you see yourself?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q08",
+        "domain": "Thoughts & Self-Perception",
+        "en": "How do you usually decide whether a thought is helpful, unhelpful, appropriate, or worth letting go of?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q09",
+        "domain": "Thoughts & Self-Perception",
+        "en": "How does the way you talk to yourself affect your motivation, determination, and ability to keep going when things get difficult?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q10",
+        "domain": "Past Experiences & Personal Growth",
+        "en": "In what ways do you think your past has shaped your personality, beliefs, or the way you see life?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q11",
+        "domain": "Past Experiences & Personal Growth",
+        "en": "Do you still feel the impact of any important or difficult experiences from your past today?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q12",
+        "domain": "Past Experiences & Personal Growth",
+        "en": "Is there a memory from your childhood that still affects you emotionally today?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q13",
+        "domain": "Beliefs, Relationships & Social Connection",
+        "en": "How does the way you see your own worth and your ability to give or receive love affect your emotional well-being?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q14",
+        "domain": "Beliefs, Relationships & Social Connection",
+        "en": "How do your past relationships—both good and bad—affected the way you trust and connect with people today?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q15",
+        "domain": "Beliefs, Relationships & Social Connection",
+        "en": "When two of your beliefs seem to conflict with each other, how do you usually find a sense of balance?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q16",
+        "domain": "Healthy Habits & Lifestyle",
+        "en": "How do you make sure you get enough sleep, and how important is sleep in your daily routine?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q17",
+        "domain": "Healthy Habits & Lifestyle",
+        "en": "When you face setbacks or find it difficult to maintain your healthy habits, how do you usually respond?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q18",
+        "domain": "Healthy Habits & Lifestyle",
+        "en": "What do you do to maintain a healthy balance between work, studies, responsibilities, and personal time? How does this balance affect how you feel?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q19",
+        "domain": "Future, Purpose & Resilience",
+        "en": "How do you deal with uncertainty or not knowing exactly what the future holds?",
+        "bn": "",
+        "hi": ""
+    },
+    {
+        "id": "Q20",
+        "domain": "Future, Purpose & Resilience",
+        "en": "How do you make sure that the future you’re planning for will actually make you feel fulfilled and satisfied?",
+        "bn": "",
+        "hi": ""
+    }
+]

@@ -1,0 +1,1165 @@
+=== Page 1 ===
+Vol.:(0123456789)Journal of Prevention (2024) 45:727–750
+https://doi.org/10.1007/s10935-024-00783-1
+1 3
+REVIEW
+Recognising and Responding to Suicide‑Risk Factors 
+in Primary Care: A Scoping Review
+Pooja Saini1  · Anna Hunt1 · Peter Blaney1  · Annie Murray2
+Accepted: 13 May 2024 / Published online: 27 May 2024 
+© Crown 2024
+Abstract
+The cost of one suicide is estimated to be £1.67 million (2 million euros) to the 
+UK economy. Most people who die by suicide have seen a primary care practitioner 
+(PCP) in the year prior to death. PCPs could aim to intervene before suicidal behav -
+iours arise by addressing suicide-risk factors noted in primary care consultations, 
+thereby preventing suicide and promoting health and wellbeing. This study aimed 
+to conduct a rapid, systematic scoping review to explore how PCPs can effectively 
+recognise and respond to suicide-risk factors. MedLine, CINAHL, PsycINFO, Web 
+of Science and Cochrane Library databases were searched for three key concepts: 
+suicide prevention, mental health and primary care. Two reviewers screened titles, 
+abstracts and full papers independently against the eligibility criteria. Data synthesis 
+was achieved by extracting and analysing study characteristics and findings. Forty-
+two studies met the eligibility criteria and were cited in this scoping review. Stud-
+ies were published between 1990 and 2020 and were of good methodological qual-
+ity. Six themes regarding suicide risk assessment in primary care were identified: 
+Primary care consultations prior to suicide; Reasons for non-disclosure of suicidal 
+behaviour; Screening for suicide risk; Training for primary care staff; Use of lan-
+guage by primary care staff; and, Difference in referral pathways from general prac-
+titioners or primary care practitioners. This review focused on better recognition and 
+response to specific suicide-risk factors more widely such as poor mental health, 
+substance misuse and long-term physical health conditions. Primary care is well 
+placed to address the range of suicide-risk factors including biological, physical-
+health, psychological and socio-economic factors and therefore these findings could 
+inform the development of person-centred approaches to be used in primary care.
+Keywords Suicide · Suicide prevention · Suicide risk · Primary care
+Extended author information available on the last page of the article
+
+=== Page 2 ===
+728 Journal of Prevention (2024) 45:727–750
+1 3
+Introduction
+Suicide is a major public health problem, both internationally and in the UK 
+(World Health Organisation [WHO], 2023). Approximately 700,000 individu-
+als die by suicide each year (WHO, 2023). “The majority of suicides have been 
+preceded by warning signs…it is important to understand what these warning 
+signs are and to look out for them” (WHO, 2014). The cost of one suicide is 
+estimated to be £1.67 million (2 million euros) to the UK economy (Knapp et al., 
+2011). This includes indirect costs associated with the impact on those affected or 
+bereaved by suicide.
+Suicide prevention is recognised as a multisector public health obligation., and 
+there is the importance of recognising where high-risk groups such as middle-
+aged males aged 45–49 years can be seen (John et al., 2020; HM Government, 
+2021). Suicide prevention should be addressed using collaborative methods with 
+a shared objective in resolving a specific issue that can involve many ministries, 
+government agencies, non governmental organisations, pertinent stakeholders, 
+and other groups (WHO, 2023). The updated suicide prevention strategy for Eng-
+land (DH, 2023) highlights the important role of primary care for suicide preven-
+tion and three priority population groups for interventions: mental health patients, 
+those who self-harm, and middle-aged men. These priority populations could 
+potentially access support at different entry points within health, social care and 
+community sectors e.g. mental health patients via mental health trusts; those who 
+self-harm via ambulance services, emergency departments and educational set-
+tings; middle-aged men via workplace and community-based projects. All three 
+groups could access their primary care practitioner (PCP) or practice nurse (PN) 
+either through annual check-ups or ad-hoc appointments.
+Public health is defined as the “art and science of preventing disease, prolong-
+ing life and promoting health through the organised efforts of society” (Acheson, 
+1988). Whilst traditionally, a Primary Care Practitioner’s (PCP; also known as 
+general practitioners (GP) in the UK context) role was just to treat those who are 
+sick, the National Health Service [NHS] now has a new focus on prevention. It is 
+recognised that the NHS is unsustainable unless it has more of a prevention focus.
+Suicide prevention in primary care is seen as a preventative opportunity 
+(Michail et al., 2020; Mughal et al., 2021a) and this has become more important 
+during the COVID-19 pandemic, which has been said to exacerbate mental health 
+conditions (Mughal et al., 2021b). Since over 90% of people who die by suicide 
+have seen a PCP the year prior (Haste et al., 1998; Luoma et al., 2002; Pearson 
+et al., 2009; Rodi et al., 2010; John et al., 2020), PCPs could play a pivotal role 
+in intervening before suicidal behaviours arise by addressing suicide-risk factors 
+noted in primary care consultations, thereby preventing suicide and promoting 
+health and wellbeing.
+Common suicide risk factors include distal and proximal risk factors. Distal 
+risk factors are background events and issues including a mental health diagno-
+sis, previous suicide attempts and a family history of suicide or suicide attempts 
+(Richardson et al., 2023). Proximal risk factors are more imminent warning signs 
+
+=== Page 3 ===
+729
+1 3 Journal of Prevention (2024) 45:727–750 
+including feelings of hopelessness, suicidal ideation, access to means, a major 
+loss or stressful event and imprisonment (Sarkhel et  al., 2023). Recognising 
+imminent warning signs are important for primary care services as they are better 
+positioned to treat proximal factors. Lower socioeconomic position is associated 
+with an increased risk of suicidal behaviour (Knipe et al., 2017) and socio-eco-
+nomic factors such as deprivation, educational disadvantage, poor housing, and 
+low income are prevalent across both distal and proximal risk factors. Usually, 
+people who die by suicide have a combination of several distal and proximal sui-
+cide-risk factors.
+The likelihood of dying by suicide varies across a range of populations based 
+on sex, age, sexuality, socio-economic status and occupation (Knipe et al., 2017). 
+For example, in most countries suicide rates are highest among men but in some 
+Asian countries there is a variation or rates across sex (Jordans et  al., 2014). 
+Many of these factors are also linked to poor physical health (e.g. chronic condi-
+tions) and poor mental health. There is a common misconception that suicide is 
+only an issue for those experiencing poor mental health. However, only 28% of 
+general population suicides were in contact with mental health services in the 
+year prior to death (Appleby et al., 2018); and not everyone who dies by suicide 
+has experienced poor mental health. Addressing health inequalities and prema-
+ture deaths are key policy drivers and preventing suicides in populations with an 
+increased likelihood of dying by suicide is vital.
+Primary care is a key setting in any suicide prevention programme as 31% of 
+those who died by suicide saw their GP in the preceding month before their death 
+(John et al., 2020) and as previously mentioned those in touch with mental health 
+services in the year prior to death were even more likely to have seen a GP (90%; 
+Pearson et al., 2009). The WHO (2014; 2023) describes three levels of suicide 
+prevention programmes and suggests possible interventions,
+1. “Universal” programmes aimed at reaching the whole population
+2. “Selective” programmes that target populations at increased risk i.e. those who 
+have experienced one or several suicide-risk factors
+3. “Indicated” programmes that target specific populations at increased risk e.g. 
+those who self-harm, middle-aged men and mental health patients
+Interventions highlighted by the WHO (2014; 2023) that are relevant for 
+PCPs include improved access to health care, promotion of good mental health, 
+addressing substance misuse, limiting access to the means of suicide, “gate-
+keeper” training; and better recognition and response to specific suicide-risk fac-
+tors such as poor mental health, substance misuse and long-term physical health 
+conditions (WHO, 2014; 2023). Previous reviews have been conducted that focus 
+on suicide prevention for high-risk groups, assessment of suicide prevention in 
+primary care and evidenced-based suicide prevention interventions (O’Connor 
+et al. 2013; Milner et al., 2017; Dueweke et al., 2018; Mann et al., 2021; Spot-
+tswood et  al., 2022), however they have not focused on better recognition and 
+response to specific suicide-risk factors more widely such as poor mental health, 
+
+=== Page 4 ===
+730 Journal of Prevention (2024) 45:727–750
+1 3
+substance misuse and long-term physical health conditions. The aim of this scop-
+ing review is to understand how PCPs can effectively recognise and respond to 
+suicide-risk factors in a way that keeps patients attending in primary care safe and 
+reduces the outcome of suicide.
+Methods
+Design
+A scoping review design (Arksey & O’Malley, 2005; Levec et al., 2010) was used 
+to identify and explore literature examining suicide prevention and recognition of 
+risk factors in primary care. Although a systematic review was considered, due to 
+the emergent nature of the research topic and diverse study designs in the area, a 
+scoping review was thought to be optimal at this stage to explore a broad range of 
+studies.
+Two authors (AH, PB) independently reviewed titles, abstracts and full texts 
+against the eligibility criteria. Discrepancies regarding the inclusion or exclusion of 
+studies was resolved though discussion with a third reviewer (PS). There was high 
+agreement between the two authors (AH, PB; 85%) on which studies were to be 
+included or excluded for this scoping review.
+Data was extracted from studies into a custom-made table capturing author, year, 
+title and key themes (Table 2).
+The research question was ‘How can primary care practitioners effectively recog-
+nise and respond to suicide-risk factors?’.
+Search Strategy
+Five electronic databases (MedLine, CINAHL, PsycINFO, Web of Science and 
+Cochrane Library databases) were searched through the dates 1990 to 2020. A com-
+bination of search terms were identified to produce the most relevant results. Iden-
+tification of relevant studies were conducted independently by two researchers (see 
+Table 1).
+Whilst there is overlap between the bibliographic databases Medline and Embase, 
+both were searched to ensure the research evidence and theories of suicide included 
+European as well as United States of America (USA) research. Medline tends to 
+have a greater focus on USA publications whilst Embase is more euro-centric 
+Table 1  Scoping Search TermsSuicide Additional terms
+Suicide
+OR
+Suicide Prevention
+OR
+Suicide RiskAND Primary Care
+OR
+Mental Health
+
+=== Page 5 ===
+731
+1 3 Journal of Prevention (2024) 45:727–750 Table 2  Quantitative Studies
+Author/year/location Purpose Participants Study design Results
+Anderson et al (2015)
+United KingdomTo review how often suicide idea-
+tion and attempts is recorded in 
+Electronic Health Records (HER)61,464 EHR data sets from a 
+Primary Care providerRetrospective analysis of data Only 3% of patients with an indica-
+tion of suicidal ideation had a 
+record in their EHR
+Appleby et al (1996)
+United KingdomTo review GP attendance in young 
+men prior to suicide61 males under 35 years who died 
+by suicideRetrospective analysis of data The number of GP visits increased 
+significantly before death
+Bajaj et al (2008)
+United KingdomTo assess attitudes to screening for 
+suicidal ideation101 patients diagnosed with 
+depression
+103 GPs at three practices across 
+in North West LondonExperimental Design A majority of both GPs and patients 
+stated that patients should be 
+screened for suicidal ideation
+Binder et al (2020)
+Multi-EuropeTo assess the use of the BITS 
+questionnaires in identifying 
+suicidality in adolescents693 patients aged 13–18 Experimental design The BITS questionnaire was a useful 
+tool in identifying suicidal risk 
+regardless of reason for consulta-
+tion
+Crawford et al (2011)
+United KingdomTo examine whether screening for 
+suicidal ideation among people 
+who attend primary care services 
+and have signs of depression 
+increases the short-term inci-
+dence of feeling that life is not 
+worth living443 patients across four general 
+practices who showed signs of 
+depressionRandomised control trial No evidence was found that screen-
+ing for suicidal ideation increased 
+feelings that life is not worth liv -
+ing. More than 1 in 8 participants 
+reported thoughts of taking their 
+own life in the previous 2 weeks
+Diamond et al (2017)
+United KingdomTo identify profiles of risk behav -
+iours and social stress associ-
+ated with suicidal ideation and 
+behaviour using the Behavioural 
+Health ScreenScreening data from 2513 primary 
+care patients aged 14–24 yearsRetrospective analysis of data High and low risk factor profiles 
+were identified. The high-risk 
+group was 11 times more likely 
+to have made a suicide attempt, 
+five times more likely to report a 
+history of suicidal ideation and 
+behaviour, and three times more 
+likely to report recent suicidal 
+ideation and behaviour
+
+=== Page 6 ===
+732 Journal of Prevention (2024) 45:727–750
+1 3Table 2  (continued)
+Author/year/location Purpose Participants Study design Results
+Dube et al (2010)
+USAEvaluate evidence for the P4 
+screener as a brief measurement 
+tool to assess potential suicide 
+risk250 Primary Care patients with 
+clinical depression and comorbid 
+chronic musculoskeletal painRandomised Control Trial The P4 screener may be useful in 
+assessing potential suicide risk 
+in the clinical care of depressed 
+patients
+Dueweke et al (2018)
+USAReview the use of the PHQ-2 for 
+identifying suicidal patients548 adult Primary Care Patients Retrospective analysis of data The PHQ-2 did not improve 
+explanation of suicidal thoughts. 
+Additional practitioner questions 
+should be asked
+Finnegan et al (2018)
+USAThe study aimed to evaluate and 
+identify barriers to effective 
+suicide risk assessment31 Primary Care Providers A cross sectional survey There should be enhanced training in 
+this area to make PCPs more com-
+fortable in assessing suicide risk
+Frankenfield et al (2000)
+USATo assess the screening of adoles-
+cents for suicidal behaviour by 
+primary care providers693 Primary care providers A cross sectional survey Most practitioners did not routinely 
+screen for suicidal thoughts or 
+behaviours and more training is 
+needed in this area
+Haste et al (1998)
+United KingdomTo identify, in suicide cases and 
+matched controls, the patterns 
+of consultation, diagnosis, and 
+treatment of mental illness, and 
+recording of risk factors for 
+suicide339 suicide cases and 3 matched 
+controls for each caseRetrospective analysis of data Females consulted with GPs more 
+frequently than males, although 
+the majority of cases (80%) were 
+male
+Heisel et al (2010)
+USATo assess if the GDS scale is suit-
+able for screening for suicidal 
+risk in older adults626 adults aged 65+ A cross sectional survey The GDS accurately identified 
+suicidal risk in older adults
+Hooper et al (2012)
+USATo review the factors related to a 
+PCP enquiring about suicidal risk 
+in a consultation404 Primary Care Physicians A cross sectional study Although 36% of PCPs enquired 
+about suicide the majority did not. 
+More training is required in this 
+area
+
+=== Page 7 ===
+733
+1 3 Journal of Prevention (2024) 45:727–750 Table 2  (continued)
+Author/year/location Purpose Participants Study design Results
+Jerant et al (2020)
+USATo examine the effect of a tailored 
+interactive computer program 
+(MAPS) designed to encourage 
+middle-aged men’s discussion of 
+suicide with PCP48 men aged 35+ who had 
+expressed thoughts of suicideRandomized control trial When compared with a control 
+group, MAPS encouraged men 
+with suicidal thoughts to discuss 
+these feelings with their PCP
+Kaplan et al (1999)
+USATo review the differences by 
+speciality of physician when 
+supporting an older patient with 
+depression and/or suicidality300 primary care physicians A cross sectional survey Significant differences in treat-
+ment procedures, assessments 
+and referrals was observed across 
+specialities
+Mesec et al. (2010)
+SloveniaTo review last Primary Care visit 
+for patients who died by suicide77 case files of people who had 
+died by suicide from 1993 to 
+2003Retrospective analysis of data Compared to 3% of controls, 30% of 
+patients who died by suicide last 
+visited their primary care physi-
+cian regarding their mental health
+Milne et al (1994)
+United KingdomTo review the amount of psychi-
+atric and physical morbidity in 
+people who had died by suicide665 case files of people who had 
+died by suicide from 1988 to 
+1989Retrospective analysis of data Mental illness was not identified in 
+a significant number of suicide 
+victims, whilst chronic pain and 
+illness was identified as a risk 
+factor
+Parisi et al (2019)
+United KingdomTo investigate psychiatric comor -
+bidity, medication prescribing 
+and risk of suicidality in people 
+with psoriasis56,961 with psoriasis 
+876,919 without psoriasisRetrospective analysis of data Suicide risk was lower in people 
+with psoriasis diagnosed at 
+40+ years
+Pfaff et al. (2005)
+AustraliaTo review to prevalence of suicidal 
+ideation in patients aged 60 + 1061 patients aged 60 + Cross sectional survey 25% of patients had signs of psycho-
+logical distress and / or suicidal 
+thoughts
+
+=== Page 8 ===
+734 Journal of Prevention (2024) 45:727–750
+1 3Table 2  (continued)
+Author/year/location Purpose Participants Study design Results
+Pigeon et al (2019)
+USATo assess the effects of a brief CBT 
+for insomnia course for primary 
+care patients diagnosed with 
+depression or PTSD54 primary care patients diagnosed 
+with depression or PTSDRandomized Control Trial The CBT for insomnia course has 
+the capacity to improve mood and 
+sleep in patients endorsing suicidal 
+ideation. However it should be 
+used in parallel with other support
+Power et al (1997)
+United KingdomTo review the characteristics 
+of those who died by suicide 
+compared with a matched control 
+group41 patient case notes who died by 
+suicideRetrospective analysis of data Those who died by suicide visited 
+their GP more frequently than 
+the control group over a 10 year 
+period, but not in the month before 
+their death
+Robles et al (2019)
+MexicoTo examine the impact of a 
+training course for primary 
+care physicians focusing on the 
+identification of depression and 
+suicide risk60 primary care physicians Experimental design A brief training course could 
+improve primary care physicians 
+ability to identify and manage 
+suicide risk
+Roškar et al (2010)
+SloveniaTo evaluate an educational pro-
+gramme aimed at primary care 
+physicians on the recognition 
+and treatment of depression and 
+suicide prevention82 primary care physicians Experimental Design After the programme there was an 
+increase in the prescription of anti-
+depressants in the area. However, 
+there was no significant reduction 
+in suicide rates
+Schou et al. (2019)
+DenmarkTo assess the utilization of primary 
+care in the year proceeding 
+suicide11,191 cases of people who died 
+by suicide from 1997 to 2013Retrospective analysis of data Almost 70% of patients did not 
+attend primary care in the month 
+before their suicide
+Stanistreet et al (2004)
+United KingdomTo compare data on the timing and 
+nature of final GP contacts before 
+death among young men172 patient case notes/inquest 
+reports (80 of which were ruled 
+suicide)Retrospective analysis of data Patients who died by suicide were 
+more likely to have seen a mental 
+health professional prior to death. 
+Very few men who died by suicide 
+consulted with their GP prior to 
+death
+
+=== Page 9 ===
+735
+1 3 Journal of Prevention (2024) 45:727–750 Table 2  (continued)
+Author/year/location Purpose Participants Study design Results
+Vannoy et al (2010)
+USATo review the language and context 
+used when discussing suicide 
+with a patient152 primary care physicians Secondary data analysis Although the majority of language 
+was used was clear, some primary 
+care physicians unintentionally 
+reinforced the idea of patients not 
+revealing suicidal thoughts
+Vannoy et al. (2011)
+USATo characterise discussion of 
+suicide with patients diagnosed 
+with depression48 primary care physicians
+1776 patientsSecondary data analysis Suicide was often not addressed with 
+depressed patients and often with 
+those who presented the lowest 
+risk
+Windfuhr et al (2016)
+United KingdomTo examine suicide risk in relation 
+to patterns of GP consultation, 
+psychotropic drug prescribing 
+and psychiatric diagnoses2384 patients aged 16+ who died 
+by suicideRetrospective analysis of data Patients who did not consult with 
+a GP were at increased risk of 
+suicide suggesting current primary 
+care methods need to be addressed
+Younes et al (2013)
+FranceCompare characteristics of young 
+adult (18–39 years) suicide 
+attempts with those of older 
+adults (40 + years)270 patient case notes Retrospective analysis of data In comparison with older adults, 
+young adults consulted their GP 
+less frequently in the month pre-
+ceding the suicidal attempt
+Younes et al (2020)
+FranceTo review primary care manage-
+ment before and after a suicide 
+attempt321 patient case notes/reports 
+between 2013 and 2017Retrospective analysis of data GPs are involved in the management 
+of patients at the time of a suicide 
+attempt for 30% of patients. 50% 
+of patients consulted with their GP 
+afterwards
+
+=== Page 10 ===
+736 Journal of Prevention (2024) 45:727–750
+1 3
+(which in this case may be more relevant as the USA does not offer free health care 
+to all). Eligible full texts were subjected to data extraction by the two of the suthors 
+(XX, XX). Data were extracted on the study aims, design, location, sample size and 
+demographic information. Studies considered were limited to those written in Eng-
+lish. Studies were excluded if they were a review, a report based on secondary data, 
+were on assisted suicide and when they did not have a focus on primary care and 
+suicide.
+Date limits were placed on the terms “suicide”, “suicide prevention”, “suicide 
+risk” “mental health” and “primary care”.  Only those studies where the search 
+terms were either in the abstract or the title were considered. The search terms “sui-
+cide” OR “suicide prevention” OR “suicide risk” AND “mental health” OR “pri-
+mary care” in the abstract retrieved over 642 studies across databases, so only those 
+with these search terms in the title were considered. Those dated from 1990 and 
+from all countries were considered, however most published work was from Aus-
+tralia, Europe, New Zealand or USA. This ensured that all studies were included and 
+external validity was improved.  Any studies that referred to assisted suicide were 
+excluded, as this involved joint decision making between patient and doctor; and 
+therefore, was not relevant to the research question. All studies found in the scoping 
+review were included in data synthesis, regardless of risk of bias/quality assessment.
+Compliance with Ethical Standards
+As this was a scoping review of published data, no ethical approvals were required.
+Results
+Through both database and manual searches, a total of 142 studies were detected. 
+The titles and abstracts of those studies were screened for significance, resulting 
+in 73 studies being reviewed at full-text level. A further 31 full text papers were 
+excluded due to not focusing on the research question for this scoping review and 42 
+studies were deemed to meet the inclusion criteria. The process of assessing these 
+studies is displayed in Fig. 1.
+An overview of the 42 studies is presented in Tables  2, 3 and 4. The largest pro-
+portion of studies primarily used a retrospective analysis of data (n = 14) including 
+reviews of patient case notes and coroner reports. Studies fell into three broad cat-
+egories (quantitative n = 30, qualitative n = 9, mixed methods n = 3). A typical cross-
+sectional survey asked about how to identify barriers to effective suicide risk assess-
+ment, and a typical experimental study looked at the effectiveness of attitudes to 
+screening for suicidal ideation.
+Common limitations of the studies included a lack of active control group due to 
+the use of retrospective data and imprecise outcome measures. However this is only 
+a limitation in certain circumstances as it depended on the purpose of the study.
+Studies originated from a range of geographical locations including Australia 
+(n = 1), Denmark (n = 1), France (n = 2), Mexico (n = 1), Netherlands (N = 1), 
+
+=== Page 11 ===
+737
+1 3 Journal of Prevention (2024) 45:727–750 
+Slovenia (n = 2), Spain (n = 1), UK (n = 17), USA (n = 13), and multiple-Europe 
+locations (n = 1). The studies covered a wide range of populations including adult 
+primary care populations (n = 12), GPs and PCP (n = 12), people who had died 
+by suicide (n = 8), a mixture of populations (n = 5), including young people aged 
+13–24 years (n = 2), older adults aged 60 + years (n = 2) and parents bereaved by sui-
+cide (n = 1).
+Key themes
+Theme 1: Attendance in Primary Care Prior to Suicide
+Several studies focussed on patient attendance in primary care prior to death by sui-
+cide or suicide attempt. Retrospective data suggested that many patients consulted 
+with their PCP prior to death by suicide or a suicide attempt (Luoma et al., 2002; 
+Pearson et al., 2009; Mesec et al., 2010; Schou et al., 2019). It was observed that 
+females attended for consultations with a physician more frequently, although more 
+males (80%) died by suicide (Haste et al., 1998; Stanistreet et al., 2004). One study 
+found that, when compared with a control group, patients who died by suicide had 
+more interactions with primary care across a ten-year period, but not in the month Fig. 1  Scoping Search Process
+Full text ar/g415cles 
+reviewed:
+N = 73
+Studies included in 
+scoping review:
+N = 42Ar/g415cles remo ved 
+due to duplicates, 
+abstract screen ing 
+and missing texts:
+N = 69Total ar/g415cles 
+iden/g415ﬁed  through 
+database searching: 
+N = 142
+Full-text ar/g415cles 
+excluded:
+N = 31
+
+=== Page 12 ===
+738 Journal of Prevention (2024) 45:727–750
+1 3Table 3  Qualitative Studies
+Author/year/location Purpose Participants Study design Results
+Chandler et al (2015)
+United KingdomTo explore how GPs respond to 
+patients who have self-harmed and 
+assess the relationship between 
+Self-Harm, suicide, and suicide 
+risk assessment30 GPs from Scotland Semi-structured interviews There were different conceptualiza-
+tions across GPs of the relationship 
+between Self-Harm, suicide, and the 
+assessment of suicide risk among 
+GPs
+Elzinga et al (2020)
+NetherlandsTo evaluate if the SUPRANET 
+training programme was helpful in 
+supporting PCPs to apply suicide 
+prevention practices18 Primary Care providers Semi structured interviews PCPs discussed the need for better 
+communication with specialist 
+mental health leads. SUPRANET, 
+although helpful, was not enough on 
+its own to improve care
+Jerant et al (2019)
+USATo develop an understanding of how 
+to encourage men to talk to their 
+PCP about suicidal thoughts44 adult suicide attempt survivors, 
+family members & Primary Care 
+providersSemi structured interviews The fear of immediate hospitaliza-
+tion was identified as a barrier to 
+disclosure
+Michail et al. (2016)
+United KingdomTo explore GP views and experi-
+ences of assessing, communicating 
+with and managing suicidal young 
+people28 GPs Semi-structured interviews Interviews revealed the challenges 
+GPs experience when it comes to 
+the assessment and management of 
+suicide risk in young people and the 
+need for specialist education and 
+training targeting GPs’ knowledge 
+and clinical skills in this field
+Muñoz-Sánchez (2018)
+SpainTo identify key factors for suicide 
+prevention in healthcare56 healthcare professionals (12 of 
+which primary care physicians)Focus Group Primary care physicians identified 
+the need for more time to assess 
+patients for risk and better commu-
+nication with mental health teams
+Perry et al (2020)
+AustraliaTo explore young people’s experi-
+ences related to the identification 
+and assessment of suicidal behav -
+iour and Self-Harm in Primary 
+Care environment10 young people aged 16–25 Focus Group Young people were worried about 
+a loss of privacy when disclosing 
+suicide, were worried about labels 
+such as “risk” and highlighted the 
+importance of GP attitudes
+
+=== Page 13 ===
+739
+1 3 Journal of Prevention (2024) 45:727–750 Table 3  (continued)
+Author/year/location Purpose Participants Study design Results
+Richards et al (2019)
+USATo explore patients experiences of 
+depression screening and suicide 
+risk assessment37 patients diagnosed with depres-
+sionSemi structured interviews Some participants described a dispar -
+ity between their lived experience 
+and the PHQ-9 survey. For patients 
+suicidality disclosures involved 
+weighing hope for help against fears 
+of negative consequences
+Wainwright et al (2020)
+United KingdomTo explore the experiences and 
+needs of parents bereaved by 
+suicide23 parents bereaved by suicide Semi structured interviews Parents had a mixed experience with 
+their GP and highlighted the need 
+for clear communication and sign-
+posting to additional support
+Wittink et al (2020)
+USATo understand the benefits and barri-
+ers to a team approach to suicide 
+prevention in primary care for 
+Veterans67 health care professionals Semi structured interviews 
+and focus groupsA team approach (nurses, mental 
+health specialists, primary care 
+physicians) can facilitate trust and 
+better outcomes in patients
+
+=== Page 14 ===
+740 Journal of Prevention (2024) 45:727–750
+1 3Table 4  Mixed Methods Studies
+Author/year/location Purpose Participants Study design Results
+McCabe et al (2017)
+United KingdomEvaluation regarding how profession-
+als interview patients about suicidal 
+ideation in clinical practice46 Primary Care patients with early 
+diagnosis of depressionMixed Methods Closed gateway questions were asked 
+by the GP with the majority of ques-
+tions creating an expectation of a 
+“no” response and therefore may not 
+elicit a genuine answer
+Pearson et al (2009)
+United KingdomTo review the nature and frequency of 
+GP visits in the year before suicide247 patient case notes who died by 
+suicide
+159 GP InterviewsMixed method (retrospec-
+tive analysis of data 
+and semi structured 
+interviews)91% of individuals met with their GP in 
+the year prior to their suicide. Agree-
+ment between GPs and mental health 
+teams regarding suicide risk was low
+Saini et al (2014)
+United KingdomTo examine risk assessment and 
+management in primary and 
+secondary care in a clinical sample 
+of individuals who were in contact 
+with mental health services and 
+died by suicide198 GP interviews
+291 patient case notesMixed method (retrospec-
+tive analysis of data 
+and semi structured 
+interviews)Only 1 in 4 practices had a written sui-
+cide protocol and 20% of GPs could 
+not recall any training in the area
+
+=== Page 15 ===
+741
+1 3 Journal of Prevention (2024) 45:727–750 
+prior to their death (Power et al., 1997). Young adults (18–39 years) were also less 
+likely to consult with primary care prior to a suicide attempt when compared with 
+older adults (40+ years) (Younes et al., 2013).
+Theme 2: Reasons for Non‑disclosure of Suicidal Behaviour
+Four (10%) studies reported barriers and reasons for non-disclosure of suicidal 
+behaviours. The fear of immediate hospitalisation and the impact on perceived mas-
+culinity in expressing vulnerability were barriers to men disclosing suicidal thoughts 
+(Jerant et  al., 2019). Focus group discussions with young people (aged 16–25) 
+acknowledged loss of privacy when disclosing suicidal thoughts as a barrier to dis-
+closure, as well as the application of labels such as “risk” (Perry et al., 2020). A 
+further study demonstrated context and timing of questions related to self-harm and 
+suicide was important in-patient disclosure, as well as balancing the perceived risk 
+of disclosure (stigma, judgement, hospitalisation) with the benefit of gaining sup-
+port (Richards et al., 2019). For primary care staff, the lack of time for appointments 
+and assessments was recognised as a key barrier to risk assessment and disclosure 
+(Muñoz-Sánchez et al., 2018).
+Theme 3: Screening for Suicide Risk
+Screening for suicide risk in primary care included using short evidenced-based 
+tools to identify those who may need further evaluation. This may have included 
+assessment of the person’s physical condition, previous suicide attempts, alcohol 
+and other drug use, current mental state, history of mental illness, psychosocial fac-
+tors and determination of current risk of suicide. Evidence showed that primary care 
+staff did not routinely screen all patients for suicidal ideation (Frankenfield et al., 
+2000; Hooper et al., 2012), and those who were screened were usually noted as ‘low 
+risk’ following assessment (Vannoy et al., 2011), thus highlighting the importance 
+of providing treatment for people of varying levels of risk (Saini et al., 2014). It was 
+recognised that both staff and patients wanted increased routine screening for sui-
+cidal thoughts (Bajaj et al., 2008) and that the use of these questions did not have a 
+negative impact on patient’s feelings of self-worth (Crawford et al., 2011).
+Theme 4: Training for Primary Care Staff
+Several studies indicated the need for more training for primary care staff on the utility 
+of suicide risk screening tools alongside interventions and signposting when assessing 
+suicide risk in patients (Frankenfield et al., 2000; Hooper et al., 2012; Saini et al., 2014; 
+Michail et al., 2016; Finnegan et al., 2018). The validity and usefulness of screening 
+tools for suicide risk is continuously debated (Velupillai et al., 2019). To our knowl-
+edge, there have been no studies focusing on the impact of suicide prevention prac-
+tices on long-term patient outcomes in healthcare settings (Gordon et al., 2020). One 
+study on risk assessments in the UK found that there was more emphasis on using sui-
+cide risk screening to identify those at risk of suicide than to initiate evidence-based 
+mental health interventions to prevent this outcome (Graney et al., 2020). Suicide risk 
+
+=== Page 16 ===
+742 Journal of Prevention (2024) 45:727–750
+1 3
+screening does not therefore reduce suicide attempts when clinical interventions are not 
+implemented (Miller et al., 2017). Although the use of tools such as the Brief Inven-
+tory of Thriving (BITS; Binder et al., 2020), Patient Health Questionnaire-2 (PHQ2; 
+Dveweke et al., 2018) and Geriatric Depression Scale (GDS; Heisel et al., 2010), as 
+well as training interventions such as Men and Providers Preventing Suicide (MAPS; 
+Jerant et  al., 2020) and Suicide  Prevention Action Networks (SUPRANET; Elzinga 
+et al., 2020) can be of benefit to supporting primary care staff when identifying suicidal 
+risk, they need to be used alongside additional approaches (e.g. training for primary 
+care staff, database use to highlight risk factors) and not as the sole approach. Roškar 
+et al. (2010) found an educational programme aimed at primary care physicians on the 
+recognition and treatment of depression and suicide prevention led to an increase of 
+antidepressant prescriptions, but not a reduction in suicides.
+Theme 5: Use of Language by Primary Care Staff
+Several studies recognised the importance of the language used by primary care staff 
+when interacting with patients. It was found that the use of negative closed gateway 
+questions (e.g. “You don’t have thoughts of harming yourself?”) elicited patients to 
+respond that they were not suicidal (McCabe et al., 2017). Similarly, a further study 
+found that in some instances primary care staff unintentionally reinforced the idea of 
+patients not revealing suicidal behaviours through no-problems-expected phrasing 
+(e.g. “You don’t feel suicidal do you?”) (Vannoy et al., 2010). Clear communica-
+tion was deemed as a key factor in making both patients (Jerant et al., 2020; Vannoy 
+et al., 2010) and parents bereaved by suicide comfortable (Wainwright et al., 2020). 
+Asking evidenced-based questions such as ‘Thoughts that you would be better off  
+dead or of hurting yourself in some way’ from the Patient Health Questionnaire-9 
+(PHQ-9; Kroenke et al., 2001) have been shown to be reliably accurate in screening 
+individuals with suicidal ideation (Kim et al., 2021).
+Theme 6: Variation in Suicide Risk Assessment Across Health Services
+The approach to the assessment of risk was shown as varying greatly between pri-
+mary care staff (Chandler et al., 2015) and across different specialities such as men-
+tal health leads (Kaplan et  al., 1999). Better communication between specialities 
+was identified as a key area for improvement (Elzinga et al., 2020) and that patients 
+had improved outcomes when professionals worked together collaboratively as a 
+team (Wittink et al., 2020). For example, disseminating using clear language and to 
+emphasise media (e.g. multimedia) over text was highlighted (Jerant et al., 2019) as 
+important for communication with patients.
+Discussion
+This scoping review included 42 peer-reviewed studies that aimed to explore 
+how PCPs/GPs can effectively recognise and respond to suicide-risk factors in 
+patients consulting in primary care. The important role of primary care in suicide 
+
+=== Page 17 ===
+743
+1 3 Journal of Prevention (2024) 45:727–750 
+prevention, continues to be highlighted in a range of English national strategies, 
+policies and programmes (DH, ). The research evidence also supported the idea 
+that primary care has a key role in suicide prevention (John et al., 2020; Luoma 
+et al., 2002; Mughal et al., 2021a, 2021b; Pearson et al., 2009) as many people 
+visited their PCP in the months prior to death by suicide and disclosed both distal 
+and proximal risk factors that could help with recognition of those people at risk 
+and provide an opportunity for intervention. Within the review, we identified six 
+key themes regarding suicide risk assessment in primary care. The findings from 
+this research indicated that assessing the probability of dying by suicide has a 
+low positive predictive value and should, therefore, not be the purpose of suicide-
+screening in primary care. The focus of suicide prevention in primary care should 
+be recognising and responding to suicide-risk factors, such as comorbid physical 
+health diagnosis and substance misuse. Evidence suggested that talking about sui-
+cide and responding to suicide-risk factors in primary care did not increase sui-
+cidal behaviours but could have prevented them. More training is needed for staff  
+in primary care on assessing risk and communication about suicide behaviours. 
+There are many collaborative efforts to standardise research processes around the 
+world. However, specific components and strategies to include in person-centred 
+suicide risk screening to mitigate suicide and risk in primary care is lacking.
+Training was reported as an essential component of primary care for most 
+included studies. Further funds should be allocated for the development of sui-
+cide risk screening learning resources and increased training within GP/PCP 
+degree programmes. The lack of consistency in identifying specific training strat-
+egies could suggest that GPs/PCPs are at different stages of development based 
+on the type of study being conducted, source of funding, and organisational train-
+ing requirements. Inconsistencies in training may result in the variation of identi-
+fying and treating people at risk of suicide within primary care.
+This review highlights the need for GPs/PCPs to be trained on how to iden-
+tify suicide risk level and to respond accordingly. Strategies that could assist in 
+achieving this would include developing person-centred care that involves the 
+utilisation of validated risk assessment measures to aid communication about 
+suicide. These strategies, however, depend on having knowledgeable and capa-
+ble practitioners who are trained to discuss suicide more routinely when patients 
+present with evidenced-based risk factors. Strategies tailored to patient needs 
+could be advantageous to ensure patients receive the required treatment suitable 
+to them.
+Within the included studies, there was a lack of input from research partici-
+pants and/or stakeholders described in the use of suicide risk screening tools. For 
+example, there was limited knowledge about the experiences of clinicians utilis-
+ing these tools within primary care. This is an important consideration for future 
+studies to be participant-oriented and aligned with the patient needs. Work -
+ing collaborations between patients and clinicians in service redesign has been 
+shown to improve patient and health care outcomes (Bombard et al., 2018). With 
+increased focus on patient engagement in clinical research (Saini et al., 2021), it 
+is imperative to include participant perspectives in the development of suicide 
+prevention initiatives.
+
+=== Page 18 ===
+744 Journal of Prevention (2024) 45:727–750
+1 3
+Strengths and Limitations
+This scoping review provdes details about the assessment of suicide risk in primary 
+care. It has allowed us to clarify key concepts within the literature and reflect how 
+research is conducted in the area through the inclusion of a wide range of study 
+designs. While this review has several strengths, including the use of an iterative 
+search strategy and a range of databases, there are limitations to note. First, the use 
+of varying terminology to describe suicide risk assessments in the literature may 
+have contributed to the limited number of documents identified for this review. 
+Inconsistent terminology and descriptions can also impede the development of 
+standardised risk assessment tools where there needs to be clarity on processes such 
+as how and when they should be administered. Second, the language of included 
+documents was limited to English; therefore, relevant non-English documents may 
+have been missed. Third, this study does not include a formal quality assessment of 
+studies and is not as rigorous as a systematic review. Finally, included studies used 
+a deficit model not an asset model as they describe vulnerabilities or risk factors 
+rather than protective factors.
+Future Implications and Recommendations
+Primary care is ideally placed to address the range of suicide-risk factors, includ-
+ing biological, physical-health, psychological and socio-economic factors. Phys-
+ical-health, psychological and socio-economic factors are the focus of the emerg-
+ing social prescribing programmes that are being utilised within suicide prevention 
+initiatives (Centre for Mental Health, 2019). This scoping review has highlighted 
+areas for improvement. These include the need for: (1) additional training for pri-
+mary care staff in suicide prevention; (2) improved communication between partner 
+organisations for improved referrals of patients who communicate suicidal risk; (3) 
+clearer language use by practitioners that allow patients to feel safe to disclose sui-
+cidal ideation; and, (4) more intervention based research. Box  1 highlights the key 
+Box 1  A suicide prevention programme in primary care needs to consider
+The capacity and capability of the whole of the GP/PCP team
+Who and when to screen for suicide-risk factors and how to respond in a timely manner
+How to fully utilise electronic patient records to decide who to screen for suicide risk-factors
+Different suicide-risk-factors for different patient cohorts
+Links with the wider health, social care and community assets; not just specialist mental health ser -
+vices
+How it can adopt and promote a mentally healthy workplace for all its staff; not just GPs
+The needs of those bereaved and affected by suicide including GPs/PCPs
+How to improve the mental health and suicide prevention literacy of patients; particularly those patient 
+groups with higher rates of suicide, such as substance misusers, middle-aged men and those with a 
+history of mental-ill health, self-harm or adverse childhood events
+How to incorporate suicide prevention in the developing social prescribing programmes
+
+=== Page 19 ===
+745
+1 3 Journal of Prevention (2024) 45:727–750 
+áreas that should be considered when implementing suicide prevention programmes 
+in primary care.
+Conclusion
+This scoping review, including peer-reviewed academic literature, provided knowl-
+edge for how primary care practitioners can effectively recognise and respond to 
+suicide-risk factors. Previous studies described a range of strategies to address sui-
+cide prevention for high-risk groups, assessment of suicide prevention in primary 
+care and evidenced-based suicide prevention interventions, however they have not 
+focused on better recognition and response to specific suicide-risk factors more 
+widely such as poor mental health, substance misuse and long-term physical health 
+conditions. Ideally, these findings could inform the development of person-centred 
+approaches to be used in primary care.
+Data Availability The data of the paper, which supports the analysis and results of this paper, are avail-
+able with the corresponding author and the data can be obtained from the authors upon request.
+Declarations 
+Conflict of Interest The authors state no conflict of interest.
+Ethical Approval No ethical approval was needed for this study as it was a scoping review.
+Informed Consent Not applicable.
+Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, 
+which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long 
+as you give appropriate credit to the original author(s) and the source, provide a link to the Creative 
+Commons licence, and indicate if changes were made. The images or other third party material in this 
+article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Creative Commons licence and your intended 
+use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permis-
+sion directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/
+licenses/by/4.0/.
+References
+*studies included in the review
+Acheson, D. (1988). Public health in England: the report of the Committee of inquiry into the future 
+development of the public health function (pp. 23–34). London: The Stationary Office.
+*Anderson, H. D., Pace, W. D., Brandt, E., Nielsen, R. D., Allen, R. R., Libby, A. M., West, D. R., & 
+Valuck, R. J. (2015). Monitoring suicidal patients in primary care using electronic health records. 
+The Journal of the American Board of Family Medicine, 28(1), 65–71. https:// doi. org/ 10. 3122/ 
+jabfm. 2015. 01. 140181
+
+=== Page 20 ===
+746 Journal of Prevention (2024) 45:727–750
+1 3
+Appleby, L. Kapur, N. Shaw, J. Hunt, I. Ibrahim, S. Gianatsi, M. Turnbull, P. Rodway, C. Tham, S. Burns, 
+J. Richards N. (2018). National confidential inquiry into suicide and homicide–annual report: Eng-
+land, Northern Ireland, Scotland and Wales. https:// docum ents. manch ester. ac. uk/ displ ay. aspx? 
+DocID= 38469
+*Appleby, L., Amos, T., Doyle, U., Tomenson, B., & Woodman, M. (1996). General practitioners and 
+young suicides. The British Journal of Psychiatry, 168(3), 330–333. https:// doi. org/ 10. 1192/ bjp. 
+168.3. 330
+Arksey, H., & O’Malley, L. (2005). Scoping studies: Towards a methodological framework. International 
+Journal of Social Research Methodology, 8(1), 19–32. https:// doi. org/ 10. 1080/ 13645 57032 00011 
+9616
+*Bajaj, P., Borreani, E., Ghosh, P., Methuen, C., Patel, M., & Joseph, M. (2008). Screening for suicidal 
+thoughts in primary care: The views of patients and general practitioners. Mental Health in Family 
+Medicine, 5(4), 229.
+*Binder, P., Heintz, A. L., Haller, D. M., Favre, A. S., Tudrej, B., Ingrand, P., & Vanderkam, P. (2020). 
+Detection of adolescent suicidality in primary care: An international utility study of the bullying-
+insomnia-tobacco-stress test. Early Intervention in Psychiatry, 14(1), 80–86. https:// doi. org/ 10. 
+1111/ eip. 12828
+Blagden, S., & Abbas, F. (2017). Lancashire suicide audit report. Lancashire County Council.
+Bombard, Y., Baker, G. R., Orlando, E., Fancott, C., Bhatia, P., Casalino, S., Onate, K., Denis, L.-L., & 
+Pomey, M.-P. (2018). Engaging patients to improve quality of care: A systematic review. Implemen-
+tation Science, 13, 98. https:// doi. org/ 10. 1186/ s13012- 018- 0784-z
+Brown, R. E., & Taylor, P. (2013). Results and recommendations following an in-depth case file review 
+of 28 patient suicides in Cumbria. Retrieved the 27th of February 2022 from https:// cdn. cumbr  iapar 
+tners  hip. nhs. uk/ uploa  ds/ addit  ional-  docum  ents/  Resul  ts_ and_  recom  menda  tions_  follo  wing_  an_ in- 
+depth_ case_ file_ review_ of_ 28_ patie nt_ suici des_ in_ Cumbr  ia_8. pdf...
+Centre for Mental Health (2019) Strengthening the frontline: Investing in primary care for effective sui-
+cide prevention. https:// www. centr  eform ental health. org. uk/ publi catio ns/ stren gthen ing- front line
+*Chandler, A., King, C., Burton, C., & Platt, S. (2015). General practitioners’ accounts of patients who 
+have self-harmed. Crisis. https:// doi. org/ 10. 1027/ 0227- 5910/ a0003 25
+*Crawford, M. J., Thana, L., Methuen, C., Ghosh, P., Stanley, S. V., Ross, J., Gordon, F., Blair, G., & 
+Bajaj, P. (2011). Impact of screening for risk of suicide: Randomised controlled trial. The British 
+Journal of Psychiatry, 198(5), 379–384. https:// doi. org/ 10. 1192/ bjp. bp. 110. 083592
+Department of Health [DH]. (2017). Suicide prevention strategy for England: 2023 to 2028. Public 
+Health England, (January). https:// doi. org/ 10. 1089/ jcr. 2015. 0033
+Department of Health [DH]. (2021). Preventing suicide in England: The fifth progress report of the Sui-
+cide Prevention Strategy for England details the steps taken to reduce deaths by suicide since Janu-
+ary 2019. Public Health England, (April). https:// www. gov. uk/ gover  nment/ publi catio ns/ suici de- 
+preve ntion- in- engla nd- fifth- progr  ess- report
+Department of Health [DH]. (2023). Preventing suicide in England: Third progress report of the cross-
+government outcomes strategy to save lives. Public Health England, (September). https:// www. gov. 
+uk/ gover  nment/ publi catio ns/ suici de- preve ntion- strat egy- for- engla nd- 2023- to- 2028
+*Diamond, G. S., Herres, J. L., Ewing, E. S. K., Atte, T. O., Scott, S. W., Wintersteen, M. B., & Gallop, 
+R. J. (2017). Comprehensive screening for suicide risk in primary care. American Journal of Pre-
+ventive Medicine, 53(1), 48–54. https:// doi. org/ 10. 1016/j. amepre. 2017. 02. 020
+*Dube, P., Kurt, K., Bair, M. J., Theobald, D., & Williams, L. S. (2010). The p4 screener: Evaluation of 
+a brief measure for assessing potential suicide risk in 2 randomised effectiveness trials of primary 
+care and oncology patients. The Primary Care Companion for CNS Disorders, 12(6), 12. https:// doi. 
+org/ 10. 4088/ PCC. 10m00 978blu
+*Dueweke, A. R., Marin, M. S., Sparkman, D. J., & Bridges, A. J. (2018). Inadequacy of the PHQ-2 
+depression screener for identifying suicidal primary care patients. Families, Systems, & Health, 
+36(3), 281. https:// doi. org/ 10. 1037/ fsh00 00350
+*Elzinga, E., de Kruif, A., de Beurs, D. P., Beekman, A. T. F., Franx, G., & Gilissen, R. (2020). Engaging 
+primary care professionals in suicide prevention: A qualitative study. PLoS ONE, 15(11), e0242540. 
+https:// doi. org/ 10. 1371/ journ al. pone. 02425 40
+*Finnegan, H. A., Selwyn, C. N., & Langhinrichsen-Rohling, J. (2018). ACTively integrating suicide risk 
+assessment into primary care settings. Journal of Ambulatory Care Management, 41(2), 114–117. 
+https:// doi. org/ 10. 1097/ JAC. 00000 00000 000225
+
+=== Page 21 ===
+747
+1 3 Journal of Prevention (2024) 45:727–750 
+Fletcher, R. (2017). GM suicide audit 2015 report. https:// www. gmhsc. org. uk/ wp- conte nt/ uploa ds/ 2018/ 
+05/ GM- Suici de- Preve ntion- 24. 02. 17. pdf
+*Frankenfield, D. L., Keyl, P. M., Gielen, A., Wissow, L. S., Werthamer, L., & Baker, S. P. (2000). Ado-
+lescent patients—healthy or hurting?: Missed opportunities to screen for suicide risk in the primary 
+care setting. Archives of Pediatrics & Adolescent Medicine, 154(2), 162–168. https:// doi. org/ 10. 
+1001/ archp edi. 154.2. 162
+Gordon, J. A., Avenevoli, S., & Pearson, J. L. (2020). Suicide prevention research priorities in health 
+care. JAMA Psychiatry, 77(9), 885–886. https:// doi. org/ 10. 1001/ jamap sychi atry. 2020. 1042
+Graney, J., Hunt, I. M., Quinlivan, L., Rodway, C., Turnbull, P., Gianatsi, M., & Kapur, N. (2020). Sui-
+cide risk assessment in UK mental health services: A national mixed-methods study. The Lancet 
+Psychiatry, 7(12), 1046–1053. https:// doi. org/ 10. 1016/ S2215- 0366(20) 30381-3
+*Haste, F., Charlton, J., & Jenkins, R. (1998). Potential for suicide prevention in primary care? An analy -
+sis of factors associated with suicide. British Journal of General Practice, 48(436), 1759–1763.
+*Heisel, M. J., Duberstein, P. R., Lyness, J. M., & Feldman, M. D. (2010). Screening for suicide ideation 
+among older primary care patients. The Journal of the American Board of Family Medicine, 23(2), 
+260–269. https:// doi. org/ 10. 3122/ jabfm. 2010. 02. 080163
+HM Government. (2021) Preventing suicide in England: fifth progress report of the cross-governmen-
+toutcomes strategy to save lives (HM Government, London).
+*Hooper, L. M., Epstein, S. A., Weinfurt, K. P., DeCoster, J., Qu, L., & Hannah, N. J. (2012). Predic-
+tors of primary care physicians’ self-reported intention to conduct suicide risk assessments. The 
+Journal of Behavioral Health Services & Research, 39(2), 103–115. https:// doi. org/ 10. 1007/ 
+s11414- 011- 9268-5
+*Jerant, A., Duberstein, P., Cipri, C., Bullard, B., Stone, D., & Paterniti, D. (2019). Stakeholder views 
+regarding a planned primary care office-based interactive multimedia suicide prevention tool. 
+Patient Education and Counseling, 102(2), 332–339. https:// doi. org/ 10. 1016/j. pec. 2018. 09. 007
+*Jerant, A., Duberstein, P., Kravitz, R. L., Stone, D. M., Cipri, C., & Franks, P. (2020). Tailored activa-
+tion of middle-aged men to promote discussion of recent active suicide thoughts: A randomized 
+controlled trial. Journal of General Internal Medicine, 35(7), 2050–2058. https:// doi. org/ 10. 1007/ 
+s11606- 020- 05769-3
+John, A., DelPozo-Banos, M., Gunnell, D., Dennis, M., Scourfield, J., Ford, D. V., Kapur, N., & Lloyd, 
+K. (2020). Contacts with primary and secondary healthcare prior to suicide: Case–control whole-
+population-based study using person-level linked routine data in Wales, UK, 2000–2017. The Brit-
+ish Journal of Psychiatry, 217(6), 717–724. https:// doi. org/ 10. 1192/ bjp. 2020. 137
+Jordans, M. J., Kaufman, A., Brenman, N. F., Adhikari, R. P., Luitel, N. P., Tol, W. A., & Komproe, I. 
+(2014). Suicide in South Asia: A scoping review. BMC Psychiatry, 14, 358. https:// doi. org/ 10. 1186/ 
+s12888- 014- 0358-9
+*Kaplan, M. S., Adamek, M. E., & Calderon, A. (1999). Managing depressed and suicidal geriatric 
+patients: Differences among primary care physicians. The Gerontologist, 39(4), 417–425. https:// 
+doi. org/ 10. 1093/ geront/ 39.4. 417
+Kim, S., Lee, H. K., & Lee, K. (2021). Which PHQ-9 items can effectively screen for suicide? Machine 
+learning approaches. International Journal of Environmental Research and Public Health, 18(7), 
+3339. https:// doi. org/ 10. 3390/ ijerp h1807 3339
+Knapp, M., McDaid, D. Parsonage, M, (2011) Mental health promotion and mental illness prevention: 
+The economic case Department of Health www. pssru. ac. uk/ pub/ Knapp_ et_ al_ 2011_ MHPMHP- 
+Econo mic- Case. pdf
+Knipe, D. W., Gunnell, D., Pieris, R., Priyadarshana, P., Weerasinghe, M., Pearson, M., Jayamanne, S., 
+Dawsn, A. H., Mohamed, F., Gawarammana, I., Hawton, K., Eddleston, M., & Metcalfe, C. (2017). 
+Is socioeconomic position associated with risk of attempted suicide in rural Sri Lanka? A cross-
+sectional study of 165 000 individuals. British Medical Journal Open, 7, e014006. https:// doi. org/ 
+10. 1136/ bmjop en- 2016- 014006
+Knuckey, S. (2017). Cheshire and merseyside suicide audit joint report 2017. Retrieved the 27th of Feb-
+ruary 2022 from http:// moder  ngov. sthel ens. gov. uk/ (S(yzni2 ijv2b cexwa twwra mu2l))/ docum ents/ 
+s66242/ Chesh ire% 20and% 20Mer seysi de% 20Sui cide% 20Aud it% 202016% 20Exec% 20Sum mary%  
+202. pdf
+Kontopantelis, E., Olier, I., Planner, C., Reeves, D., Ashcrosft, D., Gask, L., Doran, T., & Reilly, S. 
+(2015). Primary care consultation rates among people with and without severe mental illness: A UK 
+cohort study using the Clinical Practice Research Datalink. Bmjopen, 5, e008650. https:// doi. org/ 10. 
+1136/ bmjop en- 2015- 008650
+
+=== Page 22 ===
+748 Journal of Prevention (2024) 45:727–750
+1 3
+Kroenke, K., Spitzer, R., & Williams, J. (2001). The PHQ-9 validity of a brief depression severity meas-
+ure. Journal of General Internal Medicine, 16, 606–613.
+Levac, D., Colquhoun, H., & O’Brien, K. K. (2010). Scoping studies: Advancing the methodology. 
+Implementation Science, 5, 1–9. https:// doi. org/ 10. 1186/ 1748- 5908-5- 69
+Luoma, J. B., Martin, C. E., & Pearson, J. L. (2002). Contact with mental health and primary care pro-
+viders before suicide: A review of the evidence. American Journal of Psychiatry, 159(6), 909–916. 
+https:// doi. org/ 10. 1176/ appi. ajp. 159.6. 909
+Mann ,J.J., Michel, C.A., Auerbach, R.P. (2021). Improving suicide prevention through evidence-based-
+strategies: A systematic review. Am J Psychiatry, 178(7), 611–624. https:// doi. org/ 10. 1176/ appi. ajp. 
+2020. 20060 864
+*McCabe, R., Sterno, I., Priebe, S., Barnes, R., & Byng, R. (2017). How do healthcare professionals 
+interview patients to assess suicide risk? BMC Psychiatry, 17(1), 1–10. https:// doi. org/ 10. 1186/ 
+s12888- 017- 1212-7
+*MesecRodi, P., Roškar, S., & Marušič, A. (2010). Suicide victims’ last contact with the primary care 
+physician: Report from Slovenia. International Journal of Social Psychiatry, 56(3), 280–287. 
+https:// doi. org/ 10. 1177/ 00207 64009 105330
+*Michail, M., & Tait, L. (2016). Exploring general practitioners’ views and experiences on suicide risk 
+assessment and management of young people in primary care: a qualitative study in the UK. British 
+Medical Journal Open. https:// doi. org/ 10. 1136/ bmjop en- 2015- 009654
+Michail, M., Mughal, F., & Robinson, J. (2020). Suicide prevention in young people: Optimising primary 
+care. British Journal of General Practice, 70(692), 104–105. https:// doi. org/ 10. 3399/ bjgp2 0X708 
+329
+Miller, I. W., Camargo, C. A., Arias, S. A., Sullivan, A. F., Allen, M. H., Goldstein, A. B., & Ed-Safe 
+Investigators (2017). Suicide prevention in an emergency department population: the ED-SAFE 
+study. JAMA Psychiatry, 74(6), 563–570.
+*Milne, S., Matthews, K., & Ashcroft, G. (1994). Suicide in Scotland 1988–1989. The British Journal of 
+Psychiatry, 165(4), 541–544. https:// doi. org/ 10. 1192/ bjp. 165.4. 541
+Mughal, F., Gorton, H. C., Michail, M., Robinson, J., & Saini, P. (2021a). Suicide prevention in primary 
+care: The opportunity for intervention [Editorial]. Crisis: the Journal of Crisis Intervention and Sui-
+cide Prevention, 42(4), 241–246. https:// doi. org/ 10. 1027/ 0227- 5910/ a0008 17
+Mughal, F., House, A., Kapur, N., Webb, R. T., & Chew-Graham, C. A. (2021b). Suicide prevention and 
+COVID-19: The role of primary care during the pandemic and beyond. British Journal of General 
+Practice, 71(706), 200–201. https:// doi. org/ 10. 3399/ bjgp2 1X715 637
+*Muñoz-Sánchez, J.-L., Sánchez-Gómez, M. C., Martín-Cilleros, M. V., Parra-Vidales, E., De Leo, D., 
+& Franco-Martín, M. A. (2018). Addressing suicide risk according to different healthcare profes-
+sionals in Spain: A qualitative study. International Journal of Environmental Research and Public 
+Health, 15(10), 2117. https:// doi. org/ 10. 3390/ ijerp h1510 2117
+O’Connor, E., Gaynes, B., Burda, B.U., Williams, C., Whitlock, E.P. (2013). Screening for suicide risk 
+in primary care: A systematic evidence review for the U.S. preventive services task force [Internet]. 
+Rockville (MD): Agency for healthcare research and quality (US). Report No.: 13-05188-EF-1.
+ONS. (2021). Suicides in the UK: 2020 registrations. Office for National Statistics. Retrieved the 8th of 
+August 2022, from https:// www. ons. gov. uk/ peopl epopu latio nandc ommun ity/ birth sdeat  hsand marri 
+ages/ deaths/ bulle  tins/ suici desin theun itedk ingdom/ 2020r  egist ratio ns
+*Parisi, R., Webb, R. T., Kleyn, C. E., Carr, M. J., Kapur, N., Griffiths, C. E. M., & Ashcroft, D. M. 
+(2019). Psychiatric morbidity and suicidal behaviour in psoriasis: A primary care cohort study. Brit-
+ish Journal of Dermatology, 180(1), 108–115. https:// doi. org/ 10. 1111/ bjd. 17004
+*Pearson, A., Saini, P., Da Cruz, D., Miles, C., While, D., Swinson, N., Williams, A., Shaw, J., Appleby, 
+L., & Kapur, N. (2009). Primary care contact prior to suicide in individuals with mental illness. 
+British Journal of General Practice, 59(568), 825–832. https:// doi. org/ 10. 3399/ bjgp0 9X472 881
+*Perry, Y., Krysinska, K., Byrne, S. J., Boland, A., Michail, M., Lamblin, M., Gibson, K. L., Lin, A., 
+Li, T. Y., & Hetrick, S. (2020). Best practice when working with suicidal behaviour and self-harm 
+in primary care: A qualitative exploration of young people’s perspectives. British Medical Journal 
+Open, 10(10), e038855. https:// doi. org/ 10. 1136/ bmjop en- 2020- 038855
+*Pfaff, J. J., & Almeida, O. P. (2005). Detecting suicidal ideation in older patients: identifying risk factors 
+within the general practice setting. British Journal of General Practice, 55(513), 269–273.
+*Pigeon, W. R., Funderburk, J. S., Cross, W., Bishop, T. M., & Crean, H. F. (2019). Brief CBT for insom-
+nia delivered in primary care to patients endorsing suicidal ideation: a proof-of-concept randomised 
+
+=== Page 23 ===
+749
+1 3 Journal of Prevention (2024) 45:727–750 
+clinical trial. Translational Behavioral Medicine, 9(6), 1169–1177. https:// doi. org/ 10. 1093/ tbm/ 
+ibz108
+*Power, K., Davies, C., Swanson, V., Gordon, D., & Carter, H. (1997). Case-control study of GP attend-
+ance rates by suicide cases with or without a psychiatric history. British Journal of General Prac-
+tice, 47(417), 211–215.
+*Richards, J. E., Hohl, S. D., Whiteside, U., Ludman, E. J., Grossman, D. C., Simon, G. E., Shortreed, 
+S. M., Lee, A. K., Parrish, R., Shea, M., Caldeiro, R. M., Penfold, R. B., & Williams, E. C. 
+(2019). If you listen, i will talk: The experience of being asked about suicidality during routine 
+primary care. Journal of General Internal Medicine, 34(10), 2075–2082. https:// doi. org/ 10. 1007/ 
+s11606- 019- 05136-x
+Richardson, C., Robb, K. A., McManus, S., & O’Connor, R. C. (2023). Psychosocial factors that distin-
+guish between men and women who have suicidal thoughts and attempt suicide: Findings from a 
+national probability sample of adults. Psychological Medicine, 53(7), 3133–3141.
+*Robles, R., Lopez-Garcia, P., Miret, M., Cabello, M., Cisneros, E., Rizo, A., Ayuso-Mateos, J. L., & 
+Medina-Mora, M. E. (2019). WHO-mhGAP training in Mexico: Increasing knowledge and readi-
+ness for the identification and management of depression and suicide risk in primary care. Archives 
+of Medical Research, 50(8), 558–566. https:// doi. org/ 10. 1016/j. arcmed. 2019. 12. 008
+Rodi, P.M., Roškar, S., & Marušič, A. (2010). Suicide victims’ last contact with the primary carephysi-
+cian: report from Slovenia. International Journal of Social Psychiatry, 56(3), 280–287.https:// doi. 
+org/ 10. 1177/ 00207 64009 105330
+*Roškar, S., Podlesek, A., Zorko, M., Tavčar, R., Dernovšek, M. Z., Groleger, U., Mirjanič, M., Konec, 
+N., Janet, E., & Marušič, A. (2010). Effects of training program on recognition and management 
+of depression and suicide risk evaluation for Slovenian primary-care physicians: Follow-up study. 
+Croatian Medical Journal, 51(3), 237–242. https:// doi. org/ 10. 3325/ cmj. 2010. 51. 237
+*Saini, P., Hassan, S. M., Morasae, E. K., Goodall, M., Giebel, C., Ahmed, S., Pearson, A., Harper, L. 
+M., Cloke, J., Irvine, J., & Gabbay, M. (2021). The value of involving patients and public in health 
+services research and evaluation: A qualitative study. Research Involvement and Engagement, 7, 49. 
+https:// doi. org/ 10. 1186/ s40900- 021- 00289-8
+Saini, P., While, D., Chantler, K., Windfuhr, K., & Kapur, N. (2014). Assessment and management of 
+suicide risk in primary care. Crisis. https:// doi. org/ 10. 1027/ 0227- 5910/ a0002 77
+Sarkhel, S., Vijayakumar, V., & Vijayakumar, L. (2023). Clinical practice guidelines for management of 
+suicidal behaviour. Indian Journal of Psychiatry, 65(2), 124.
+*Schou Pedersen, H., Fenger-Gron, M., Bech, B. H., Erlangsen, A., & Vestergaard, M. (2019). Frequency 
+of health care utilisation in the year prior to completed suicide: A Danish nationwide matched com-
+parative study. PLoS ONE, 14(3), e0214605. https:// doi. org/ 10. 1371/ journ al. pone. 02146 05
+Spottswood, M., Lim, C.T., Davydow, D., Huang, H. (2022). Improving suicide prevention in pri-
+mary care for differing levels of behavioral health integrati on: A review. Front Med (Lausanne), 
+9:892205. https:// doi. org/ 10. 3389/ fmed. 2022. 892205
+*Stanistreet, D., Gabbay, M. B., Jeffrey, V., & Taylor, S. (2004). The role of primary care in the preven-
+tion of suicide and accidental deaths among young men: an epidemiological study. British Journal 
+of General Practice, 54(501), 254–258.
+*Vannoy, S. D., Fancher, T., Meltvedt, C., Unützer, J., Duberstein, P., & Kravitz, R. L. (2010). Suicide 
+inquiry in primary care: Creating context, inquiring, and following up. The Annals of Family Medi-
+cine, 8(1), 33–39. https:// doi. org/ 10. 1370/ afm. 1036
+*Vannoy, S. D., & Robins, L. S. (2011). Suicide-related discussions with depressed primary care patients 
+in the USA: Gender and quality gaps. A mixed methods analysis. British Medical Journal Open, 
+1(2), e000198. https:// doi. org/ 10. 1136/ bmjop en- 2011- 000198
+Velupillai, S., Hadlaczky, G., Baca-Garcia, E., Gorrell, G. M., Werbeloff, N., Nguyen, D., & Dutta, R. 
+(2019). Risk assessment tools and data-driven approaches for predicting and preventing suicidal 
+behavior. Frontiers in Psychiatry, 10, 36. https:// doi. org/ 10. 3389/ fpsyt. 2019. 00036
+*Wainwright, V., Cordingley, L., Chew-Graham, C. A., Kapur, N., Shaw, J., Smith, S., McGale, B., & 
+McDonnell, S. (2020). Experiences of support from primary care and perceived needs of parents 
+bereaved by suicide: A qualitative study. British Journal of General Practice, 70(691), e102–e110. 
+https:// doi. org/ 10. 3399/ bjgp2 0X707 849
+*Windfuhr, K., While, D., Kapur, N., Ashcroft, D. M., Kontopantelis, E., Carr, M. J., Shaw, J., Appleby, 
+L., & Webb, R. T. (2016). Suicide risk linked with clinical consultation frequency, psychiatric diag-
+noses and psychotropic medication prescribing in a national study of primary-care patients. Psycho-
+logical Medicine, 46(16), 3407–3417. https:// doi. org/ 10. 1017/ S0033 29171 60018 23
+
+=== Page 24 ===
+750 Journal of Prevention (2024) 45:727–750
+1 3
+*Wittink, M. N., Levondowski, B. A., Funderburk, J. S., Chelenza, M., Wood, J. R., & Pigeon, W. R. 
+(2020). Team-based suicide prevention: lessons learned from early adopters of collaborative care. 
+Journal of Interprofessional Care, 34(3), 400–406. https:// doi. org/ 10. 1080/ 13561 820. 2019. 16972 13
+World Health Organization. (2014). Preventing suicide: A global imperative. World Health Organization.
+World Health Organisation (WHO). (2023). Suicide: Key facts. https:// www. who. int/ newsr  oom/ fact- 
+sheets/ detail/ suici de
+*Younes, N., Chee, C. C., Turbelin, C., Hanslik, T., Passerieux, C., & Melchior, M. (2013). Particular 
+difficulties faced by GPs with young adults who will attempt suicide: A cross-sectional study. BMC 
+Family Practice, 14(1), 1–6. https:// doi. org/ 10. 1186/ 1471- 2296- 14- 68
+*Younes, N., Riviere, M., Urbain, F., Pons, R., Hanslik, T., Rossignol, L., Chan Chee, C., & Blanchon, 
+T. (2020). Management in primary care at the time of a suicide attempt and its impact on care post-
+suicide attempt: An observational study in the French GP sentinel surveillance system. BMC Family 
+Practice, 21(1), 55. https:// doi. org/ 10. 1186/ s12875- 020- 01126-9
+Publisher’s Note Springer Nature remains neutral with regard to jurisdictional claims in published maps 
+and institutional affiliations.
+Authors and Affiliations
+Pooja Saini1  · Anna Hunt1 · Peter Blaney1  · Annie Murray2
+ * Pooja Saini 
+ P.Saini@ljmu.ac.uk
+ Anna Hunt 
+ a.c.hunt@ljmu.ac.uk
+ Peter Blaney 
+ p.s.blaney@ljmu.ac.uk
+ Annie Murray 
+ Annie.Murray@DHSC.gov.uk
+1 School of Psychology, Faculty of Health, Suicide and Self-Harm Prevention, Liverpool John 
+Moores University, Byrom Street, Liverpool L3 3AF, UK
+2 Department of Health and Social Care, Office for Health Improvement and Disparities, 
+Piccadilly Place 3, Manchester M1 3BN, UK
+

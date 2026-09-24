@@ -1,0 +1,2700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindBridge | AI Psychological Sanctuary</title>
+  <meta name="description" content="MindBridge is a soothing, psychological sanctuary and compassionate conversational bridge toward professional mental health care. Explore emotions, track somatic tension, and connect with verified specialists.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=12.0">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- MODAL: AUTHENTICATION FULLSCREEN OVERLAY -->
+  <div class="auth-overlay" id="authOverlay" style="display: none;">
+    <div class="auth-container animate-scale-up">
+      
+      <div class="auth-header">
+        <div class="auth-brand">
+          <span class="brand-monogram">MB</span>
+          <h2>MindBridge</h2>
+        </div>
+        <p class="auth-subtitle">AI-Assisted Mental Wellness Sanctuary</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tabLoginBtn">Login</button>
+        <button class="auth-tab-btn" id="tabRegisterBtn">Create Account</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form class="auth-form" id="loginForm">
+        <div class="auth-input-group">
+          <i data-lucide="mail"></i>
+          <input type="email" id="loginEmail" placeholder="Email Address" required>
+        </div>
+        <div class="auth-input-group">
+          <i data-lucide="lock"></i>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+        </div>
+        <p class="auth-error" id="loginError"></p>
+        <button type="submit" class="auth-submit-btn">Enter Sanctuary</button>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form class="auth-form" id="registerForm" style="display: none;">
+        <div class="auth-input-group">
+          <i data-lucide="user"></i>
+          <input type="text" id="registerName" placeholder="Full Name" required>
+        </div>
+        <div class="auth-input-group">
+          <i data-lucide="mail"></i>
+          <input type="email" id="registerEmail" placeholder="Email Address" required>
+        </div>
+        <div class="auth-input-group">
+          <i data-lucide="lock"></i>
+          <input type="password" id="registerPassword" placeholder="Create Password" required>
+        </div>
+        <p class="auth-error" id="registerError"></p>
+        <button type="submit" class="auth-submit-btn">Begin Journey</button>
+      </form>
+
+    </div>
+  </div>
+
+
+
+  <!-- Background Lighting & Atmospheric Glow -->
+  <div class="ambient-glow glow-top-orb"></div>
+  <div class="ambient-glow glow-bottom-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+
+  <div class="app-layout">
+    
+    <!-- ============================================== -->
+    <!-- LEFT VERTICAL SIDEBAR DOCK -->
+    <!-- ============================================== -->
+    <aside class="sidebar-dock">
+      
+      <!-- Brand Logo / Monogram -->
+      <div class="dock-brand" id="brandHomeBtn" title="MindBridge AI Sanctuary">
+        <span class="brand-monogram">LIX</span>
+      </div>
+
+      <!-- Main Navigation Dock Icons -->
+      <nav class="dock-nav-group">
+        <button class="dock-btn nav-tab active" data-tab="chat" title="Chat & Reflection">
+          <i data-lucide="message-square"></i>
+        </button>
+
+        <button class="dock-btn nav-tab" data-tab="providers" title="Find Doctors & Therapists">
+          <i data-lucide="stethoscope"></i>
+          <span class="dock-badge" id="providerCountBadge">5</span>
+        </button>
+        <button class="dock-btn nav-tab" data-tab="insights" title="Emotional Insights & Telemetry">
+          <i data-lucide="bar-chart-2"></i>
+        </button>
+        <button class="dock-btn nav-tab" data-tab="emergency" title="Crisis Support & 24/7 Hotlines">
+          <i data-lucide="life-buoy"></i>
+        </button>
+      </nav>
+
+      <!-- Bottom Dock Actions -->
+      <div class="dock-bottom-group">
+        
+        <!-- Soundscape Quick Toggle -->
+        <button class="dock-btn" id="soundscapeBtn" onclick="openSettingsModal()" title="Therapeutic Soundscape (60-80 BPM)">
+          <i data-lucide="music-2" id="soundscapeIcon"></i>
+          <span class="music-equalizer-bars" id="musicEqBars" aria-hidden="true" style="opacity: 0.35;">
+            <span class="bar b1"></span>
+            <span class="bar b2"></span>
+            <span class="bar b3"></span>
+          </span>
+        </button>
+
+        <!-- Settings Gear -->
+        <button class="dock-btn" id="headerSettingsBtn" onclick="openSettingsModal()" title="Settings, Music & Neuro-Acoustic Frequencies">
+          <i data-lucide="settings"></i>
+        </button>
+
+        <!-- User Profile Avatar -->
+        <div class="dock-avatar-wrap" title="User Profile · Therapeutic Session Active">
+          <div class="dock-avatar">
+            <i data-lucide="user"></i>
+          </div>
+          <span class="avatar-status-dot"></span>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ============================================== -->
+    <!-- MAIN WORKSPACE VIEWPORT -->
+    <!-- ============================================== -->
+    <main class="main-stage">
+      
+      <!-- Top Mobile / Ambient Header -->
+      <header class="stage-header">
+        <div class="stage-title-wrap">
+          <span class="stage-brand-pill">MindBridge Sanctuary</span>
+          <span class="stage-safety-badge"><i data-lucide="shield-check"></i> Non-Diagnostic Guardrails Active</span>
+        </div>
+        <div class="stage-header-actions">
+          <button id="themeToggleBtn" class="theme-toggle-pill" title="10-Minute Chromatic Rotation Active. Click to cycle theme.">
+            <i data-lucide="palette" id="themeToggleIcon" class="mini-icon" style="color: var(--color-deepblue);"></i>
+            <span id="themeToggleText">Azure Sanctuary</span>
+          </button>
+          <div class="lang-selector-mini" title="Speech Recognition Language">
+            <i data-lucide="languages" class="mini-icon"></i>
+            <select id="languageSelect" aria-label="Speech Recognition Language">
+              <option value="en-US">English (US/UK/IN)</option>
+              <option value="hi-IN">Hindi (हिन्दी)</option>
+              <option value="bn-IN">Bengali (বাংলা)</option>
+            </select>
+          </div>
+          <button id="headerSosBtn" class="mini-sos-btn emergency-header-btn" title="Emergency Service Mode - 24/7 Rapid Crisis & Clinical Care">
+            <span class="sos-dot"></span> Emergency Service Mode
+          </button>
+        </div>
+      </header>
+
+      <!-- ============================================== -->
+      <!-- TAB 1: PSYCHOLOGICAL CHECK-IN & CHATBOT -->
+      <!-- ============================================== -->
+      <section id="tab-chat" class="tab-pane active">
+        
+        <div class="chat-viewport-container">
+          
+          <!-- Hero Section (Visible before/during conversation) -->
+          <div class="chat-hero-stage" id="chatHeroStage">
+            
+            <!-- Central Glowing Holographic AI Orb (Clean Small Liquid Crystal Ball) -->
+            <div class="holographic-orb-wrapper" id="orbContainer">
+              <!-- Outward Expanding Crystal Radiance Waves -->
+              <div class="crystal-radiance-wave crystal-wave-1"></div>
+              <div class="crystal-radiance-wave crystal-wave-2"></div>
+              <div class="crystal-radiance-wave crystal-wave-3"></div>
+
+              <!-- Floating Small Liquid Crystal Sphere Core -->
+              <div class="orb-sphere-frame" id="orbSphereFrame">
+                <video 
+                  src="assets/chatbot.mp4" 
+                  autoplay 
+                  loop 
+                  muted 
+                  playsinline 
+                  class="holographic-ai-orb-video" 
+                  id="aiHoloOrbVideo"
+                  poster="assets/mindbridge_ai_orb.jpg"
+                ></video>
+                <img src="assets/mindbridge_ai_orb.jpg" class="holographic-ai-orb fallback-orb" alt="MindBridge AI Holographic Orb" id="aiHoloOrb" style="display: none;">
+                <div class="orb-liquid-plasma-layer"></div>
+                <div class="orb-liquid-dome"></div>
+                <div class="orb-liquid-sheen"></div>
+              </div>
+            </div>
+
+            <!-- Greeting Text -->
+            <div class="hero-typography">
+              <span class="hero-user-greeting">Hi, Friend</span>
+              <h1 class="hero-main-heading">How can I help today?</h1>
+              <p class="hero-subtitle">I'm here to help — from compassionate emotional reflections to smart recommendations.</p>
+            </div>
+
+          </div>
+
+          <!-- Active Message Feed Container -->
+          <div class="chat-stream-container" id="chatMessages" style="display: none;">
+            <!-- Dynamic Messages inserted here -->
+          </div>
+
+          <!-- Floating Glassmorphic Input Console -->
+          <div class="chat-console-wrapper">
+            <form id="chatForm" class="glass-console-card">
+              
+              <!-- Console Top Status Banner -->
+              <div class="console-status-bar">
+                <div class="console-status-left">
+                  <i data-lucide="sparkles" class="status-sparkle"></i>
+                  <span>Unlock deeper clarity with MindBridge · Non-Diagnostic</span>
+                </div>
+                <div class="co-regulation-mini">
+                  <span class="co-pulse"></span>
+                  <span>Co-regulation Active</span>
+                </div>
+              </div>
+
+              <!-- Inner Recessed Capsule Box matching LIX Screenshot -->
+              <div class="console-inner-capsule">
+                
+                <!-- Two-Way Continuous Voice Companion Active Banner -->
+                <div class="voice-companion-active-bar" id="voiceCompanionBar" style="display: none;">
+                  <div class="vc-bar-main-row">
+                    <div class="vc-bar-left">
+                      <div class="vc-pulse-ring-wrap">
+                        <div class="vc-pulse-dot" id="vcPulseDot"></div>
+                        <div class="vc-pulse-aura"></div>
+                      </div>
+                      <div class="vc-status-texts">
+                        <div class="vc-title-row">
+                          <span class="vc-mode-title" id="vcModeTitle">Two-Way Voice Companion Active</span>
+                          <span class="vc-badge-continuous">Hands-Free</span>
+                        </div>
+                        <span class="vc-live-state" id="vcLiveState">Listening... speak naturally</span>
+                      </div>
+                    </div>
+                    <div class="vc-bar-right">
+                      <div class="vc-soundwave-anim" id="vcSoundwave">
+                        <span></span><span></span><span></span><span></span><span></span>
+                      </div>
+                      <button type="button" class="vc-exit-btn" id="stopVoiceCompanionBtn" title="Exit Voice Companion Mode">
+                        <i data-lucide="mic-off"></i>
+                        <span id="vcExitLabel">Exit Voice</span>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Real-Time Speech Transcript Preview Row -->
+                  <div class="vc-live-transcript-row" id="vcTranscriptRow" style="display: none;">
+                    <div class="vc-transcript-pill">
+                      <i data-lucide="sparkles" class="vc-transcript-icon"></i>
+                      <span class="vc-transcript-label">Hearing:</span>
+                      <span class="vc-transcript-text" id="vcTranscriptText">...</span>
+                    </div>
+                  </div>
+                  <div class="vc-mode-footnote">
+                    <i data-lucide="info" class="vc-info-icon"></i>
+                    <span>Voice mode remains active continuously. Speak anytime or click Exit Voice to finish.</span>
+                  </div>
+                </div>
+
+                <!-- Main Input Area -->
+                <div class="console-input-row">
+                  <textarea 
+                    id="chatInput" 
+                    class="console-textarea" 
+                    placeholder="Ask me anything ..." 
+                    rows="1"
+                    autocomplete="off"
+                  ></textarea>
+                </div>
+
+                <!-- Console Bottom Action Toolbar -->
+                <div class="console-actions-bar">
+                  
+                  <!-- Left Quick Action Tool Pills -->
+                  <div class="console-tools-left">
+                    
+                    <!-- Voice Input Button -->
+                    <button type="button" id="micBtn" class="tool-pill-btn" title="Speak via Voice (English/Hindi/Bengali)">
+                      <i data-lucide="mic" id="micIcon"></i>
+                      <span>Voice</span>
+                    </button>
+
+                    <!-- Voice Output Perspective Pill -->
+                    <div class="perspective-dropdown-wrap">
+                      <button type="button" id="quickPerspBtn" class="tool-pill-btn" title="Select Output Voice Perspective">
+                        <i data-lucide="headphones"></i>
+                        <span id="activePerspectiveLabel">Perspective: Auto</span>
+                      </button>
+                      <div class="perspective-popup-menu" id="perspectivePopupMenu" style="display: none;">
+                        <button type="button" class="persp-popup-opt active" data-persp="auto">⚡ Auto (Emotion & Language Attuned)</button>
+                        <button type="button" class="persp-popup-opt" data-persp="bn">🌿 Bengali Perspective (সাফল্য ও আত্মবিশ্বাস)</button>
+                        <button type="button" class="persp-popup-opt" data-persp="en">🦁 English Perspective (Overcoming Fear)</button>
+                      </div>
+                    </div>
+
+                    <!-- Mood Weather Pill -->
+                    <div class="mood-dropdown-wrap">
+                      <button type="button" id="quickMoodBtn" class="tool-pill-btn" title="Share Inner Emotional Climate">
+                        <i data-lucide="compass"></i>
+                        <span>Climate</span>
+                      </button>
+                      <div class="mood-popup-menu" id="moodPopupMenu" style="display: none;">
+                        <button type="button" class="mood-popup-opt weather-pill" data-mood="reflective" data-prompt="I'm feeling reflective and want to gently unpack my thoughts.">🍃 Reflective</button>
+                        <button type="button" class="mood-popup-opt weather-pill" data-mood="overwhelmed" data-prompt="I feel intensely overwhelmed with life and cognitive fatigue.">🌪️ Overwhelmed</button>
+                        <button type="button" class="mood-popup-opt weather-pill" data-mood="anxious" data-prompt="I am experiencing racing anxiety and chest tightness right now.">⚡ Anxious</button>
+                        <button type="button" class="mood-popup-opt weather-pill" data-mood="heavy" data-prompt="My heart feels heavy, sad, and depleted of emotional energy.">🌧️ Heavy / Sad</button>
+                        <button type="button" class="mood-popup-opt weather-pill" data-mood="sleep" data-prompt="I am struggling with sleep disruption, insomnia, and midnight loops.">🌙 Sleep Troubled</button>
+                        <button type="button" class="mood-popup-opt weather-pill" data-mood="hopeful" data-prompt="I'm beginning to feel a little more grounded and hopeful today.">☀️ Hopeful</button>
+                      </div>
+                    </div>
+
+                    <!-- Somatic Tools Pill -->
+                    <div class="somatic-dropdown-wrap">
+                      <button type="button" id="quickSomaticBtn" class="tool-pill-btn" title="Somatic Tension Check">
+                        <i data-lucide="activity"></i>
+                        <span>Somatic</span>
+                      </button>
+                      <div class="somatic-popup-menu" id="somaticPopupMenu" style="display: none;">
+                        <button type="button" class="somatic-popup-opt somatic-btn" data-prompt="I have racing thoughts and mental pressure in my head.">🧠 Racing Mind / Head</button>
+                        <button type="button" class="somatic-popup-opt somatic-btn" data-prompt="I feel tightness and heaviness in my chest.">🫁 Tight Chest</button>
+                        <button type="button" class="somatic-popup-opt somatic-btn" data-prompt="My neck and shoulders feel stiff with tension.">🦴 Shoulders & Neck</button>
+                        <button type="button" class="somatic-popup-opt somatic-btn" data-prompt="I have nervous knots and tension in my stomach.">🌊 Knots in Stomach</button>
+                        <button type="button" class="somatic-popup-opt somatic-btn" data-prompt="My entire body feels drained and exhausted.">🔋 Overall Body Drain</button>
+                      </div>
+                    </div>
+
+
+
+                    <!-- Soundscape Quick Tool (Rule #1: Visible pause, mute, and volume controls at all times) -->
+                    <div class="soundscape-dropdown-wrap">
+                      <button type="button" id="quickSoundBtn" class="tool-pill-btn" title="Calming Soundscape Controls">
+                        <i data-lucide="headphones"></i>
+                        <span id="soundscapeLabel">Music: Off</span>
+                      </button>
+                      <div class="sound-quick-popup" id="soundQuickPopup" style="display: none;">
+                        <div class="sqp-header">
+                          <div class="sqp-header-left">
+                            <i data-lucide="music-2" class="sqp-icon"></i>
+                            <span class="sqp-title" id="sqpTrackName">Tranquil Zen</span>
+                          </div>
+                          <span class="sqp-status-pill" id="sqpStatusBadge">Off</span>
+                        </div>
+                        <div class="sqp-controls-row">
+                          <button type="button" class="sqp-ctrl-btn" id="sqpPlayPauseBtn" title="Play / Pause Audio">
+                            <i data-lucide="play" id="sqpPlayPauseIcon"></i>
+                          </button>
+                          <button type="button" class="sqp-ctrl-btn" id="sqpMuteBtn" title="Mute / Unmute Audio">
+                            <i data-lucide="volume-2" id="sqpMuteIcon"></i>
+                          </button>
+                          <div class="sqp-slider-group">
+                            <i data-lucide="volume-1" class="sqp-vol-icon"></i>
+                            <input type="range" id="sqpVolumeSlider" min="0" max="100" value="35" class="sqp-slider" title="Independent Volume Slider">
+                            <span id="sqpVolumeVal" class="sqp-vol-text">35%</span>
+                          </div>
+                        </div>
+                        <div class="sqp-footer">
+                          <span class="sqp-ceiling-tag"><i data-lucide="shield-check"></i> Safe Ambient Ceiling</span>
+                          <button type="button" class="sqp-more-btn" onclick="openSettingsModal()">All Tracks ⚙️</button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Right Action & Send Controls -->
+                  <div class="console-tools-right">
+                    
+                    <!-- Audio Visualizer Wave -->
+                    <div class="audio-visualizer-wave" id="audioVisualizer" style="display: none;">
+                      <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+
+                    <!-- Circular Arrow Send Button -->
+                    <button type="submit" id="sendBtn" class="circle-send-btn" aria-label="Send Message">
+                      <i data-lucide="arrow-up"></i>
+                    </button>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Bottom 4 Suggestion Prompt Cards -->
+          <div class="prompt-cards-grid" id="promptCardsGrid">
+            
+            <button type="button" class="prompt-suggestion-card" data-prompt="I want to reflect on my past and childhood memories.">
+              <div class="prompt-card-icon-wrap" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <div class="prompt-card-text">
+                <span class="prompt-card-title">Past Life & Memories</span>
+                <p class="prompt-card-desc">Reflect gently on childhood memories, turning points & mental state.</p>
+              </div>
+            </button>
+
+            <button type="button" class="prompt-suggestion-card" data-prompt="Surprise me with a mindful reflection, grounding exercise, or calming thought.">
+              <div class="prompt-card-icon-wrap">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <div class="prompt-card-text">
+                <span class="prompt-card-title">Surprise me!</span>
+                <p class="prompt-card-desc">Surprise me with a mindful reflection or grounding exercise.</p>
+              </div>
+            </button>
+
+            <button type="button" class="prompt-suggestion-card" data-prompt="I am feeling stress and physical tension in my body. Can you guide me through releasing it?">
+              <div class="prompt-card-icon-wrap">
+                <i data-lucide="heart-pulse"></i>
+              </div>
+              <div class="prompt-card-text">
+                <span class="prompt-card-title">Somatic release</span>
+                <p class="prompt-card-desc">Guide me to release chest tightness, overthinking, or tension.</p>
+              </div>
+            </button>
+
+            <button type="button" class="prompt-suggestion-card" data-action="tab-providers">
+              <div class="prompt-card-icon-wrap">
+                <i data-lucide="stethoscope"></i>
+              </div>
+              <div class="prompt-card-text">
+                <span class="prompt-card-title">Specialist care</span>
+                <p class="prompt-card-desc">Connect with verified clinical psychologists & psychiatrists.</p>
+              </div>
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB: CLINICAL SCREENING ASSESSMENT (100 QUESTIONS) -->
+      <!-- ============================================== -->
+      <section id="tab-screener" class="tab-pane">
+        <div class="screener-view-container">
+          
+          <!-- View Header & Clinical Grounding -->
+          <div class="view-header-block screener-header-block">
+            <div class="screener-title-area">
+              <div class="screener-badge-row">
+                <span class="screener-clinical-pill"><i data-lucide="shield-check"></i> Evidence-Based Clinical Grounding</span>
+                <span class="screener-count-pill"><i data-lucide="layers"></i> Exactly 100 Inquiries (50 MCQ + 50 VSAQ)</span>
+              </div>
+              <h2 class="view-title">Clinical Screening & Support Stratification</h2>
+              <p class="view-subtitle">Grounded in validated psychometrics (PHQ-9, GAD-7, DASS-21, WHO-5, C-SSRS) from the research papers. Randomly shuffled per user session.</p>
+            </div>
+            <div class="screener-header-actions">
+              <button type="button" class="action-outline-btn" id="screenerResetBtn" title="Start a fresh randomized 100-question session">
+                <i data-lucide="refresh-cw"></i> New Session
+              </button>
+              <button type="button" class="action-outline-btn" id="screenerResearchModalBtn" title="View research papers grounding">
+                <i data-lucide="book-open"></i> Evidence Papers
+              </button>
+            </div>
+          </div>
+
+          <!-- Mandatory Non-Diagnostic Disclaimer Banner -->
+          <div class="screener-disclaimer-banner">
+            <i data-lucide="alert-circle" class="disclaimer-icon"></i>
+            <div class="disclaimer-text-wrap">
+              <strong>Clinical & Ethical Disclaimer:</strong>
+              <span>This tool does not diagnose mental health conditions. It helps reflect on your experiences and suggests when speaking with a professional may be helpful. Any affirmative response indicating acute danger or self-harm immediately activates crisis safety escalation.</span>
+            </div>
+          </div>
+
+          <!-- Screener Progress & Session Telemetry -->
+          <div class="screener-progress-card" id="screenerProgressCard">
+            <div class="progress-top-row">
+              <div class="progress-indicator">
+                <span class="progress-step-title" id="screenerStepTitle">Question 1 of 100</span>
+                <span class="progress-percent" id="screenerPercentText">1% Completed</span>
+              </div>
+              <div class="progress-badges">
+                <span class="domain-tag-pill" id="screenerDomainBadge">Mood & Depressive Symptoms</span>
+                <span class="source-tag-pill" id="screenerSourceBadge">PHQ-9 Literature</span>
+              </div>
+            </div>
+            <div class="screener-progress-bar-track">
+              <div class="screener-progress-bar-fill" id="screenerProgressBar" style="width: 1%;"></div>
+            </div>
+          </div>
+
+          <!-- Active Question Card -->
+          <div class="screener-question-card" id="screenerQuestionCard">
+            
+            <div class="question-meta-row">
+              <span class="question-type-badge" id="screenerTypeBadge">Multiple Choice Question (MCQ)</span>
+              <span class="question-safety-badge" id="screenerSafetyBadge" style="display: none;"><i data-lucide="shield-alert"></i> Safety Inquiry</span>
+            </div>
+
+            <h3 class="screener-question-heading" id="screenerQuestionHeading">
+              Loading clinical screening question...
+            </h3>
+
+            <!-- Dual Input Mode Selector (Voice Preferred by Default) -->
+            <div class="screener-input-tabs">
+              <button type="button" class="input-tab-btn active" id="inputTabVoice" onclick="setScreenerInputMode('voice')">
+                <i data-lucide="mic"></i>
+                <span>Voice Input (Recommended)</span>
+                <span class="input-tab-chip">Hands-Free</span>
+              </button>
+              <button type="button" class="input-tab-btn" id="inputTabText" onclick="setScreenerInputMode('text')">
+                <i data-lucide="edit-3"></i>
+                <span>Text / Option Select</span>
+              </button>
+            </div>
+
+            <!-- Voice Input Container -->
+            <div class="screener-voice-container" id="screenerVoiceContainer">
+              
+              <div class="voice-mic-stage">
+                <div class="voice-mic-orb-wrapper" id="screenerMicWrap">
+                  <div class="mic-wave-ring ring-1" id="micWave1"></div>
+                  <div class="mic-wave-ring ring-2" id="micWave2"></div>
+                  <button type="button" class="screener-mic-button" id="screenerMicBtn" onclick="toggleScreenerVoiceDoctor()" title="Click to Toggle Voice Doctor Consultation">
+                    <i data-lucide="mic" id="screenerMicIcon"></i>
+                  </button>
+                </div>
+                <div class="voice-status-block">
+                  <div class="voice-status-title" id="screenerVoiceStatusTitle">Dr. MindBridge Voice Consultation Active</div>
+                  <div class="voice-status-sub" id="screenerVoiceStatusSub">Dr. MindBridge speaks the inquiry aloud, listens to your voice, evaluates tone, and automatically transitions.</div>
+                  
+                  <div class="voice-action-pills-row">
+                    <button type="button" class="voice-ctrl-pill active" id="screenerHandsFreeToggleBtn" onclick="toggleHandsFreeAutoAdvance()" title="Automatic question advancement upon natural pause">
+                      <i data-lucide="zap"></i> <span id="handsFreeLabel">Hands-Free Voice Flow: ON</span>
+                    </button>
+                    <button type="button" class="voice-ctrl-pill" id="screenerRepeatQuestionBtn" onclick="repeatCurrentDoctorQuestion()" title="Re-listen to the doctor speak the question">
+                      <i data-lucide="volume-2"></i> <span>Repeat Question</span>
+                    </button>
+                    <button type="button" class="voice-ctrl-pill" id="screenerWebSpeechToggleBtn" onclick="toggleWebSpeechMode()" title="Toggle Web Speech API vs MediaRecorder Server Engine">
+                      <i data-lucide="cpu"></i> <span id="webSpeechLabel">Engine: Whisper AI (Server)</span>
+                    </button>
+                  </div>
+                  <div id="screenerMicErrorBanner" class="screener-mic-error-banner" style="display: none;"></div>
+                </div>
+              </div>
+
+              <!-- Real-Time AI Doctor Tone & Emotional Telemetry Box -->
+              <div class="voice-tone-card" id="screenerToneCard" style="display: none;">
+                <div class="vtc-header">
+                  <div class="vtc-badge" id="screenerToneBadge">
+                    <i data-lucide="activity"></i>
+                    <span id="screenerToneLabel">Acoustic Tone: Reflective & Calm</span>
+                  </div>
+                  <span class="vtc-time">Clinical Assessment In-Progress</span>
+                </div>
+                <div class="vtc-feedback" id="screenerDoctorFeedback">
+                  "Thank you for reflecting on that. Let's move to the next inquiry."
+                </div>
+              </div>
+
+              <!-- Human-in-the-Loop Real-Time Transcript Display -->
+              <div class="screener-transcript-box" id="screenerTranscriptBox">
+                <div class="transcript-box-header">
+                  <div class="tb-left">
+                    <i data-lucide="sparkles" class="mini-sparkle"></i>
+                    <span>Live Spoken Transcript <span class="tb-sub">(Auto-captured · editable anytime)</span></span>
+                  </div>
+                  <span class="transcript-char-count" id="transcriptCharCount">0 words</span>
+                </div>
+                <textarea 
+                  id="screenerTranscriptInput" 
+                  class="screener-transcript-textarea" 
+                  placeholder="Speak your response naturally. MindBridge listens, detects natural speech pauses, and automatically advances..." 
+                  rows="2"
+                ></textarea>
+                <div class="transcript-actions-row">
+                  <button type="button" class="transcript-clear-btn" id="screenerRerecordBtn" onclick="rerecordScreenerAnswer()" title="Re-record your response">
+                    <i data-lucide="mic"></i> Re-record
+                  </button>
+                  <button type="button" class="transcript-clear-btn" onclick="clearScreenerTranscript()" title="Clear text">
+                    <i data-lucide="rotate-ccw"></i> Clear
+                  </button>
+                  <button type="button" class="transcript-submit-btn" id="screenerSubmitVoiceBtn" onclick="submitCurrentScreenerAnswer('voice', false)" title="Confirm answer and advance">
+                    <i data-lucide="check"></i> Confirm Answer
+                  </button>
+                </div>
+                <div class="voice-privacy-notice">
+                  <div class="vpn-top">
+                    <i data-lucide="shield-check"></i>
+                    <span>Your voice is recorded to convert speech to text and optionally analyze general tone patterns (such as calm, tense, or low-energy). Audio is processed securely and deleted immediately after analysis. Not a diagnosis.</span>
+                  </div>
+                  <label class="vpn-opt-label">
+                    <input type="checkbox" id="screenerVoiceToneOptIn" checked onchange="toggleVoiceToneConsent(this.checked)">
+                    <span>Enable observed voice-tone & prosody patterns in assessment summary</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Text / Selection Container -->
+            <div class="screener-text-container" id="screenerTextContainer" style="display: none;">
+              
+              <!-- MCQ Options Grid (50 MCQs with 4 Options A, B, C, D) -->
+              <div class="mcq-options-grid" id="screenerMcqOptions" style="display: none;">
+                <!-- Dynamically populated MCQ Option tiles -->
+              </div>
+
+              <!-- VSAQ Inputs (50 VSAQs: Likert, Yes/No, Hours, Short Text) -->
+              <div class="vsaq-input-stage" id="screenerVsaqStage" style="display: none;">
+                <div class="vsaq-quick-chips" id="screenerQuickChips">
+                  <!-- Quick selector chips e.g. 0-3, Yes/No -->
+                </div>
+                <div class="vsaq-text-field-wrap">
+                  <input type="text" id="screenerTextInput" class="vsaq-text-input" placeholder="Type or select your short answer...">
+                  <button type="button" class="vsaq-submit-btn" id="screenerSubmitTextBtn" onclick="submitCurrentScreenerAnswer('text')">
+                    <span>Submit & Next</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Immediate Crisis Safety Modal / Overlay -->
+          <div class="screener-crisis-overlay" id="screenerCrisisOverlay" style="display: none;">
+            <div class="crisis-modal-card">
+              <div class="crisis-modal-header">
+                <div class="crisis-icon-pulse">
+                  <i data-lucide="shield-alert"></i>
+                </div>
+                <div>
+                  <h3 class="crisis-modal-title">Immediate Support & Safety Protocol Active</h3>
+                  <p class="crisis-modal-subtitle">Normal screening has paused. Your life and wellbeing are sacred and matter deeply.</p>
+                </div>
+              </div>
+
+              <div class="crisis-message-body" id="screenerCrisisMessage">
+                Based on your response, we are connecting you directly with trusted, confidential crisis support. You do not have to carry this distress by yourself.
+              </div>
+
+              <!-- Localized Helplines Grid -->
+              <div class="crisis-helplines-grid">
+                <div class="helpline-card emergency-primary">
+                  <div class="helpline-meta">
+                    <span class="helpline-name">Tele-MANAS (Govt of India)</span>
+                    <span class="helpline-desc">Free, 24/7 National Comprehensive Mental Health Helpline</span>
+                  </div>
+                  <a href="tel:14416" class="helpline-call-btn"><i data-lucide="phone-call"></i> Call 14416 / 1800-891-4416</a>
+                </div>
+                <div class="helpline-card">
+                  <div class="helpline-meta">
+                    <span class="helpline-name">KIRAN Mental Health Helpline</span>
+                    <span class="helpline-desc">24/7 Psychological Support & Crisis Triage</span>
+                  </div>
+                  <a href="tel:18005990019" class="helpline-call-btn"><i data-lucide="phone-call"></i> Call 1800-599-0019</a>
+                </div>
+                <div class="helpline-card">
+                  <div class="helpline-meta">
+                    <span class="helpline-name">Vandrevala Foundation Helpline</span>
+                    <span class="helpline-desc">24/7 Multilingual Professional Counseling</span>
+                  </div>
+                  <a href="tel:+919999666555" class="helpline-call-btn"><i data-lucide="phone-call"></i> Call +91 9999 666 555</a>
+                </div>
+                <div class="helpline-card">
+                  <div class="helpline-meta">
+                    <span class="helpline-name">988 Suicide & Crisis Lifeline (US/Global)</span>
+                    <span class="helpline-desc">24/7 English & Spanish Confidential Lifeline</span>
+                  </div>
+                  <a href="tel:988" class="helpline-call-btn"><i data-lucide="phone-call"></i> Call or Text 988</a>
+                </div>
+              </div>
+
+              <!-- Grounding Exercise & Escalation Action -->
+              <div class="crisis-grounding-row">
+                <div class="crisis-grounding-pill">
+                  <i data-lucide="heart"></i>
+                  <span>Grounding breath: Inhale gently for 4s, hold 4s, exhale slowly for 6s.</span>
+                </div>
+                <button type="button" class="crisis-close-btn" onclick="openEmergencyTab()">
+                  <i data-lucide="life-buoy"></i> Open 24/7 Emergency Sanctuary
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Comprehensive Assessment Report Card (On Completion) -->
+          <div class="screener-results-stage" id="screenerResultsStage" style="display: none;">
+            
+            <div class="results-header-banner">
+              <div class="rh-left">
+                <div class="results-badge-row">
+                  <span class="results-completed-pill"><i data-lucide="check-circle-2"></i> Screening Intake Completed</span>
+                  <span class="results-timestamp-pill" id="resultsTimestamp">Generated just now</span>
+                </div>
+                <h2 class="results-main-title">Evidence-Based Clinical Stratification</h2>
+                <p class="results-main-sub">Empathetic synthesis grounded in PHQ-9, GAD-7, DASS-21, and WHO-5 psychometrics.</p>
+              </div>
+              <div class="rh-right">
+                <button type="button" class="action-outline-btn" onclick="startFreshScreenerSession()">
+                  <i data-lucide="rotate-ccw"></i> Retake Screener
+                </button>
+              </div>
+            </div>
+
+            <!-- Distress Stratification Badge & Primary Action -->
+            <div class="distress-overview-card">
+              <div class="distress-card-left">
+                <span class="distress-tier-label">Overall Distress Index</span>
+                <div class="distress-tier-badge" id="resultsDistressBadge">Moderate Distress</div>
+                <p class="distress-summary-paragraph" id="resultsSummaryText">
+                  Your answers suggest that persistent stress, anxious tension, or temporary dips in mood have been affecting your day-to-day rhythm.
+                </p>
+              </div>
+              <div class="distress-card-right">
+                <div class="recommended-action-box" id="resultsActionBox">
+                  <div class="rab-title"><i data-lucide="compass"></i> Recommended Care Pathway</div>
+                  <div class="rab-action-name" id="resultsActionName">Consult a Licensed Psychologist</div>
+                  <button type="button" class="rab-action-btn" id="resultsActionBtn" onclick="navigateFromScreenerAction()">
+                    <span id="resultsActionBtnText">Explore Verified Specialists</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Psychometric Gauges Grid -->
+            <div class="psychometric-gauges-grid">
+              
+              <!-- PHQ-9 Depressive Index Card -->
+              <div class="gauge-card">
+                <div class="gc-header">
+                  <span class="gc-name">Depression Index (PHQ-9)</span>
+                  <span class="gc-source-tag">Spitzer et al.</span>
+                </div>
+                <div class="gc-score-row">
+                  <span class="gc-score-num" id="resultsPhq9Score">0</span>
+                  <span class="gc-score-max">/ 27</span>
+                </div>
+                <div class="gc-tier-pill" id="resultsPhq9Severity">Minimal Symptoms</div>
+                <div class="gc-meter-track">
+                  <div class="gc-meter-fill" id="resultsPhq9Meter" style="width: 0%;"></div>
+                </div>
+                <div class="gc-scale-legend">0 Minimal · 5 Mild · 10 Moderate · 15 Mod-Severe · 20 Severe</div>
+              </div>
+
+              <!-- GAD-7 Anxiety Index Card -->
+              <div class="gauge-card">
+                <div class="gc-header">
+                  <span class="gc-name">Anxiety Index (GAD-7)</span>
+                  <span class="gc-source-tag">Anxiety.pdf</span>
+                </div>
+                <div class="gc-score-row">
+                  <span class="gc-score-num" id="resultsGad7Score">0</span>
+                  <span class="gc-score-max">/ 21</span>
+                </div>
+                <div class="gc-tier-pill" id="resultsGad7Severity">Minimal Anxiety</div>
+                <div class="gc-meter-track">
+                  <div class="gc-meter-fill" id="resultsGad7Meter" style="width: 0%;"></div>
+                </div>
+                <div class="gc-scale-legend">0 Minimal · 5 Mild · 10 Moderate · 15 Severe</div>
+              </div>
+
+              <!-- Stress & Overwhelm Index Card -->
+              <div class="gauge-card">
+                <div class="gc-header">
+                  <span class="gc-name">Stress Burden (DASS-21)</span>
+                  <span class="gc-source-tag">Q FOR DEPRESSION...</span>
+                </div>
+                <div class="gc-score-row">
+                  <span class="gc-score-num" id="resultsStressScore">0</span>
+                  <span class="gc-score-max">/ 42</span>
+                </div>
+                <div class="gc-tier-pill" id="resultsStressSeverity">Normal Range</div>
+                <div class="gc-meter-track">
+                  <div class="gc-meter-fill" id="resultsStressMeter" style="width: 0%;"></div>
+                </div>
+                <div class="gc-scale-legend">0 Normal · 15 Mild · 19 Moderate · 26 Severe</div>
+              </div>
+
+              <!-- Sleep Quality Card -->
+              <div class="gauge-card">
+                <div class="gc-header">
+                  <span class="gc-name">Sleep Disruption Scale</span>
+                  <span class="gc-source-tag">WHO-5 & PHQ-9</span>
+                </div>
+                <div class="gc-score-row">
+                  <span class="gc-score-num" id="resultsSleepScore">0</span>
+                  <span class="gc-score-max">/ 20</span>
+                </div>
+                <div class="gc-tier-pill" id="resultsSleepSeverity">Restorative Sleep</div>
+                <div class="gc-meter-track">
+                  <div class="gc-meter-fill" id="resultsSleepMeter" style="width: 0%;"></div>
+                </div>
+                <div class="gc-scale-legend">Lower score indicates more restorative rest</div>
+              </div>
+
+              <!-- Daily Functioning Card -->
+              <div class="gauge-card">
+                <div class="gc-header">
+                  <span class="gc-name">Daily Functioning Impairment</span>
+                  <span class="gc-source-tag">Saini et al.</span>
+                </div>
+                <div class="gc-score-row">
+                  <span class="gc-score-num" id="resultsFunctioningScore">0</span>
+                  <span class="gc-score-max">/ 18</span>
+                </div>
+                <div class="gc-tier-pill" id="resultsFunctioningSeverity">Intact Routine</div>
+                <div class="gc-meter-track">
+                  <div class="gc-meter-fill" id="resultsFunctioningMeter" style="width: 0%;"></div>
+                </div>
+                <div class="gc-scale-legend">Evaluates occupational & executive flow</div>
+              </div>
+
+              <!-- Safety & Risk Card -->
+              <div class="gauge-card">
+                <div class="gc-header">
+                  <span class="gc-name">Safety & Protective Anchors</span>
+                  <span class="gc-source-tag">C-SSRS Recent</span>
+                </div>
+                <div class="gc-score-row">
+                  <span class="gc-score-num" id="resultsSafetyRiskTier">None</span>
+                </div>
+                <div class="gc-tier-pill" id="resultsSafetySeverity">No Active Risk Detected</div>
+                <div class="gc-meter-track">
+                  <div class="gc-meter-fill" id="resultsSafetyMeter" style="width: 0%; background: #22c55e;"></div>
+                </div>
+                <div class="gc-scale-legend">Continuous crisis monitoring active</div>
+              </div>
+
+            </div>
+
+            <!-- Voice-Tone & Acoustic Emotion Analysis Card -->
+            <div class="voice-tone-analysis-card" id="resultsVoiceToneCard" style="display: none;">
+              <div class="vt-header">
+                <div class="vt-title-wrap">
+                  <div class="vt-badge"><i data-lucide="waveform"></i> Acoustic Prosodic Telemetry</div>
+                  <h3 class="vt-main-title">Your Voice Tone During This Assessment</h3>
+                  <p class="vt-sub-title">Observed prosodic and emotional speech patterns captured across your voice responses.</p>
+                </div>
+                <div class="vt-dominant-pill" id="resultsDominantTonePill">
+                  <span id="resultsDominantToneLabel">Calm & Grounded</span>
+                </div>
+              </div>
+
+              <!-- Tone Distribution Bars -->
+              <div class="vt-distribution-grid">
+                <div class="vt-dist-item">
+                  <div class="vt-dist-labels">
+                    <span>Calm & Grounded</span>
+                    <span id="vtPctCalm">0%</span>
+                  </div>
+                  <div class="vt-track"><div class="vt-fill vt-calm" id="vtBarCalm" style="width: 0%;"></div></div>
+                </div>
+                <div class="vt-dist-item">
+                  <div class="vt-dist-labels">
+                    <span>Tense or Anxious</span>
+                    <span id="vtPctTense">0%</span>
+                  </div>
+                  <div class="vt-track"><div class="vt-fill vt-tense" id="vtBarTense" style="width: 0%;"></div></div>
+                </div>
+                <div class="vt-dist-item">
+                  <div class="vt-dist-labels">
+                    <span>Low-Energy or Subdued</span>
+                    <span id="vtPctSad">0%</span>
+                  </div>
+                  <div class="vt-track"><div class="vt-fill vt-sad" id="vtBarSad" style="width: 0%;"></div></div>
+                </div>
+                <div class="vt-dist-item">
+                  <div class="vt-dist-labels">
+                    <span>Flat or Monotone</span>
+                    <span id="vtPctFlat">0%</span>
+                  </div>
+                  <div class="vt-track"><div class="vt-fill vt-flat" id="vtBarFlat" style="width: 0%;"></div></div>
+                </div>
+                <div class="vt-dist-item">
+                  <div class="vt-dist-labels">
+                    <span>Energetic & Animated</span>
+                    <span id="vtPctEnergetic">0%</span>
+                  </div>
+                  <div class="vt-track"><div class="vt-fill vt-energetic" id="vtBarEnergetic" style="width: 0%;"></div></div>
+                </div>
+              </div>
+
+              <!-- Prosodic Telemetry Badges -->
+              <div class="vt-prosodic-row">
+                <div class="vt-telemetry-chip">
+                  <span class="vt-chip-label">Avg Pitch (F0)</span>
+                  <span class="vt-chip-val" id="resultsAvgPitch">-- Hz</span>
+                </div>
+                <div class="vt-telemetry-chip">
+                  <span class="vt-chip-label">Acoustic Energy</span>
+                  <span class="vt-chip-val" id="resultsAvgEnergy">-- dB</span>
+                </div>
+                <div class="vt-telemetry-chip">
+                  <span class="vt-chip-label">Speaking Cadence</span>
+                  <span class="vt-chip-val" id="resultsAvgRate">-- units/s</span>
+                </div>
+                <div class="vt-telemetry-chip">
+                  <span class="vt-chip-label">Tone Consistency</span>
+                  <span class="vt-chip-val" id="resultsToneVariability">Steady</span>
+                </div>
+              </div>
+
+              <!-- Non-Diagnostic Interpretation Text -->
+              <div class="vt-interpretation-box">
+                <i data-lucide="info" class="vt-info-icon"></i>
+                <p id="resultsToneInterpretationText">
+                  Your voice tone patterns are analyzed to reflect situational stress or fatigue, not to make clinical diagnoses.
+                </p>
+              </div>
+              <div class="vt-disclaimer-note">
+                <strong>Non-Diagnostic Note:</strong> Voice characteristics can vary with background acoustics, physical fatigue, and device microphones. This does not constitute a clinical psychological assessment.
+              </div>
+            </div>
+
+            <!-- Mandatory Non-Diagnostic Disclaimer Footer -->
+            <div class="results-disclaimer-footer">
+              <i data-lucide="shield-alert" class="footer-shield-icon"></i>
+              <p>
+                <strong>MindBridge Non-Diagnostic Guarantee:</strong> This screening report is designed solely for self-reflection and therapeutic triage. It is not an ICD or DSM diagnostic report, nor does it replace comprehensive clinical consultation with a registered clinical psychologist or psychiatrist. If you feel distress escalating, please reach out to trusted professionals or emergency hotlines.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB 2: DOCTORS & THERAPISTS DIRECTORY -->
+      <!-- ============================================== -->
+      <section id="tab-providers" class="tab-pane">
+        
+        <div class="providers-view-container">
+          
+          <div class="view-header-block">
+            <div>
+              <h2 class="view-title">Verified Mental Health Specialists</h2>
+              <p class="view-subtitle">Connect with licensed clinical psychologists & psychiatrists for structured therapeutic care.</p>
+            </div>
+            <span class="verified-count-badge"><i data-lucide="check-circle-2"></i> 5 Verified Specialists Online</span>
+          </div>
+
+          <!-- Filter Controls Bar -->
+          <div class="filter-controls-card">
+            <div class="filter-group">
+              <label><i data-lucide="tag"></i> Specialty</label>
+              <select id="filterSpecialty" class="filter-select">
+                <option value="">All Specialties</option>
+                <option value="Anxiety">Anxiety & Panic</option>
+                <option value="Depression">Depression & Mood</option>
+                <option value="Burnout">Workplace Burnout</option>
+                <option value="Trauma">Trauma & PTSD</option>
+                <option value="Insomnia">Sleep & Insomnia</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label><i data-lucide="languages"></i> Language</label>
+              <select id="filterLanguage" class="filter-select">
+                <option value="">All Languages</option>
+                <option value="English">English</option>
+                <option value="Hindi">Hindi (हिन्दी)</option>
+                <option value="Spanish">Spanish (Español)</option>
+                <option value="Portuguese">Portuguese (Português)</option>
+                <option value="Bengali">Bengali (বাংলা)</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label><i data-lucide="video"></i> Mode</label>
+              <select id="filterMode" class="filter-select">
+                <option value="">All Modes</option>
+                <option value="online">Online Video Call</option>
+                <option value="in-person">In-Person Clinic</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label><i data-lucide="indian-rupee"></i> Max Fee</label>
+              <select id="filterMaxPrice" class="filter-select">
+                <option value="5000">Any Fee</option>
+                <option value="1500">Up to ₹1,500</option>
+                <option value="2000">Up to ₹2,000</option>
+                <option value="2500">Up to ₹2,500</option>
+              </select>
+            </div>
+
+            <button id="resetFiltersBtn" class="btn btn-secondary filter-reset-btn">
+              <i data-lucide="rotate-ccw"></i> Reset
+            </button>
+          </div>
+
+          <!-- Providers Grid -->
+          <div class="providers-grid-container" id="providersGrid">
+            <!-- Dynamic provider cards rendered via app.js -->
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB 3: EMOTIONAL INSIGHTS & TELEMETRY -->
+      <!-- ============================================== -->
+      <section id="tab-insights" class="tab-pane">
+        
+        <div class="insights-view-container">
+          
+          <div class="view-header-block">
+            <div>
+              <h2 class="view-title">Emotional Telemetry & Reflection Summary</h2>
+              <p class="view-subtitle">Private, non-diagnostic reflection synthesis to support conversations with licensed specialists.</p>
+            </div>
+            <button id="exportSummaryBtn" class="btn btn-primary">
+              <i data-lucide="download"></i> Export Doctor Takeaway (.txt)
+            </button>
+          </div>
+
+          <div class="insights-dashboard-grid">
+            
+            <!-- Metric Card 1: Stress Index -->
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-label">Subjective Stress Index</span>
+                <i data-lucide="activity" class="text-teal"></i>
+              </div>
+              <div class="metric-value" id="insightStressNum">35 / 100</div>
+              <div class="metric-bar-track">
+                <div class="metric-bar-fill" id="liveStressBar" style="width: 35%;"></div>
+              </div>
+              <span class="metric-hint">Calculated via linguistic stress density & somatic signals.</span>
+            </div>
+
+            <!-- Metric Card 2: Emotional Valence -->
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-label">Dominant Valence Tone</span>
+                <i data-lucide="heart" class="text-amethyst"></i>
+              </div>
+              <div class="metric-value" id="insightMoodTone">Reflective & Open</div>
+              <span class="metric-hint">Real-time affective sentiment classification.</span>
+            </div>
+
+            <!-- Metric Card 3: Sleep Indicator -->
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-label">Sleep & Rhythm Status</span>
+                <i data-lucide="moon" class="text-cyan"></i>
+              </div>
+              <div class="metric-value" id="insightSleepStatus">Stable / Restful</div>
+              <span class="metric-hint">Self-reported sleep quality tracking.</span>
+            </div>
+
+          </div>
+
+          <!-- Session Summary Card -->
+          <div class="insights-narrative-card">
+            <h3 class="narrative-heading"><i data-lucide="file-text"></i> Client Narrative Synthesis</h3>
+            <p class="narrative-body" id="sessionSummaryText">
+              Welcome to your check-in. As you chat with MindBridge, key psychological themes, emotional nuances, and recommended somatic grounding practices will automatically synthesize here.
+            </p>
+            
+            <div class="themes-block">
+              <span class="themes-title">Dominant Themes Explored:</span>
+              <div class="themes-tags-list" id="sessionThemesList">
+                <span class="theme-tag">Cognitive Reflection</span>
+                <span class="theme-tag">Emotional Regulation</span>
+              </div>
+            </div>
+
+            <div class="next-steps-block">
+              <span class="themes-title">Recommended Grounding Steps:</span>
+              <ul class="steps-bullet-list" id="sessionStepsList">
+                <li><i data-lucide="check-circle-2"></i> Take 3 minutes of 4-7-8 resonant rhythmic breathing.</li>
+                <li><i data-lucide="check-circle-2"></i> Consider discussing persistent sleep patterns with a verified specialist.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- TAB 4: EMERGENCY SERVICE MODE (3 CORE CLINICAL SERVICES) -->
+      <!-- ============================================== -->
+      <section id="tab-emergency" class="tab-pane">
+        
+        <div class="emergency-view-container emergency-mode-view">
+          
+          <!-- Top Emergency Mode Header Banner -->
+          <div class="emergency-mode-banner">
+            <div class="emergency-mode-banner-left">
+              <div class="emergency-pulse-indicator">
+                <span class="emergency-pulse-ring"></span>
+                <span class="emergency-pulse-core"></span>
+              </div>
+              <div class="emergency-banner-texts">
+                <div class="emergency-banner-status-tag">
+                  <i data-lucide="shield-alert"></i> 24/7 CRISIS DISPATCH & TRIAGE PROTOCOL ACTIVE
+                </div>
+                <h1 class="emergency-mode-main-title">Emergency Service Mode</h1>
+                <p class="emergency-mode-desc">Immediate life-safety triage, rapid emergency dispatch, verified nearby clinical crisis units, and board-certified psychiatrists.</p>
+              </div>
+            </div>
+            <div class="emergency-mode-banner-right">
+              <button type="button" class="emergency-exit-btn" onclick="switchTab('chat')" title="Return to AI Reflection Companion">
+                <i data-lucide="arrow-left"></i> Return to Companion
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Navigation Bar for the 3 Services -->
+          <div class="emergency-quick-nav">
+            <a href="#section-emergency-service" class="emergency-nav-pill active-pill">
+              <i data-lucide="siren"></i> Emergency Service
+            </a>
+            <a href="#section-clinical-service" class="emergency-nav-pill">
+              <i data-lucide="hospital"></i> Nearby Clinical service
+            </a>
+            <a href="#section-doctor-service" class="emergency-nav-pill">
+              <i data-lucide="user-check"></i> Doctor/Psychriatist servicve
+            </a>
+            <a href="#section-breathing-grounding" class="emergency-nav-pill emergency-pill-grounding">
+              <i data-lucide="wind"></i> 4-7-8 Stabilize Breathing
+            </a>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- SECTION 1: EMERGENCY SERVICE -->
+          <!-- ============================================== -->
+          <div id="section-emergency-service" class="emergency-section-card">
+            <div class="emergency-section-header">
+              <div class="emergency-badge emergency-badge-red">
+                <i data-lucide="phone-call"></i> Immediate Crisis & Ambulance Dispatch
+              </div>
+              <h2 class="emergency-section-title">Emergency Service</h2>
+              <p class="emergency-section-subtitle">24/7 Rapid Ambulance Dispatch, National Crisis Hotlines, and Emergency Mental Health Intervention.</p>
+            </div>
+
+            <!-- Image Hero Showcase -->
+            <div class="emergency-media-card">
+              <div class="emergency-media-img-wrap">
+                <img src="images/istockphoto-1185364077-2048x2048.jpg" alt="Emergency Ambulance Dispatch Service" class="emergency-media-img" />
+                <div class="emergency-media-overlay">
+                  <div class="emergency-overlay-tag">
+                    <span class="live-dot-pulse"></span> PRIORITY DISPATCH READY
+                  </div>
+                  <h3 class="emergency-overlay-title">Rapid Response Ambulance & Acute Crisis Unit</h3>
+                  <p class="emergency-overlay-desc">Direct emergency line connects directly with verified national healthcare ambulances and suicide crisis centers.</p>
+                  <div class="emergency-action-cta-group">
+                    <a href="tel:112" class="emergency-cta-btn emergency-btn-ambulance">
+                      <i data-lucide="siren"></i> Call Emergency Ambulance (112 / 102)
+                    </a>
+                    <button type="button" class="emergency-cta-btn emergency-btn-dispatch" id="sosLocationDispatchBtn">
+                      <i data-lucide="map-pin"></i> Broadcast GPS Location to Responders
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Verified 24/7 Emergency Helplines Grid -->
+            <div class="emergency-cards-grid">
+              <!-- Card 1 -->
+              <div class="hotline-pro-card priority-high">
+                <div class="hotline-pro-top">
+                  <div class="hotline-pro-icon"><i data-lucide="ambulance"></i></div>
+                  <span class="hotline-status-chip online">Active Dispatch</span>
+                </div>
+                <h4 class="hotline-pro-name">National Emergency Services (Ambulance / Police)</h4>
+                <div class="hotline-pro-number">112 / 102</div>
+                <p class="hotline-pro-desc">Immediate government emergency response, medical dispatch, and ambulance routing across India.</p>
+                <a href="tel:112" class="hotline-pro-call-btn">
+                  <i data-lucide="phone-call"></i> Call 112 Now
+                </a>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="hotline-pro-card">
+                <div class="hotline-pro-top">
+                  <div class="hotline-pro-icon"><i data-lucide="shield-check"></i></div>
+                  <span class="hotline-status-chip toll-free">Toll-Free 24/7</span>
+                </div>
+                <h4 class="hotline-pro-name">Tele-MANAS (Ministry of Health & NIMHANS)</h4>
+                <div class="hotline-pro-number">14416 / 1800 891 4416</div>
+                <p class="hotline-pro-desc">Government of India 24/7 mental health crisis hotline with trained clinical counselors in 20+ languages.</p>
+                <a href="tel:14416" class="hotline-pro-call-btn">
+                  <i data-lucide="phone-call"></i> Call Tele-MANAS
+                </a>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="hotline-pro-card">
+                <div class="hotline-pro-top">
+                  <div class="hotline-pro-icon"><i data-lucide="heart-handshake"></i></div>
+                  <span class="hotline-status-chip counseling">Crisis Counselors</span>
+                </div>
+                <h4 class="hotline-pro-name">Vandrevala Foundation Helpline</h4>
+                <div class="hotline-pro-number">+91 9999 666 555</div>
+                <p class="hotline-pro-desc">Free, confidential 24/7 mental health crisis intervention and non-judgmental compassionate de-escalation.</p>
+                <a href="tel:+919999666555" class="hotline-pro-call-btn">
+                  <i data-lucide="phone-call"></i> Call Vandrevala
+                </a>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="hotline-pro-card">
+                <div class="hotline-pro-top">
+                  <div class="hotline-pro-icon"><i data-lucide="life-buoy"></i></div>
+                  <span class="hotline-status-chip suicide-prevention">Suicide Support</span>
+                </div>
+                <h4 class="hotline-pro-name">AASRA Suicide & Crisis Prevention</h4>
+                <div class="hotline-pro-number">+91 98204 66726</div>
+                <p class="hotline-pro-desc">24-hour dedicated crisis intervention service offering empathetic, confidential listening and emotional lifeline.</p>
+                <a href="tel:+919820466726" class="hotline-pro-call-btn">
+                  <i data-lucide="phone-call"></i> Call AASRA
+                </a>
+              </div>
+            </div>
+
+            <!-- Keep dynamic hotlines container for app.js sync -->
+            <div class="hotlines-grid-container" id="emergencyHotlinesList" style="display: none;"></div>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- SECTION 2: NEARBY CLINICAL SERVICE -->
+          <!-- ============================================== -->
+          <div id="section-clinical-service" class="emergency-section-card">
+            <div class="emergency-section-header">
+              <div class="emergency-badge emergency-badge-blue">
+                <i data-lucide="building-2"></i> Inpatient & Acute Clinical Facilities
+              </div>
+              <h2 class="emergency-section-title">Nearby Clinical service</h2>
+              <p class="emergency-section-subtitle">Verified Hospitals, Psychiatric Wards, Clinical Crisis Beds & Emergency Medical Institutes.</p>
+            </div>
+
+            <!-- Image Hero Showcase -->
+            <div class="emergency-media-card">
+              <div class="emergency-media-img-wrap">
+                <img src="images/pexels-shvetsa-4421486.jpg" alt="Nearby Clinical Hospital and Inpatient Facility" class="emergency-media-img" />
+                <div class="emergency-media-overlay clinical-overlay">
+                  <div class="emergency-overlay-tag tag-blue">
+                    <i data-lucide="map-pin"></i> LIVE CLINICAL LOCATOR ACTIVE
+                  </div>
+                  <h3 class="emergency-overlay-title">State-of-the-Art Clinical & Inpatient Emergency Centers</h3>
+                  <p class="emergency-overlay-desc">24/7 Inpatient Psychiatric Beds, Medical Detoxification, Neuro-ICU, and Acute Stabilization Wards.</p>
+                  <div class="emergency-action-cta-group">
+                    <button type="button" class="emergency-cta-btn emergency-btn-clinical" id="findNearbyClinicsBtn">
+                      <i data-lucide="crosshair"></i> Auto-Detect Closest Emergency Hospitals
+                    </button>
+                    <a href="https://www.google.com/maps/search/psychiatric+hospital+emergency+near+me" target="_blank" rel="noopener noreferrer" class="emergency-cta-btn emergency-btn-secondary">
+                      <i data-lucide="navigation"></i> Open Emergency Map
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clinical Facilities List -->
+            <div class="clinical-centers-grid" id="clinicalCentersList">
+              <!-- Center 1 -->
+              <div class="clinical-center-card">
+                <div class="clinical-card-header">
+                  <div>
+                    <span class="clinical-type-pill">National Apex Institute · 24/7 Emergency</span>
+                    <h4 class="clinical-name">National Institute of Mental Health & Neuro Sciences (NIMHANS)</h4>
+                    <p class="clinical-address"><i data-lucide="map-pin"></i> Hosur Road, Lakkasandra, Bengaluru, Karnataka 560029</p>
+                  </div>
+                  <div class="clinical-distance-badge" id="dist-nimhans">
+                    <i data-lucide="milestone"></i> <span>2.1 km away</span>
+                  </div>
+                </div>
+                <div class="clinical-specs">
+                  <span class="spec-tag"><i data-lucide="bed"></i> 24/7 Crisis Inpatient Beds</span>
+                  <span class="spec-tag"><i data-lucide="activity"></i> Psychiatric Casualty</span>
+                  <span class="spec-tag"><i data-lucide="stethoscope"></i> Resident Psychiatrists</span>
+                  <span class="spec-tag"><i data-lucide="shield"></i> Govt. Subsidized</span>
+                </div>
+                <div class="clinical-card-actions">
+                  <a href="tel:+918026995000" class="btn-clinical-call">
+                    <i data-lucide="phone"></i> Call Casualty: +91 80 2699 5000
+                  </a>
+                  <a href="https://maps.google.com/?q=NIMHANS+Hospital+Emergency" target="_blank" class="btn-clinical-nav">
+                    <i data-lucide="map"></i> Directions
+                  </a>
+                </div>
+              </div>
+
+              <!-- Center 2 -->
+              <div class="clinical-center-card">
+                <div class="clinical-card-header">
+                  <div>
+                    <span class="clinical-type-pill">Comprehensive Care Center · Emergency Dept</span>
+                    <h4 class="clinical-name">AIIMS Department of Psychiatry & Emergency Behavioral Ward</h4>
+                    <p class="clinical-address"><i data-lucide="map-pin"></i> Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029</p>
+                  </div>
+                  <div class="clinical-distance-badge" id="dist-aiims">
+                    <i data-lucide="milestone"></i> <span>3.8 km away</span>
+                  </div>
+                </div>
+                <div class="clinical-specs">
+                  <span class="spec-tag"><i data-lucide="bed"></i> Intensive Psychiatric Care (IPC)</span>
+                  <span class="spec-tag"><i data-lucide="activity"></i> Neuro-toxicology & Crisis</span>
+                  <span class="spec-tag"><i data-lucide="clock"></i> 24-Hour Emergency Triage</span>
+                </div>
+                <div class="clinical-card-actions">
+                  <a href="tel:+911126588500" class="btn-clinical-call">
+                    <i data-lucide="phone"></i> Call Emergency: +91 11 2658 8500
+                  </a>
+                  <a href="https://maps.google.com/?q=AIIMS+Psychiatry+Emergency" target="_blank" class="btn-clinical-nav">
+                    <i data-lucide="map"></i> Directions
+                  </a>
+                </div>
+              </div>
+
+              <!-- Center 3 -->
+              <div class="clinical-center-card">
+                <div class="clinical-card-header">
+                  <div>
+                    <span class="clinical-type-pill">Multi-Specialty Private Care · Rapid Triage</span>
+                    <h4 class="clinical-name">Fortis Mental Health & Emergency Clinical Sciences</h4>
+                    <p class="clinical-address"><i data-lucide="map-pin"></i> Sector 44, Opposite Huda City Centre, Gurugram / Pan-Metro</p>
+                  </div>
+                  <div class="clinical-distance-badge" id="dist-fortis">
+                    <i data-lucide="milestone"></i> <span>5.4 km away</span>
+                  </div>
+                </div>
+                <div class="clinical-specs">
+                  <span class="spec-tag"><i data-lucide="bed"></i> Private Suites & Crisis Ward</span>
+                  <span class="spec-tag"><i data-lucide="heart-pulse"></i> 24/7 Dedicated Ambulance</span>
+                  <span class="spec-tag"><i data-lucide="award"></i> Certified Clinical Psychologists</span>
+                </div>
+                <div class="clinical-card-actions">
+                  <a href="tel:1066" class="btn-clinical-call">
+                    <i data-lucide="phone"></i> Call Emergency: 1066
+                  </a>
+                  <a href="https://maps.google.com/?q=Fortis+Mental+Health+Emergency" target="_blank" class="btn-clinical-nav">
+                    <i data-lucide="map"></i> Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- SECTION 3: DOCTOR/PSYCHIATRIST SERVICE -->
+          <!-- ============================================== -->
+          <div id="section-doctor-service" class="emergency-section-card">
+            <div class="emergency-section-header">
+              <div class="emergency-badge emergency-badge-teal">
+                <i data-lucide="stethoscope"></i> Licensed Medical Professionals
+              </div>
+              <h2 class="emergency-section-title">Doctor/Psychriatist servicve</h2>
+              <p class="emergency-section-subtitle">Board-Certified Neuro-Psychiatrists & Senior Clinical Psychologists Available for Immediate Triage & Priority Booking.</p>
+            </div>
+
+            <!-- Image Hero Showcase -->
+            <div class="emergency-media-card">
+              <div class="emergency-media-img-wrap">
+                <img src="images/istockphoto-868644242-2048x2048.jpg" alt="Doctor and Psychiatrist Consultation" class="emergency-media-img" />
+                <div class="emergency-media-overlay doctor-overlay">
+                  <div class="emergency-overlay-tag tag-teal">
+                    <i data-lucide="check-circle-2"></i> VERIFIED PRACTITIONERS ON CALL
+                  </div>
+                  <h3 class="emergency-overlay-title">Immediate Doctor & Psychiatric Consultation</h3>
+                  <p class="emergency-overlay-desc">Connect directly with licensed clinical psychologists and medical psychiatrists for emergency psychiatric evaluations, prescription review, and trauma counseling.</p>
+                  <div class="emergency-action-cta-group">
+                    <button type="button" class="emergency-cta-btn emergency-btn-doctor" onclick="openBookingModal('prov-2')">
+                      <i data-lucide="video"></i> Connect with On-Call Psychiatrist
+                    </button>
+                    <button type="button" class="emergency-cta-btn emergency-btn-secondary" onclick="switchTab('providers')">
+                      <i data-lucide="users"></i> View Full Doctor Directory (5 Available)
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doctor Cards Grid -->
+            <div class="emergency-doctors-grid">
+              <!-- Doctor 1 -->
+              <div class="emergency-doc-card">
+                <div class="doc-card-top">
+                  <div class="doc-avatar-wrap">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" alt="Dr. Rajesh K. Varma" class="doc-avatar-img">
+                    <span class="doc-live-badge"><i data-lucide="video"></i> Online</span>
+                  </div>
+                  <div class="doc-meta-info">
+                    <div class="doc-rating"><i data-lucide="star"></i> 4.92 <span>(210 reviews)</span></div>
+                    <h4 class="doc-name">Dr. Rajesh K. Varma</h4>
+                    <p class="doc-role">Consultant Neuro-Psychiatrist</p>
+                    <p class="doc-edu">MBBS, MD (Psychiatry - AIIMS), Dip. Psych.</p>
+                  </div>
+                </div>
+                <div class="doc-tags">
+                  <span class="doc-tag">Acute Mood & Panic</span>
+                  <span class="doc-tag">Psychiatric Evaluation</span>
+                  <span class="doc-tag">Sleep & Crisis</span>
+                </div>
+                <div class="doc-actions">
+                  <button type="button" class="btn-doc-book" onclick="openBookingModal('prov-2')">
+                    <i data-lucide="calendar"></i> Priority Consultation (₹2,200)
+                  </button>
+                  <a href="tel:+919830012345" class="btn-doc-call" title="Call Clinic Desk">
+                    <i data-lucide="phone"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Doctor 2 -->
+              <div class="emergency-doc-card">
+                <div class="doc-card-top">
+                  <div class="doc-avatar-wrap">
+                    <img src="https://images.unsplash.com/photo-1594824813593-138382d56a34?w=400&auto=format&fit=crop&q=80" alt="Dr. Ananya Sharma" class="doc-avatar-img">
+                    <span class="doc-live-badge"><i data-lucide="video"></i> Online</span>
+                  </div>
+                  <div class="doc-meta-info">
+                    <div class="doc-rating"><i data-lucide="star"></i> 4.95 <span>(142 reviews)</span></div>
+                    <h4 class="doc-name">Dr. Ananya Sharma</h4>
+                    <p class="doc-role">Senior Clinical Psychologist</p>
+                    <p class="doc-edu">Ph.D. in Clinical Psychology (NIMHANS), RCI Reg.</p>
+                  </div>
+                </div>
+                <div class="doc-tags">
+                  <span class="doc-tag">CBT Crisis De-escalation</span>
+                  <span class="doc-tag">Severe Anxiety & Panic</span>
+                  <span class="doc-tag">Trauma Grounding</span>
+                </div>
+                <div class="doc-actions">
+                  <button type="button" class="btn-doc-book" onclick="openBookingModal('prov-1')">
+                    <i data-lucide="calendar"></i> Priority Consultation (₹1,800)
+                  </button>
+                  <a href="tel:+919810012345" class="btn-doc-call" title="Call Clinic Desk">
+                    <i data-lucide="phone"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Doctor 3 -->
+              <div class="emergency-doc-card">
+                <div class="doc-card-top">
+                  <div class="doc-avatar-wrap">
+                    <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" alt="Dr. Karthik Sundaram" class="doc-avatar-img">
+                    <span class="doc-live-badge"><i data-lucide="video"></i> Available</span>
+                  </div>
+                  <div class="doc-meta-info">
+                    <div class="doc-rating"><i data-lucide="star"></i> 4.96 <span>(165 reviews)</span></div>
+                    <h4 class="doc-name">Dr. Karthik Sundaram</h4>
+                    <p class="doc-role">Psychiatrist & Behavioral Specialist</p>
+                    <p class="doc-edu">MBBS, DNB (Psychiatry), Member of IPS</p>
+                  </div>
+                </div>
+                <div class="doc-tags">
+                  <span class="doc-tag">Grief & Acute Loss</span>
+                  <span class="doc-tag">Depression Crisis</span>
+                  <span class="doc-tag">Tele-Health Video</span>
+                </div>
+                <div class="doc-actions">
+                  <button type="button" class="btn-doc-book" onclick="openBookingModal('prov-4')">
+                    <i data-lucide="calendar"></i> Priority Consultation (₹2,000)
+                  </button>
+                  <a href="tel:+919840012345" class="btn-doc-call" title="Call Clinic Desk">
+                    <i data-lucide="phone"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- PARASYMPATHETIC GROUNDING PACER -->
+          <!-- ============================================== -->
+          <div id="section-breathing-grounding" class="breathing-circle-card emergency-grounding-box">
+            <h3 class="breathing-card-title"><i data-lucide="wind"></i> 4-7-8 Parasympathetic Breathing Pacer</h3>
+            <p class="breathing-card-desc">Follow the circle to slow heart rate variability, reduce adrenaline surges, and ground the nervous system.</p>
+            
+            <div class="breathing-circle-container">
+              <div class="breathing-circle" id="breathingCircle">
+                <span id="breathingActionText">Ready</span>
+                <span id="breathingCountdown">--</span>
+              </div>
+            </div>
+
+            <div class="breathing-controls">
+              <button id="startBreathingBtn" class="btn btn-primary">Start 4-7-8 Breathing</button>
+              <button id="stopBreathingBtn" class="btn btn-secondary" style="display: none;">Stop</button>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: TWO-WAY CONTINUOUS VOICE COMPANION MODE -->
+  <!-- ============================================== -->
+  <div class="modal-backdrop voice-companion-backdrop" id="voiceCompanionModal" style="display: none;">
+    <div class="modal-dialog voice-companion-dialog animate-scale-up">
+      
+      <!-- Top Bar with status & close -->
+      <div class="vc-modal-header">
+        <div class="vc-header-pill">
+          <div class="vc-pulse-dot-modal" id="vcModalPulseDot"></div>
+          <span class="vc-modal-title">Voicebox Studio Companion</span>
+          <span class="vc-live-badge">Zero-Glitch · Live</span>
+        </div>
+        <div class="vc-asr-engine-badge" id="vcAsrEngineBadge" title="Voicebox Studio Engine: Neural Edge TTS + Whisper Large v3 Turbo (Jamie Pine Architecture)">
+          <i data-lucide="sparkles"></i>
+          <span id="vcAsrEngineName">Voicebox Studio Neural</span>
+          <span class="vc-asr-subtext" id="vcAsrSubtext">Sample-Accurate Audio</span>
+        </div>
+        <div class="vc-persona-selector-wrap">
+          <select id="vcPersonaSelect" class="vc-persona-select" title="Voicebox Studio Persona">
+            <option value="en_serene_aria" selected>🎙️ Aria · Serene & Attuned (EN)</option>
+            <option value="en_warm_jenny">🎙️ Jenny · Compassionate Companion (EN)</option>
+            <option value="en_grounded_guy">🎙️ Guy · Grounded Anchor (EN)</option>
+            <option value="en_mindful_emma">🎙️ Emma · Mindful Meditator (UK)</option>
+            <option value="bn_empathetic_tanishaa">🎙️ তানিষা · বাংলা সহানুভূতি (BN)</option>
+            <option value="bn_calm_pradeep">🎙️ প্রদীপ · বাংলা পরামর্শক (BN)</option>
+            <option value="hi_compassionate_swara">🎙️ स्वरा · आत्मिक शांति (HI)</option>
+            <option value="hi_reassuring_madhur">🎙️ मधुर · शांत संबल (HI)</option>
+            <option value="es_calida_elena">🎙️ Elena · Presencia Cálida (ES)</option>
+            <option value="pt_serena_francisca">🎙️ Francisca · Serenidade (PT)</option>
+          </select>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeVoiceCompanionModalBtn" title="Exit Voice Companion (Esc)">
+          &times;
+        </button>
+      </div>
+
+      <!-- Center Stage: Glowing Holographic AI Orb with dynamic audio ripples -->
+      <div class="vc-modal-stage">
+        <div class="vc-orb-stage-wrapper">
+          <div class="vc-orb-ambient-glow" id="vcOrbGlow"></div>
+          <div class="vc-orb-ripple-ring ring-1"></div>
+          <div class="vc-orb-ripple-ring ring-2"></div>
+          <div class="vc-orb-ripple-ring ring-3"></div>
+          
+          <div class="vc-orb-sphere" id="vcOrbSphere">
+            <video 
+              src="assets/chatbot.mp4" 
+              autoplay 
+              loop 
+              muted 
+              playsinline 
+              class="vc-orb-video"
+              poster="assets/mindbridge_ai_orb.jpg"
+            ></video>
+            <div class="vc-orb-liquid-sheen"></div>
+          </div>
+        </div>
+
+        <!-- Interruption Alert Banner (Barge-In) -->
+        <div class="vc-interruption-banner" id="vcInterruptionBanner" style="display: none;">
+          <i data-lucide="zap"></i>
+          <span id="vcInterruptionText">Interrupted: Attuned to what you are saying right now...</span>
+        </div>
+
+        <!-- Dynamic Status Subtitle -->
+        <div class="vc-stage-status">
+          <h2 class="vc-stage-status-title" id="vcModalStateTitle">Listening to your voice...</h2>
+          <p class="vc-stage-status-desc" id="vcModalStateDesc">Speak naturally. MindBridge interprets your words and vocal nuances.</p>
+        </div>
+
+        <!-- Interactive Voice Companion Language Switcher -->
+        <div class="vc-lang-selector-strip" id="vcLangSelectorStrip">
+          <span class="vc-lang-strip-label"><i data-lucide="globe"></i> Spoken Language:</span>
+          <div class="vc-lang-pills" id="vcLangPills">
+            <button type="button" class="vc-lang-pill active" data-vc-lang="auto" title="Automatic Dynamic Language Detection">🌐 Auto</button>
+            <button type="button" class="vc-lang-pill" data-vc-lang="bn-IN" title="বাংলা (Bengali)">🇧🇩 বাংলা</button>
+            <button type="button" class="vc-lang-pill" data-vc-lang="hi-IN" title="हिन्दी (Hindi)">🇮🇳 हिन्दी</button>
+            <button type="button" class="vc-lang-pill" data-vc-lang="en-US" title="English">🇺🇸 English</button>
+          </div>
+        </div>
+
+        <!-- Animated Soundwave Equalizer (12 bars) -->
+        <div class="vc-modal-soundwave" id="vcModalSoundwave">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Dynamic Real-Time Voice Interpretation & Nuance Analysis Card -->
+        <div class="vc-nuance-analysis-card" id="vcNuanceCard">
+          
+          <!-- Section 1: User's Interpreted Speech -->
+          <div class="vc-analysis-section user-section" id="vcUserSection">
+            <div class="vc-section-header">
+              <span class="vc-section-tag"><i data-lucide="mic"></i> Interpreted Voice Input</span>
+              <span class="vc-section-meta" id="vcSpeechTime">
+                <span class="vc-live-mic-status" id="vcLiveMicStatus">
+                  <span class="vc-mic-dot active"></span> Live Attuned
+                </span>
+              </span>
+            </div>
+            <div class="vc-transcript-input-wrap">
+              <p class="vc-user-transcript-display placeholder" id="vcUserTranscriptDisplay" contenteditable="true" spellcheck="false" title="Your voice appears here. You can also click or edit anytime.">Listening for your voice... Speak naturally, MindBridge is attuned to you.</p>
+              <div class="vc-transcript-actions" id="vcTranscriptActions">
+                <span class="vc-vad-meter" id="vcVadMeter" title="Microphone Level">
+                  <span class="vc-vad-bar"></span>
+                  <span class="vc-vad-bar"></span>
+                  <span class="vc-vad-bar"></span>
+                  <span class="vc-vad-bar"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Machine Micro-Analysis & Emotional Nuance Breakdown -->
+          <div class="vc-analysis-section nlp-breakdown-section" id="vcAnalysisBreakdown" style="display: none;">
+            <div class="vc-section-header">
+              <span class="vc-section-tag nuance-tag"><i data-lucide="brain"></i> Vocal & Emotional Micro-Analysis</span>
+              <span class="vc-guardrail-tag"><i data-lucide="shield-check"></i> Non-Diagnostic Shield</span>
+            </div>
+            <div class="vc-nuance-chips-row" id="vcNuanceChipsRow">
+              <span class="nuance-chip tone-chip" id="vcChipTone">🎙️ Tone: Gentle & Attuned</span>
+              <span class="nuance-chip mood-chip" id="vcChipMood">🌧️ Emotion: Receptive</span>
+              <span class="nuance-chip somatic-chip" id="vcChipSomatic">🌱 Somatic: Calibrated Grounding</span>
+              <span class="nuance-chip resonance-chip" id="vcChipResonance">🤍 Resonance: Empathetic Mirror</span>
+              <span class="nuance-chip resource-chip" id="vcChipResource">📚 Resource: WHO Evidence Grounded</span>
+            </div>
+          </div>
+
+          <!-- Section 3: Machine Empathetic Output & Perspective Audio Response -->
+          <div class="vc-analysis-section bot-section" id="vcBotSection" style="display: none;">
+            <div class="vc-section-header">
+              <span class="vc-section-tag bot-tag"><i data-lucide="sparkles"></i> MindBridge Spoken Reflection</span>
+              <span class="vc-audio-speaking-indicator" id="vcSpeakingIndicator" style="display: none;">
+                <i data-lucide="volume-2"></i> Speaking...
+              </span>
+            </div>
+            <p class="vc-bot-response-display" id="vcBotResponseDisplay">I am right here with you.</p>
+
+            <!-- Output Response Voice Perspectives (WhatsApp Voice Modules) -->
+            <div class="vc-perspectives-container" id="vcPerspectivesContainer">
+              <div class="vc-perspectives-header">
+                <span class="vc-perspective-title"><i data-lucide="headphones"></i> Response Voice Perspectives</span>
+                <span class="vc-perspective-hint">Run response in different voice perspectives</span>
+              </div>
+              <div class="vc-perspectives-grid">
+                <button type="button" class="vc-perspective-card" id="vcPerspBnBtn" onclick="runResponsePerspective('bn')">
+                  <div class="vc-persp-icon"><i data-lucide="heart-handshake"></i></div>
+                  <div class="vc-persp-details">
+                    <span class="vc-persp-name">Bengali Reflective Perspective</span>
+                    <span class="vc-persp-sub">সাফল্য ও আত্মবিশ্বাস · WhatsApp Audio Module</span>
+                  </div>
+                  <div class="vc-persp-action">
+                    <span class="vc-persp-play-btn" id="vcPerspBnPlay"><i data-lucide="play"></i></span>
+                  </div>
+                </button>
+
+                <button type="button" class="vc-perspective-card" id="vcPerspEnBtn" onclick="runResponsePerspective('en')">
+                  <div class="vc-persp-icon"><i data-lucide="compass"></i></div>
+                  <div class="vc-persp-details">
+                    <span class="vc-persp-name">English Grounded Courage</span>
+                    <span class="vc-persp-sub">Overcoming Fear · WhatsApp Audio Module</span>
+                  </div>
+                  <div class="vc-persp-action">
+                    <span class="vc-persp-play-btn" id="vcPerspEnPlay"><i data-lucide="play"></i></span>
+                  </div>
+                </button>
+              </div>
+
+              <!-- Active Perspective Player Strip -->
+              <div class="vc-persp-player-strip" id="vcPerspPlayerStrip" style="display: none;">
+                <div class="vc-persp-player-info">
+                  <span class="vc-persp-pulse"></span>
+                  <span class="vc-persp-track-label" id="vcPerspTrackLabel">Playing Bengali Reflective Perspective...</span>
+                  <span class="vc-persp-track-time" id="vcPerspTrackTime">0:00 / 1:11</span>
+                </div>
+                <div class="vc-persp-player-actions">
+                  <button type="button" class="vc-persp-stop-btn" onclick="stopCurrentPerspectiveAudio()">Stop Audio</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Voice Thoughts to Test / Speak -->
+        <div class="vc-quick-voice-prompts" id="vcQuickVoicePrompts">
+          <span class="vc-quick-label"><i data-lucide="sparkles"></i> Speak or tap to test:</span>
+          <button type="button" class="vc-prompt-chip" data-prompt="My boss yelled at me and I cannot stop crying.">"My boss yelled at me and I cannot stop crying"</button>
+          <button type="button" class="vc-prompt-chip" data-prompt="I feel completely exhausted and lonely lately.">"I feel exhausted and lonely lately"</button>
+          <button type="button" class="vc-prompt-chip" data-prompt="My chest feels tight and my thoughts won't stop racing.">"My chest feels tight & thoughts racing"</button>
+        </div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="vc-modal-footer">
+        <div class="vc-footer-left">
+          <div class="vc-lang-badge" id="vcModalLangBadge">
+            <i data-lucide="languages"></i>
+            <span id="vcModalLangText">English (US)</span>
+          </div>
+          <span class="vc-footer-hint">💡 Voice mode remains continuously active across turns</span>
+        </div>
+
+        <div class="vc-footer-right">
+          <button type="button" class="vc-btn-tap-speak" id="vcModalTapSpeakBtn" title="Tap if you wish to speak or re-listen immediately">
+            <i data-lucide="mic"></i>
+            <span>Speak Now</span>
+          </button>
+          <button type="button" class="vc-btn-exit" id="vcModalExitBtn" title="Exit Voice Companion Mode">
+            <i data-lucide="phone-off"></i>
+            <span>Exit Voice Companion</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: PAST LIFE & LIFE REFLECTION STUDIO -->
+  <!-- ============================================== -->
+  <div class="modal-backdrop past-life-backdrop" id="pastLifeModal" style="display: none;">
+    <div class="modal-dialog past-life-dialog animate-scale-up">
+      
+      <!-- Top Bar with status, mode switch, language switch & close -->
+      <div class="plm-header">
+        <div class="plm-header-left">
+          <div class="plm-pulse-badge">
+            <span class="plm-pulse-dot"></span>
+            <span class="plm-header-title">🌿 Past Life & Memories Reflection Studio</span>
+          </div>
+          <div class="plm-mode-badge" id="plmModeBadge">🌱 6 Core Reflection Questions</div>
+        </div>
+
+        <div class="plm-header-right">
+          <!-- Language selector inside modal -->
+          <div class="plm-lang-pills" id="plmLangPills">
+            <button type="button" class="plm-lang-btn active" data-lang="en">English</button>
+            <button type="button" class="plm-lang-btn" data-lang="bn">বাংলা</button>
+            <button type="button" class="plm-lang-btn" data-lang="hi">हिंदी</button>
+          </div>
+          <button type="button" class="modal-close-btn" id="closePastLifeModalBtn" title="Exit Reflection Studio (Esc)">
+            &times;
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Progress Bar -->
+      <div class="plm-progress-container">
+        <div class="plm-progress-meta">
+          <span class="plm-progress-label" id="plmProgressLabel">Question 1 of 6</span>
+          <span class="plm-category-label" id="plmCategoryLabel">Emotional Safety & Comfort</span>
+        </div>
+        <div class="plm-progress-track">
+          <div class="plm-progress-fill" id="plmProgressFill" style="width: 16%;"></div>
+        </div>
+      </div>
+
+      <!-- Modal Stage Body: Question Stage -->
+      <div class="plm-stage-body" id="plmQuestionStage">
+        
+        <!-- AI Speaker Status & Orb Banner -->
+        <div class="plm-ai-speaking-banner" id="plmAiSpeakingBanner">
+          <div class="plm-ai-speaking-left">
+            <div class="plm-speaking-wave" id="plmSpeakingWave">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <span class="plm-ai-speaking-text" id="plmAiSpeakingText">MindBridge is reading the question... (Mic paused)</span>
+          </div>
+          <button type="button" class="plm-btn-tts-replay" id="plmTtsReplayBtn" title="Replay question audio">
+            <i data-lucide="volume-2"></i>
+            <span>Replay Voice</span>
+          </button>
+        </div>
+
+        <!-- Question Card -->
+        <div class="plm-question-card">
+          <div class="plm-q-badge" id="plmQBadge">Question 1</div>
+          <h2 class="plm-question-text" id="plmQuestionText">To begin gently, is there anything from your past that you prefer not to talk about today? Please know you are always in control here.</h2>
+          <p class="plm-support-quote" id="plmSupportQuote">Honoring your personal boundaries is an act of self-care. Feel free to say 'Skip' or share only what feels right.</p>
+        </div>
+
+        <!-- Answer Section: Speech & Text Input -->
+        <div class="plm-answer-container">
+          <div class="plm-answer-header">
+            <div class="plm-answer-mode-indicator">
+              <span class="plm-mic-state-dot" id="plmMicStateDot"></span>
+              <span class="plm-mic-state-text" id="plmMicStateText">Listening for your answer... Speak or type below</span>
+            </div>
+            <div class="plm-mic-controls">
+              <button type="button" class="plm-mic-toggle-btn active" id="plmMicToggleBtn" title="Toggle Microphone On/Off">
+                <i data-lucide="mic" id="plmMicToggleIcon"></i>
+                <span id="plmMicToggleLabel">Mic Listening</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Answer Text Area with live transcription -->
+          <div class="plm-textarea-wrap">
+            <textarea 
+              id="plmAnswerInput" 
+              class="plm-answer-textarea" 
+              placeholder="Your spoken words or typed thoughts will appear here..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Suggested Quick Reply Chips -->
+          <div class="plm-chips-container" id="plmChipsContainer">
+            <!-- Dynamic Chips inserted here -->
+          </div>
+
+          <!-- Action Footer Buttons -->
+          <div class="plm-action-footer">
+            <div class="plm-footer-left">
+              <button type="button" class="plm-footer-btn plm-skip-btn" id="plmSkipBtn">
+                <i data-lucide="skip-forward"></i>
+                <span>Skip Question</span>
+              </button>
+              <button type="button" class="plm-footer-btn plm-mode-switch-btn" id="plmModeSwitchBtn">
+                <i data-lucide="layers"></i>
+                <span id="plmModeSwitchLabel">Switch to 13 Questions</span>
+              </button>
+            </div>
+
+            <div class="plm-footer-right">
+              <button type="button" class="plm-submit-next-btn" id="plmSubmitNextBtn">
+                <span id="plmSubmitBtnLabel">Next Question</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Results Stage: Mental State & Life Reflection Synthesis -->
+      <div class="plm-results-stage" id="plmResultsStage" style="display: none;">
+        <div class="plm-results-header">
+          <div class="plm-results-badge">🪷 Reflection Journey Completed</div>
+          <h2 class="plm-results-title">Life Reflection & Mental State Synthesis</h2>
+          <p class="plm-results-subtitle">Grounded in your reflections, emotional sentiments, and formative narratives</p>
+        </div>
+
+        <div class="plm-results-content" id="plmResultsContent">
+          <!-- Dynamic Mental State Report inserted here -->
+        </div>
+
+        <div class="plm-results-footer">
+          <button type="button" class="plm-results-btn plm-btn-primary" id="plmDoneReturnBtn">
+            <i data-lucide="message-square"></i>
+            <span>Return to Chat & Save Reflection</span>
+          </button>
+          <button type="button" class="plm-results-btn plm-btn-secondary" id="plmBreathBtn" onclick="openBreathingModal()">
+            <i data-lucide="wind"></i>
+            <span>Practice 4-7-8 Calm Breath</span>
+          </button>
+          <button type="button" class="plm-results-btn plm-btn-outline" id="plmRestartBtn">
+            <i data-lucide="rotate-ccw"></i>
+            <span>Reflect Again</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: BOOKING APPOINTMENT -->
+  <!-- ============================================== -->
+  <div class="modal-backdrop" id="bookingModal" style="display: none;">
+    <div class="modal-dialog booking-dialog animate-scale-up">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Schedule Clinical Consultation</h3>
+          <p class="modal-subtitle" id="bookModalSubtitle">Book appointment with your selected specialist</p>
+        </div>
+        <button id="closeBookingModalBtn" class="modal-close-btn">&times;</button>
+      </div>
+
+      <form id="bookingForm" class="booking-form">
+        <input type="hidden" id="bookProviderId">
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="bookPatientName">Your Full Name *</label>
+            <input type="text" id="bookPatientName" placeholder="e.g., Alex Morgan" required>
+          </div>
+          <div class="form-group">
+            <label for="bookPatientEmail">Email Address (for calendar invite) *</label>
+            <input type="email" id="bookPatientEmail" placeholder="alex@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="bookPatientPhone">Phone Number (for SMS & Video Link) *</label>
+            <input type="tel" id="bookPatientPhone" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="form-group">
+            <label for="bookMode">Consultation Mode *</label>
+            <select id="bookMode" required>
+              <option value="online">Secure Tele-health Video Call</option>
+              <option value="in-person">In-Person Clinic Consultation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="bookDate">Select Date *</label>
+            <input type="date" id="bookDate" required>
+          </div>
+          <div class="form-group">
+            <label for="bookSlot">Available Time Slot *</label>
+            <select id="bookSlot" required>
+              <option value="">Choose time...</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:30 AM">11:30 AM</option>
+              <option value="03:00 PM">03:00 PM</option>
+              <option value="05:00 PM">05:00 PM</option>
+              <option value="06:30 PM">06:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bookNotes">Primary Concerns / Notes for the Specialist (Optional & Encrypted)</label>
+          <textarea id="bookNotes" rows="2" placeholder="e.g., Struggling with career fatigue, insomnia, and persistent anxiety..."></textarea>
+        </div>
+
+        <div class="booking-notice">
+          <i data-lucide="lock" class="text-teal"></i>
+          <span>Your appointment details are encrypted. You will receive an instant calendar invite and video link.</span>
+        </div>
+
+        <div class="booking-modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelBookingBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="confirmBookingBtn">
+            <i data-lucide="check-circle"></i> Confirm & Book Appointment
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: BOOKING SUCCESS CONFIRMATION VOUCHER -->
+  <!-- ============================================== -->
+  <div class="modal-backdrop" id="successModal" style="display: none;">
+    <div class="modal-dialog success-dialog animate-scale-up">
+      <button class="modal-close-btn" id="closeSuccessModalBtn">&times;</button>
+      
+      <div class="success-icon-wrap">
+        <i data-lucide="check-circle-2"></i>
+      </div>
+      <h2>Appointment Confirmed!</h2>
+      <p class="success-subtitle">A confirmation email & SMS has been sent with secure video room credentials.</p>
+
+      <div class="voucher-card" id="voucherCard">
+        <div class="voucher-row">
+          <span class="voucher-label">Confirmation Code</span>
+          <span class="voucher-val" id="vCode">MB-A9F4B2</span>
+        </div>
+        <div class="voucher-row">
+          <span class="voucher-label">Doctor / Specialist</span>
+          <span class="voucher-val" id="vDoc">Dr. Ananya Sharma</span>
+        </div>
+        <div class="voucher-row">
+          <span class="voucher-label">Date & Time</span>
+          <span class="voucher-val" id="vDateTime">Tomorrow at 10:00 AM</span>
+        </div>
+        <div class="voucher-row">
+          <span class="voucher-label">Mode</span>
+          <span class="voucher-val" id="vMode">Secure Tele-health Video Call</span>
+        </div>
+        <div class="voucher-row">
+          <span class="voucher-label">Session Fee</span>
+          <span class="voucher-val" id="vFee">₹1,500 (Verified consultation)</span>
+        </div>
+      </div>
+      
+      <div class="success-modal-actions">
+        <button class="btn btn-primary full-width" id="doneBookingBtn">Done & Return to MindBridge</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- COMPREHENSIVE SETTINGS & MUSIC MODAL -->
+  <!-- ============================================== -->
+  <div class="modal-backdrop" id="settingsModal" style="display: none;">
+    <div class="modal-dialog settings-modal-dialog animate-scale-up">
+      
+      <!-- Modal Header -->
+      <div class="settings-modal-header">
+        <div class="settings-header-title-group">
+          <div class="settings-header-icon-box">
+            <i data-lucide="sliders-horizontal"></i>
+          </div>
+          <div>
+            <h3 class="modal-title">Settings & Soundscape Experience</h3>
+            <p class="modal-subtitle">60–80 BPM calming audio, neuro-acoustic frequencies & preferences</p>
+          </div>
+        </div>
+        <button id="closeSettingsModalBtn" class="modal-close-btn" aria-label="Close Settings">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="settings-modal-body">
+        
+        <!-- SECTION 1: CALMING BACKGROUND MUSIC & SOUNDSCAPES -->
+        <div class="settings-section">
+
+          <!-- Section Label Row -->
+          <div class="settings-section-header">
+            <div class="section-title-wrap">
+              <div class="section-icon-badge"><i data-lucide="music-2"></i></div>
+              <span class="settings-section-title">Therapeutic Background Soundscapes</span>
+            </div>
+            <span class="settings-badge-pill" id="settingsActiveTrackBadge">Music: Off · Click track to play</span>
+          </div>
+
+          <!-- Independent Volume Remix Card (Safe Ambient Acoustic Ceiling) -->
+          <div class="snp-card volume-remix-card">
+            <div class="remix-card-top">
+              <div class="remix-title-group">
+                <div class="snp-wave-anim">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="snp-card-text">
+                  <span class="snp-card-label">Active Soundscape (60–80 BPM Consonant Harmony)</span>
+                  <span class="snp-card-name" id="settingsNowPlayingName">No Sound (Muted)</span>
+                </div>
+              </div>
+              <div class="remix-ceiling-badge">
+                <i data-lucide="shield-check"></i> Safe Ceiling Limit Active
+              </div>
+            </div>
+
+            <!-- Volume Slider Row -->
+            <div class="remix-slider-row">
+              <button id="settingsMuteBtn" class="snp-mute-btn" title="Toggle Mute">
+                <i data-lucide="volume-2" id="settingsMuteIcon"></i>
+                <span id="settingsMuteText">Mute</span>
+              </button>
+              
+              <div class="remix-slider-container">
+                <div class="remix-slider-labels">
+                  <span class="remix-label-left"><i data-lucide="sliders"></i> Independent Volume Remix Slider</span>
+                  <span class="remix-vol-display" id="settingsVolumeVal">35% (Gentle Default ~8% gain)</span>
+                </div>
+                <div class="remix-slider-track-wrap">
+                  <input type="range" id="settingsVolumeSlider" min="0" max="100" value="35" class="remix-vol-slider" title="Independent Volume Remix Slider (Strict Safe Ceiling)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Fast Acoustic Volume Presets -->
+            <div class="remix-presets-row">
+              <span class="presets-intro">Safe Ambient Presets:</span>
+              <button type="button" class="preset-vol-btn" data-vol="15">🌙 Whisper (15%)</button>
+              <button type="button" class="preset-vol-btn active" data-vol="35">🍃 Default (35%)</button>
+              <button type="button" class="preset-vol-btn" data-vol="65">🌊 Balanced (65%)</button>
+              <button type="button" class="preset-vol-btn" data-vol="100">🛡️ Max Cap (100%)</button>
+            </div>
+            
+            <div class="remix-safety-footnote">
+              <i data-lucide="shield-alert"></i> 
+              <span><strong>Mental Health Audio Protection:</strong> Maximum volume is strictly bounded to 0.22 physical gain (15–25% cap) with track loudness normalization, full pause during voice recording, and 12–18 dB auto-ducking during speech.</span>
+            </div>
+          </div>
+
+          <!-- Tracks Heading -->
+          <div class="settings-tracks-heading">
+            <i data-lucide="list-music"></i>
+            Choose Soundscape (60–80 BPM · Consonant Modal Harmony · Clean Loops)
+          </div>
+
+          <!-- Track Cards Grid -->
+          <div class="settings-track-grid" id="settingsTrackGrid">
+            
+            <button class="settings-track-card" data-sound="track1">
+              <div class="track-card-icon-box box-teal"><i data-lucide="sparkles"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">01</span>
+                  <span class="track-card-name">Peaceful Sanctuary</span>
+                  <span class="track-card-tag tag-bpm">68 BPM</span>
+                </div>
+                <p class="track-card-desc">Steady predictable rhythm, zero percussion · Warm consonant modal harmony.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card" data-sound="track2">
+              <div class="track-card-icon-box box-emerald"><i data-lucide="heart"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">02</span>
+                  <span class="track-card-name">Deep Emotional Calm</span>
+                  <span class="track-card-tag tag-bpm">64 BPM</span>
+                </div>
+                <p class="track-card-desc">Gentle predictable flow, no harsh drums · Neutral soothing consonant chords.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card" data-sound="track3">
+              <div class="track-card-icon-box box-cyan"><i data-lucide="wind"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">03</span>
+                  <span class="track-card-name">Tranquil Zen Meditation</span>
+                  <span class="track-card-tag tag-bpm">72 BPM</span>
+                </div>
+                <p class="track-card-desc">Low-complexity gentle melody, clean seamless loop · Consonant modal resonance.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card" data-sound="track4">
+              <div class="track-card-icon-box box-amethyst"><i data-lucide="activity"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">04</span>
+                  <span class="track-card-name">Soft Healing Harmony</span>
+                  <span class="track-card-tag tag-bpm">66 BPM</span>
+                </div>
+                <p class="track-card-desc">Fluid ambient cadence, zero sudden shifts · Consonant modal chord progression.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card" data-sound="track5">
+              <div class="track-card-icon-box box-amber"><i data-lucide="compass"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">05</span>
+                  <span class="track-card-name">Gentle Mind Equilibrium</span>
+                  <span class="track-card-tag tag-bpm">70 BPM</span>
+                </div>
+                <p class="track-card-desc">Steady resting pulse, zero prominent percussion · Warm consonant grounding.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card" data-sound="track6">
+              <div class="track-card-icon-box box-indigo"><i data-lucide="cloud-moon"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">06</span>
+                  <span class="track-card-name">Quiet Solace & Breath</span>
+                  <span class="track-card-tag tag-bpm">60 BPM</span>
+                </div>
+                <p class="track-card-desc">Ultra-steady slow heart cadence · Emotionally neutral gentle modal soundscape.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card" data-sound="track7">
+              <div class="track-card-icon-box box-rose"><i data-lucide="sun"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">07</span>
+                  <span class="track-card-name">Ethereal Serenity</span>
+                  <span class="track-card-tag tag-bpm">76 BPM</span>
+                </div>
+                <p class="track-card-desc">Repetitive soothing acoustic flow · Consonant bright modal harmony, clean loop.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card" data-sound="track8">
+              <div class="track-card-icon-box box-teal"><i data-lucide="waves"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">08</span>
+                  <span class="track-card-name">Restorative Stillness</span>
+                  <span class="track-card-tag tag-bpm">62 BPM</span>
+                </div>
+                <p class="track-card-desc">Low-complexity ambient body, zero percussion · Consonant stabilizing harmony.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+            <button class="settings-track-card card-muted active" data-sound="off">
+              <div class="track-card-icon-box box-muted"><i data-lucide="volume-x"></i></div>
+              <div class="track-card-content">
+                <div class="track-card-top">
+                  <span class="track-card-num">--</span>
+                  <span class="track-card-name">Mute · Quiet Space</span>
+                  <span class="track-card-tag tag-default">Default</span>
+                </div>
+                <p class="track-card-desc">Complete silence by default for focused therapeutic dialogue.</p>
+              </div>
+              <div class="track-card-indicator"><i data-lucide="check" class="check-icon"></i></div>
+            </button>
+
+          </div>
+
+          <!-- SUBSECTION: NEURO-ACOUSTIC MIND RELIEF & BRAINWAVE ENTRAINMENT -->
+          <div class="neuro-acoustic-panel">
+            <div class="neuro-panel-header">
+              <div class="neuro-header-left">
+                <i data-lucide="brain" class="neuro-brain-icon"></i>
+                <div>
+                  <span class="neuro-panel-title">Neuro-Acoustic Mind Healing & Brainwave Relief</span>
+                  <p class="neuro-panel-desc">Harmonic frequencies calibrated to transform depression, anxiety & tension into emotional equilibrium.</p>
+                </div>
+              </div>
+              <span class="neuro-status-badge" id="neuroStatusBadge"><i data-lucide="sparkles"></i> 432Hz Alpha Active</span>
+            </div>
+
+            <div class="neuro-modes-grid" id="neuroModesGrid">
+              <button class="neuro-mode-btn active" data-neuro="alpha">
+                <div class="neuro-btn-icon"><i data-lucide="wind"></i></div>
+                <div class="neuro-btn-content">
+                  <div class="neuro-btn-top">
+                    <span class="neuro-mode-name">432 Hz Alpha Wave</span>
+                    <span class="neuro-mode-badge badge-tension">Tension & Panic Relief</span>
+                  </div>
+                  <p class="neuro-btn-desc">10Hz alpha entrainment; dissolves racing thoughts, chest tightness, and acute anxiety.</p>
+                </div>
+              </button>
+
+              <button class="neuro-mode-btn" data-neuro="theta">
+                <div class="neuro-btn-icon"><i data-lucide="heart-handshake"></i></div>
+                <div class="neuro-btn-content">
+                  <div class="neuro-btn-top">
+                    <span class="neuro-mode-name">528 Hz Solfeggio Theta</span>
+                    <span class="neuro-mode-badge badge-sadness">Sadness & Grief Lift</span>
+                  </div>
+                  <p class="neuro-btn-desc">6Hz theta resonance; gently softens depressive heaviness, sorrow, and emotional fatigue.</p>
+                </div>
+              </button>
+
+              <button class="neuro-mode-btn" data-neuro="delta">
+                <div class="neuro-btn-icon"><i data-lucide="moon"></i></div>
+                <div class="neuro-btn-content">
+                  <div class="neuro-btn-top">
+                    <span class="neuro-mode-name">174 Hz Delta Stillness</span>
+                    <span class="neuro-mode-badge badge-somatic">Deep Somatic Rest</span>
+                  </div>
+                  <p class="neuro-btn-desc">3.5Hz delta wave; deeply calms the nervous system and relieves physical stress.</p>
+                </div>
+              </button>
+
+              <button class="neuro-mode-btn" data-neuro="pure">
+                <div class="neuro-btn-icon"><i data-lucide="music"></i></div>
+                <div class="neuro-btn-content">
+                  <div class="neuro-btn-top">
+                    <span class="neuro-mode-name">Pure Acoustic Melody</span>
+                    <span class="neuro-mode-badge badge-neutral">Standard</span>
+                  </div>
+                  <p class="neuro-btn-desc">Natural unaltered acoustic track playback without added frequency layers.</p>
+                </div>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SECTION 2: VOICE & ACCESSIBILITY -->
+        <div class="settings-section settings-section-compact">
+          <div class="settings-section-header">
+            <div class="section-title-wrap">
+              <div class="section-icon-badge section-icon-badge--mic"><i data-lucide="mic"></i></div>
+              <span class="settings-section-title">Voice & Dialogue</span>
+            </div>
+          </div>
+          <div class="settings-pref-row">
+            <div class="pref-text">
+              <span class="pref-label">Speech Recognition Language</span>
+              <span class="pref-desc">Primary dialect for microphone voice input.</span>
+            </div>
+            <select id="settingsLanguageSelect" class="settings-select">
+              <option value="en-US">English (US/UK/IN)</option>
+              <option value="hi-IN">Hindi (हिन्दी)</option>
+              <option value="bn-IN">Bengali (বাংলা)</option>
+            </select>
+          </div>
+          <div class="settings-pref-row" style="margin-top: 0.75rem;">
+            <div class="pref-text">
+              <span class="pref-label">AI Companion Voice Output</span>
+              <span class="pref-desc">Listen to the compassionate, calming vocal cadence.</span>
+            </div>
+            <button id="previewVoiceBtn" class="btn btn-secondary" style="padding: 0.45rem 0.9rem; font-size: 0.82rem;">
+              <i data-lucide="volume-2"></i> Preview Voice
+            </button>
+          </div>
+          <div class="settings-pref-row" style="margin-top: 0.75rem;">
+            <div class="pref-text">
+              <span class="pref-label">Gemini Neural Voice Model</span>
+              <span class="pref-desc">Humanized Google Gemini TTS Voice.</span>
+            </div>
+            <select id="geminiVoiceSelect" class="settings-select">
+              <option value="Kore" selected>Kore (Warm, Empathetic & Human)</option>
+              <option value="Aoede">Aoede (Gentle & Reflective)</option>
+              <option value="Puck">Puck (Friendly & Encouraging)</option>
+              <option value="Fenrir">Fenrir (Grounded & Calming)</option>
+            </select>
+          </div>
+          <div class="settings-pref-row" style="margin-top: 0.75rem;">
+            <div class="pref-text">
+              <span class="pref-label">Gemini API Key (Optional)</span>
+              <span class="pref-desc">Powers ultra-human Gemini 3.1 TTS.</span>
+            </div>
+            <input type="password" id="geminiApiKeyInput" class="settings-select" placeholder="Paste Gemini API Key..." style="width: 170px; font-size: 0.82rem; padding: 0.35rem 0.6rem;" />
+          </div>
+        </div>
+
+        <!-- SECTION: 10-MINUTE CHROMATIC ROTATION -->
+        <div class="settings-section settings-section-compact">
+          <div class="settings-section-header">
+            <div class="section-title-wrap">
+              <div class="section-icon-badge" style="background: rgba(63, 111, 143, 0.12); color: var(--color-deepblue);"><i data-lucide="palette"></i></div>
+              <span class="settings-section-title">10-Minute Therapeutic Color Shift</span>
+            </div>
+          </div>
+          <div class="settings-pref-row">
+            <div class="pref-text">
+              <span class="pref-label">Auto-Rotate Sanctuary Theme</span>
+              <span class="pref-desc">Rotates through the 27-color clinical palette every 10 minutes.</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="autoRotateThemeToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-pref-row" style="margin-top: 0.75rem;">
+            <div class="pref-text">
+              <span class="pref-label">Active Therapeutic Palette</span>
+              <span class="pref-desc">Manually choose any circadian stage or let it cycle.</span>
+            </div>
+            <select id="themeSelectDropdown" class="settings-select">
+              <option value="theme-azure">1. Azure Sanctuary (#F6F9FC / #3F6F8F)</option>
+              <option value="theme-sage">2. Healing Sage & Recovery (#DDECE3 / #2D857A)</option>
+              <option value="theme-lavender">3. Lavender Gratitude (#E9E2F2 / #7FA9C9)</option>
+              <option value="theme-peach">4. Peach Compassion (#F3C6B5 / #C96C7A)</option>
+              <option value="theme-amber">5. Warm Bedtime Grounding (#F1E8D9 / #B97519)</option>
+              <option value="theme-obsidian">6. Nighttime Obsidian Comfort (#182027)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SECTION 3: SESSION & PRIVACY -->
+        <div class="settings-section settings-section-compact">
+          <div class="settings-section-header">
+            <div class="section-title-wrap">
+              <div class="section-icon-badge section-icon-badge--shield"><i data-lucide="shield-check"></i></div>
+              <span class="settings-section-title">Privacy & Session</span>
+            </div>
+          </div>
+          <div class="settings-pref-row">
+            <div class="pref-text">
+              <span class="pref-label">Reset Local Session</span>
+              <span class="pref-desc">Clear local memory and start a fresh check-in.</span>
+            </div>
+            <button id="settingsClearBtn" class="btn btn-subtle-danger">
+              <i data-lucide="trash-2"></i> Clear History
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="settings-modal-footer">
+        <span class="settings-footnote"><i data-lucide="headphones"></i> 60–80 BPM therapeutic soundscapes with consonant modal harmony & clean loops.</span>
+        <button id="doneSettingsBtn" class="btn btn-primary">Done</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: EMOTION INTERVIEW INVITATION DIALOG -->
+  <!-- ============================================== -->
+  <div class="modal-backdrop emotion-invite-backdrop" id="emotionInviteModal" style="display: none;">
+    <div class="modal-dialog emotion-invite-dialog animate-scale-up">
+      <div class="emotion-invite-header">
+        <div class="emotion-invite-icon-box">
+          <i data-lucide="heart-handshake"></i>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeEmotionInviteModalBtn" title="Dismiss">&times;</button>
+      </div>
+      <div class="emotion-invite-body">
+        <span class="emotion-invite-tag">✨ Gentle Emotion Check-in</span>
+        <h2 class="emotion-invite-title" id="emotionInviteTitle">Let’s explore your feelings a bit more</h2>
+        <p class="emotion-invite-message" id="emotionInviteMessage">
+          It sounds like you’re going through a lot emotionally right now. Would you be willing to answer a few gentle questions about how you’ve been feeling? You can answer by voice or text, and you can skip any question you don’t feel comfortable answering.
+        </p>
+        <div class="emotion-invite-privacy-note">
+          <i data-lucide="shield-check"></i>
+          <span>Your answers will be used to better understand your emotional state and provide more helpful support. All data is encrypted and confidential.</span>
+        </div>
+      </div>
+      <div class="emotion-invite-actions">
+        <button type="button" class="btn btn-secondary" id="declineEmotionInterviewBtn">
+          <span>Not right now</span>
+        </button>
+        <button type="button" class="btn btn-primary btn-emotion-continue" id="acceptEmotionInterviewBtn">
+          <i data-lucide="sparkles"></i>
+          <span>Yes, continue</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: EMOTION-FOCUSED INTERVIEW STUDIO -->
+  <!-- ============================================== -->
+  <div class="modal-backdrop emotion-interview-backdrop" id="emotionInterviewModal" style="display: none;">
+    <div class="modal-dialog emotion-interview-dialog animate-scale-up">
+      
+      <!-- Top Bar with status, language switch & close -->
+      <div class="eim-header">
+        <div class="eim-header-left">
+          <div class="eim-pulse-badge">
+            <span class="eim-pulse-dot"></span>
+            <span class="eim-header-title">🌿 Emotion Reflection & Care Exploration</span>
+          </div>
+          <div class="eim-state-badge" id="eimStateBadge">10 Gentle Questions</div>
+        </div>
+
+        <div class="eim-header-right">
+          <!-- Language selector pills inside modal -->
+          <div class="eim-lang-pills" id="eimLangPills">
+            <button type="button" class="eim-lang-btn active" data-lang="en">English</button>
+            <button type="button" class="eim-lang-btn" data-lang="bn">বাংলা</button>
+            <button type="button" class="eim-lang-btn" data-lang="hi">हिंदी</button>
+          </div>
+          <button type="button" class="modal-close-btn" id="closeEmotionInterviewModalBtn" title="Exit Emotion Interview (Esc)">
+            &times;
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Progress Bar -->
+      <div class="eim-progress-container">
+        <div class="eim-progress-meta">
+          <span class="eim-progress-label" id="eimProgressLabel">Question 1 of 10</span>
+          <span class="eim-theme-label" id="eimThemeLabel">Present Emotional State</span>
+        </div>
+        <div class="eim-progress-track">
+          <div class="eim-progress-fill" id="eimProgressFill" style="width: 10%;"></div>
+        </div>
+      </div>
+
+      <!-- Modal Stage Body: Question Stage -->
+      <div class="eim-stage-body" id="eimQuestionStage">
+        
+        <!-- AI Question Reader Banner -->
+        <div class="eim-ai-speaking-banner" id="eimAiSpeakingBanner">
+          <div class="eim-ai-speaking-left">
+            <div class="eim-speaking-wave" id="eimSpeakingWave">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <span class="eim-ai-speaking-text" id="eimAiSpeakingText">MindBridge is reading the question...</span>
+          </div>
+          <button type="button" class="eim-btn-tts-replay" id="eimTtsReplayBtn" title="Replay question audio">
+            <i data-lucide="volume-2"></i>
+            <span>Replay Question</span>
+          </button>
+        </div>
+
+        <!-- Question Card -->
+        <div class="eim-question-card">
+          <div class="eim-q-badge" id="eimQBadge">Question 1</div>
+          <h2 class="eim-question-text" id="eimQuestionText">How are you feeling right now, in your own words?</h2>
+          <p class="eim-support-quote" id="eimSupportQuote">There are no right or wrong answers. Take a breath and share whatever comes to mind.</p>
+        </div>
+
+        <!-- Answer Section: Interactive Multi-State Voice & Text Studio -->
+        <div class="eim-answer-container">
+          
+          <!-- State Bar -->
+          <div class="eim-answer-header">
+            <div class="eim-answer-mode-indicator">
+              <span class="eim-mic-state-dot" id="eimMicStateDot"></span>
+              <span class="eim-mic-state-text" id="eimMicStateText">Listening for your answer... Speak or type below</span>
+            </div>
+            <div class="eim-mic-controls">
+              <button type="button" class="eim-mic-record-btn" id="eimMicRecordBtn" title="Start or Stop Microphone Recording">
+                <i data-lucide="mic" id="eimMicRecordIcon"></i>
+                <span id="eimMicRecordLabel">Speak Voice</span>
+              </button>
+              <button type="button" class="eim-btn-finish-speaking" id="eimFinishSpeakingBtn" style="display: none;" title="Finish Speaking and Review Transcript">
+                <i data-lucide="check"></i>
+                <span>Finish Speaking</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Answer Text Area with live transcription & review -->
+          <div class="eim-textarea-wrap">
+            <textarea 
+              id="eimAnswerInput" 
+              class="eim-answer-textarea" 
+              placeholder="Your spoken words or typed thoughts will appear here for you to review and edit..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Suggested Quick Reply Chips -->
+          <div class="eim-chips-container" id="eimChipsContainer">
+            <!-- Dynamic Chips inserted here -->
+          </div>
+
+          <!-- Review State Notice -->
+          <div class="eim-review-notice" id="eimReviewNotice" style="display: none;">
+            <i data-lucide="edit-3"></i>
+            <span>Review your answer above. You can edit the text, re-record voice, or confirm to proceed.</span>
+          </div>
+
+          <!-- Action Footer Buttons -->
+          <div class="eim-action-footer">
+            <div class="eim-footer-left">
+              <button type="button" class="eim-footer-btn eim-skip-btn" id="eimSkipBtn">
+                <i data-lucide="skip-forward"></i>
+                <span>Skip Question</span>
+              </button>
+              <button type="button" class="eim-footer-btn eim-rerecord-btn" id="eimRerecordBtn" style="display: none;">
+                <i data-lucide="rotate-ccw"></i>
+                <span>Re-record Voice</span>
+              </button>
+            </div>
+
+            <div class="eim-footer-right">
+              <button type="button" class="eim-submit-next-btn" id="eimSubmitNextBtn">
+                <span id="eimSubmitBtnLabel">Confirm Answer & Next</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Results Stage: Emotional Profile & Synthesis -->
+      <div class="eim-results-stage" id="eimResultsStage" style="display: none;">
+        <div class="eim-results-header">
+          <div class="eim-results-badge">🪷 Emotional Exploration Completed</div>
+          <h2 class="eim-results-title">Your Emotional-State Synthesis</h2>
+          <p class="eim-results-subtitle">A compassionate, non-diagnostic profile of your dominant feelings, themes & coping style</p>
+        </div>
+
+        <div class="eim-results-content" id="eimResultsContent">
+          <!-- Dynamic Emotional Profile inserted here -->
+        </div>
+
+        <div class="eim-results-footer">
+          <button type="button" class="eim-results-btn eim-btn-primary" id="eimDoneReturnBtn">
+            <i data-lucide="message-square"></i>
+            <span>Return to Chat & Save Profile</span>
+          </button>
+          <button type="button" class="eim-results-btn eim-btn-secondary" onclick="openBreathingModal()">
+            <i data-lucide="wind"></i>
+            <span>4-7-8 Calm Breath</span>
+          </button>
+          <button type="button" class="eim-results-btn eim-btn-outline" onclick="switchTab('providers')">
+            <i data-lucide="user-check"></i>
+            <span>Consult a Specialist</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Background Audio Media Stream (Clean Seamless Looping Therapeutic Soundscape) -->
+
+  <audio id="bgMusicAudio" loop preload="auto" playsinline src="music/WhatsApp Audio 2026-08-31 at 22.38.50.mpeg" style="display: none;"></audio>
+
+  
+
+  <!-- MODAL: REGISTRATION MENTAL-STATE UNDERSTANDING -->
+  <div class="modal-backdrop registration-backdrop" id="registrationModal" style="display: none;">
+    <div class="modal-dialog registration-dialog animate-scale-up">
+      <div class="registration-header">
+        <div class="reg-header-top">
+          <div class="reg-pulse-dot"></div>
+          <span class="reg-header-title">Registration Mental-State Understanding</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeRegistrationModalBtn" title="Exit Registration (Esc)">&times;</button>
+      </div>
+
+      <!-- CONSENT SCREEN -->
+      <div class="reg-consent-stage" id="regConsentStage">
+        <div class="reg-icon-box"><i data-lucide="shield"></i></div>
+        <h2 class="reg-consent-title">Before we begin</h2>
+        <p class="reg-consent-text">
+          I’ll ask 20 short questions about your emotions, thoughts, daily life, relationships, past experiences, and goals. This is not a diagnosis. Your answers help us understand what type of support may be useful.
+        </p>
+        <p class="reg-consent-text">
+          You can answer by text or voice. You may skip any question, choose ‘Prefer not to answer,’ or stop at any time. You do not need to describe painful experiences in detail.
+        </p>
+        <p class="reg-consent-text" style="color: #d32f2f; font-weight: 500;">
+          If you feel in immediate danger or think you may hurt yourself or someone else, choose ‘I need urgent help’ now.
+        </p>
+        <div class="reg-consent-actions">
+          <button type="button" class="btn btn-primary" id="regStartBtn">Start</button>
+          <button type="button" class="btn btn-secondary" id="regSkipInitialBtn">Skip for now</button>
+          <button type="button" class="btn btn-danger" id="regUrgentHelpBtn">I need urgent help</button>
+        </div>
+      </div>
+
+      <!-- QUESTION STAGE -->
+      <div class="reg-question-stage" id="regQuestionStage" style="display: none;">
+        <div class="reg-progress-bar-wrap">
+          <div class="reg-progress-bar" id="regProgressBar"></div>
+        </div>
+        
+        <div class="reg-question-container">
+          <span class="reg-domain-tag" id="regDomainTag"></span>
+          <h2 class="reg-question-text" id="regQuestionText">Loading question...</h2>
+          
+          <div class="reg-input-area">
+            <textarea id="regAnswerInput" class="reg-textarea" placeholder="Type your answer here, or click the microphone to speak..."></textarea>
+            
+            <div class="reg-voice-controls">
+              <button type="button" id="regMicBtn" class="reg-mic-btn" title="Tap to speak">
+                <i data-lucide="mic"></i> <span id="regMicLabel">Use voice</span>
+              </button>
+              <button type="button" id="regDirectConfirmVoiceBtn" class="btn btn-primary" style="display: none; margin-left: 1rem; border-radius: 999px; padding: 0.6rem 1.5rem; font-size: 0.95rem;">
+                <i data-lucide="check"></i> Confirm & Next
+              </button>
+            </div>
+            
+            <div id="regVoiceConfirmArea" class="reg-voice-confirm-area" style="display: none;">
+              <p class="reg-voice-confirm-label">I understood your answer as:</p>
+              <p class="reg-voice-transcript" id="regVoiceTranscript"></p>
+              <p class="reg-voice-confirm-prompt">Would you like to save this answer?</p>
+              <div class="reg-voice-confirm-actions">
+                <button type="button" class="btn btn-primary" id="regConfirmVoiceBtn">Confirm</button>
+                <button type="button" class="btn btn-secondary" id="regEditVoiceBtn">Edit</button>
+                <button type="button" class="btn btn-secondary" id="regRecordAgainBtn">Record again</button>
+                <button type="button" class="btn btn-secondary" id="regSkipVoiceBtn">Skip</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="reg-actions-row" id="regStandardActions">
+            <button type="button" class="btn btn-primary" id="regSubmitTextBtn">Use text</button>
+            <button type="button" class="btn btn-secondary" id="regSkipBtn">Skip</button>
+            <button type="button" class="btn btn-secondary" id="regPreferNotBtn">Prefer not to answer</button>
+            <button type="button" class="btn btn-danger" id="regUrgentHelpInnerBtn">I need urgent help</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS STAGE -->
+      <div class="reg-results-stage" id="regResultsStage" style="display: none;">
+        <div class="reg-results-icon"><i data-lucide="check-circle"></i></div>
+        <h2 class="reg-results-title">Registration Complete</h2>
+        <p class="reg-results-desc">
+          Thank you for answering these questions. Your responses may suggest some areas that are affecting your emotional well-being, but this is not a diagnosis. You can review the summary below and choose whether you would like self-care information, support-navigation help, or a referral to a qualified psychologist or psychiatrist.
+        </p>
+        <div class="reg-summary-card" id="regSummaryCard">
+          <p id="regSummaryText">Loading summary...</p>
+        </div>
+        <div class="reg-results-actions">
+          <button type="button" class="btn btn-primary" id="regFinishBtn">Return to Dashboard</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- Voicebox Studio Audio Pipeline & Neural Synthesis (Jamie Pine Architecture) -->
+  <script src="voicebox.js?v=1.0"></script>
+
+  <!-- Custom Scripts -->
+  <script src="app.js?v=14.0"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+{
+  "emotions": {
+    "sadness": {
+      "en": ["sad", "sadness", "crying", "tears", "depressed", "depression", "unhappy", "heartbroken", "miserable", "sorrow", "grief", "gloomy", "mourning", "down", "melancholy", "weeping", "empty"],
+      "bn": ["মন খারাপ", "কষ্ট", "কান্না", "বিষণ্ণ", "বিষাদ", "দুঃখ", "বেদনা", "চোখের জল", "ভাঙা মন"],
+      "hi": ["उदास", "उदासी", "दुख", "दुखी", "रोना", "रोना आ रहा", "गम", "मायूस", "दिल टूट गया"]
+    },
+    "hopelessness": {
+      "en": ["hopeless", "hopelessness", "no point", "give up", "giving up", "no future", "never get better", "can't take this anymore", "cant take this", "nothing matters", "what's the use", "in vain", "pointless", "no way out", "everything is useless"],
+      "bn": ["হতাশ", "হতাশা", "কোনো আশা নেই", "ছেড়ে দেওয়া", "আর পারছি না", "অর্থহীন", "ভবিষ্যত অন্ধকার", "কিছু বদলাবে না"],
+      "hi": ["निराश", "निराशा", "कोई उम्मीद नहीं", "हिम्मत हार गया", "अब बर्दाश्त नहीं", "सब बेकार है", "कोई रास्ता नहीं"]
+    },
+    "anxiety": {
+      "en": ["anxious", "anxiety", "worried", "worry", "panic", "panicking", "nervous", "nervousness", "racing thoughts", "jittery", "on edge", "uneasy", "restless", "apprehensive", "stress", "stressed", "scared", "overthinking"],
+      "bn": ["উদ্বেগ", "উদ্বিগ্ন", "দুশ্চিন্তা", "আতঙ্ক", "অস্থির", "অস্থিরতা", "বুক ধড়ফড়", "টেনশন", "উৎকণ্ঠা", "ভয় লাগছে", "চাপ"],
+      "hi": ["चिंता", "चिंतित", "घबराहट", "बेचैनी", "तनाव", "डर लग रहा", "पैनिक", "घबराया", "बहुत सोच रहा हूँ"]
+    },
+    "overwhelm": {
+      "en": ["overwhelmed", "exhausted", "too much", "burnout", "suffocating", "drowning in stress", "drained", "can't cope", "burdened", "breaking down", "cannot handle this"],
+      "bn": ["বিপর্যস্ত", "ক্লান্ত", "ভারাক্রান্ত", "হাঁপিয়ে", "আর সহ্য হচ্ছে না", "চাপ সামলাতে পারছি না", "সামলাতে পারছি না", "খুব চাপ লাগছে"],
+      "hi": ["थक गया", "थक गई", "बहुत ज्यादा दबाव", "बर्दाश्त से बाहर", "दम घुट रहा", "टूटा हुआ", "संभाल नहीं पा रहा", "सब भारी लग रहा है"]
+    },
+    "anger": {
+      "en": ["angry", "anger", "furious", "rage", "irritated", "annoyed", "frustrated", "frustration", "pissed", "resentful", "hostile", "mad", "outraged", "bitter", "upset"],
+      "bn": ["রাগ", "ক্রোধ", "বিরক্ত", "বিরক্তি", "ক্ষুব্ধ", "ক্ষেপে যাওয়া", "হতভম্ব", "ক্ষোভ", "মেজাজ খারাপ", "রেগে আছি"],
+      "hi": ["गुस्सा", "क्रोध", "नाराज", "गुस्से में", "चिड़चिड़ा", "तैश", "क्रोधित", "चिढ़", "झुंझलाहट"]
+    },
+    "fear": {
+      "en": ["afraid", "fear", "scared", "terrified", "frightened", "paralyzed with fear", "dread", "horror", "unsafe", "threatened"],
+      "bn": ["ভয়", "ভীতি", "আতঙ্কিত", "ভয়ানক", "শঙ্কিত", "ত্রস্ত", "নিরাপদ লাগছে না", "ভীত"],
+      "hi": ["डर", "डरा हुआ", "भय", "खौफ", "दहशत", "असुरक्षित", "घबराया हुआ"]
+    },
+    "guilt": {
+      "en": ["guilt", "guilty", "my fault", "blaming myself", "regret", "remorse", "responsible for hurting", "sorry for everything"],
+      "bn": ["দোষী", "নিজের দোষ", "অনুতাপ", "অপরাধবোধ", "অনুশোচনা"],
+      "hi": ["दोष", "मेरी गलती", "पछतावा", "अपराधबोध", "दोषी महसूस"]
+    },
+    "shame": {
+      "en": ["shame", "ashamed", "humiliated", "embarrassed", "worthless", "disgraced", "inferior", "bad person", "hate myself"],
+      "bn": ["লজ্জা", "লজ্জিত", "অপমানিত", "হীনমন্যতা", "অযোগ্য"],
+      "hi": ["शर्म", "शर्मिंदा", "अपमानित", "बेइज्जत", "हीन"]
+    },
+    "loneliness": {
+      "en": ["lonely", "loneliness", "isolated", "all alone", "nobody cares", "abandoned", "alienated", "friendless", "alone", "disconnected", "nobody understands", "left out"],
+      "bn": ["একা", "একাকীত্ব", "নিঃসঙ্গ", "নিঃসঙ্গতা", "কেউ নেই", "পরিত্যক্ত", "কেউ বোঝে না", "বিচ্ছিন্ন"],
+      "hi": ["अकेला", "अकेलापन", "तन्हा", "कोई नहीं है", "तन्हाई", "अलग-थलग", "कोई समझता नहीं"]
+    },
+    "numbness": {
+      "en": ["numb", "numbness", "empty", "feel nothing", "detached", "hollow", "void", "emotionless", "shut down"],
+      "bn": ["অসাড়", "শূন্যতা", "কিছু অনুভব হয় না", "নিস্পৃহ", "ফাঁকা"],
+      "hi": ["सुन्न", "खालीपन", "कुछ महसूस नहीं होता", "खोखला", "बेजान"]
+    },
+    "joy": {
+      "en": ["happy", "happiness", "joy", "joyful", "excited", "grateful", "delighted", "cheerful", "glad", "blessed", "hopeful", "proud", "peaceful", "content"],
+      "bn": ["খুশি", "আনন্দ", "আনন্দিত", "কৃতজ্ঞ", "ভালো লাগছে", "উল্লাস", "শান্তি", "স্বস্তি"],
+      "hi": ["खुश", "खुशी", "प्रसन्न", "आनंद", "उत्साहित", "आभारी", "राहत", "सुकून"]
+    },
+    "calm": {
+      "en": ["calm", "peaceful", "serene", "tranquil", "grounded", "relaxed", "at ease", "composed", "safe", "settled"],
+      "bn": ["শান্ত", "প্রশান্ত", "প্রশান্তি", "স্থির", "হালকা লাগছে"],
+      "hi": ["शांत", "शांति", "सुकून", "स्थिर", "हल्का महसूस हो रहा है"]
+    },
+    "grief": {
+      "en": ["grief", "mourning", "loss", "bereavement", "heartache", "missing someone"],
+      "bn": ["শোক", "হারানো", "বিয়োগ", "মৃত", "স্মৃতি"],
+      "hi": ["शोक", "हानि", "मौत", "गम"]
+    },
+    "emotional_exhaustion": {
+      "en": ["emotionally exhausted", "drained", "nothing left to give", "depleted", "burnt out"],
+      "bn": ["মানসিকভাবে ক্লান্ত", "সব শক্তি শেষ", "আর কিছু দেওয়ার নেই"],
+      "hi": ["मानसिक रूप से थक गया", "कुछ नहीं बचा", "शक्ति खत्म"]
+    }
+  },
+  "intensity_modifiers": {
+    "high": {
+      "en": ["extremely", "severely", "unbearably", "completely", "totally", "deeply", "overwhelmingly", "so much", "terribly", "desperately", "too much"],
+      "bn": ["অত্যন্ত", "ভীষণ", "ভয়ানক", "প্রচণ্ড", "পুরোপুরি", "একদম", "খুব বেশি"],
+      "hi": ["बहुत ज्यादा", "हद से ज्यादा", "बिलकुल", "पूरी तरह"]
+    },
+    "low": {
+      "en": ["a little", "slightly", "somewhat", "a bit", "kind of", "mildly", "minor"],
+      "bn": ["সামান্য", "একটু", "কিছুটা", "হালকা"],
+      "hi": ["थोड़ा", "थोड़ा बहुत", "हल्का"]
+    }
+  },
+  "safety_phrases": {
+    "suicidal_feelings": {
+      "en": ["suicid", "kill myself", "end my life", "want to die", "don't want to live", "dont want to live", "no reason to live", "better off dead", "end it all"],
+      "bn": ["আত্মহত্যা", "মরতে চাই", "বেঁচে থাকার ইচ্ছে নেই", "জীবন শেষ"],
+      "hi": ["मर जाना चाहता", "जान देना", "खुदकुशी", "आत्महत्या", "जिंदगी खत्म", "जीना नहीं चाहता"]
+    },
+    "self_harm_thoughts": {
+      "en": ["self harm", "harm myself", "cutting myself", "slit my", "burn myself", "hurt myself", "punish myself"],
+      "bn": ["নিজের ক্ষতি", "হাত কাটা", "নিজেকে আঘাত"],
+      "hi": ["खुद को चोट", "अपने आप को नुकसान", "खुद को नुकसान"]
+    },
+    "trauma_reference": {
+      "en": ["trauma", "ptsd", "flashback", "abused", "assaulted", "nightmare of past", "horrible memory", "violated", "molested"],
+      "bn": ["ট্রমা", "অতীতের ভয়াবহ স্মৃতি", "নির্যাতিত", "নিপীড়ন"],
+      "hi": ["पुरानी बुरी याद", "हादसा", "ट्रॉमा", "शोषण"]
+    },
+    "intense_emotional_pain": {
+      "en": ["unbearable pain", "pain is too much", "crying uncontrollably", "broken inside", "shattered", "can't take this anymore", "suffocating inside", "heart hurts so bad"],
+      "bn": ["অসহ্য যন্ত্রণা", "ভেতরটা ভেঙে গেছে", "আর সহ্য হচ্ছে না", "বুক ভেঙে যাচ্ছে"],
+      "hi": ["बहुत दर्द", "बर्दाश्त नहीं होता", "अंदर से टूट गया", "दिल बहुत रो रहा"]
+    }
+  },
+  "negation_terms": {
+    "en": ["not", "no", "never", "none", "don't", "doesn't", "didn't", "can't", "cannot", "won't", "wouldn't", "shouldn't", "isn't", "aren't", "ain't", "stop", "stopped"],
+    "bn": ["না", "নয়", "নেই", "নি", "পারছি না", "কখনো না"],
+    "hi": ["नहीं", "ना", "मत", "कभी नहीं"]
+  }
+}

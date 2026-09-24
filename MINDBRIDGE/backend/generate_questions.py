@@ -1,0 +1,846 @@
+"""
+Generates exactly 100 clinically-informed, empathetic screening questions
+for MindBridge adhering to PHQ-9, GAD-7, BoltMonkey Q&A, and ALL IN Therapy Clinic themes.
+"""
+
+import json
+import os
+
+questions = [
+    # =========================================================================
+    # DOMAIN 1: MOOD & DEPRESSIVE SPECTRUM (18 Questions: Includes PHQ-9 items)
+    # =========================================================================
+    {
+        "id": 1,
+        "question_text": "Over the last two weeks, how often have you had little interest or pleasure in doing things you usually enjoy?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_1",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 2,
+        "question_text": "Over the last two weeks, how often have you felt down, depressed, discouraged, or hopeless?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_2",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 3,
+        "question_text": "How often have you felt bad about yourself — or felt that you are a failure, or have let yourself or your family down?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_6",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 4,
+        "question_text": "How often have you felt tired, sluggish, or depleted of physical and mental energy?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_4",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 5,
+        "question_text": "Have you noticed moving or speaking so slowly that other people could have noticed, or conversely being unusually restless?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_8",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 6,
+        "question_text": "When you wake up in the morning, do you experience a persistent emotional heaviness before the day begins?",
+        "domain": "mood",
+        "response_type": "yes_no",
+        "scoring_rule": "mood_morning_heaviness",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 7,
+        "question_text": "How would you describe the general emotional climate of your thoughts over the past two weeks?",
+        "domain": "mood",
+        "response_type": "short_text",
+        "scoring_rule": "nlp_sentiment_evaluation",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 8,
+        "question_text": "Have you found yourself crying or feeling unusually tearful without an obvious trigger?",
+        "domain": "mood",
+        "response_type": "yes_no",
+        "scoring_rule": "mood_tearfulness",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 9,
+        "question_text": "How often do you feel completely emotionally numb or disconnected from the people around you?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "distress_anhedonia_numbness",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 10,
+        "question_text": "When something positive happens in your life, can you genuinely feel joy, or does it pass through without resonance?",
+        "domain": "mood",
+        "response_type": "short_text",
+        "scoring_rule": "positive_affect_blunting",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 11,
+        "question_text": "Do you find yourself feeling guilty about things that are outside of your control?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "excessive_guilt_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 12,
+        "question_text": "Have you noticed feelings of irritability, short temper, or frustration over minor inconveniences?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "irritability_index",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 13,
+        "question_text": "How frequently do you experience a sense of emptiness or like you are just going through the motions?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "emotional_emptiness",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 14,
+        "question_text": "What is one thought or feeling that has been lingering in your mind most intensely today?",
+        "domain": "mood",
+        "response_type": "short_text",
+        "scoring_rule": "qualitative_affect_reflection",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 15,
+        "question_text": "Do you feel that you have been carrying emotional burdens without a safe outlet to unpack them?",
+        "domain": "mood",
+        "response_type": "yes_no",
+        "scoring_rule": "unexpressed_burden_flag",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 16,
+        "question_text": "Over the past month, have you felt that your mood swings rapidly between sadness, anger, and numbness?",
+        "domain": "mood",
+        "response_type": "yes_no",
+        "scoring_rule": "affective_lability",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 17,
+        "question_text": "How often do you feel that life has become a relentless struggle rather than an experience to participate in?",
+        "domain": "mood",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "existential_weariness",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 18,
+        "question_text": "If your current mood had a weather forecast, how would you describe it right now?",
+        "domain": "mood",
+        "response_type": "short_text",
+        "scoring_rule": "metaphor_sentiment_mapping",
+        "follow_up_if_high_risk": False
+    },
+
+    # =========================================================================
+    # DOMAIN 2: ANXIETY & WORRY SPECTRUM (16 Questions: Includes GAD-7 items)
+    # =========================================================================
+    {
+        "id": 19,
+        "question_text": "Over the last two weeks, how often have you felt nervous, anxious, or on edge?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "gad7_item_1",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 20,
+        "question_text": "How often have you not been able to stop or control worrying?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "gad7_item_2",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 21,
+        "question_text": "How often have you worried too much about different things in your life?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "gad7_item_3",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 22,
+        "question_text": "How often have you had trouble relaxing even when you had free time?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "gad7_item_4",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 23,
+        "question_text": "How often have you been so restless that it is hard to sit still?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "gad7_item_5",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 24,
+        "question_text": "How often have you become easily annoyed, irritable, or snappy?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "gad7_item_6",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 25,
+        "question_text": "How often have you felt afraid, as if something awful or catastrophic might happen?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "gad7_item_7",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 26,
+        "question_text": "Have you experienced sudden episodes of intense terror, heart racing, shortness of breath, or shaking (panic episodes)?",
+        "domain": "anxiety",
+        "response_type": "yes_no",
+        "scoring_rule": "panic_symptom_flag",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 27,
+        "question_text": "Do physical sensations like chest tightness, dizziness, or stomach butterflies frequently accompany your worry?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "somatic_anxiety_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 28,
+        "question_text": "Do you find yourself actively avoiding conversations, places, or responsibilities because they trigger anxiety?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "avoidance_behavior_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 29,
+        "question_text": "When you have to speak in social settings or meeting people, how intensely do you fear being judged or embarrassed?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "social_evaluative_anxiety",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 30,
+        "question_text": "Do repetitive intrusive thoughts enter your mind that feel hard to dismiss or dismissive of logic?",
+        "domain": "anxiety",
+        "response_type": "yes_no",
+        "scoring_rule": "intrusive_cognition_flag",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 31,
+        "question_text": "What situation or upcoming event triggers the strongest sense of unease or dread for you right now?",
+        "domain": "anxiety",
+        "response_type": "short_text",
+        "scoring_rule": "qualitative_anxiety_trigger",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 32,
+        "question_text": "Do you catch yourself holding your breath or breathing shallowly throughout the workday?",
+        "domain": "anxiety",
+        "response_type": "yes_no",
+        "scoring_rule": "respiratory_dysregulation",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 33,
+        "question_text": "How often do you replay past conversations in your head, criticizing what you said or didn't say?",
+        "domain": "anxiety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "post_event_rumination",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 34,
+        "question_text": "Does your anxiety feel like an alarm bell constantly ringing in your nervous system?",
+        "domain": "anxiety",
+        "response_type": "yes_no",
+        "scoring_rule": "hyperarousal_indicator",
+        "follow_up_if_high_risk": False
+    },
+
+    # =========================================================================
+    # DOMAIN 3: STRESS & ADAPTIVE COPING (14 Questions)
+    # =========================================================================
+    {
+        "id": 35,
+        "question_text": "In the last month, how often have you felt that you were unable to control the important things in your life?",
+        "domain": "stress",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "perceived_stress_control",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 36,
+        "question_text": "How often have you felt difficulties were piling up so high that you could not overcome them?",
+        "domain": "stress",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "perceived_stress_overwhelm",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 37,
+        "question_text": "Are demands from your work, family, or personal responsibilities feeling unsustainable right now?",
+        "domain": "stress",
+        "response_type": "yes_no",
+        "scoring_rule": "burnout_risk_flag",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 38,
+        "question_text": "What is the single heaviest source of pressure on your shoulders at this point in your life?",
+        "domain": "stress",
+        "response_type": "short_text",
+        "scoring_rule": "stressor_categorization",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 39,
+        "question_text": "When stress peaks, what is the first coping behavior you instinctively turn to?",
+        "domain": "stress",
+        "response_type": "short_text",
+        "scoring_rule": "coping_strategy_analysis",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 40,
+        "question_text": "Have you noticed relying on alcohol, nicotine, caffeine, or substances more frequently to manage your stress?",
+        "domain": "stress",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "substance_coping_marker",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 41,
+        "question_text": "Do you feel that you have adequate time during the week for decompression and mental silence?",
+        "domain": "stress",
+        "response_type": "yes_no",
+        "scoring_rule": "restorative_balance_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 42,
+        "question_text": "How often do you feel tense in your jaw, neck, shoulders, or back due to persistent strain?",
+        "domain": "stress",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "somatic_strain_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 43,
+        "question_text": "Do you feel pressure to always appear strong, cheerful, or productive even when suffering inside?",
+        "domain": "stress",
+        "response_type": "yes_no",
+        "scoring_rule": "emotional_masking_flag",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 44,
+        "question_text": "Have you experienced emotional outbursts of crying, yelling, or withdrawing when small things go wrong?",
+        "domain": "stress",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "emotional_decompensation",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 45,
+        "question_text": "Do financial or health uncertainties currently pose a major challenge to your peace of mind?",
+        "domain": "stress",
+        "response_type": "yes_no",
+        "scoring_rule": "environmental_stressor_flag",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 46,
+        "question_text": "When you face a difficult problem, do you usually break it into steps, or do you feel paralyzed?",
+        "domain": "stress",
+        "response_type": "short_text",
+        "scoring_rule": "problem_focused_coping",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 47,
+        "question_text": "Have you taken any personal days or deliberate breaks for your mental wellbeing in the past three months?",
+        "domain": "stress",
+        "response_type": "yes_no",
+        "scoring_rule": "self_care_boundary_check",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 48,
+        "question_text": "On a scale of 0 to 3, how overwhelmed has your nervous system felt across the past week?",
+        "domain": "stress",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "subjective_nervous_overload",
+        "follow_up_if_high_risk": True
+    },
+
+    # =========================================================================
+    # DOMAIN 4: SLEEP & CIRCADIAN REGULATION (14 Questions)
+    # =========================================================================
+    {
+        "id": 49,
+        "question_text": "Over the last two weeks, how often have you had trouble falling asleep, staying asleep, or sleeping too much?",
+        "domain": "sleep",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_3",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 50,
+        "question_text": "On average, how many hours of actual restful sleep do you achieve each night?",
+        "domain": "sleep",
+        "response_type": "short_text",
+        "scoring_rule": "sleep_duration_assessment",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 51,
+        "question_text": "When your head hits the pillow, does your mind start racing with worries, to-do lists, or existential dilemmas?",
+        "domain": "sleep",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "pre_sleep_cognitive_arousal",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 52,
+        "question_text": "Do you frequently wake up in the middle of the night (e.g. 2:00 AM - 4:00 AM) and find it difficult to fall back asleep?",
+        "domain": "sleep",
+        "response_type": "yes_no",
+        "scoring_rule": "sleep_maintenance_insomnia",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 53,
+        "question_text": "Do you wake up early in the morning hours feeling an immediate surge of dread or sorrow?",
+        "domain": "sleep",
+        "response_type": "yes_no",
+        "scoring_rule": "terminal_insomnia_depression_marker",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 54,
+        "question_text": "Even after what should be a full night of sleep, do you still wake up feeling physically and mentally unrefreshed?",
+        "domain": "sleep",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "non_restorative_sleep_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 55,
+        "question_text": "Have you been experiencing intense, distressing nightmares or fragmented dream states recently?",
+        "domain": "sleep",
+        "response_type": "yes_no",
+        "scoring_rule": "nightmare_frequency_flag",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 56,
+        "question_text": "Do you find yourself sleeping excessively (more than 10-11 hours) as an unconscious way to escape the waking day?",
+        "domain": "sleep",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "hypersomnia_avoidance_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 57,
+        "question_text": "Do you use sleeping pills, over-the-counter sedatives, or nighttime alcohol to initiate sleep?",
+        "domain": "sleep",
+        "response_type": "yes_no",
+        "scoring_rule": "pharmacological_sleep_dependency",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 58,
+        "question_text": "How consistent is your sleep-wake schedule between workdays and weekends?",
+        "domain": "sleep",
+        "response_type": "short_text",
+        "scoring_rule": "circadian_consistency_evaluation",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 59,
+        "question_text": "Does daytime drowsiness or brain fog impair your concentration or ability to drive/work safely?",
+        "domain": "sleep",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "daytime_somnolence_impairment",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 60,
+        "question_text": "Do you engage with bright phone or computer screens directly before turning off the lights to sleep?",
+        "domain": "sleep",
+        "response_type": "yes_no",
+        "scoring_rule": "sleep_hygiene_screen_exposure",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 61,
+        "question_text": "What single change in your sleep routine would make the biggest difference in your daily wellbeing?",
+        "domain": "sleep",
+        "response_type": "short_text",
+        "scoring_rule": "sleep_hygiene_readiness",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 62,
+        "question_text": "Overall, how satisfied are you with the depth and quality of your rest over the past month?",
+        "domain": "sleep",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "global_sleep_satisfaction",
+        "follow_up_if_high_risk": False
+    },
+
+    # =========================================================================
+    # DOMAIN 5: DAILY FUNCTIONING & VITALITY (14 Questions)
+    # =========================================================================
+    {
+        "id": 63,
+        "question_text": "Over the last two weeks, how often have you had poor appetite, or found yourself overeating comfort foods?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_5",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 64,
+        "question_text": "Over the last two weeks, how often have you had trouble concentrating on things, such as reading the news, studying, or watching television?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_7",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 65,
+        "question_text": "How difficult have your emotional or physical symptoms made it to do your work, take care of things at home, or get along with other people?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "functional_impairment_core",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 66,
+        "question_text": "Have you struggled to initiate basic self-care routines like showering, brushing teeth, eating balanced meals, or tidying up?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "activities_daily_living_score",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 67,
+        "question_text": "Do you find yourself procrastinating on important responsibilities due to mental fatigue or cognitive overwhelm?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "executive_dysfunction_index",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 68,
+        "question_text": "Have you been canceling plans, avoiding phone calls, or declining invitations to see friends or family?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "social_withdrawal_score",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 69,
+        "question_text": "Have you missed days from work, university, or school in the past month due to mental or emotional distress?",
+        "domain": "functioning",
+        "response_type": "yes_no",
+        "scoring_rule": "absenteeism_flag",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 70,
+        "question_text": "When at work or studying, do you feel like you are working at your normal capacity, or is there a noticeable drop?",
+        "domain": "functioning",
+        "response_type": "short_text",
+        "scoring_rule": "presenteeism_assessment",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 71,
+        "question_text": "Do you feel motivated by personal goals, curiosity, or future milestones right now?",
+        "domain": "functioning",
+        "response_type": "yes_no",
+        "scoring_rule": "intrinsic_motivation_indicator",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 72,
+        "question_text": "Have you experienced frequent unexplainable physical complaints like headaches, stomach aches, or muscle soreness?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "somatization_burden",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 73,
+        "question_text": "How would you rate your ability to make everyday decisions without getting stuck in second-guessing?",
+        "domain": "functioning",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "decision_making_friction",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 74,
+        "question_text": "Are you able to maintain healthy boundaries and say 'no' when your schedule or energy is maxed out?",
+        "domain": "functioning",
+        "response_type": "yes_no",
+        "scoring_rule": "boundary_assertiveness_check",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 75,
+        "question_text": "What is one activity that usually leaves you feeling accomplished or restored when you finish it?",
+        "domain": "functioning",
+        "response_type": "short_text",
+        "scoring_rule": "mastery_and_competence_prompt",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 76,
+        "question_text": "Do you feel that your daily life provides you with a sense of rhythm and purpose, or does it feel chaotic?",
+        "domain": "functioning",
+        "response_type": "short_text",
+        "scoring_rule": "daily_structure_appraisal",
+        "follow_up_if_high_risk": False
+    },
+
+    # =========================================================================
+    # DOMAIN 6: SAFETY, RISK & CRISIS GATEWAY (12 Questions: Explicit Crisis Rules)
+    # =========================================================================
+    {
+        "id": 77,
+        "question_text": "Over the last two weeks, have you had thoughts that you would be better off dead, or thoughts of hurting yourself in some way?",
+        "domain": "safety",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "phq9_item_9_suicidality",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 78,
+        "question_text": "Have you had active thoughts of ending your life or wishing that you would not wake up in the morning?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_rule_active_ideation",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 79,
+        "question_text": "Have you developed any specific plan, thought about a method, or considered a timeline for harming yourself?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_rule_suicide_plan",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 80,
+        "question_text": "Do you currently have access to lethal means, medications, or instruments that you have considered using?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_rule_means_access",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 81,
+        "question_text": "Have you engaged in any deliberate self-injury (such as cutting, burning, or hitting yourself) in the past month to cope with pain?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_rule_self_harm",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 82,
+        "question_text": "Have you ever attempted suicide in the past or required hospitalization for self-harm?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_rule_past_attempt",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 83,
+        "question_text": "Do you currently feel safe in your home environment, or are you experiencing physical, emotional, or domestic abuse?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_rule_domestic_abuse",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 84,
+        "question_text": "Have you had thoughts or urges to physically harm another person or damage property?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_rule_harm_to_others",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 85,
+        "question_text": "Do you ever experience voices, visions, or beliefs that other people cannot hear or understand?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "perceptual_disturbance_screening",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 86,
+        "question_text": "Do you feel that you can keep yourself safe right now until you can speak with a healthcare professional or trusted contact?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "safety_contract_check",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 87,
+        "question_text": "Is there someone in your immediate life who you could call or stay with right now if distress became unbearable?",
+        "domain": "safety",
+        "response_type": "yes_no",
+        "scoring_rule": "crisis_support_availability",
+        "follow_up_if_high_risk": True
+    },
+    {
+        "id": 88,
+        "question_text": "What is one reason or commitment that keeps you holding on even when the emotional pain feels overwhelming?",
+        "domain": "safety",
+        "response_type": "short_text",
+        "scoring_rule": "reasons_for_living_anchor",
+        "follow_up_if_high_risk": True
+    },
+
+    # =========================================================================
+    # DOMAIN 7: PROTECTIVE FACTORS, HOPE & CARE NAVIGATION (12 Questions)
+    # =========================================================================
+    {
+        "id": 89,
+        "question_text": "Do you have at least one person in your life (friend, family member, mentor) who listens without judgment?",
+        "domain": "protective",
+        "response_type": "yes_no",
+        "scoring_rule": "social_support_anchor",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 90,
+        "question_text": "Have you ever spoken with a psychologist, counselor, or psychiatrist in the past?",
+        "domain": "protective",
+        "response_type": "yes_no",
+        "scoring_rule": "prior_treatment_history",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 91,
+        "question_text": "How open do you feel to speaking with a licensed mental health professional (online or in-person) if a referral is suggested?",
+        "domain": "protective",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "help_seeking_readiness",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 92,
+        "question_text": "What quality do you look for most in a psychologist or therapist (e.g. warmth, practical tools, language, gender)?",
+        "domain": "protective",
+        "response_type": "short_text",
+        "scoring_rule": "provider_matching_preference",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 93,
+        "question_text": "Which consultation format would you feel most comfortable with right now: confidential video call or an in-clinic visit?",
+        "domain": "protective",
+        "response_type": "short_text",
+        "scoring_rule": "modality_preference",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 94,
+        "question_text": "What is a personal strength, value, or past obstacle that reminds you of your resilience?",
+        "domain": "protective",
+        "response_type": "short_text",
+        "scoring_rule": "resilience_affirmation",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 95,
+        "question_text": "Do you engage in any grounding practices like prayer, meditation, walking in nature, or creative arts?",
+        "domain": "protective",
+        "response_type": "yes_no",
+        "scoring_rule": "grounding_resource_flag",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 96,
+        "question_text": "Do you have pets, hobbies, or community projects that bring warmth and connection to your routine?",
+        "domain": "protective",
+        "response_type": "yes_no",
+        "scoring_rule": "behavioral_activation_resource",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 97,
+        "question_text": "When you think about the next six months, is there an aspiration or milestone that you still look forward to experiencing?",
+        "domain": "protective",
+        "response_type": "short_text",
+        "scoring_rule": "future_orientation_assessment",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 98,
+        "question_text": "Would you find it helpful to receive guided 4-7-8 breathing exercises and evidence-based self-compassion tools?",
+        "domain": "protective",
+        "response_type": "yes_no",
+        "scoring_rule": "digital_intervention_interest",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 99,
+        "question_text": "If you had a close friend feeling the way you feel today, what compassionate words would you say to them?",
+        "domain": "protective",
+        "response_type": "short_text",
+        "scoring_rule": "self_compassion_mirroring",
+        "follow_up_if_high_risk": False
+    },
+    {
+        "id": 100,
+        "question_text": "How comfortable do you feel taking this conversation as a brave, compassionate first step toward honoring your wellbeing?",
+        "domain": "protective",
+        "response_type": "Likert_0_3",
+        "scoring_rule": "alliance_and_readiness_close",
+        "follow_up_if_high_risk": False
+    }
+]
+
+def main():
+    target_path = os.path.join(os.path.dirname(__file__), "screening_questions.json")
+    with open(target_path, "w", encoding="utf-8") as f:
+        json.dump(questions, f, indent=2, ensure_ascii=False)
+    print(f"Generated {len(questions)} screening questions successfully at {target_path}")
+
+if __name__ == "__main__":
+    main()
