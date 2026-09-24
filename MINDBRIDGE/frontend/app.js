@@ -4579,6 +4579,20 @@ async function fetchEmergencyDoctors() {
   }
 }
 
+async function fetchEmergencyClinics() {
+  try {
+    const res = await fetch('/api/clinics');
+    const data = await res.json();
+    state.emergencyClinics = data.clinics || [];
+    renderEmergencyClinics();
+  } catch (err) {
+    console.error('Failed to fetch emergency clinics:', err);
+    if (elements.clinicCountBadge) {
+      elements.clinicCountBadge.innerHTML = '<i data-lucide="alert-triangle"></i> Could not load clinics';
+    }
+  }
+}
+
 function matchesEmergencySpec(p, spec) {
   if (!spec || spec === 'all') return true;
   const title = (p.title || '').toLowerCase();
@@ -4596,13 +4610,95 @@ function escapeHtml(str) {
   }[c]));
 }
 
-function buildEmergencyDocCard(p) {
+// Group items across MULTIPLE search locations:
+// 1) strong textual match on locality/city/address, 2) proximity within SEARCH_RADIUS_KM,
+// 3) everything else → "Other Locations & Online".
+function assignByLocation(items, locs, getText) {
+  const groups = locs.map(loc => ({ loc, items: [] }));
+  const other = [];
+  const used = new Set();
+
+  items.forEach(item => {
+    const hay = (getText(item) || '').toLowerCase();
+    for (let i = 0; i < locs.length; i++) {
+      const n = (locs[i].name || '').toLowerCase();
+      if (n && hay.includes(n)) {
+        const dist = (locs[i].lat != null && item.latitude != null && item.longitude != null)
+          ? haversineKm(locs[i].lat, locs[i].lon, item.latitude, item.longitude)
+          : null;
+        groups[i].items.push({ item, dist });
+        used.add(item.id);
+        break;
+      }
+    }
+  });
+
+  items.forEach(item => {
+    if (used.has(item.id)) return;
+    if (item.latitude == null || item.longitude == null) {
+      other.push({ item, dist: null });
+      used.add(item.id);
+      return;
+    }
+    let bestI = -1;
+    let bestD = Infinity;
+    locs.forEach((loc, i) => {
+      if (loc.lat == null) return;
+      const d = haversineKm(loc.lat, loc.lon, item.latitude, item.longitude);
+      if (d < bestD) {
+        bestD = d;
+        bestI = i;
+      }
+    });
+    if (bestI >= 0 && bestD <= SEARCH_RADIUS_KM) {
+      groups[bestI].items.push({ item, dist: bestD });
+    } else {
+      other.push({ item, dist: bestI >= 0 ? bestD : null });
+    }
+    used.add(item.id);
+  });
+
+  groups.forEach(g => g.items.sort((a, b) => (a.dist ?? 9e9) - (b.dist ?? 9e9)));
+  return { groups, other };
+}
+
+function emergencyGroupHtml(icon, titleHtml, sub, cardsHtml) {
+  return `
+    <div class="emergency-doc-group">
+      <div class="emergency-group-head">
+        <h3 class="emergency-group-title"><i data-lucide="${icon}"></i> ${titleHtml}</h3>
+        <span class="emergency-group-sub">${sub}</span>
+      </div>
+      <div class="emergency-doctors-grid">${cardsHtml}</div>
+    </div>`;
+}
+
+function buildEmergencyDocCard(p, dist = null, locName = '') {
   const specs = (p.specializations || []).slice(0, 3)
     .map(s => `<span class="doc-tag">${escapeHtml(s)}</span>`).join('');
   const mapsQ = encodeURIComponent(p.clinic_address || p.location_city || 'psychiatrist near me');
-  const online = (p.consultation_modes || []).includes('online');
-  const badge = online ? '<span class="doc-live-badge"><i data-lucide="video"></i> Online</span>'
-                       : '<span class="doc-live-badge doc-badge-clinic"><i data-lucide="hospital"></i> Clinic</span>';
+  const modes = p.consultation_modes || [];
+  const modeBadges = [];
+  if (modes.includes('in-person')) {
+    modeBadges.push('<span class="doc-mode-chip mode-clinic"><i data-lucide="hospital"></i> In-Person Clinic</span>');
+  }
+  if (modes.includes('online')) {
+    modeBadges.push('<span class="doc-mode-chip mode-online"><i data-lucide="video"></i> Online Video</span>');
+  }
+  const badge = modes.includes('in-person')
+    ? '<span class="doc-live-badge doc-badge-clinic"><i data-lucide="hospital"></i> Clinic</span>'
+    : '<span class="doc-live-badge"><i data-lucide="video"></i> Online</span>';
+  const distChip = (dist != null && locName)
+    ? `<span class="doc-dist-chip"><i data-lucide="navigation"></i> ${dist.toFixed(1)} km from ${escapeHtml(locName)}</span>`
+    : '';
+  const exactWhere = p.clinic_address || p.locality || p.location_city;
+  const website = p.website_url
+    ? `<a href="${escapeHtml(p.website_url)}" target="_blank" rel="noopener noreferrer" class="btn-doc-website" title="Open booking website">
+         <i data-lucide="globe"></i> Book on Website
+       </a>`
+    : `<button type="button" class="btn-doc-website emergency-book-btn" data-id="${escapeHtml(p.id)}">
+         <i data-lucide="globe"></i> Book on Website
+       </button>`;
 
   return `
     <div class="emergency-doc-card">
@@ -4615,79 +4711,171 @@ function buildEmergencyDocCard(p) {
           <div class="doc-rating"><i data-lucide="star"></i> ${p.rating} <span>(${p.reviews_count} reviews)</span></div>
           <h4 class="doc-name">${escapeHtml(p.name)}</h4>
           <p class="doc-role">${escapeHtml(p.title)}</p>
-          <p class="doc-edu">${escapeHtml(p.qualification)} • ${p.experience_years} yrs exp</p>
-          <p class="doc-loc-chip"><i data-lucide="map-pin"></i> ${escapeHtml(p.location_city)}</p>
+          <p class="doc-edu">${escapeHtml(p.qualification)} • <strong>${p.experience_years} yrs experience</strong></p>
+          <p class="doc-loc-chip"><i data-lucide="map-pin"></i> ${escapeHtml(p.locality || p.location_city)}</p>
+          ${distChip}
         </div>
       </div>
+      <p class="doc-exact-addr"><i data-lucide="building-2"></i> Sits at: ${escapeHtml(exactWhere)}</p>
       <div class="doc-tags">${specs}</div>
+      <div class="doc-mode-row">${modeBadges.join('')}</div>
       <div class="doc-actions">
         <button type="button" class="btn-doc-book emergency-book-btn" data-id="${escapeHtml(p.id)}">
           <i data-lucide="calendar"></i> Book Appointment (₹${Number(p.fee_per_session).toLocaleString()})
         </button>
-        <a href="https://maps.google.com/?q=${mapsQ}" target="_blank" rel="noopener noreferrer" class="btn-doc-call" title="Clinic Directions">
+        <a href="https://maps.google.com/?q=${mapsQ}" target="_blank" rel="noopener noreferrer" class="btn-doc-call" title="Clinic Directions on Map">
           <i data-lucide="map"></i>
         </a>
+      </div>
+      <div class="doc-web-row">${website}</div>
+    </div>`;
+}
+
+function buildClinicCard(c, dist = null, locName = '') {
+  const features = (c.features || []).slice(0, 4)
+    .map(f => `<span class="spec-tag"><i data-lucide="check-circle-2"></i> ${escapeHtml(f)}</span>`).join('');
+  const mapsQ = encodeURIComponent(c.address || c.name);
+  const distChip = (dist != null && locName)
+    ? `<div class="clinical-distance-badge"><i data-lucide="navigation"></i> <span>${dist.toFixed(1)} km from ${escapeHtml(locName)}</span></div>`
+    : `<div class="clinical-distance-badge"><i data-lucide="map-pin"></i> <span>${escapeHtml(c.locality || c.city)}</span></div>`;
+  const website = c.website_url
+    ? `<a href="${escapeHtml(c.website_url)}" target="_blank" rel="noopener noreferrer" class="btn-clinical-web">
+         <i data-lucide="globe"></i> Website / Book
+       </a>`
+    : '';
+
+  return `
+    <div class="clinical-center-card">
+      <div class="clinical-card-header">
+        <div>
+          <span class="clinical-type-pill">${escapeHtml(c.type_pill)}</span>
+          <h4 class="clinical-name">${escapeHtml(c.name)}</h4>
+          <p class="clinical-address"><i data-lucide="map-pin"></i> ${escapeHtml(c.address)}</p>
+        </div>
+        ${distChip}
+      </div>
+      <div class="clinical-specs">${features}</div>
+      <div class="clinical-card-actions">
+        ${c.phone ? `<a href="tel:${escapeHtml((c.phone || '').replace(/\s+/g, ''))}" class="btn-clinical-call">
+          <i data-lucide="phone"></i> Call: ${escapeHtml(c.phone)}
+        </a>` : ''}
+        <a href="https://maps.google.com/?q=${mapsQ}" target="_blank" rel="noopener noreferrer" class="btn-clinical-nav">
+          <i data-lucide="map"></i> Directions
+        </a>
+        ${website}
       </div>
     </div>`;
 }
 
 function renderEmergencyDoctors() {
-  const localGrid = elements.emergencyLocalDoctorsGrid;
-  const otherGrid = elements.emergencyOtherDoctorsGrid;
-  if (!localGrid || !otherGrid) return;
+  const wrap = elements.emergencyDocsGroups;
+  if (!wrap) return;
 
-  const city = state.emergencyCity;
   const spec = state.emergencySpec;
-  const filtered = state.emergencyProviders.filter(p => matchesEmergencySpec(p, spec));
+  const minExp = parseInt(state.emergencyMinExp, 10) || 0;
+  const minRating = parseFloat(state.emergencyMinRating) || 0;
 
-  let localDocs = [];
-  let otherDocs = [];
-  if (city) {
-    const needle = city.toLowerCase();
-    localDocs = filtered.filter(p => (p.location_city || '').toLowerCase().includes(needle));
-    otherDocs = filtered.filter(p => !(p.location_city || '').toLowerCase().includes(needle));
+  let filtered = state.emergencyProviders.filter(p => matchesEmergencySpec(p, spec));
+  if (minExp) filtered = filtered.filter(p => (p.experience_years || 0) >= minExp);
+  if (minRating) filtered = filtered.filter(p => (p.rating || 0) >= minRating);
+
+  let html = '';
+  const locs = state.searchLocations;
+
+  if (!locs.length) {
+    const cards = filtered.map(p => buildEmergencyDocCard(p)).join('');
+    html = emergencyGroupHtml(
+      'map',
+      'All Verified Doctors (Nationwide)',
+      `${filtered.length} verified specialists · detect your location for locality-wise results`,
+      cards || `<div class="emergency-docs-empty"><i data-lucide="user-x"></i>
+        <h4>No doctors match these filters</h4><p>Try lowering the Experience or Rating filter.</p></div>`
+    );
   } else {
-    localDocs = filtered;
-    otherDocs = [];
+    const { groups, other } = assignByLocation(
+      filtered, locs,
+      p => `${p.locality || ''} ${p.location_city || ''} ${p.clinic_address || ''}`
+    );
+    groups.forEach(g => {
+      const cards = g.items.length
+        ? g.items.map(x => buildEmergencyDocCard(x.item, x.dist, g.loc.name)).join('')
+        : `<div class="emergency-docs-empty"><i data-lucide="user-x"></i>
+            <h4>No doctors around ${escapeHtml(g.loc.name)}</h4>
+            <p>Nothing matched this area for the current filters — other locations are listed below.</p></div>`;
+      html += emergencyGroupHtml(
+        g.loc.source === 'detected' ? 'crosshair' : 'map-pin',
+        `Doctors near ${escapeHtml(g.loc.name)}`,
+        `${g.items.length} doctor${g.items.length === 1 ? '' : 's'} · within ${SEARCH_RADIUS_KM} km or exact locality match`,
+        cards
+      );
+    });
+    const otherCards = other.map(x => buildEmergencyDocCard(x.item)).join('');
+    html += emergencyGroupHtml(
+      'globe',
+      'Other Locations & Online Doctors',
+      `${other.length} doctor${other.length === 1 ? '' : 's'} · precise clinic addresses & websites shown on each card`,
+      otherCards || `<div class="emergency-docs-empty"><i data-lucide="check-circle-2"></i>
+        <h4>Every matching doctor is already listed above</h4></div>`
+    );
   }
 
-  // Local group
-  if (elements.emergencyLocalDocsTitle) {
-    elements.emergencyLocalDocsTitle.innerHTML = city
-      ? `<i data-lucide="map-pin"></i> Doctors in ${escapeHtml(city)}`
-      : `<i data-lucide="map-pin"></i> All Verified Doctors (Nationwide)`;
-  }
-  if (elements.emergencyLocalDocsSub) {
-    elements.emergencyLocalDocsSub.textContent = city
-      ? `${localDocs.length} available for appointment`
-      : `${localDocs.length} verified specialists · select a location to prioritise yours`;
-  }
-
-  localGrid.innerHTML = localDocs.length
-    ? localDocs.map(buildEmergencyDocCard).join('')
-    : `<div class="emergency-docs-empty">
-         <i data-lucide="user-x"></i>
-         <h4>No doctors found in ${escapeHtml(city || 'this filter')}</h4>
-         <p>Doctors from other locations are listed below — all offer secure online emergency appointments.</p>
-       </div>`;
-
-  // Other locations group
-  if (elements.emergencyOtherDocsGroup) {
-    elements.emergencyOtherDocsGroup.style.display = (city && otherDocs.length) ? '' : 'none';
-  }
-  if (elements.emergencyOtherDocsTitle) {
-    elements.emergencyOtherDocsTitle.innerHTML = city
-      ? `<i data-lucide="globe"></i> Doctors from Other Locations`
-      : `<i data-lucide="globe"></i> Other Locations`;
-  }
-  if (elements.emergencyOtherDocsSub) {
-    elements.emergencyOtherDocsSub.textContent = `${otherDocs.length} doctors available online from other cities`;
-  }
-  otherGrid.innerHTML = otherDocs.map(buildEmergencyDocCard).join('');
+  wrap.innerHTML = html;
 
   if (elements.emergencyDocsCount) {
-    const total = localDocs.length + otherDocs.length;
+    const total = filtered.length;
     elements.emergencyDocsCount.innerHTML = `<i data-lucide="users"></i> ${total} doctor${total === 1 ? '' : 's'} available`;
+  }
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function renderEmergencyClinics() {
+  const wrap = elements.clinicalCentersList;
+  if (!wrap) return;
+  wrap.classList.add('clinical-groups-mode');
+
+  const locs = state.searchLocations;
+  const items = state.emergencyClinics;
+  let html = '';
+
+  if (!locs.length) {
+    html = `
+      <div class="emergency-doc-group clinical-loc-group" style="grid-column: 1 / -1;">
+        <div class="emergency-group-head">
+          <h3 class="emergency-group-title"><i data-lucide="hospital"></i> All Verified Crisis Clinics</h3>
+          <span class="emergency-group-sub">${items.length} facilities · detect your location for distance-wise listing</span>
+        </div>
+        <div class="clinical-cards-inner">${items.map(c => buildClinicCard(c)).join('')}</div>
+      </div>`;
+  } else {
+    const { groups, other } = assignByLocation(
+      items, locs,
+      c => `${c.locality || ''} ${c.city || ''} ${c.address || ''} ${c.name || ''}`
+    );
+    groups.forEach(g => {
+      html += `
+        <div class="emergency-doc-group clinical-loc-group" style="grid-column: 1 / -1;">
+          <div class="emergency-group-head">
+            <h3 class="emergency-group-title"><i data-lucide="${g.loc.source === 'detected' ? 'crosshair' : 'map-pin'}"></i> Clinics near ${escapeHtml(g.loc.name)}</h3>
+            <span class="emergency-group-sub">${g.items.length} facilit${g.items.length === 1 ? 'y' : 'ies'} · within ${SEARCH_RADIUS_KM} km or exact locality match</span>
+          </div>
+          <div class="clinical-cards-inner">${g.items.map(x => buildClinicCard(x.item, x.dist, g.loc.name)).join('')}</div>
+        </div>`;
+    });
+    html += `
+      <div class="emergency-doc-group clinical-loc-group" style="grid-column: 1 / -1;">
+        <div class="emergency-group-head">
+          <h3 class="emergency-group-title"><i data-lucide="globe"></i> Clinics in Other Locations</h3>
+          <span class="emergency-group-sub">${other.length} facilit${other.length === 1 ? 'y' : 'ies'}</span>
+        </div>
+        <div class="clinical-cards-inner">${other.map(x => buildClinicCard(x.item)).join('')}</div>
+      </div>`;
+  }
+
+  wrap.innerHTML = html;
+
+  if (elements.clinicCountBadge) {
+    elements.clinicCountBadge.innerHTML = `<i data-lucide="hospital"></i> ${items.length} clinic${items.length === 1 ? '' : 's'}`;
   }
 
   if (window.lucide) window.lucide.createIcons();
