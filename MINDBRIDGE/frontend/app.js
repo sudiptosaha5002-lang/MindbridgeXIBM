@@ -174,20 +174,26 @@ const elements = {
   modalDismissBtn: document.getElementById('modalDismissBtn'),
   modalGroundingBtn: document.getElementById('modalGroundingBtn'),
 
-  // Emergency Doctor / Psychiatrist Location Listings
-  emergencyCitySelect: document.getElementById('emergencyCitySelect'),
+  // Emergency Doctor / Psychiatrist Universal Location Search
+  emergencyLocInput: document.getElementById('emergencyLocInput'),
+  addEmergencyLocBtn: document.getElementById('addEmergencyLocBtn'),
+  emergencyLocChips: document.getElementById('emergencyLocChips'),
   detectEmergencyLocationBtn: document.getElementById('detectEmergencyLocationBtn'),
   findMyCityPsychBtn: document.getElementById('findMyCityPsychBtn'),
   emergencySpecChips: document.getElementById('emergencySpecChips'),
+  emergencyExpFilter: document.getElementById('emergencyExpFilter'),
+  emergencyRatingFilter: document.getElementById('emergencyRatingFilter'),
   emergencyDocsCount: document.getElementById('emergencyDocsCount'),
-  emergencyLocalDocsGroup: document.getElementById('emergencyLocalDocsGroup'),
-  emergencyOtherDocsGroup: document.getElementById('emergencyOtherDocsGroup'),
-  emergencyLocalDocsTitle: document.getElementById('emergencyLocalDocsTitle'),
-  emergencyOtherDocsTitle: document.getElementById('emergencyOtherDocsTitle'),
-  emergencyLocalDocsSub: document.getElementById('emergencyLocalDocsSub'),
-  emergencyOtherDocsSub: document.getElementById('emergencyOtherDocsSub'),
-  emergencyLocalDoctorsGrid: document.getElementById('emergencyLocalDoctorsGrid'),
-  emergencyOtherDoctorsGrid: document.getElementById('emergencyOtherDoctorsGrid'),
+  emergencyDocsGroups: document.getElementById('emergencyDocsGroups'),
+
+  // Emergency Clinics (shared location process)
+  clinicLocInput: document.getElementById('clinicLocInput'),
+  addClinicLocBtn: document.getElementById('addClinicLocBtn'),
+  clinicLocChips: document.getElementById('clinicLocChips'),
+  detectClinicLocationBtn: document.getElementById('detectClinicLocationBtn'),
+  findNearbyClinicsBtn: document.getElementById('findNearbyClinicsBtn'),
+  clinicCountBadge: document.getElementById('clinicCountBadge'),
+  clinicalCentersList: document.getElementById('clinicalCentersList'),
 
   // Breathing Pacer
   breathingCircle: document.getElementById('breathingCircle'),
