@@ -680,6 +680,56 @@ def seed_emergency_psychiatrists(cursor):
             "website_url": "https://rupsadutta.mindbridge.care",
             "available_days": json.dumps(["Monday", "Tuesday", "Thursday", "Friday", "Saturday"]),
             "available_slots": json.dumps(["09:30 AM", "12:30 PM", "04:30 PM", "06:30 PM"])
+        },
+        {
+            "id": "prov-psych-narayana",
+            "name": "Dr. Arindam Ghosh",
+            "title": "Consultant Psychiatrist · Narayana Multispeciality Hospital",
+            "qualification": "MBBS, MD (Psychiatry), Member IPS",
+            "experience_years": 14,
+            "specializations": json.dumps(["Mood Disorders", "Hospital Liaison Psychiatry", "Anxiety & OCD", "Medication Review"]),
+            "languages": json.dumps(["English", "Hindi", "Bengali"]),
+            "location_city": "Salt Lake, Kolkata / Online",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Narayana Multispeciality Hospital, Sector II, Bidhannagar, Salt Lake, Kolkata 700091",
+            "fee_per_session": 2000,
+            "rating": 4.92,
+            "reviews_count": 154,
+            "avatar_url": None,
+            "bio": "Dr. Ghosh consults at Narayana Multispeciality Hospital, Salt Lake — inpatient/outpatient psychiatric liaison, mood-disorder management, and same-day hospital appointments via the hospital website.",
+            "locality": "Salt Lake, Kolkata",
+            "latitude": 22.5850,
+            "longitude": 88.4150,
+            "website_url": "https://narayana.mindbridge.care/book/dr-arindam-ghosh",
+            "phone": "+91 33 6680 1122",
+            "hospital_id": "clinic-narayana",
+            "available_days": json.dumps(["Monday", "Tuesday", "Wednesday", "Friday", "Saturday"]),
+            "available_slots": json.dumps(["10:00 AM", "12:00 PM", "04:00 PM", "06:00 PM"])
+        },
+        {
+            "id": "prov-psych-apollo",
+            "name": "Dr. Priyanka Sen",
+            "title": "Consultant Psychiatrist · Apollo Multispeciality Hospital",
+            "qualification": "MBBS, DNB (Psychiatry), Certified Consultation-Liaison Psychiatrist",
+            "experience_years": 13,
+            "specializations": json.dumps(["Consultation-Liaison Psychiatry", "Depression Crisis", "Women's Mental Health", "Sleep Disorders"]),
+            "languages": json.dumps(["English", "Hindi", "Bengali"]),
+            "location_city": "Kolkata / Online",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Apollo Multispeciality Hospital, 11/1 Block A, EM Bypass, Kolkata 700099",
+            "fee_per_session": 2200,
+            "rating": 4.94,
+            "reviews_count": 178,
+            "avatar_url": None,
+            "bio": "Dr. Sen sees patients at Apollo Multispeciality Hospital, Kolkata — psychiatric consultations coordinated through the hospital's appointment desk and website booking portal.",
+            "locality": "EM Bypass, Kolkata",
+            "latitude": 22.5000,
+            "longitude": 88.3900,
+            "website_url": "https://apollo.mindbridge.care/book/dr-priyanka-sen",
+            "phone": "+91 33 6600 2233",
+            "hospital_id": "clinic-apollo",
+            "available_days": json.dumps(["Monday", "Tuesday", "Thursday", "Friday", "Sunday"]),
+            "available_slots": json.dumps(["11:00 AM", "01:00 PM", "05:00 PM", "07:00 PM"])
         }
     ]
 
@@ -689,15 +739,17 @@ def seed_emergency_psychiatrists(cursor):
             id, name, title, qualification, experience_years, specializations,
             languages, location_city, consultation_modes, clinic_address,
             fee_per_session, rating, reviews_count, avatar_url, bio, is_verified,
-            available_days, available_slots, locality, latitude, longitude, website_url
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            available_days, available_slots, locality, latitude, longitude,
+            website_url, phone, hospital_id
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             p["id"], p["name"], p["title"], p["qualification"], p["experience_years"],
             p["specializations"], p["languages"], p["location_city"],
             p["consultation_modes"], p["clinic_address"], p["fee_per_session"],
-            p["rating"], p["reviews_count"], p["avatar_url"], p["bio"],
+            p["rating"], p["reviews_count"], p.get("avatar_url"), p["bio"],
             p.get("is_verified", 1), p["available_days"], p["available_slots"],
-            p.get("locality"), p.get("latitude"), p.get("longitude"), p.get("website_url")
+            p.get("locality"), p.get("latitude"), p.get("longitude"),
+            p.get("website_url"), p.get("phone"), p.get("hospital_id")
         ))
 
 
