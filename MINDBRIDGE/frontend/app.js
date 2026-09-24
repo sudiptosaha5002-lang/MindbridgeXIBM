@@ -4215,37 +4215,12 @@ function openEmergencyModal() {
 }
 
 function initEmergencyModeInteractive() {
-  // 1. SOS GPS Location Broadcast
+  // 1. SOS GPS Location Broadcast & Nearest Ambulance Dispatch
   const sosLocationBtn = document.getElementById('sosLocationDispatchBtn');
   if (sosLocationBtn && !sosLocationBtn.dataset.bound) {
     sosLocationBtn.dataset.bound = 'true';
     sosLocationBtn.addEventListener('click', () => {
-      sosLocationBtn.disabled = true;
-      sosLocationBtn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Broadcasting GPS to Responders...';
-      if (window.lucide) window.lucide.createIcons();
-
-      const onDispatched = (lat, lon) => {
-        sosLocationBtn.disabled = false;
-        sosLocationBtn.innerHTML = '<i data-lucide="check-circle-2"></i> Location Dispatched to Emergency Line';
-        sosLocationBtn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
-        if (window.lucide) window.lucide.createIcons();
-        alert(`🚨 EMERGENCY SOS BROADCAST SENT\n\nCoordinates: ${lat.toFixed(4)}° N, ${lon.toFixed(4)}° E\nStatus: Nearest Emergency Ambulance & Crisis Responders Alerted.\nEstimated Response Time: 8-10 Minutes.`);
-        setTimeout(() => {
-          sosLocationBtn.innerHTML = '<i data-lucide="map-pin"></i> Broadcast GPS Location to Responders';
-          sosLocationBtn.style.background = '';
-          if (window.lucide) window.lucide.createIcons();
-        }, 8000);
-      };
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          pos => onDispatched(pos.coords.latitude, pos.coords.longitude),
-          () => onDispatched(28.6139, 77.2090),
-          { timeout: 4000 }
-        );
-      } else {
-        onDispatched(28.6139, 77.2090);
-      }
+      broadcastGpsAndDispatchAmbulance();
     });
   }
 
