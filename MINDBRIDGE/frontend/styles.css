@@ -10553,3 +10553,93 @@ body.dark-theme .gc-name {
 .doc-phone-link:hover {
   text-decoration: underline;
 }
+
+/* ========================================================================== */
+/* ACTIVE EMERGENCY AMBULANCE DISPATCH & SOS LOCATION STYLES                  */
+/* ========================================================================== */
+
+.emergency-btn-ambulance.active-dispatched {
+  background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+  border: 1px solid rgba(254, 202, 202, 0.45) !important;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+  animation: ambulancePulse 2.5s infinite !important;
+}
+
+@keyframes ambulancePulse {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.5), 0 6px 18px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(239, 68, 68, 0.8), 0 8px 24px rgba(220, 38, 38, 0.6);
+  }
+}
+
+.emergency-btn-label-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.25;
+}
+
+.emergency-btn-main-text {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.emergency-btn-sub-text {
+  font-size: 0.72rem;
+  font-weight: 500;
+  opacity: 0.95;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.live-dot-green {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: liveDotBlink 1.4s infinite ease-in-out;
+}
+
+@keyframes liveDotBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.icon-pulse {
+  animation: sirenWiggle 1.5s infinite ease-in-out;
+}
+
+@keyframes sirenWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.ambulance-broadcast-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  margin-top: 0.6rem;
+  font-weight: 600;
+}
+
+.hotline-pro-card.dispatched-highlight {
+  border-color: #ef4444 !important;
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.14), rgba(239, 68, 68, 0.02)) !important;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.25) !important;
+  transition: all 0.4s ease !important;
+}
