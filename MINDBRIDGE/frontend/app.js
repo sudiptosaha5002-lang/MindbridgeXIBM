@@ -4352,12 +4352,12 @@ function detectEmergencyLocation() {
     if (window.lucide) window.lucide.createIcons();
   }
 
-  const finish = (city, note) => {
+  const finish = (city) => {
     setEmergencyCity(city);
     renderEmergencyDoctors();
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = `<i data-lucide="check-circle-2"></i> ${city}${note ? '' : ''}`;
+      btn.innerHTML = `<i data-lucide="check-circle-2"></i> ${city}`;
       if (window.lucide) window.lucide.createIcons();
       setTimeout(() => {
         btn.innerHTML = '<i data-lucide="crosshair"></i> Detect My Location';
