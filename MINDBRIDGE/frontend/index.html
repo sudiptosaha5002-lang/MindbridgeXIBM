@@ -1184,8 +1184,61 @@
               </div>
             </div>
 
+            <!-- LIVE EMERGENCY GOOGLE MAPS & RADAR DISPATCH INTERACTION -->
+            <div id="emergencyLiveMapContainer" class="emergency-map-card" style="display: none;">
+              <div class="emergency-map-header">
+                <div class="emergency-map-title-row">
+                  <div class="live-radar-icon">
+                    <span class="radar-ping"></span>
+                    <i data-lucide="satellite"></i>
+                  </div>
+                  <div>
+                    <div class="emergency-map-badge">
+                      <span class="live-dot-green"></span> REAL-TIME GPS MAPPING ACTIVE
+                    </div>
+                    <h4 class="emergency-map-title">Nearby Emergency Ambulance Service Providers</h4>
+                    <p class="emergency-map-sub" id="emergencyMapAddressText">Locating exact GPS coordinates...</p>
+                  </div>
+                </div>
+                <div class="emergency-map-actions">
+                  <button type="button" class="emergency-map-btn" id="recenterEmergencyMapBtn" title="Recenter Map to My Exact Location">
+                    <i data-lucide="crosshair"></i> My Location
+                  </button>
+                  <a href="https://maps.google.com" target="_blank" rel="noopener" class="emergency-map-btn emergency-map-gmaps-btn" id="openInGoogleMapsBtn" title="Open Full Interactive View in Google Maps">
+                    <i data-lucide="map-pin"></i> Open in Google Maps ↗
+                  </a>
+                </div>
+              </div>
+
+              <!-- Interactive Live Map View -->
+              <div id="emergencyInteractiveMap" class="emergency-interactive-map"></div>
+
+              <!-- Proximity Telemetry & Dynamic Location Switcher -->
+              <div class="emergency-map-footer">
+                <div class="emergency-map-stats">
+                  <span class="map-stat-pill active">
+                    <span class="live-dot-green"></span> <strong id="mapProviderCount">5</strong> Nearby Units On Standby
+                  </span>
+                  <span class="map-stat-pill">
+                    <i data-lucide="navigation"></i> Closest Unit: <strong id="mapNearestDist">0.4 km</strong>
+                  </span>
+                  <span class="map-stat-pill">
+                    <i data-lucide="clock"></i> ETA: <strong id="mapNearestEta">3-5 mins</strong>
+                  </span>
+                </div>
+                <div class="emergency-map-locality-chips" id="emergencyQuickLocSwitch">
+                  <span class="loc-switch-label"><i data-lucide="map"></i> Test / Move GPS:</span>
+                  <button type="button" class="loc-quick-btn active" data-lat="22.5626" data-lon="88.3630" data-name="Bowbazar / Sealdah, Central Kolkata">Bowbazar (0.7 km)</button>
+                  <button type="button" class="loc-quick-btn" data-lat="22.5744" data-lon="88.3606" data-name="College Street / Medical College">College St (0.4 km)</button>
+                  <button type="button" class="loc-quick-btn" data-lat="22.5870" data-lon="88.4180" data-name="Salt Lake Sector 2">Salt Lake</button>
+                  <button type="button" class="loc-quick-btn" data-lat="22.7210" data-lon="88.4820" data-name="Barasat District Hospital">Barasat</button>
+                  <button type="button" class="loc-quick-btn" data-lat="28.5200" data-lon="77.2100" data-name="Saket, New Delhi">Saket Delhi</button>
+                </div>
+              </div>
+            </div>
+
             <!-- Verified 24/7 Emergency Helplines Grid -->
-            <div class="emergency-cards-grid">
+            <div class="emergency-cards-grid" id="emergencyCardsGrid">
               <!-- Card 1 -->
               <div class="hotline-pro-card priority-high" id="emergencyAmbulanceCard">
                 <div class="hotline-pro-top">
