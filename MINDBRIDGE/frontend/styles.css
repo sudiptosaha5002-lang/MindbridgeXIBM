@@ -5017,6 +5017,297 @@ body {
   to { transform: rotate(360deg); }
 }
 
+/* ---------- Universal location search: input, chips, filters ---------- */
+.emergency-loc-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.emergency-loc-input {
+  min-width: 280px;
+  padding: 0.62rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-surface);
+  color: var(--text-pure);
+  font-size: 0.86rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.emergency-loc-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.emergency-loc-input:focus {
+  border-color: #0d9488;
+}
+
+.emergency-add-loc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.62rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 148, 136, 0.45);
+  background: rgba(13, 148, 136, 0.12);
+  color: #2dd4bf;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.emergency-add-loc-btn:hover {
+  background: rgba(13, 148, 136, 0.25);
+  transform: translateY(-1px);
+}
+
+.emergency-loc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.emergency-loc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(13, 148, 136, 0.12);
+  border: 1px solid rgba(13, 148, 136, 0.4);
+  color: #5eead4;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.emergency-loc-chip i {
+  width: 13px;
+  height: 13px;
+}
+
+.emergency-loc-chip.chip-detected {
+  background: rgba(45, 212, 191, 0.18);
+  border-color: #2dd4bf;
+}
+
+.emergency-loc-chip.chip-hint {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-card);
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.loc-chip-remove {
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease;
+}
+
+.loc-chip-remove:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.emergency-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.emergency-select-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.emergency-mini-select {
+  min-width: 150px;
+  padding: 0.55rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-surface);
+  color: var(--text-pure);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.emergency-mini-select:focus {
+  border-color: #0d9488;
+}
+
+/* ---------- Doctor card extras: exact address, modes, distance, website ---------- */
+.doc-exact-addr {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.73rem;
+  color: var(--text-sub);
+  line-height: 1.35;
+  margin: -0.4rem 0 0.8rem;
+}
+
+.doc-exact-addr i {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: #38bdf8;
+  margin-top: 1px;
+}
+
+.doc-mode-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.doc-mode-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+.doc-mode-chip i {
+  width: 11px;
+  height: 11px;
+}
+
+.doc-mode-chip.mode-clinic {
+  background: rgba(2, 132, 199, 0.14);
+  border: 1px solid rgba(2, 132, 199, 0.4);
+  color: #38bdf8;
+}
+
+.doc-mode-chip.mode-online {
+  background: rgba(168, 85, 247, 0.14);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+}
+
+.doc-dist-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.doc-dist-chip i {
+  width: 11px;
+  height: 11px;
+}
+
+.doc-web-row {
+  margin-top: 0.55rem;
+}
+
+.btn-doc-website {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(13, 148, 136, 0.55);
+  color: #2dd4bf;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-doc-website:hover {
+  background: rgba(13, 148, 136, 0.15);
+  border-style: solid;
+  transform: translateY(-1px);
+}
+
+.btn-doc-website i {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------- Clinical section: grouped location results ---------- */
+.clinical-groups-mode {
+  display: flex !important;
+  flex-direction: column;
+  gap: 1.6rem !important;
+}
+
+.clinical-cards-inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .clinical-cards-inner { grid-template-columns: 1fr; }
+}
+
+.btn-clinical-web {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(2, 132, 199, 0.55);
+  color: #38bdf8;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.65rem 1.1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-clinical-web:hover {
+  background: rgba(2, 132, 199, 0.15);
+  border-style: solid;
+}
+
+.clinical-loc-toolbar {
+  margin-top: 1.2rem;
+}
+
+@media (max-width: 640px) {
+  .emergency-loc-input { min-width: 0; width: 100%; }
+  .emergency-loc-input-row { flex-wrap: wrap; }
+  .emergency-filters-row { flex-direction: column; align-items: stretch; }
+  .emergency-mini-select { width: 100%; }
+}
+
 .emergency-grounding-box {
   margin-top: 1rem;
 }
