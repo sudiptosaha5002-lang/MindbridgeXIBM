@@ -727,6 +727,9 @@ def apply_provider_geo_updates(cursor):
         SET locality = ?, latitude = ?, longitude = ?, website_url = ?
         WHERE id = ?
         """, (locality, lat, lon, website, pid))
+    # Seniority bumps so the Experience filter (25+/30+) has real matches
+    for pid, years in (("prov-psych-kolkata", 26), ("prov-2", 18)):
+        cursor.execute("UPDATE providers SET experience_years = ? WHERE id = ?", (years, pid))
 
 
 def seed_clinics(cursor):
