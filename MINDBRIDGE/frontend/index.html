@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=13.0">
+  <link rel="stylesheet" href="styles.css?v=13.1">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -999,6 +999,13 @@
               </select>
             </div>
 
+            <div class="filter-group">
+              <label><i data-lucide="hospital"></i> Hospital / Clinic</label>
+              <select id="filterHospital" class="filter-select">
+                <option value="">All Hospitals &amp; Clinics</option>
+              </select>
+            </div>
+
             <button id="resetFiltersBtn" class="btn btn-secondary filter-reset-btn">
               <i data-lucide="rotate-ccw"></i> Reset
             </button>
@@ -1384,6 +1391,12 @@
                       <option value="4.5">4.5★ &amp; above</option>
                       <option value="4.8">4.8★ &amp; above</option>
                       <option value="4.9">4.9★ &amp; above</option>
+                    </select>
+                  </div>
+                  <div class="emergency-loc-field">
+                    <label for="emergencyHospitalFilter"><i data-lucide="hospital"></i> Hospital / Clinic</label>
+                    <select id="emergencyHospitalFilter" class="emergency-mini-select">
+                      <option value="">All Hospitals &amp; Clinics</option>
                     </select>
                   </div>
                 </div>
@@ -2600,7 +2613,7 @@
   <script src="voicebox.js?v=1.0"></script>
 
   <!-- Custom Scripts -->
-  <script src="app.js?v=15.0"></script>
+  <script src="app.js?v=15.1"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) {
