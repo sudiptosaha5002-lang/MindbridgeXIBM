@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=12.0">
+  <link rel="stylesheet" href="styles.css?v=12.1">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -1365,8 +1365,8 @@
               <div class="emergency-badge emergency-badge-teal">
                 <i data-lucide="stethoscope"></i> Licensed Medical Professionals
               </div>
-              <h2 class="emergency-section-title">Doctor/Psychriatist servicve</h2>
-              <p class="emergency-section-subtitle">Board-Certified Neuro-Psychiatrists & Senior Clinical Psychologists Available for Immediate Triage & Priority Booking.</p>
+              <h2 class="emergency-section-title">Doctor / Psychiatrist Service</h2>
+              <p class="emergency-section-subtitle">Board-Certified Psychiatrists & Clinical Psychologists for emergency appointments — listed for your detected location first, then all other locations.</p>
             </div>
 
             <!-- Image Hero Showcase -->
@@ -1380,104 +1380,73 @@
                   <h3 class="emergency-overlay-title">Immediate Doctor & Psychiatric Consultation</h3>
                   <p class="emergency-overlay-desc">Connect directly with licensed clinical psychologists and medical psychiatrists for emergency psychiatric evaluations, prescription review, and trauma counseling.</p>
                   <div class="emergency-action-cta-group">
-                    <button type="button" class="emergency-cta-btn emergency-btn-doctor" onclick="openBookingModal('prov-2')">
-                      <i data-lucide="video"></i> Connect with On-Call Psychiatrist
+                    <button type="button" class="emergency-cta-btn emergency-btn-doctor" id="findMyCityPsychBtn">
+                      <i data-lucide="map-pin"></i> Find Psychiatrist Near My Location
                     </button>
                     <button type="button" class="emergency-cta-btn emergency-btn-secondary" onclick="switchTab('providers')">
-                      <i data-lucide="users"></i> View Full Doctor Directory (5 Available)
+                      <i data-lucide="users"></i> View Full Doctor Directory
                     </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Doctor Cards Grid -->
-            <div class="emergency-doctors-grid">
-              <!-- Doctor 1 -->
-              <div class="emergency-doc-card">
-                <div class="doc-card-top">
-                  <div class="doc-avatar-wrap">
-                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" alt="Dr. Rajesh K. Varma" class="doc-avatar-img">
-                    <span class="doc-live-badge"><i data-lucide="video"></i> Online</span>
-                  </div>
-                  <div class="doc-meta-info">
-                    <div class="doc-rating"><i data-lucide="star"></i> 4.92 <span>(210 reviews)</span></div>
-                    <h4 class="doc-name">Dr. Rajesh K. Varma</h4>
-                    <p class="doc-role">Consultant Neuro-Psychiatrist</p>
-                    <p class="doc-edu">MBBS, MD (Psychiatry - AIIMS), Dip. Psych.</p>
-                  </div>
+            <!-- Location + Specialty Filter Toolbar -->
+            <div class="emergency-doc-toolbar">
+              <div class="emergency-location-bar">
+                <div class="emergency-loc-field">
+                  <label for="emergencyCitySelect"><i data-lucide="map-pin"></i> Your Location</label>
+                  <select id="emergencyCitySelect" class="emergency-city-select">
+                    <option value="">All Locations (Nationwide)</option>
+                    <option value="New Delhi">New Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Bengaluru">Bengaluru</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Online Pan-India">Online Pan-India</option>
+                  </select>
                 </div>
-                <div class="doc-tags">
-                  <span class="doc-tag">Acute Mood & Panic</span>
-                  <span class="doc-tag">Psychiatric Evaluation</span>
-                  <span class="doc-tag">Sleep & Crisis</span>
+                <button type="button" class="emergency-detect-btn" id="detectEmergencyLocationBtn">
+                  <i data-lucide="crosshair"></i> Detect My Location
+                </button>
+                <span class="emergency-doc-count" id="emergencyDocsCount"><i data-lucide="users"></i> Loading doctors...</span>
+              </div>
+              <div class="emergency-spec-chips" id="emergencySpecChips" role="tablist" aria-label="Specialist type filter">
+                <button type="button" class="emergency-spec-chip active-chip" data-spec="psychiatrist">
+                  <i data-lucide="brain"></i> Psychiatrists
+                </button>
+                <button type="button" class="emergency-spec-chip" data-spec="psychologist">
+                  <i data-lucide="heart-handshake"></i> Psychologists & Therapists
+                </button>
+                <button type="button" class="emergency-spec-chip" data-spec="all">
+                  <i data-lucide="layout-grid"></i> All Specialists
+                </button>
+              </div>
+            </div>
+
+            <!-- Location-Grouped Doctor Lists (rendered by app.js) -->
+            <div class="emergency-doc-groups">
+              <div class="emergency-doc-group" id="emergencyLocalDocsGroup">
+                <div class="emergency-group-head">
+                  <h3 class="emergency-group-title" id="emergencyLocalDocsTitle">
+                    <i data-lucide="map-pin"></i> Doctors in Your Location
+                  </h3>
+                  <span class="emergency-group-sub" id="emergencyLocalDocsSub"></span>
                 </div>
-                <div class="doc-actions">
-                  <button type="button" class="btn-doc-book" onclick="openBookingModal('prov-2')">
-                    <i data-lucide="calendar"></i> Priority Consultation (₹2,200)
-                  </button>
-                  <a href="tel:+919830012345" class="btn-doc-call" title="Call Clinic Desk">
-                    <i data-lucide="phone"></i>
-                  </a>
-                </div>
+                <div class="emergency-doctors-grid" id="emergencyLocalDoctorsGrid"></div>
               </div>
 
-              <!-- Doctor 2 -->
-              <div class="emergency-doc-card">
-                <div class="doc-card-top">
-                  <div class="doc-avatar-wrap">
-                    <img src="https://images.unsplash.com/photo-1594824813593-138382d56a34?w=400&auto=format&fit=crop&q=80" alt="Dr. Ananya Sharma" class="doc-avatar-img">
-                    <span class="doc-live-badge"><i data-lucide="video"></i> Online</span>
-                  </div>
-                  <div class="doc-meta-info">
-                    <div class="doc-rating"><i data-lucide="star"></i> 4.95 <span>(142 reviews)</span></div>
-                    <h4 class="doc-name">Dr. Ananya Sharma</h4>
-                    <p class="doc-role">Senior Clinical Psychologist</p>
-                    <p class="doc-edu">Ph.D. in Clinical Psychology (NIMHANS), RCI Reg.</p>
-                  </div>
+              <div class="emergency-doc-group" id="emergencyOtherDocsGroup">
+                <div class="emergency-group-head">
+                  <h3 class="emergency-group-title" id="emergencyOtherDocsTitle">
+                    <i data-lucide="globe"></i> Doctors from Other Locations
+                  </h3>
+                  <span class="emergency-group-sub" id="emergencyOtherDocsSub"></span>
                 </div>
-                <div class="doc-tags">
-                  <span class="doc-tag">CBT Crisis De-escalation</span>
-                  <span class="doc-tag">Severe Anxiety & Panic</span>
-                  <span class="doc-tag">Trauma Grounding</span>
-                </div>
-                <div class="doc-actions">
-                  <button type="button" class="btn-doc-book" onclick="openBookingModal('prov-1')">
-                    <i data-lucide="calendar"></i> Priority Consultation (₹1,800)
-                  </button>
-                  <a href="tel:+919810012345" class="btn-doc-call" title="Call Clinic Desk">
-                    <i data-lucide="phone"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Doctor 3 -->
-              <div class="emergency-doc-card">
-                <div class="doc-card-top">
-                  <div class="doc-avatar-wrap">
-                    <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" alt="Dr. Karthik Sundaram" class="doc-avatar-img">
-                    <span class="doc-live-badge"><i data-lucide="video"></i> Available</span>
-                  </div>
-                  <div class="doc-meta-info">
-                    <div class="doc-rating"><i data-lucide="star"></i> 4.96 <span>(165 reviews)</span></div>
-                    <h4 class="doc-name">Dr. Karthik Sundaram</h4>
-                    <p class="doc-role">Psychiatrist & Behavioral Specialist</p>
-                    <p class="doc-edu">MBBS, DNB (Psychiatry), Member of IPS</p>
-                  </div>
-                </div>
-                <div class="doc-tags">
-                  <span class="doc-tag">Grief & Acute Loss</span>
-                  <span class="doc-tag">Depression Crisis</span>
-                  <span class="doc-tag">Tele-Health Video</span>
-                </div>
-                <div class="doc-actions">
-                  <button type="button" class="btn-doc-book" onclick="openBookingModal('prov-4')">
-                    <i data-lucide="calendar"></i> Priority Consultation (₹2,000)
-                  </button>
-                  <a href="tel:+919840012345" class="btn-doc-call" title="Call Clinic Desk">
-                    <i data-lucide="phone"></i>
-                  </a>
-                </div>
+                <div class="emergency-doctors-grid" id="emergencyOtherDoctorsGrid"></div>
               </div>
             </div>
           </div>
@@ -2688,7 +2657,7 @@
   <script src="voicebox.js?v=1.0"></script>
 
   <!-- Custom Scripts -->
-  <script src="app.js?v=14.0"></script>
+  <script src="app.js?v=14.1"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) {
