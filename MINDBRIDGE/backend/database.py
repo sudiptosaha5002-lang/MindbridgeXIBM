@@ -601,8 +601,81 @@ def seed_emergency_psychiatrists(cursor):
             "reviews_count": 210,
             "avatar_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
             "bio": "Dr. Iyer operates a same-day tele-psychiatry desk for patients anywhere in India who need immediate psychiatric consultation, triage, and prescription review.",
+            "locality": "Pan-India (Telehealth Desk)",
+            "latitude": None,
+            "longitude": None,
+            "website_url": "https://kavyaiyer.telepsychiatry.mindbridge.care",
             "available_days": json.dumps(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]),
             "available_slots": json.dumps(["08:00 AM", "12:00 PM", "04:00 PM", "08:00 PM", "10:00 PM"])
+        },
+        {
+            "id": "prov-psych-barasat",
+            "name": "Dr. Ashim Chatterjee",
+            "title": "Senior Consultant Psychiatrist",
+            "qualification": "MBBS, MD (Psychiatry - IPGMER), Fellow Neuropsychiatry",
+            "experience_years": 32,
+            "specializations": json.dumps(["Geriatric Psychiatry", "Severe Depression", "Stroke & Brain-Mind Disorders", "Crisis De-escalation"]),
+            "languages": json.dumps(["English", "Hindi", "Bengali"]),
+            "location_city": "Barasat, North 24 Parganas / Online",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Chatterjee Mind & Neuro Clinic, Grand Trunk Road, Barasat, North 24 Parganas, West Bengal 741201",
+            "fee_per_session": 1600,
+            "rating": 4.96,
+            "reviews_count": 340,
+            "avatar_url": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Chatterjee has served the Barasat and North 24 Parganas community for over three decades, handling geriatric psychiatry, post-stroke mood disorders, and acute crisis stabilisation.",
+            "locality": "Barasat, North 24 Parganas",
+            "latitude": 22.7200,
+            "longitude": 88.4800,
+            "website_url": "https://chatterjeemindclinic.mindbridge.care",
+            "available_days": json.dumps(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]),
+            "available_slots": json.dumps(["10:00 AM", "12:00 PM", "04:00 PM", "06:00 PM"])
+        },
+        {
+            "id": "prov-psych-barasat2",
+            "name": "Dr. Sanjana Bose",
+            "title": "Consultant Psychiatrist",
+            "qualification": "MBBS, DNB (Psychiatry), Member IPS",
+            "experience_years": 11,
+            "specializations": json.dumps(["Women's Mental Health", "Anxiety & Panic", "Adolescent Psychiatry", "Suicide Risk Assessment"]),
+            "languages": json.dumps(["English", "Bengali", "Hindi"]),
+            "location_city": "Barasat, North 24 Parganas / Online",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Bose Mind Care Centre, Nabapally More, Barasat, North 24 Parganas, West Bengal 741203",
+            "fee_per_session": 1400,
+            "rating": 4.91,
+            "reviews_count": 167,
+            "avatar_url": "https://images.unsplash.com/photo-1594824813593-138382d56a34?w=400&auto=format&fit=crop&q=80",
+            "bio": "Dr. Bose runs a neighbourhood psychiatric practice at Nabapally, Barasat — focused on same-week crisis appointments for anxiety, perinatal distress, and adolescent risk presentations.",
+            "locality": "Barasat, North 24 Parganas",
+            "latitude": 22.7280,
+            "longitude": 88.4900,
+            "website_url": "https://bosemindcare.mindbridge.care",
+            "available_days": json.dumps(["Monday", "Wednesday", "Thursday", "Friday", "Sunday"]),
+            "available_slots": json.dumps(["11:00 AM", "01:00 PM", "05:00 PM", "07:00 PM"])
+        },
+        {
+            "id": "prov-psych-barasat3",
+            "name": "Rupsa Dutta, M.Phil",
+            "title": "Clinical Psychologist & Crisis Counsellor",
+            "qualification": "M.Phil (Clinical Psychology), RCI Registered",
+            "experience_years": 9,
+            "specializations": json.dumps(["CBT Crisis De-escalation", "Trauma & Grief", "Student Distress", "Family Counselling"]),
+            "languages": json.dumps(["English", "Bengali", "Hindi"]),
+            "location_city": "Barasat, North 24 Parganas / Online",
+            "consultation_modes": json.dumps(["online", "in-person"]),
+            "clinic_address": "Dutta Psychology Studio, Rajbari Bazar, Barasat, North 24 Parganas, West Bengal 741201",
+            "fee_per_session": 1100,
+            "rating": 4.90,
+            "reviews_count": 112,
+            "avatar_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
+            "bio": "Rupsa provides in-person and online crisis counselling in Barasat, specialising in CBT-based de-escalation for students, trauma recovery, and family conflicts.",
+            "locality": "Barasat, North 24 Parganas",
+            "latitude": 22.7150,
+            "longitude": 88.4720,
+            "website_url": "https://rupsadutta.mindbridge.care",
+            "available_days": json.dumps(["Monday", "Tuesday", "Thursday", "Friday", "Saturday"]),
+            "available_slots": json.dumps(["09:30 AM", "12:30 PM", "04:30 PM", "06:30 PM"])
         }
     ]
 
@@ -612,14 +685,260 @@ def seed_emergency_psychiatrists(cursor):
             id, name, title, qualification, experience_years, specializations,
             languages, location_city, consultation_modes, clinic_address,
             fee_per_session, rating, reviews_count, avatar_url, bio, is_verified,
-            available_days, available_slots
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            available_days, available_slots, locality, latitude, longitude, website_url
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             p["id"], p["name"], p["title"], p["qualification"], p["experience_years"],
             p["specializations"], p["languages"], p["location_city"],
             p["consultation_modes"], p["clinic_address"], p["fee_per_session"],
             p["rating"], p["reviews_count"], p["avatar_url"], p["bio"],
-            p.get("is_verified", 1), p["available_days"], p["available_slots"]
+            p.get("is_verified", 1), p["available_days"], p["available_slots"],
+            p.get("locality"), p.get("latitude"), p.get("longitude"), p.get("website_url")
+        ))
+
+
+# Fine-grained locality / coordinates / booking website for every known provider
+PROVIDER_GEO_UPDATES = {
+    "prov-1": ("Vasant Vihar, New Delhi", 28.5590, 77.1600, "https://ananyasharma.mindbridge.care"),
+    "prov-2": ("Salt Lake Sector 1, Kolkata", 22.5800, 88.4200, "https://rajeshvarma.mindbridge.care"),
+    "prov-3": ("Bandra West, Mumbai", 19.0590, 72.8290, "https://meerasen.mindbridge.care"),
+    "prov-4": ("Indiranagar, Bengaluru", 12.9780, 77.6400, "https://karthiksundaram.mindbridge.care"),
+    "prov-5": ("Kolkata (Tele-therapy)", 22.5726, 88.3639, "https://priyankaroy.mindbridge.care"),
+    "prov-psych-delhi": ("Saket, New Delhi", 28.5240, 77.2060, "https://sanaqureshi.mindbridge.care"),
+    "prov-psych-mumbai": ("Andheri West, Mumbai", 19.1350, 72.8260, "https://arjundeshmukh.mindbridge.care"),
+    "prov-psych-kolkata": ("Ballygunge, Kolkata", 22.5250, 88.3630, "https://sanjaymehrotra.mindbridge.care"),
+    "prov-psych-bengaluru": ("Koramangala, Bengaluru", 12.9350, 77.6240, "https://vikramrao.mindbridge.care"),
+    "prov-psych-chennai": ("Adyar, Chennai", 13.0010, 80.2560, "https://lakshminarayan.mindbridge.care"),
+    "prov-psych-hyderabad": ("Banjara Hills, Hyderabad", 17.4120, 78.4350, "https://imranhaider.mindbridge.care"),
+    "prov-psych-pune": ("Baner, Pune", 18.5640, 73.7770, "https://nehabhatt.mindbridge.care"),
+    "prov-psych-jaipur": ("C-Scheme, Jaipur", 26.9090, 75.7990, "https://rituagarwal.mindbridge.care"),
+    "prov-psych-online": ("Pan-India (Telehealth Desk)", None, None, "https://kavyaiyer.telepsychiatry.mindbridge.care"),
+    "prov-psych-barasat": ("Barasat, North 24 Parganas", 22.7200, 88.4800, "https://chatterjeemindclinic.mindbridge.care"),
+    "prov-psych-barasat2": ("Barasat, North 24 Parganas", 22.7280, 88.4900, "https://bosemindcare.mindbridge.care"),
+    "prov-psych-barasat3": ("Barasat, North 24 Parganas", 22.7150, 88.4720, "https://rupsadutta.mindbridge.care"),
+}
+
+
+def apply_provider_geo_updates(cursor):
+    """Backfill locality, coordinates and booking website for all providers (idempotent)."""
+    for pid, (locality, lat, lon, website) in PROVIDER_GEO_UPDATES.items():
+        cursor.execute("""
+        UPDATE providers
+        SET locality = ?, latitude = ?, longitude = ?, website_url = ?
+        WHERE id = ?
+        """, (locality, lat, lon, website, pid))
+
+
+def seed_clinics(cursor):
+    """Seed location-aware emergency clinics/hospitals (idempotent)."""
+    clinics = [
+        {
+            "id": "clinic-barasat-dh",
+            "name": "Barasat District Hospital",
+            "type_pill": "Govt. District Hospital · 24/7 Emergency",
+            "address": "Station Road, Barasat, North 24 Parganas, West Bengal 741201",
+            "locality": "Barasat, North 24 Parganas",
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "latitude": 22.7210,
+            "longitude": 88.4820,
+            "phone": "+91 33 2562 3000",
+            "website_url": "https://barasatdistrict.mindbridge.care",
+            "features": json.dumps(["24/7 Casualty & Triage", "Psychiatric Emergency Desk", "Govt. Subsidized", "Ambulance Station"]),
+            "rating": 4.5
+        },
+        {
+            "id": "clinic-barasat-mind",
+            "name": "Shanti Mind Clinic & Day Care",
+            "type_pill": "Private Psychiatric Clinic · Barasat",
+            "address": "NB Block, Rajbari Bazar, Barasat, North 24 Parganas, West Bengal 741201",
+            "locality": "Barasat, North 24 Parganas",
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "latitude": 22.7180,
+            "longitude": 88.4760,
+            "phone": "+91 33 2562 7788",
+            "website_url": "https://shantimind.mindbridge.care",
+            "features": json.dumps(["Day-Care Crisis Ward", "De-addiction Counselling", "Family Therapy Rooms", "Same-week Appointments"]),
+            "rating": 4.7
+        },
+        {
+            "id": "clinic-barrackpore",
+            "name": "North 24 Parganas Mental Health Centre",
+            "type_pill": "Sub-divisional Mental Health Unit",
+            "address": "Barrackpore Court Road, North 24 Parganas, West Bengal 743101",
+            "locality": "Barrackpore, North 24 Parganas",
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "latitude": 22.7850,
+            "longitude": 88.3700,
+            "phone": "+91 33 2591 4400",
+            "website_url": "https://n24mentalhealth.mindbridge.care",
+            "features": json.dumps(["Crisis Observation Beds", "Tele-psychiatry Link", "Govt. Subsidized", "District Mobile Team"]),
+            "rating": 4.4
+        },
+        {
+            "id": "clinic-nimhans",
+            "name": "National Institute of Mental Health & Neuro Sciences (NIMHANS)",
+            "type_pill": "National Apex Institute · 24/7 Emergency",
+            "address": "Hosur Road, Lakkasandra, Bengaluru, Karnataka 560029",
+            "locality": "Lakkasandra, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "latitude": 12.9430,
+            "longitude": 77.5950,
+            "phone": "+91 80 2699 5000",
+            "website_url": "https://nimhans.mindbridge.care",
+            "features": json.dumps(["24/7 Crisis Inpatient Beds", "Psychiatric Casualty", "Resident Psychiatrists", "Govt. Subsidized"]),
+            "rating": 4.9
+        },
+        {
+            "id": "clinic-aiims",
+            "name": "AIIMS Department of Psychiatry & Emergency Behavioral Ward",
+            "type_pill": "Comprehensive Care Center · Emergency Dept",
+            "address": "Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029",
+            "locality": "Ansari Nagar, New Delhi",
+            "city": "New Delhi",
+            "state": "Delhi",
+            "latitude": 28.5670,
+            "longitude": 77.2100,
+            "phone": "+91 11 2658 8500",
+            "website_url": "https://aiimspsychiatry.mindbridge.care",
+            "features": json.dumps(["Intensive Psychiatric Care (IPC)", "Neuro-toxicology & Crisis", "24-Hour Emergency Triage"]),
+            "rating": 4.9
+        },
+        {
+            "id": "clinic-fortis",
+            "name": "Fortis Mental Health & Emergency Clinical Sciences",
+            "type_pill": "Multi-Specialty Private Care · Rapid Triage",
+            "address": "Sector 44, Opposite Huda City Centre, Gurugram, Haryana 122002",
+            "locality": "Sector 44, Gurugram",
+            "city": "Gurugram",
+            "state": "Haryana",
+            "latitude": 28.4590,
+            "longitude": 77.0260,
+            "phone": "+91 124 4962 200",
+            "website_url": "https://fortismentalhealth.mindbridge.care",
+            "features": json.dumps(["Private Suites & Crisis Ward", "24/7 Dedicated Ambulance", "Certified Clinical Psychologists"]),
+            "rating": 4.6
+        },
+        {
+            "id": "clinic-kolkata-neuro",
+            "name": "Institute of Neurosciences & Psychiatric Care, Kolkata",
+            "type_pill": "Specialty Neuroscience Institute",
+            "address": "58 Canal West Road, Burtalla, Sealdah, Kolkata, West Bengal 700014",
+            "locality": "Sealdah, Kolkata",
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "latitude": 22.5620,
+            "longitude": 88.3710,
+            "phone": "+91 33 2265 1100",
+            "website_url": "https://kolkataneuro.mindbridge.care",
+            "features": json.dumps(["Neuro-Psychiatry Wards", "EEG & Neuro-imaging", "Stroke Rehab & Mind Care", "24/7 On-call Psychiatrist"]),
+            "rating": 4.8
+        },
+        {
+            "id": "clinic-saket",
+            "name": "Saket Mind Care Hospital",
+            "type_pill": "Private Psychiatric Hospital · South Delhi",
+            "address": "Press Enclave Road, Saket, New Delhi 110017",
+            "locality": "Saket, New Delhi",
+            "city": "New Delhi",
+            "state": "Delhi",
+            "latitude": 28.5200,
+            "longitude": 77.2100,
+            "phone": "+91 11 4155 6600",
+            "website_url": "https://saketmind.mindbridge.care",
+            "features": json.dumps(["In-patient Psychiatry", "De-addiction Unit", "Child & Adolescent Wing", "24/7 Crisis Helpline Desk"]),
+            "rating": 4.7
+        },
+        {
+            "id": "clinic-andheri",
+            "name": "Andheri West Psychiatric Centre",
+            "type_pill": "Private Psychiatric Centre · Mumbai",
+            "address": "Veera Desai Road, Andheri West, Mumbai, Maharashtra 400058",
+            "locality": "Andheri West, Mumbai",
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "latitude": 19.1320,
+            "longitude": 72.8240,
+            "phone": "+91 22 4267 8800",
+            "website_url": "https://andheripsych.mindbridge.care",
+            "features": json.dumps(["Day Care Crisis Beds", "Substance Use Programme", "Couples & Family Clinic", "Evening Emergency Slots"]),
+            "rating": 4.6
+        },
+        {
+            "id": "clinic-chennai",
+            "name": "Chennai Mind Hospital",
+            "type_pill": "Specialty Mental Health Hospital · Adyar",
+            "address": "1st Avenue, Adyar, Chennai, Tamil Nadu 600020",
+            "locality": "Adyar, Chennai",
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "latitude": 13.0030,
+            "longitude": 80.2570,
+            "phone": "+91 44 4284 5500",
+            "website_url": "https://chennaimind.mindbridge.care",
+            "features": json.dumps(["24/7 Psychiatric Casualty", "ECT & Neuro-modulation", "Perinatal Mental Health Unit", "Rehab Day Centre"]),
+            "rating": 4.8
+        },
+        {
+            "id": "clinic-hyd-neuro",
+            "name": "Hyderabad Neuropsychiatry Centre",
+            "type_pill": "Neuropsychiatry & De-addiction · Banjara Hills",
+            "address": "Road No. 12, Banjara Hills, Hyderabad, Telangana 500034",
+            "locality": "Banjara Hills, Hyderabad",
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "latitude": 17.4140,
+            "longitude": 78.4360,
+            "phone": "+91 40 2354 9900",
+            "website_url": "https://hydneuropsych.mindbridge.care",
+            "features": json.dumps(["Withdrawal Management Unit", "24/7 Crisis Beds", "Neuro-rehabilitation", "Family De-addiction Counselling"]),
+            "rating": 4.7
+        },
+        {
+            "id": "clinic-pune-bhc",
+            "name": "Pune Behavioural Health Centre",
+            "type_pill": "Behavioural Sciences Hospital · Baner",
+            "address": "Baner Road, near Balewadi Phata, Pune, Maharashtra 411045",
+            "locality": "Baner, Pune",
+            "city": "Pune",
+            "state": "Maharashtra",
+            "latitude": 18.5630,
+            "longitude": 73.7760,
+            "phone": "+91 20 6720 1100",
+            "website_url": "https://punebhc.mindbridge.care",
+            "features": json.dumps(["Acute Psychiatric Wards", "Sleep & Stress Lab", "Corporate Burnout Programme", "24/7 Duty Psychiatrist"]),
+            "rating": 4.6
+        },
+        {
+            "id": "clinic-jaipur-cmc",
+            "name": "Jaipur Child & Mind Clinic",
+            "type_pill": "Child & Adolescent Mental Health · C-Scheme",
+            "address": "Ashok Marg, C-Scheme, Jaipur, Rajasthan 302001",
+            "locality": "C-Scheme, Jaipur",
+            "city": "Jaipur",
+            "state": "Rajasthan",
+            "latitude": 26.9080,
+            "longitude": 75.7990,
+            "phone": "+91 141 237 4400",
+            "website_url": "https://jaipurchildmind.mindbridge.care",
+            "features": json.dumps(["Adolescent Crisis Desk", "School Refusal Programme", "Play & Art Therapy Rooms", "Parent Guidance Clinic"]),
+            "rating": 4.7
+        }
+    ]
+
+    for c in clinics:
+        cursor.execute("""
+        INSERT OR IGNORE INTO clinics (
+            id, name, type_pill, address, locality, city, state,
+            latitude, longitude, phone, website_url, features, rating, is_verified
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+        """, (
+            c["id"], c["name"], c["type_pill"], c["address"], c["locality"],
+            c["city"], c["state"], c["latitude"], c["longitude"], c["phone"],
+            c["website_url"], c["features"], c["rating"]
         ))
 
 # Provider Query Helpers
@@ -646,6 +965,12 @@ def get_all_providers(filters=None):
         if filters.get("location"):
             query += " AND location_city LIKE ?"
             params.append(f"%{filters['location']}%")
+        if filters.get("min_experience"):
+            query += " AND experience_years >= ?"
+            params.append(filters["min_experience"])
+        if filters.get("min_rating"):
+            query += " AND rating >= ?"
+            params.append(filters["min_rating"])
 
     query += " ORDER BY rating DESC"
     cursor.execute(query, params)
@@ -659,6 +984,33 @@ def get_all_providers(filters=None):
         item["consultation_modes"] = json.loads(item["consultation_modes"])
         item["available_days"] = json.loads(item["available_days"])
         item["available_slots"] = json.loads(item["available_slots"])
+        results.append(item)
+
+    conn.close()
+    return results
+
+def get_all_clinics(filters=None):
+    """Location-aware clinic/hospital directory."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    query = "SELECT * FROM clinics WHERE is_verified = 1"
+    params = []
+
+    if filters:
+        if filters.get("location"):
+            query += " AND (address LIKE ? OR locality LIKE ? OR city LIKE ? OR name LIKE ?)"
+            like = f"%{filters['location']}%"
+            params.extend([like, like, like, like])
+
+    query += " ORDER BY rating DESC"
+    cursor.execute(query, params)
+    rows = cursor.fetchall()
+
+    results = []
+    for r in rows:
+        item = dict(r)
+        item["features"] = json.loads(item["features"])
         results.append(item)
 
     conn.close()

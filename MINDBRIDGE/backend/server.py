@@ -538,6 +538,8 @@ def get_providers():
         "language": request.args.get("language"),
         "mode": request.args.get("mode"),
         "location": request.args.get("location"),
+        "min_experience": request.args.get("min_experience", type=int),
+        "min_rating": request.args.get("min_rating", type=float),
         "max_price": request.args.get("max_price", type=int)
     }
     # Remove None values
@@ -546,6 +548,22 @@ def get_providers():
     return jsonify({
         "count": len(providers),
         "providers": providers
+    })
+
+@app.route("/api/clinics", methods=["GET"])
+def get_clinics():
+    """
+    Location-aware directory of verified crisis clinics & psychiatric hospitals.
+    Supports query param: location (city / locality / district free text)
+    """
+    filters = {
+        "location": request.args.get("location")
+    }
+    active_filters = {k: v for k, v in filters.items() if v is not None and v != ""}
+    clinics = db.get_all_clinics(active_filters)
+    return jsonify({
+        "count": len(clinics),
+        "clinics": clinics
     })
 
 @app.route("/api/providers/<provider_id>", methods=["GET"])
