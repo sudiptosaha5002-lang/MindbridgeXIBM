@@ -4756,19 +4756,20 @@ function buildEmergencyDocCard(p, dist = null, locName = '') {
     ? `<span class="doc-dist-chip"><i data-lucide="navigation"></i> ${dist.toFixed(1)} km from ${escapeHtml(locName)}</span>`
     : '';
   const exactWhere = p.clinic_address || p.locality || p.location_city;
-  const website = p.website_url
-    ? `<a href="${escapeHtml(p.website_url)}" target="_blank" rel="noopener noreferrer" class="btn-doc-website" title="Open booking website">
-         <i data-lucide="globe"></i> Book on Website
-       </a>`
-    : `<button type="button" class="btn-doc-website emergency-book-btn" data-id="${escapeHtml(p.id)}">
-         <i data-lucide="globe"></i> Book on Website
-       </button>`;
+  const hosp = hospitalOf(p);
+  const hospitalLine = hosp
+    ? `<p class="doc-hospital-line"><i data-lucide="hospital"></i> Sits at: <strong>${escapeHtml(hosp.name)}</strong> — ${escapeHtml(hosp.address)}${hosp.phone ? ` · ${escapeHtml(hosp.phone)}` : ''}</p>`
+    : '';
+  const phoneLine = p.phone
+    ? `<a class="doc-phone-line" href="tel:${escapeHtml(String(p.phone).replace(/\s+/g, ''))}"><i data-lucide="phone"></i> ${escapeHtml(p.phone)}</a>`
+    : '';
+  const feeLine = `<div class="doc-fee-line"><i data-lucide="indian-rupee"></i> Fee may be around ₹${Number(p.fee_per_session).toLocaleString()} · as listed on website</div>`;
 
   return `
     <div class="emergency-doc-card">
       <div class="doc-card-top">
         <div class="doc-avatar-wrap">
-          <img src="${escapeHtml(p.avatar_url)}" alt="${escapeHtml(p.name)}" class="doc-avatar-img">
+          ${avatarHtml(p)}
           ${badge}
         </div>
         <div class="doc-meta-info">
@@ -4780,18 +4781,30 @@ function buildEmergencyDocCard(p, dist = null, locName = '') {
           ${distChip}
         </div>
       </div>
-      <p class="doc-exact-addr"><i data-lucide="building-2"></i> Sits at: ${escapeHtml(exactWhere)}</p>
+      <p class="doc-exact-addr"><i data-lucide="building-2"></i> Address: ${escapeHtml(exactWhere)}</p>
+      ${hospitalLine}
+      ${phoneLine}
       <div class="doc-tags">${specs}</div>
       <div class="doc-mode-row">${modeBadges.join('')}</div>
+      ${feeLine}
       <div class="doc-actions">
         <button type="button" class="btn-doc-book emergency-book-btn" data-id="${escapeHtml(p.id)}">
-          <i data-lucide="calendar"></i> Book Appointment (₹${Number(p.fee_per_session).toLocaleString()})
+          <i data-lucide="calendar"></i> Book Appointment
         </button>
         <a href="https://maps.google.com/?q=${mapsQ}" target="_blank" rel="noopener noreferrer" class="btn-doc-call" title="Clinic Directions on Map">
           <i data-lucide="map"></i>
         </a>
       </div>
-      <div class="doc-web-row">${website}</div>
+      <div class="doc-web-row">
+        ${p.website_url
+          ? `<a href="${escapeHtml(p.website_url)}" target="_blank" rel="noopener noreferrer" class="btn-doc-website" title="Open booking website">
+               <i data-lucide="globe"></i> Open Website to Book
+             </a>`
+          : ''}
+        <button type="button" class="btn-doc-website emergency-inapp-btn" data-id="${escapeHtml(p.id)}">
+          <i data-lucide="calendar-check"></i> Book in App
+        </button>
+      </div>
     </div>`;
 }
 
