@@ -109,7 +109,7 @@ export default function MindBridgeHomePage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between text-xs text-slate-500 font-medium">
                 <span>Inquiry {currentQuestionIndex + 1} of 20 • Dynamic Psychological Screening</span>
-                <span className="text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md font-semibold">{currentQ.category_badge}</span>
+                <span className="text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md font-semibold">{Math.round(((currentQuestionIndex + 1) / 20) * 100)}% Completed</span>
               </div>
 
               <h2 className="text-xl sm:text-2xl font-bold text-slate-800 leading-relaxed">
