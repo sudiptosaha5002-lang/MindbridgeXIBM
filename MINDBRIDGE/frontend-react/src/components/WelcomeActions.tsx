@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ArrowRight, LifeBuoy, Volume2, Globe, Shield, Mic, CheckCircle2 } from 'lucide-react';
 import { SupportedLanguage } from '../lib/types';
 import { TRANSLATIONS } from '../lib/translations';
@@ -37,7 +37,7 @@ export const WelcomeActions: React.FC<WelcomeActionsProps> = ({
     { code: 'hi', label: 'Hindi', nativeName: 'हिंदी' },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: reducedMotion ? 0 : 20 },
     visible: {
       opacity: 1,
@@ -49,7 +49,7 @@ export const WelcomeActions: React.FC<WelcomeActionsProps> = ({
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: reducedMotion ? 0 : 10 },
     visible: { opacity: 1, y: 0, transition: { duration: reducedMotion ? 0 : 0.4 } },
   };
