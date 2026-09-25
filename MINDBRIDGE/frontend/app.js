@@ -5133,6 +5133,82 @@ function initEmergencyModeInteractive() {
     });
   }
 
+  // Toggle Satellite / Roadmap View Button
+  const satBtn = document.getElementById('toggleMapSatelliteBtn');
+  if (satBtn && !satBtn.dataset.bound) {
+    satBtn.dataset.bound = 'true';
+    satBtn.addEventListener('click', () => {
+      toggleMapSatelliteView();
+    });
+  }
+
+  // Google Maps Platform API Key Panel Controls
+  const configKeyBtn = document.getElementById('configureGoogleMapsKeyBtn');
+  const keyPanel = document.getElementById('googleMapsKeyPanel');
+  if (configKeyBtn && !configKeyBtn.dataset.bound) {
+    configKeyBtn.dataset.bound = 'true';
+    configKeyBtn.addEventListener('click', () => {
+      if (keyPanel) {
+        const isHidden = (keyPanel.style.display === 'none' || !keyPanel.style.display);
+        keyPanel.style.display = isHidden ? 'block' : 'none';
+        if (isHidden) {
+          const input = document.getElementById('googleMapsApiKeyInput');
+          if (input) {
+            input.value = googleMapsApiKey || '';
+            input.focus();
+          }
+        }
+      }
+    });
+  }
+
+  const closeKeyPanelBtn = document.getElementById('closeGoogleMapsKeyPanelBtn');
+  if (closeKeyPanelBtn && !closeKeyPanelBtn.dataset.bound) {
+    closeKeyPanelBtn.dataset.bound = 'true';
+    closeKeyPanelBtn.addEventListener('click', () => {
+      if (keyPanel) keyPanel.style.display = 'none';
+    });
+  }
+
+  const saveKeyBtn = document.getElementById('saveGoogleMapsKeyBtn');
+  if (saveKeyBtn && !saveKeyBtn.dataset.bound) {
+    saveKeyBtn.dataset.bound = 'true';
+    saveKeyBtn.addEventListener('click', () => {
+      const input = document.getElementById('googleMapsApiKeyInput');
+      if (input && input.value.trim()) {
+        saveGoogleMapsApiKey(input.value.trim());
+      } else {
+        alert('Please enter a valid Google Maps API Key or click "Remove API Key" if you wish to clear it.');
+      }
+    });
+  }
+
+  const clearKeyBtn = document.getElementById('clearGoogleMapsKeyBtn');
+  if (clearKeyBtn && !clearKeyBtn.dataset.bound) {
+    clearKeyBtn.dataset.bound = 'true';
+    clearKeyBtn.addEventListener('click', () => {
+      if (confirm('Remove Google Maps API Key? The map will continue running at ultra-fast speeds using Google CDN tiles.')) {
+        clearGoogleMapsApiKey();
+      }
+    });
+  }
+
+  const keyInput = document.getElementById('googleMapsApiKeyInput');
+  if (keyInput && !keyInput.dataset.bound) {
+    keyInput.dataset.bound = 'true';
+    keyInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (keyInput.value.trim()) {
+          saveGoogleMapsApiKey(keyInput.value.trim());
+        }
+      }
+    });
+  }
+
+  // Pre-fetch any server-configured Google Maps key
+  checkServerGoogleMapsKey();
+
   // Quick Locality Switcher Buttons (Test / Move GPS)
   document.querySelectorAll('.loc-quick-btn').forEach(btn => {
     if (!btn.dataset.bound) {
