@@ -9,17 +9,45 @@ import { SupportedLanguage } from '../lib/types';
 import { TRANSLATIONS } from '../lib/translations';
 import { ShieldCheck, Heart, ArrowLeft, Mic, Send, RefreshCw, Info } from 'lucide-react';
 
+import { TWENTY_QUESTIONS } from '../lib/twentyQuestions';
+
 export default function MindBridgeHomePage() {
   const [currentScreen, setCurrentScreen] = useState<'welcome' | 'screening'>('welcome');
   const [language, setLanguage] = useState<SupportedLanguage>('en');
   const [isEmergencyModalOpen, setIsEmergencyModalOpen] = useState<boolean>(false);
   const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [mockAnswer, setMockAnswer] = useState<string>('');
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [currentAnswer, setCurrentAnswer] = useState<string>('');
 
   const t = TRANSLATIONS[language];
+  const currentQ = TWENTY_QUESTIONS[currentQuestionIndex] || TWENTY_QUESTIONS[0];
 
   const handleStartScreening = () => {
+    setCurrentQuestionIndex(0);
+    setCurrentAnswer(answers[1] || '');
     setCurrentScreen('screening');
+  };
+
+  const handleNextInquiry = () => {
+    if (currentAnswer.trim()) {
+      setAnswers(prev => ({ ...prev, [currentQ.id]: currentAnswer.trim() }));
+    }
+    if (currentQuestionIndex < TWENTY_QUESTIONS.length - 1) {
+      const nextIdx = currentQuestionIndex + 1;
+      setCurrentQuestionIndex(nextIdx);
+      setCurrentAnswer(answers[TWENTY_QUESTIONS[nextIdx].id] || '');
+    } else {
+      alert('20-Question Reflections completed! Switch to the MindBridge main web application at http://127.0.0.1:5000 for your full dynamic mental state analysis.');
+    }
+  };
+
+  const handlePrevInquiry = () => {
+    if (currentQuestionIndex > 0) {
+      const prevIdx = currentQuestionIndex - 1;
+      setCurrentQuestionIndex(prevIdx);
+      setCurrentAnswer(answers[TWENTY_QUESTIONS[prevIdx].id] || '');
+    }
   };
 
   const handleBackToWelcome = () => {
