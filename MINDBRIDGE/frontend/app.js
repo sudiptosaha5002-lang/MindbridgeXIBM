@@ -1416,6 +1416,15 @@ function initTabs() {
 }
 
 function switchTab(tabId) {
+  // If user or any link attempts to open 'screener', route to chatbot screen and open the 20-question screening window
+  if (tabId === 'screener') {
+    switchTab('chat');
+    if (typeof openChatScreeningWindow === 'function') {
+      setTimeout(() => openChatScreeningWindow(), 120);
+    }
+    return;
+  }
+
   elements.tabs.forEach(t => {
     t.classList.toggle('active', t.getAttribute('data-tab') === tabId);
   });
@@ -1426,11 +1435,696 @@ function switchTab(tabId) {
   if (tabId === 'insights') {
     loadInsights();
   }
-  if (tabId === 'screener') {
-    loadScreenerSession();
-  }
   if (window.lucide) {
     window.lucide.createIcons();
+  }
+}
+
+// ==========================================================================
+// 20-QUESTION DYNAMIC CHATBOT SCREENING & MENTAL STATE EVALUATION ENGINE
+// ==========================================================================
+
+const TWENTY_SCREENING_QUESTIONS = [
+  // 🟣 Category A: Inner Emotional Landscape & Current State
+  { id: 1, section_id: "A", category: "Inner Emotional Landscape & Current State", category_badge: "🟣 A. Inner Emotional Landscape", question: "If you had to describe how you’re feeling right now in three words, what would they be?", hint: "Share any three words that come naturally to mind right now (e.g. tired, hopeful, calm, anxious)." },
+  { id: 2, section_id: "A", category: "Inner Emotional Landscape & Current State", category_badge: "🟣 A. Inner Emotional Landscape", question: "When you experience strong or overwhelming emotions, how do you usually deal with them?", hint: "e.g. taking space, deep breathing, listening to music, crying, speaking to someone, or holding it in." },
+  { id: 3, section_id: "A", category: "Inner Emotional Landscape & Current State", category_badge: "🟣 A. Inner Emotional Landscape", question: "Are there any emotions that you tend to keep inside or avoid expressing? If so, what makes you hold them back?", hint: "e.g. anger, sorrow, fear of burdening others, pride, or fear of vulnerability." },
+
+  // 🟪 Category B: Stress, Anxiety & Emotional Well-being
+  { id: 4, section_id: "B", category: "Stress, Anxiety & Emotional Well-being", category_badge: "🟪 B. Stress, Anxiety & Well-being", question: "Are there particular situations, thoughts, or experiences that tend to trigger stress or anxiety for you?", hint: "e.g. deadlines, crowds, unexpected conflict, financial thoughts, academic expectations." },
+  { id: 5, section_id: "B", category: "Stress, Anxiety & Emotional Well-being", category_badge: "🟪 B. Stress, Anxiety & Well-being", question: "What do you do to take care of your emotional well-being when you’re feeling stressed or emotionally tired?", hint: "e.g. quiet walks, warm showers, mindfulness, speaking to a loved one, disconnection from screens." },
+  { id: 6, section_id: "B", category: "Stress, Anxiety & Emotional Well-being", category_badge: "🟪 B. Stress, Anxiety & Well-being", question: "When you start overthinking, how do you usually handle it? Does it make it harder for you to relax or switch off your mind?", hint: "Reflect on nighttime looping thoughts and mental fatigue." },
+
+  // 🟨 Category C: Thoughts & Self-Perception
+  { id: 7, section_id: "C", category: "Thoughts & Self-Perception", category_badge: "🟨 C. Thoughts & Self-Perception", question: "When you have self-critical thoughts, how do you usually deal with them? How do they affect the way you see yourself?", hint: "Reflect on how harsh or compassionate your internal voice is when setbacks happen." },
+  { id: 8, section_id: "C", category: "Thoughts & Self-Perception", category_badge: "🟨 C. Thoughts & Self-Perception", question: "How do you usually decide whether a thought is helpful, unhelpful, appropriate, or worth letting go of?", hint: "Reflect on how you differentiate emotional fears from grounded reality." },
+  { id: 9, section_id: "C", category: "Thoughts & Self-Perception", category_badge: "🟨 C. Thoughts & Self-Perception", question: "How does the way you talk to yourself affect your motivation, determination, and ability to keep going when things get difficult?", hint: "Does your inner monologue give you courage, or does it leave you drained?" },
+
+  // 🟩 Category D: Past Experiences & Personal Growth
+  { id: 10, section_id: "D", category: "Past Experiences & Personal Growth", category_badge: "🟩 D. Past Experiences & Growth", question: "In what ways do you think your past has shaped your personality, beliefs, or the way you see life?", hint: "Reflect on formative events, upbringing, or challenges that strengthened you." },
+  { id: 11, section_id: "D", category: "Past Experiences & Personal Growth", category_badge: "🟩 D. Past Experiences & Growth", question: "Do you still feel the impact of any important or difficult experiences from your past today?", hint: "Consider whether past echoes trigger caution, hypervigilance, or resilience today." },
+  { id: 12, section_id: "D", category: "Past Experiences & Personal Growth", category_badge: "🟩 D. Past Experiences & Growth", question: "Is there a memory from your childhood that still affects you emotionally today?", hint: "Share whatever feels comfortable and safe to reflect upon." },
+
+  // 🟧 Category E: Beliefs, Relationships & Social Connection
+  { id: 13, section_id: "E", category: "Beliefs, Relationships & Social Connection", category_badge: "🟧 E. Beliefs & Relationships", question: "How does the way you see your own worth and your ability to give or receive love affect your emotional well-being?", hint: "Reflect on whether accepting warmth and love feels comforting or difficult." },
+  { id: 14, section_id: "E", category: "Beliefs, Relationships & Social Connection", category_badge: "🟧 E. Beliefs & Relationships", question: "How do your past relationships—both good and bad—affected the way you trust and connect with people today?", hint: "Reflect on emotional safety, boundaries, and openness with others." },
+  { id: 15, section_id: "E", category: "Beliefs, Relationships & Social Connection", category_badge: "🟧 E. Beliefs & Relationships", question: "When two of your beliefs seem to conflict with each other, how do you usually find a sense of balance?", hint: "e.g. striving for perfection vs granting yourself grace." },
+
+  // 🟫 Category F: Healthy Habits & Lifestyle
+  { id: 16, section_id: "F", category: "Healthy Habits & Lifestyle", category_badge: "🟫 F. Healthy Habits & Lifestyle", question: "How do you make sure you get enough sleep, and how important is sleep in your daily routine?", hint: "Reflect on your sleep schedule, nighttime wind-down, and waking energy." },
+  { id: 17, section_id: "F", category: "Healthy Habits & Lifestyle", category_badge: "🟫 F. Healthy Habits & Lifestyle", question: "When you face setbacks or find it difficult to maintain your healthy habits, how do you usually respond?", hint: "Do you feel guilty, take a patient pause, or rebuild step by step?" },
+  { id: 18, section_id: "F", category: "Healthy Habits & Lifestyle", category_badge: "🟫 F. Healthy Habits & Lifestyle", question: "What do you do to maintain a healthy balance between work, studies, responsibilities, and personal time? How does this balance affect how you feel?", hint: "Reflect on boundaries between obligations and personal restoration." },
+
+  // 🟥 Category G: Future, Purpose & Resilience
+  { id: 19, section_id: "G", category: "Future, Purpose & Resilience", category_badge: "🟥 G. Future, Purpose & Resilience", question: "How do you deal with uncertainty or not knowing exactly what the future holds?", hint: "Reflect on your balance between planning and trusting your ability to adapt." },
+  { id: 20, section_id: "G", category: "Future, Purpose & Resilience", category_badge: "🟥 G. Future, Purpose & Resilience", question: "How do you make sure that the future you’re planning for will actually make you feel fulfilled and satisfied?", hint: "Reflect on living true to your personal values, passions, and relationships." }
+];
+
+const chatScreeningState = {
+  questions: TWENTY_SCREENING_QUESTIONS,
+  currentIndex: 0,
+  answers: JSON.parse(localStorage.getItem('mb_screening_20_answers') || '{}'),
+  inputMode: 'voice',
+  isRecording: false,
+  recognition: null,
+  isSpeaking: false,
+  isInitialized: false,
+  evaluationResult: null
+};
+
+// Global entry point to open 20-question screening window on chatbot screen
+window.openChatScreeningWindow = async function openChatScreeningWindow() {
+  switchTab('chat');
+  const win = document.getElementById('chatScreeningWindow');
+  if (!win) return;
+  win.style.display = 'flex';
+
+  // Fetch updated questions from backend if available
+  try {
+    const res = await fetch('/api/screening/questions');
+    const data = await res.json();
+    if (data && data.status === 'success' && Array.isArray(data.questions) && data.questions.length === 20) {
+      chatScreeningState.questions = data.questions;
+    }
+  } catch (e) {
+    console.log('[Screening Questions] Using client dataset');
+  }
+
+  // Bind controls once
+  if (!chatScreeningState.isInitialized) {
+    bindScreeningWindowControls();
+    chatScreeningState.isInitialized = true;
+  }
+
+  // Reset to question view if results/loading were active
+  const qStage = document.getElementById('cswQuestionStage');
+  const lStage = document.getElementById('cswLoadingStage');
+  const rStage = document.getElementById('cswResultsStage');
+  if (qStage) qStage.style.display = 'flex';
+  if (lStage) lStage.style.display = 'none';
+  if (rStage) rStage.style.display = 'none';
+
+  renderScreeningQuestionUI(chatScreeningState.currentIndex);
+  if (window.lucide) window.lucide.createIcons();
+};
+
+window.closeChatScreeningWindow = function closeChatScreeningWindow() {
+  stopScreeningVoice();
+  stopScreeningSpeech();
+  saveCurrentScreeningAnswer();
+  const win = document.getElementById('chatScreeningWindow');
+  if (win) win.style.display = 'none';
+};
+
+function bindScreeningWindowControls() {
+  // Close buttons
+  document.getElementById('cswCloseBtn')?.addEventListener('click', closeChatScreeningWindow);
+  document.getElementById('cswBackdrop')?.addEventListener('click', closeChatScreeningWindow);
+
+  // Input tabs (Voice / Text)
+  document.getElementById('cswTabVoice')?.addEventListener('click', () => setScreeningInputMode('voice'));
+  document.getElementById('cswTabText')?.addEventListener('click', () => setScreeningInputMode('text'));
+
+  // Voice recording button
+  document.getElementById('cswMicTrigger')?.addEventListener('click', toggleScreeningVoice);
+
+  // Speak question aloud
+  document.getElementById('cswSpeakBtn')?.addEventListener('click', toggleSpeakQuestion);
+
+  // Navigation buttons
+  document.getElementById('cswPrevBtn')?.addEventListener('click', prevScreeningQuestion);
+  document.getElementById('cswNextBtn')?.addEventListener('click', nextScreeningQuestion);
+  document.getElementById('cswSkipBtn')?.addEventListener('click', skipScreeningQuestion);
+
+  // Textarea input event for live word counter and auto-save
+  const input = document.getElementById('cswAnswerInput');
+  if (input) {
+    input.addEventListener('input', () => {
+      updateScreeningWordCount();
+      // Debounced local save
+      const currQ = chatScreeningState.questions[chatScreeningState.currentIndex];
+      if (currQ) {
+        chatScreeningState.answers[currQ.id] = input.value;
+        localStorage.setItem('mb_screening_20_answers', JSON.stringify(chatScreeningState.answers));
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        nextScreeningQuestion();
+      }
+    });
+  }
+
+  // Category section strip clicks
+  document.querySelectorAll('.csw-cat-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const section = chip.getAttribute('data-section');
+      const targetIdx = chatScreeningState.questions.findIndex(q => q.section_id === section);
+      if (targetIdx !== -1) {
+        saveCurrentScreeningAnswer();
+        chatScreeningState.currentIndex = targetIdx;
+        renderScreeningQuestionUI(targetIdx);
+      }
+    });
+  });
+}
+
+function setScreeningInputMode(mode) {
+  chatScreeningState.inputMode = mode;
+  const tabVoice = document.getElementById('cswTabVoice');
+  const tabText = document.getElementById('cswTabText');
+  const voicePanel = document.getElementById('cswVoicePanel');
+
+  if (mode === 'voice') {
+    tabVoice?.classList.add('active');
+    tabText?.classList.remove('active');
+    if (voicePanel) voicePanel.style.display = 'block';
+  } else {
+    stopScreeningVoice();
+    tabVoice?.classList.remove('active');
+    tabText?.classList.add('active');
+    if (voicePanel) voicePanel.style.display = 'none';
+    document.getElementById('cswAnswerInput')?.focus();
+  }
+}
+
+function renderScreeningQuestionUI(idx) {
+  if (idx < 0) idx = 0;
+  if (idx >= chatScreeningState.questions.length) idx = chatScreeningState.questions.length - 1;
+  chatScreeningState.currentIndex = idx;
+
+  const q = chatScreeningState.questions[idx];
+  if (!q) return;
+
+  // Stop previous speech if any
+  stopScreeningSpeech();
+
+  // Progress text & percentage
+  const total = chatScreeningState.questions.length;
+  const currNum = idx + 1;
+  const pct = Math.round((currNum / total) * 100);
+
+  const numEl = document.getElementById('cswCurrentNum');
+  const totalEl = document.getElementById('cswTotalNum');
+  const pctEl = document.getElementById('cswPctTag');
+  const fillEl = document.getElementById('cswProgressFill');
+  const badgeEl = document.getElementById('cswCategoryBadge');
+  const qNumEl = document.getElementById('cswQNumber');
+  const qTextEl = document.getElementById('cswQuestionText');
+  const qHintEl = document.getElementById('cswQuestionHint');
+  const inputEl = document.getElementById('cswAnswerInput');
+  const prevBtn = document.getElementById('cswPrevBtn');
+  const nextBtnLabel = document.getElementById('cswNextBtnLabel');
+  const nextBtn = document.getElementById('cswNextBtn');
+
+  if (numEl) numEl.textContent = currNum;
+  if (totalEl) totalEl.textContent = total;
+  if (pctEl) pctEl.textContent = `${pct}%`;
+  if (fillEl) fillEl.style.width = `${pct}%`;
+  if (badgeEl) badgeEl.textContent = q.category_badge || q.category;
+  if (qNumEl) qNumEl.textContent = `Inquiry ${currNum.toString().padStart(2, '0')} · ${q.category}`;
+  if (qTextEl) qTextEl.textContent = q.question;
+  if (qHintEl) qHintEl.textContent = q.hint || '';
+
+  // Restore saved answer
+  const savedAns = chatScreeningState.answers[q.id] || '';
+  if (inputEl) {
+    inputEl.value = savedAns;
+    updateScreeningWordCount();
+  }
+
+  // Previous button state
+  if (prevBtn) {
+    prevBtn.disabled = (idx === 0);
+  }
+
+  // Next button label (Final question changes to Complete & Analyze)
+  const isFinal = (idx === total - 1);
+  if (nextBtnLabel) {
+    nextBtnLabel.textContent = isFinal ? 'Complete & Analyze ✨' : 'Next Question';
+  }
+  if (nextBtn) {
+    nextBtn.classList.toggle('complete-btn', isFinal);
+  }
+
+  // Highlight active category chip
+  document.querySelectorAll('.csw-cat-chip').forEach(chip => {
+    chip.classList.toggle('active', chip.getAttribute('data-section') === q.section_id);
+  });
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function updateScreeningWordCount() {
+  const input = document.getElementById('cswAnswerInput');
+  const countEl = document.getElementById('cswWordCount');
+  if (!input || !countEl) return;
+  const words = input.value.trim() ? input.value.trim().split(/\s+/).length : 0;
+  countEl.textContent = `${words} ${words === 1 ? 'word' : 'words'}`;
+}
+
+function saveCurrentScreeningAnswer() {
+  const input = document.getElementById('cswAnswerInput');
+  const currQ = chatScreeningState.questions[chatScreeningState.currentIndex];
+  if (currQ && input) {
+    chatScreeningState.answers[currQ.id] = input.value.trim();
+    localStorage.setItem('mb_screening_20_answers', JSON.stringify(chatScreeningState.answers));
+  }
+}
+
+function nextScreeningQuestion() {
+  saveCurrentScreeningAnswer();
+  stopScreeningVoice();
+  stopScreeningSpeech();
+
+  const total = chatScreeningState.questions.length;
+  if (chatScreeningState.currentIndex >= total - 1) {
+    // Reached final question -> Submit for dynamic evaluation
+    submitAndAnalyzeScreening();
+  } else {
+    chatScreeningState.currentIndex++;
+    renderScreeningQuestionUI(chatScreeningState.currentIndex);
+  }
+}
+
+function prevScreeningQuestion() {
+  saveCurrentScreeningAnswer();
+  stopScreeningVoice();
+  stopScreeningSpeech();
+
+  if (chatScreeningState.currentIndex > 0) {
+    chatScreeningState.currentIndex--;
+    renderScreeningQuestionUI(chatScreeningState.currentIndex);
+  }
+}
+
+function skipScreeningQuestion() {
+  saveCurrentScreeningAnswer();
+  stopScreeningVoice();
+  stopScreeningSpeech();
+
+  const total = chatScreeningState.questions.length;
+  if (chatScreeningState.currentIndex >= total - 1) {
+    submitAndAnalyzeScreening();
+  } else {
+    chatScreeningState.currentIndex++;
+    renderScreeningQuestionUI(chatScreeningState.currentIndex);
+  }
+}
+
+// Voice Speech-to-Text Recognition
+function initScreeningRecognition() {
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRec) {
+    console.warn('[Screening Speech] Speech recognition not supported in this browser.');
+    return null;
+  }
+  const rec = new SpeechRec();
+  rec.continuous = true;
+  rec.interimResults = true;
+  rec.lang = state.language || 'en-US';
+
+  rec.onresult = (e) => {
+    let transcript = '';
+    for (let i = 0; i < e.results.length; i++) {
+      transcript += e.results[i][0].transcript + ' ';
+    }
+    const input = document.getElementById('cswAnswerInput');
+    if (input) {
+      input.value = transcript.trim();
+      updateScreeningWordCount();
+    }
+  };
+
+  rec.onerror = (err) => {
+    console.warn('[Screening Speech Error]:', err);
+    stopScreeningVoice();
+  };
+
+  rec.onend = () => {
+    if (chatScreeningState.isRecording) {
+      stopScreeningVoice();
+    }
+  };
+
+  return rec;
+}
+
+function toggleScreeningVoice() {
+  if (chatScreeningState.isRecording) {
+    stopScreeningVoice();
+  } else {
+    startScreeningVoice();
+  }
+}
+
+function startScreeningVoice() {
+  if (!chatScreeningState.recognition) {
+    chatScreeningState.recognition = initScreeningRecognition();
+  }
+  if (!chatScreeningState.recognition) {
+    alert('Speech recognition is not available in your browser. Please type your reflection in the text area below.');
+    return;
+  }
+
+  try {
+    chatScreeningState.recognition.start();
+    chatScreeningState.isRecording = true;
+
+    const orbWrap = document.getElementById('cswMicOrbWrap');
+    const status = document.getElementById('cswMicStatus');
+    const micIcon = document.getElementById('cswMicIcon');
+
+    if (orbWrap) orbWrap.classList.add('recording');
+    if (status) status.textContent = 'Listening... Speak naturally';
+    if (micIcon) micIcon.setAttribute('data-lucide', 'mic-off');
+    if (window.lucide) window.lucide.createIcons();
+  } catch (err) {
+    console.warn('[Screening Mic Start Error]:', err);
+  }
+}
+
+function stopScreeningVoice() {
+  if (chatScreeningState.recognition && chatScreeningState.isRecording) {
+    try {
+      chatScreeningState.recognition.stop();
+    } catch (e) {}
+  }
+  chatScreeningState.isRecording = false;
+
+  const orbWrap = document.getElementById('cswMicOrbWrap');
+  const status = document.getElementById('cswMicStatus');
+  const micIcon = document.getElementById('cswMicIcon');
+
+  if (orbWrap) orbWrap.classList.remove('recording');
+  if (status) status.textContent = 'Click microphone to speak your answer';
+  if (micIcon) micIcon.setAttribute('data-lucide', 'mic');
+  if (window.lucide) window.lucide.createIcons();
+  saveCurrentScreeningAnswer();
+}
+
+// Text-to-Speech: Read question aloud
+function toggleSpeakQuestion() {
+  if (chatScreeningState.isSpeaking) {
+    stopScreeningSpeech();
+  } else {
+    speakCurrentScreeningQuestion();
+  }
+}
+
+function speakCurrentScreeningQuestion() {
+  const currQ = chatScreeningState.questions[chatScreeningState.currentIndex];
+  if (!currQ) return;
+
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(currQ.question);
+    utter.rate = 0.95;
+    utter.pitch = 1.0;
+
+    const voices = window.speechSynthesis.getVoices();
+    const soothing = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Female')));
+    if (soothing) utter.voice = soothing;
+
+    utter.onstart = () => {
+      chatScreeningState.isSpeaking = true;
+      const btn = document.getElementById('cswSpeakBtn');
+      const label = document.getElementById('cswSpeakLabel');
+      if (btn) btn.classList.add('speaking');
+      if (label) label.textContent = 'Speaking...';
+    };
+
+    utter.onend = () => {
+      stopScreeningSpeech();
+    };
+
+    utter.onerror = () => {
+      stopScreeningSpeech();
+    };
+
+    window.speechSynthesis.speak(utter);
+  }
+}
+
+function stopScreeningSpeech() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  chatScreeningState.isSpeaking = false;
+  const btn = document.getElementById('cswSpeakBtn');
+  const label = document.getElementById('cswSpeakLabel');
+  if (btn) btn.classList.remove('speaking');
+  if (label) label.textContent = 'Listen';
+}
+
+// Dynamic Analysis Submission
+async function submitAndAnalyzeScreening() {
+  saveCurrentScreeningAnswer();
+  stopScreeningVoice();
+  stopScreeningSpeech();
+
+  const qStage = document.getElementById('cswQuestionStage');
+  const lStage = document.getElementById('cswLoadingStage');
+  const rStage = document.getElementById('cswResultsStage');
+
+  if (qStage) qStage.style.display = 'none';
+  if (lStage) lStage.style.display = 'flex';
+  if (rStage) rStage.style.display = 'none';
+
+  // Animate status message
+  const loadingSub = document.getElementById('cswLoadingSub');
+  const stepTexts = [
+    'Synthesizing emotional regulation and affect from Category A...',
+    'Evaluating stress triggers, nighttime overthinking & coping from Category B...',
+    'Assessing inner critic and cognitive reframing from Category C...',
+    'Mapping past narrative integration, growth & memories from Category D...',
+    'Measuring relational trust, self-worth & belief alignment from Category E...',
+    'Computing sleep architecture and somatic balance from Category F...',
+    'Formulating long-term fulfillment and resilience from Category G...',
+    'Synthesizing individualized clinical mental state evaluation...'
+  ];
+  let stepIdx = 0;
+  const stepInterval = setInterval(() => {
+    stepIdx = (stepIdx + 1) % stepTexts.length;
+    if (loadingSub) loadingSub.textContent = stepTexts[stepIdx];
+  }, 1300);
+
+  try {
+    const res = await fetch('/api/screening/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: state.userId || 'guest-user',
+        answers: chatScreeningState.answers
+      })
+    });
+
+    const data = await res.json();
+    clearInterval(stepInterval);
+
+    if (data && data.status === 'success' && data.evaluation) {
+      chatScreeningState.evaluationResult = data.evaluation;
+      if (lStage) lStage.style.display = 'none';
+      if (rStage) rStage.style.display = 'flex';
+      renderScreeningResultsUI(data.evaluation);
+    } else {
+      throw new Error(data.message || 'Evaluation error');
+    }
+  } catch (err) {
+    clearInterval(stepInterval);
+    console.error('[Screening Submission Error]:', err);
+    alert('An error occurred during evaluation. Please verify your responses and try again.');
+    if (qStage) qStage.style.display = 'flex';
+    if (lStage) lStage.style.display = 'none';
+  }
+}
+
+// Render Comprehensive Mental State Results
+function renderScreeningResultsUI(evalData) {
+  const rStage = document.getElementById('cswResultsStage');
+  if (!rStage) return;
+
+  const overall = evalData.overall_wellbeing_score || 72;
+  const resilience = evalData.emotional_resilience_score || 78;
+  const stress = evalData.cognitive_stress_level || 42;
+
+  let dimCardsHtml = '';
+  if (Array.isArray(evalData.dimensions)) {
+    evalData.dimensions.forEach((dim) => {
+      dimCardsHtml += `
+        <div class="csw-dim-card">
+          <div class="csw-dim-top">
+            <span class="csw-dim-name">${escapeHtml(dim.name)}</span>
+            <span class="csw-dim-score">${dim.score}% Index</span>
+          </div>
+          <span class="csw-dim-label">${escapeHtml(dim.state_label || '')}</span>
+          <p class="csw-dim-text">${escapeHtml(dim.analysis)}</p>
+          ${dim.user_excerpt ? `<div class="csw-dim-excerpt">"${escapeHtml(dim.user_excerpt)}"</div>` : ''}
+        </div>
+      `;
+    });
+  }
+
+  let strengthsHtml = '';
+  (evalData.strengths || []).forEach(s => {
+    strengthsHtml += `<li class="csw-col-item"><i data-lucide="check-circle-2" style="color:#16a34a; flex-shrink:0;"></i> <span>${escapeHtml(s)}</span></li>`;
+  });
+
+  let vulnHtml = '';
+  (evalData.vulnerabilities || []).forEach(v => {
+    vulnHtml += `<li class="csw-col-item"><i data-lucide="alert-circle" style="color:#d97706; flex-shrink:0;"></i> <span>${escapeHtml(v)}</span></li>`;
+  });
+
+  let recsHtml = '';
+  (evalData.recommendations || []).forEach(r => {
+    recsHtml += `<li class="csw-col-item" style="margin-bottom:0.4rem;"><i data-lucide="sparkles" style="color:#059669; flex-shrink:0;"></i> <span>${escapeHtml(r)}</span></li>`;
+  });
+
+  rStage.innerHTML = `
+    <!-- Top Hero Card -->
+    <div class="csw-results-hero">
+      <div class="csw-results-tag"><i data-lucide="shield-check"></i> Dynamic Psychological Evaluation</div>
+      <h2 class="csw-results-headline">${escapeHtml(evalData.overall_mental_state)}</h2>
+      <div class="csw-results-climate">Emotional Climate: <strong>${escapeHtml(evalData.emotional_climate || 'Reflective & Grounded')}</strong></div>
+      <p class="csw-results-summary">${escapeHtml(evalData.clinical_summary || '')}</p>
+    </div>
+
+    <!-- 3 Macro Telemetry Cards -->
+    <div class="csw-metrics-grid">
+      <div class="csw-metric-card">
+        <span class="csw-metric-label">Well-being Score</span>
+        <div class="csw-metric-value-row">
+          <span class="csw-metric-val" style="color: #10b981;">${overall}</span>
+          <span class="csw-metric-unit">/ 100</span>
+        </div>
+        <div class="csw-metric-bar">
+          <div class="csw-metric-bar-fill" style="width: ${overall}%; background: #10b981;"></div>
+        </div>
+      </div>
+
+      <div class="csw-metric-card">
+        <span class="csw-metric-label">Emotional Resilience</span>
+        <div class="csw-metric-value-row">
+          <span class="csw-metric-val" style="color: #9333ea;">${resilience}</span>
+          <span class="csw-metric-unit">/ 100</span>
+        </div>
+        <div class="csw-metric-bar">
+          <div class="csw-metric-bar-fill" style="width: ${resilience}%; background: #9333ea;"></div>
+        </div>
+      </div>
+
+      <div class="csw-metric-card">
+        <span class="csw-metric-label">Cognitive Stress Index</span>
+        <div class="csw-metric-value-row">
+          <span class="csw-metric-val" style="color: #0284c7;">${stress}</span>
+          <span class="csw-metric-unit">/ 100</span>
+        </div>
+        <div class="csw-metric-bar">
+          <div class="csw-metric-bar-fill" style="width: ${stress}%; background: #0284c7;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 Psychological Dimension Breakdown -->
+    <div class="csw-dimensions-wrap">
+      <h3 style="font-size:1.15rem; font-weight:700; margin:0 0 0.85rem; color:var(--color-navyblue);">
+        7-Domain Psychological Analysis
+      </h3>
+      <div class="csw-dimensions-list">
+        ${dimCardsHtml}
+      </div>
+    </div>
+
+    <!-- Strengths & Vulnerabilities -->
+    <div class="csw-duo-columns">
+      <div class="csw-column-card csw-col-strengths">
+        <h4 class="csw-column-title"><i data-lucide="award"></i> Key Personal Strengths</h4>
+        <ul class="csw-col-list">
+          ${strengthsHtml}
+        </ul>
+      </div>
+
+      <div class="csw-column-card csw-col-vulnerabilities">
+        <h4 class="csw-column-title"><i data-lucide="alert-triangle"></i> Vulnerabilities & Friction Points</h4>
+        <ul class="csw-col-list">
+          ${vulnHtml}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Actionable Recommendations -->
+    <div class="csw-recs-card">
+      <h4 class="csw-recs-title"><i data-lucide="compass"></i> Personalized Coping & Growth Strategy</h4>
+      <ul class="csw-col-list">
+        ${recsHtml}
+      </ul>
+    </div>
+
+    <!-- Actions -->
+    <div class="csw-results-actions">
+      <button type="button" class="csw-btn-chat-discuss" id="cswDiscussChatBtn">
+        <i data-lucide="message-square"></i>
+        <span>Discuss This Analysis with Dr. MindBridge in Chat</span>
+      </button>
+      <button type="button" class="csw-btn-secondary" id="cswDownloadBtn">
+        <i data-lucide="download"></i> <span>Download Report</span>
+      </button>
+      <button type="button" class="csw-btn-secondary" id="cswRetakeBtn">
+        <i data-lucide="refresh-cw"></i> <span>Retake Screening</span>
+      </button>
+    </div>
+  `;
+
+  // Bind result action buttons
+  document.getElementById('cswDiscussChatBtn')?.addEventListener('click', discussScreeningInChat);
+  document.getElementById('cswDownloadBtn')?.addEventListener('click', downloadScreeningReport);
+  document.getElementById('cswRetakeBtn')?.addEventListener('click', retakeScreening);
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function discussScreeningInChat() {
+  const evalData = chatScreeningState.evaluationResult;
+  closeChatScreeningWindow();
+  if (!evalData) return;
+
+  // Append formatted screening summary to active chatbot messages
+  const summaryText = 
+    `🧠 **20-Question Psychological Screening Evaluation**\n\n` +
+    `**Overall Mental State:** ${evalData.overall_mental_state}\n` +
+    `**Emotional Climate:** ${evalData.emotional_climate || 'Reflective'}\n` +
+    `**Well-being Index:** ${evalData.overall_wellbeing_score}% • **Resilience:** ${evalData.emotional_resilience_score}%\n\n` +
+    `*${evalData.clinical_summary}*\n\n` +
+    `${evalData.chat_kickoff_message || "I'm right here with you. What dimension would you like to reflect on first?"}`;
+
+  appendMessage({
+    sender: 'assistant',
+    text: summaryText
+  });
+
+  const chatInput = document.getElementById('chatInput');
+  if (chatInput) {
+    chatInput.placeholder = 'Reflect on your screening evaluation with Dr. MindBridge...';
+    chatInput.focus();
+  }
+}
+
+function downloadScreeningReport() {
+  window.print();
+}
+
+function retakeScreening() {
+  if (confirm('Start a fresh 20-question psychological screening session?')) {
+    chatScreeningState.answers = {};
+    localStorage.removeItem('mb_screening_20_answers');
+    chatScreeningState.currentIndex = 0;
+    const qStage = document.getElementById('cswQuestionStage');
+    const rStage = document.getElementById('cswResultsStage');
+    if (rStage) rStage.style.display = 'none';
+    if (qStage) qStage.style.display = 'flex';
+    renderScreeningQuestionUI(0);
   }
 }
 
