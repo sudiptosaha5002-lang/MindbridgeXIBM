@@ -1785,99 +1785,155 @@ function toggleScreeningVoice() {
 }
 
 async function startScreeningVoice() {
+  // Don't record while Dr. MindBridge is speaking
   if (chatScreeningState.isSpeaking) {
     stopScreeningSpeech();
   }
   if (chatScreeningState.isRecording) return;
 
-  const input = document.getElementById('cswAnswerInput');
-  chatScreeningState.sessionBaseText = input ? input.value.trim() : '';
+  // Capture what's already in the textarea as base text
+  const inputEl = document.getElementById('cswAnswerInput');
+  chatScreeningState.sessionBaseText = inputEl ? inputEl.value.trim() : '';
   chatScreeningState.accumulatedFinalText = '';
 
+  // ---- Web Speech API (Primary: real-time live transcription) ----
   const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (SpeechRec) {
+    // Always destroy previous recognition instance to avoid stale closures
+    if (chatScreeningState.recognition) {
+      try { chatScreeningState.recognition.abort(); } catch (e) {}
+      chatScreeningState.recognition = null;
+    }
+
     try {
-      if (!chatScreeningState.recognition) {
-        const rec = new SpeechRec();
-        rec.continuous = true;
-        rec.interimResults = true;
-        rec.lang = state.language || 'en-US';
+      const rec = new SpeechRec();
+      rec.continuous = true;
+      rec.interimResults = true;
+      rec.lang = document.getElementById('languageSelect')?.value || state.language || 'en-US';
+      rec.maxAlternatives = 1;
 
-        rec.onresult = (e) => {
-          let newlyFinal = '';
-          let interimTranscript = '';
+      rec.onresult = (e) => {
+        // CRITICAL: Always get fresh DOM reference — never use a closure variable
+        const liveInput = document.getElementById('cswAnswerInput');
+        if (!liveInput) return;
 
-          for (let i = e.resultIndex; i < e.results.length; ++i) {
-            const transcript = e.results[i][0].transcript;
-            if (e.results[i].isFinal) {
-              newlyFinal += transcript + ' ';
-            } else {
-              interimTranscript += transcript;
-            }
+        // Build full transcript from ALL results in this recognition session
+        let sessionFinal = '';
+        let sessionInterim = '';
+
+        for (let i = 0; i < e.results.length; i++) {
+          const result = e.results[i];
+          if (result.isFinal) {
+            sessionFinal += result[0].transcript;
+          } else {
+            sessionInterim += result[0].transcript;
           }
+        }
 
-          chatScreeningState.accumulatedFinalText += newlyFinal;
+        // Store the finalized portion of THIS recognition session
+        chatScreeningState._currentSessionFinal = sessionFinal;
 
-          const base = chatScreeningState.sessionBaseText;
-          const finalPart = chatScreeningState.accumulatedFinalText;
-          const interimPart = interimTranscript;
+        // Combine: previous sessions' accumulated text + this session's text
+        const previousSessions = chatScreeningState._previousSessionsFinal || '';
+        const base = chatScreeningState.sessionBaseText;
 
-          let full = base;
-          if (finalPart) full = full ? `${full} ${finalPart}` : finalPart;
-          if (interimPart) full = full ? `${full} ${interimPart}` : interimPart;
+        let fullText = '';
+        if (base) fullText = base;
+        if (previousSessions) fullText = fullText ? fullText + ' ' + previousSessions : previousSessions;
+        if (sessionFinal) fullText = fullText ? fullText + ' ' + sessionFinal : sessionFinal;
+        if (sessionInterim) fullText = fullText ? fullText + ' ' + sessionInterim : sessionInterim;
 
-          if (input) {
-            input.value = full.replace(/\s+/g, ' ').trim();
-            updateScreeningWordCount();
-            saveCurrentScreeningAnswer();
-          }
-        };
+        // Clean up multiple spaces and update textarea
+        liveInput.value = fullText.replace(/\s+/g, ' ').trim();
+        updateScreeningWordCount();
 
-        rec.onerror = (err) => {
-          console.warn('[Screening Speech Rec Error]:', err);
-          if (err.error === 'not-allowed' || err.error === 'service-not-allowed') {
-            console.log('[Screening Speech] Using MediaRecorder backend fallback.');
-          }
-        };
+        // Auto-save as user speaks
+        const currQ = chatScreeningState.questions[chatScreeningState.currentIndex];
+        if (currQ) {
+          chatScreeningState.answers[currQ.id] = liveInput.value;
+          localStorage.setItem('mb_screening_20_answers', JSON.stringify(chatScreeningState.answers));
+        }
+      };
 
-        rec.onend = () => {
-          // Restart continuous recognition while recording is active and not speaking
-          if (chatScreeningState.isRecording && !chatScreeningState.isSpeaking) {
-            try {
-              rec.start();
-            } catch (re) {}
-          }
-        };
+      rec.onerror = (err) => {
+        console.warn('[Screening Speech Recognition Error]:', err.error, err.message);
+        // Only stop on fatal errors, not transient ones like 'no-speech'
+        if (err.error === 'not-allowed' || err.error === 'service-not-allowed' || err.error === 'audio-capture') {
+          console.log('[Screening] Fatal mic error — falling back to MediaRecorder only.');
+          // Don't stop recording — the MediaRecorder is still going
+        }
+      };
 
-        chatScreeningState.recognition = rec;
-      }
+      rec.onend = () => {
+        // When recognition session ends, preserve this session's final text
+        // so it's not lost when we restart
+        const currentSessionFinal = chatScreeningState._currentSessionFinal || '';
+        if (currentSessionFinal) {
+          const prev = chatScreeningState._previousSessionsFinal || '';
+          chatScreeningState._previousSessionsFinal = prev ? prev + ' ' + currentSessionFinal : currentSessionFinal;
+          chatScreeningState._currentSessionFinal = '';
+        }
 
-      chatScreeningState.recognition.start();
+        // Auto-restart if we're still supposed to be recording
+        if (chatScreeningState.isRecording && !chatScreeningState.isSpeaking) {
+          try {
+            // Small delay to avoid rapid restart loops
+            setTimeout(() => {
+              if (chatScreeningState.isRecording && chatScreeningState.recognition) {
+                try {
+                  chatScreeningState.recognition.start();
+                } catch (restartErr) {
+                  console.warn('[Screening] Could not restart recognition:', restartErr);
+                }
+              }
+            }, 150);
+          } catch (re) {}
+        }
+      };
+
+      chatScreeningState.recognition = rec;
+      chatScreeningState._currentSessionFinal = '';
+      chatScreeningState._previousSessionsFinal = '';
+      rec.start();
+      console.log('[Screening] Web Speech API recognition started.');
     } catch (err) {
-      console.warn('[Screening Recognition Start Catch]:', err);
+      console.warn('[Screening] Could not start Web Speech API:', err);
     }
   }
 
-  // Also initiate parallel MediaRecorder for high-accuracy Whisper fallback
+  // ---- MediaRecorder (Parallel: captures raw audio for backend Whisper fallback) ----
   try {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+          sampleRate: 16000
+        }
+      });
       chatScreeningState.audioStream = stream;
       chatScreeningState.audioChunks = [];
 
-      const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : 'audio/webm';
+      const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+        ? 'audio/webm;codecs=opus'
+        : MediaRecorder.isTypeSupported('audio/webm')
+          ? 'audio/webm'
+          : 'audio/mp4';
+
       const recorder = new MediaRecorder(stream, { mimeType });
       recorder.ondataavailable = (e) => {
         if (e.data && e.data.size > 0) {
           chatScreeningState.audioChunks.push(e.data);
         }
       };
-      recorder.start(200);
+      recorder.start(250); // Collect data every 250ms
       chatScreeningState.mediaRecorder = recorder;
+      console.log('[Screening] MediaRecorder started for backend Whisper fallback.');
     }
   } catch (micErr) {
-    console.warn('[Screening MediaRecorder Fallback Init]:', micErr);
+    console.warn('[Screening MediaRecorder Init Error]:', micErr);
   }
 
   chatScreeningState.isRecording = true;
@@ -1888,6 +1944,7 @@ async function stopScreeningVoice() {
   if (!chatScreeningState.isRecording) return;
   chatScreeningState.isRecording = false;
 
+  // Stop Web Speech API recognition
   if (chatScreeningState.recognition) {
     try {
       chatScreeningState.recognition.stop();
@@ -1895,14 +1952,31 @@ async function stopScreeningVoice() {
   }
 
   updateScreeningMicUI(false);
+
+  // Capture whatever the Web Speech API produced
+  const inputEl = document.getElementById('cswAnswerInput');
+  const webSpeechText = inputEl ? inputEl.value.trim() : '';
   saveCurrentScreeningAnswer();
 
-  // Stop MediaRecorder and audio stream
+  // Stop MediaRecorder
+  let audioBlob = null;
   if (chatScreeningState.mediaRecorder && chatScreeningState.mediaRecorder.state !== 'inactive') {
-    try {
-      chatScreeningState.mediaRecorder.stop();
-    } catch (e) {}
+    // Wait for the final data to flush
+    await new Promise((resolve) => {
+      chatScreeningState.mediaRecorder.onstop = resolve;
+      try {
+        chatScreeningState.mediaRecorder.stop();
+      } catch (e) { resolve(); }
+    });
   }
+
+  // Build audio blob from all collected chunks
+  if (chatScreeningState.audioChunks && chatScreeningState.audioChunks.length > 0) {
+    const mimeType = chatScreeningState.mediaRecorder?.mimeType || 'audio/webm';
+    audioBlob = new Blob(chatScreeningState.audioChunks, { type: mimeType });
+  }
+
+  // Release microphone stream
   if (chatScreeningState.audioStream) {
     try {
       chatScreeningState.audioStream.getTracks().forEach(track => track.stop());
@@ -1910,52 +1984,86 @@ async function stopScreeningVoice() {
     chatScreeningState.audioStream = null;
   }
 
-  // If input was empty or user spoke briefly, verify with backend Faster-Whisper
-  const input = document.getElementById('cswAnswerInput');
-  if (input && !input.value.trim() && chatScreeningState.audioChunks && chatScreeningState.audioChunks.length > 0) {
-    await transcribeScreeningAudioWithBackend();
+  // Clean up recognition instance (will be recreated fresh next time)
+  if (chatScreeningState.recognition) {
+    try { chatScreeningState.recognition.abort(); } catch (e) {}
+    chatScreeningState.recognition = null;
+  }
+
+  // ---- Backend Whisper Verification & Fallback ----
+  // Always send audio to backend for accurate Whisper transcription when:
+  //   (a) Web Speech API returned empty/short text, OR
+  //   (b) Audio blob is available for verification
+  if (audioBlob && audioBlob.size > 1000) {
+    await verifyOrTranscribeWithBackend(audioBlob, webSpeechText);
   }
 }
 
-// Fallback: Transcribe audio using backend Faster-Whisper
-async function transcribeScreeningAudioWithBackend() {
+// Send audio to backend Faster-Whisper for high-accuracy transcription.
+// If the backend returns a longer/more complete result than Web Speech API, use it.
+async function verifyOrTranscribeWithBackend(audioBlob, webSpeechText) {
   const status = document.getElementById('cswMicStatus');
-  if (status) status.textContent = 'Transcribing your voice reflection...';
-  try {
-    const blob = new Blob(chatScreeningState.audioChunks, { type: 'audio/webm' });
-    if (blob.size < 800) {
-      if (status) status.textContent = 'Click microphone to speak your answer';
-      return;
-    }
+  const inputEl = document.getElementById('cswAnswerInput');
 
+  // Only show "transcribing" status if Web Speech API gave us nothing
+  if (!webSpeechText) {
+    if (status) status.textContent = 'Transcribing your voice reflection...';
+  }
+
+  try {
     const fd = new FormData();
-    fd.append('audio', blob, 'screening_answer.webm');
-    fd.append('language', state.language || 'en-US');
+    fd.append('audio', audioBlob, 'screening_answer.webm');
+    fd.append('language', document.getElementById('languageSelect')?.value || state.language || 'en-US');
 
     const res = await fetch('/api/transcribe', {
       method: 'POST',
       body: fd
     });
     const data = await res.json();
+
     if (data && data.text && data.text.trim()) {
-      const input = document.getElementById('cswAnswerInput');
-      if (input) {
-        input.value = data.text.trim();
-        updateScreeningWordCount();
-        saveCurrentScreeningAnswer();
-      }
-      if (status) status.textContent = 'Voice captured & transcribed successfully!';
-      setTimeout(() => {
-        if (!chatScreeningState.isRecording && status) {
-          status.textContent = 'Click microphone to speak your answer';
+      const backendText = data.text.trim();
+      const webWords = webSpeechText ? webSpeechText.split(/\s+/).length : 0;
+      const backendWords = backendText.split(/\s+/).length;
+
+      // Use the backend Whisper result if:
+      //   - Web Speech API returned nothing, OR
+      //   - Backend has significantly more words (at least 3 more words = more complete)
+      if (!webSpeechText || backendWords >= webWords + 3 || (webWords <= 3 && backendWords > webWords)) {
+        const base = chatScreeningState.sessionBaseText || '';
+        const finalText = base ? `${base} ${backendText}` : backendText;
+
+        if (inputEl) {
+          inputEl.value = finalText.replace(/\s+/g, ' ').trim();
+          updateScreeningWordCount();
+          saveCurrentScreeningAnswer();
         }
-      }, 2500);
+        if (status) status.textContent = 'Voice captured & transcribed accurately!';
+        console.log(`[Screening] Backend Whisper used (${backendWords} words vs WebSpeech ${webWords} words).`);
+      } else {
+        console.log(`[Screening] WebSpeech result kept (${webWords} words vs Whisper ${backendWords} words).`);
+        if (status) status.textContent = 'Voice captured successfully!';
+      }
     } else {
-      if (status) status.textContent = 'Click microphone to speak your answer';
+      if (status && !webSpeechText) {
+        status.textContent = 'Could not transcribe audio. Please try again or type your answer.';
+      } else if (status) {
+        status.textContent = 'Voice captured successfully!';
+      }
     }
+
+    // Reset status text after a brief delay
+    setTimeout(() => {
+      if (!chatScreeningState.isRecording && status) {
+        status.textContent = 'Click microphone to speak your answer';
+      }
+    }, 3000);
+
   } catch (err) {
     console.warn('[Screening Backend Transcribe Error]:', err);
-    if (status) status.textContent = 'Click microphone to speak your answer';
+    if (status && !webSpeechText) {
+      status.textContent = 'Transcription failed. Please type your answer instead.';
+    }
   }
 }
 
