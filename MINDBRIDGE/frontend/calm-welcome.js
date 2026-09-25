@@ -439,9 +439,12 @@
       });
     });
 
-    // Start Screening button
+    // Start Screening button -> Opens 20-question dynamic screening window on Chatbot screen
     document.getElementById('calmStartScreeningBtn')?.addEventListener('click', function () {
-      closeWelcomeOverlay('screener');
+      closeWelcomeOverlay('chat');
+      if (typeof window.openChatScreeningWindow === 'function') {
+        setTimeout(() => window.openChatScreeningWindow(), 350);
+      }
     });
 
     // Emergency Buttons (Header + Main)
