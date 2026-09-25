@@ -1637,8 +1637,61 @@ def api_analyze_emotions():
 # ----------------- CLINICAL SCREENER (RESEARCH GROUNDED 100 QUESTIONS) ----------------- #
 
 import mental_screening as ms
+import dynamic_mental_state_analyzer as dmsa
 
 screener_engine = ms.screening_engine
+
+# =========================================================================
+# 20-QUESTION DYNAMIC PSYCHOLOGICAL SCREENING & MENTAL STATE EVALUATION API
+# =========================================================================
+
+@app.route("/api/screening/questions", methods=["GET"])
+def get_twenty_screening_questions():
+    """
+    Returns the 20 official psychological screening inquiries across 7 categories.
+    """
+    return jsonify({
+        "status": "success",
+        "total_questions": len(dmsa.SCREENING_QUESTIONS),
+        "questions": dmsa.SCREENING_QUESTIONS,
+        "sections": dmsa.SECTION_META,
+        "disclaimer": ms.DISCLAIMER_TEXT
+    })
+
+@app.route("/api/screening/analyze", methods=["POST", "OPTIONS"])
+def analyze_twenty_screening_answers():
+    """
+    Receives user's verbatim voice/text responses to the 20 questions,
+    runs dynamic multi-layered NLP & GenAI analysis, and outputs a personalized mental state profile.
+    Every evaluation is computed uniquely based on the user's specific answers (zero static results).
+    """
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+
+    data = request.get_json(silent=True) or {}
+    answers = data.get("answers") or {}
+    user_id = data.get("user_id") or "guest-user"
+
+    if not answers:
+        return jsonify({
+            "status": "error",
+            "message": "Answers dictionary with user reflections is required."
+        }), 400
+
+    try:
+        evaluation = dmsa.analyze_screening_responses(answers, user_id=user_id)
+        return jsonify({
+            "status": "success",
+            "evaluation": evaluation,
+            "total_answered": len([k for k, v in answers.items() if str(v).strip()]),
+            "disclaimer": ms.DISCLAIMER_TEXT
+        })
+    except Exception as e:
+        logger.error(f"[Screening Analysis Error]: {e}", exc_info=True)
+        return jsonify({
+            "status": "error",
+            "message": f"Could not complete analysis: {str(e)}"
+        }), 500
 
 @app.route("/api/screener/research-papers", methods=["GET"])
 def get_research_papers_metadata():
