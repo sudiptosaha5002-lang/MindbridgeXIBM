@@ -1505,6 +1505,15 @@ window.openChatScreeningWindow = async function openChatScreeningWindow() {
   if (!win) return;
   win.style.display = 'flex';
 
+  // ALWAYS start fresh: clear previous answers and index
+  chatScreeningState.answers = {};
+  chatScreeningState.currentIndex = 0;
+  chatScreeningState.accumulatedFinalText = '';
+  chatScreeningState.sessionBaseText = '';
+  localStorage.removeItem('mb_screening_20_answers');
+  const inputEl = document.getElementById('cswAnswerInput');
+  if (inputEl) inputEl.value = '';
+
   // Fetch updated questions from backend if available
   try {
     const res = await fetch('/api/screening/questions');
@@ -2105,6 +2114,9 @@ function speakCurrentScreeningQuestion() {
 
     if (soothing) utter.voice = soothing;
 
+    // Save reference to prevent garbage collection in Chrome which breaks onend
+    window.currentScreeningUtterance = utter;
+
     utter.onstart = () => {
       chatScreeningState.isSpeaking = true;
       const btn = document.getElementById('cswSpeakBtn');
@@ -2115,7 +2127,7 @@ function speakCurrentScreeningQuestion() {
       if (btn) btn.classList.add('speaking');
       if (label) label.textContent = 'Speaking...';
       if (speakingIndicator) speakingIndicator.style.display = 'inline-flex';
-      if (micStatus) micStatus.textContent = 'Dr. MindBridge speaking inquiry... (Listening starts when done)';
+      if (micStatus) micStatus.textContent = 'Dr. MindBridge speaking inquiry... (Listening starts automatically when done)';
     };
 
     utter.onend = () => {
