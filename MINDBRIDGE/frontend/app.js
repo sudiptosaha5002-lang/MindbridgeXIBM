@@ -1486,7 +1486,13 @@ const chatScreeningState = {
   answers: JSON.parse(localStorage.getItem('mb_screening_20_answers') || '{}'),
   inputMode: 'voice',
   isRecording: false,
+  autoSpeech: true, // Auto-speech ON: speaks inquiry aloud automatically when question appears
   recognition: null,
+  sessionBaseText: '',
+  accumulatedFinalText: '',
+  mediaRecorder: null,
+  audioChunks: [],
+  audioStream: null,
   isSpeaking: false,
   isInitialized: false,
   evaluationResult: null
@@ -1541,14 +1547,32 @@ function bindScreeningWindowControls() {
   document.getElementById('cswCloseBtn')?.addEventListener('click', closeChatScreeningWindow);
   document.getElementById('cswBackdrop')?.addEventListener('click', closeChatScreeningWindow);
 
+  // Auto-speech toggle button (Default: ON)
+  const autoVoiceBtn = document.getElementById('cswAutoVoiceToggleBtn');
+  const autoVoiceLabel = document.getElementById('cswAutoVoiceLabel');
+  autoVoiceBtn?.addEventListener('click', () => {
+    chatScreeningState.autoSpeech = !chatScreeningState.autoSpeech;
+    if (chatScreeningState.autoSpeech) {
+      autoVoiceBtn.classList.add('active-voice-btn');
+      if (autoVoiceLabel) autoVoiceLabel.textContent = 'Auto-Speech: ON';
+      if (!chatScreeningState.isSpeaking) {
+        speakCurrentScreeningQuestion();
+      }
+    } else {
+      autoVoiceBtn.classList.remove('active-voice-btn');
+      if (autoVoiceLabel) autoVoiceLabel.textContent = 'Auto-Speech: OFF';
+      stopScreeningSpeech();
+    }
+  });
+
   // Input tabs (Voice / Text)
   document.getElementById('cswTabVoice')?.addEventListener('click', () => setScreeningInputMode('voice'));
   document.getElementById('cswTabText')?.addEventListener('click', () => setScreeningInputMode('text'));
 
-  // Voice recording button
+  // Voice recording trigger button
   document.getElementById('cswMicTrigger')?.addEventListener('click', toggleScreeningVoice);
 
-  // Speak question aloud
+  // Replay question voice aloud button
   document.getElementById('cswSpeakBtn')?.addEventListener('click', toggleSpeakQuestion);
 
   // Navigation buttons
@@ -1561,7 +1585,6 @@ function bindScreeningWindowControls() {
   if (input) {
     input.addEventListener('input', () => {
       updateScreeningWordCount();
-      // Debounced local save
       const currQ = chatScreeningState.questions[chatScreeningState.currentIndex];
       if (currQ) {
         chatScreeningState.answers[currQ.id] = input.value;
@@ -1576,19 +1599,6 @@ function bindScreeningWindowControls() {
       }
     });
   }
-
-  // Category section strip clicks
-  document.querySelectorAll('.csw-cat-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const section = chip.getAttribute('data-section');
-      const targetIdx = chatScreeningState.questions.findIndex(q => q.section_id === section);
-      if (targetIdx !== -1) {
-        saveCurrentScreeningAnswer();
-        chatScreeningState.currentIndex = targetIdx;
-        renderScreeningQuestionUI(targetIdx);
-      }
-    });
-  });
 }
 
 function setScreeningInputMode(mode) {
@@ -1618,10 +1628,11 @@ function renderScreeningQuestionUI(idx) {
   const q = chatScreeningState.questions[idx];
   if (!q) return;
 
-  // Stop previous speech if any
+  // Stop previous speech and recording
   stopScreeningSpeech();
+  stopScreeningVoice();
 
-  // Progress text & percentage
+  // Progress text & percentage (clean, category-free)
   const total = chatScreeningState.questions.length;
   const currNum = idx + 1;
   const pct = Math.round((currNum / total) * 100);
@@ -1630,7 +1641,6 @@ function renderScreeningQuestionUI(idx) {
   const totalEl = document.getElementById('cswTotalNum');
   const pctEl = document.getElementById('cswPctTag');
   const fillEl = document.getElementById('cswProgressFill');
-  const badgeEl = document.getElementById('cswCategoryBadge');
   const qNumEl = document.getElementById('cswQNumber');
   const qTextEl = document.getElementById('cswQuestionText');
   const qHintEl = document.getElementById('cswQuestionHint');
@@ -1641,10 +1651,10 @@ function renderScreeningQuestionUI(idx) {
 
   if (numEl) numEl.textContent = currNum;
   if (totalEl) totalEl.textContent = total;
-  if (pctEl) pctEl.textContent = `${pct}%`;
+  if (pctEl) pctEl.textContent = `${pct}% Completed`;
   if (fillEl) fillEl.style.width = `${pct}%`;
-  if (badgeEl) badgeEl.textContent = q.category_badge || q.category;
-  if (qNumEl) qNumEl.textContent = `Inquiry ${currNum.toString().padStart(2, '0')} · ${q.category}`;
+  // Clean inquiry title without category clutter
+  if (qNumEl) qNumEl.textContent = `Inquiry ${currNum.toString().padStart(2, '0')} of ${total}`;
   if (qTextEl) qTextEl.textContent = q.question;
   if (qHintEl) qHintEl.textContent = q.hint || '';
 
@@ -1669,12 +1679,17 @@ function renderScreeningQuestionUI(idx) {
     nextBtn.classList.toggle('complete-btn', isFinal);
   }
 
-  // Highlight active category chip
-  document.querySelectorAll('.csw-cat-chip').forEach(chip => {
-    chip.classList.toggle('active', chip.getAttribute('data-section') === q.section_id);
-  });
-
   if (window.lucide) window.lucide.createIcons();
+
+  // Automatic Speech: Dr. MindBridge automatically speaks the inquiry aloud
+  if (chatScreeningState.autoSpeech) {
+    setTimeout(() => {
+      const win = document.getElementById('chatScreeningWindow');
+      if (win && win.style.display !== 'none' && chatScreeningState.currentIndex === idx) {
+        speakCurrentScreeningQuestion();
+      }
+    }, 220);
+  }
 }
 
 function updateScreeningWordCount() {
@@ -1734,42 +1749,31 @@ function skipScreeningQuestion() {
   }
 }
 
-// Voice Speech-to-Text Recognition
-function initScreeningRecognition() {
-  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRec) {
-    console.warn('[Screening Speech] Speech recognition not supported in this browser.');
-    return null;
+// ==========================================================================
+// PROMINENT VOICE RECOGNITION (SPEECH-TO-TEXT) & AUDIO CAPTURE ENGINE
+// ==========================================================================
+
+function updateScreeningMicUI(isRecording) {
+  const orbWrap = document.getElementById('cswMicOrbWrap');
+  const status = document.getElementById('cswMicStatus');
+  const sub = document.getElementById('cswMicSub');
+  const micIcon = document.getElementById('cswMicIcon');
+  const waveAnim = document.getElementById('cswSoundwaveAnim');
+
+  if (isRecording) {
+    if (orbWrap) orbWrap.classList.add('recording');
+    if (status) status.textContent = 'Listening to your voice... Speak freely';
+    if (sub) sub.textContent = 'Real-time speech-to-text active. Words appear below as you speak.';
+    if (micIcon) micIcon.setAttribute('data-lucide', 'mic-off');
+    if (waveAnim) waveAnim.style.display = 'inline-flex';
+  } else {
+    if (orbWrap) orbWrap.classList.remove('recording');
+    if (status) status.textContent = 'Click microphone to speak your answer';
+    if (sub) sub.textContent = 'Speak clearly into your microphone. Words are transcribed to text below in real-time.';
+    if (micIcon) micIcon.setAttribute('data-lucide', 'mic');
+    if (waveAnim) waveAnim.style.display = 'none';
   }
-  const rec = new SpeechRec();
-  rec.continuous = true;
-  rec.interimResults = true;
-  rec.lang = state.language || 'en-US';
-
-  rec.onresult = (e) => {
-    let transcript = '';
-    for (let i = 0; i < e.results.length; i++) {
-      transcript += e.results[i][0].transcript + ' ';
-    }
-    const input = document.getElementById('cswAnswerInput');
-    if (input) {
-      input.value = transcript.trim();
-      updateScreeningWordCount();
-    }
-  };
-
-  rec.onerror = (err) => {
-    console.warn('[Screening Speech Error]:', err);
-    stopScreeningVoice();
-  };
-
-  rec.onend = () => {
-    if (chatScreeningState.isRecording) {
-      stopScreeningVoice();
-    }
-  };
-
-  return rec;
+  if (window.lucide) window.lucide.createIcons();
 }
 
 function toggleScreeningVoice() {
@@ -1780,52 +1784,185 @@ function toggleScreeningVoice() {
   }
 }
 
-function startScreeningVoice() {
-  if (!chatScreeningState.recognition) {
-    chatScreeningState.recognition = initScreeningRecognition();
+async function startScreeningVoice() {
+  if (chatScreeningState.isSpeaking) {
+    stopScreeningSpeech();
   }
-  if (!chatScreeningState.recognition) {
-    alert('Speech recognition is not available in your browser. Please type your reflection in the text area below.');
-    return;
+  if (chatScreeningState.isRecording) return;
+
+  const input = document.getElementById('cswAnswerInput');
+  chatScreeningState.sessionBaseText = input ? input.value.trim() : '';
+  chatScreeningState.accumulatedFinalText = '';
+
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (SpeechRec) {
+    try {
+      if (!chatScreeningState.recognition) {
+        const rec = new SpeechRec();
+        rec.continuous = true;
+        rec.interimResults = true;
+        rec.lang = state.language || 'en-US';
+
+        rec.onresult = (e) => {
+          let newlyFinal = '';
+          let interimTranscript = '';
+
+          for (let i = e.resultIndex; i < e.results.length; ++i) {
+            const transcript = e.results[i][0].transcript;
+            if (e.results[i].isFinal) {
+              newlyFinal += transcript + ' ';
+            } else {
+              interimTranscript += transcript;
+            }
+          }
+
+          chatScreeningState.accumulatedFinalText += newlyFinal;
+
+          const base = chatScreeningState.sessionBaseText;
+          const finalPart = chatScreeningState.accumulatedFinalText;
+          const interimPart = interimTranscript;
+
+          let full = base;
+          if (finalPart) full = full ? `${full} ${finalPart}` : finalPart;
+          if (interimPart) full = full ? `${full} ${interimPart}` : interimPart;
+
+          if (input) {
+            input.value = full.replace(/\s+/g, ' ').trim();
+            updateScreeningWordCount();
+            saveCurrentScreeningAnswer();
+          }
+        };
+
+        rec.onerror = (err) => {
+          console.warn('[Screening Speech Rec Error]:', err);
+          if (err.error === 'not-allowed' || err.error === 'service-not-allowed') {
+            console.log('[Screening Speech] Using MediaRecorder backend fallback.');
+          }
+        };
+
+        rec.onend = () => {
+          // Restart continuous recognition while recording is active and not speaking
+          if (chatScreeningState.isRecording && !chatScreeningState.isSpeaking) {
+            try {
+              rec.start();
+            } catch (re) {}
+          }
+        };
+
+        chatScreeningState.recognition = rec;
+      }
+
+      chatScreeningState.recognition.start();
+    } catch (err) {
+      console.warn('[Screening Recognition Start Catch]:', err);
+    }
   }
 
+  // Also initiate parallel MediaRecorder for high-accuracy Whisper fallback
   try {
-    chatScreeningState.recognition.start();
-    chatScreeningState.isRecording = true;
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      chatScreeningState.audioStream = stream;
+      chatScreeningState.audioChunks = [];
 
-    const orbWrap = document.getElementById('cswMicOrbWrap');
-    const status = document.getElementById('cswMicStatus');
-    const micIcon = document.getElementById('cswMicIcon');
-
-    if (orbWrap) orbWrap.classList.add('recording');
-    if (status) status.textContent = 'Listening... Speak naturally';
-    if (micIcon) micIcon.setAttribute('data-lucide', 'mic-off');
-    if (window.lucide) window.lucide.createIcons();
-  } catch (err) {
-    console.warn('[Screening Mic Start Error]:', err);
+      const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : 'audio/webm';
+      const recorder = new MediaRecorder(stream, { mimeType });
+      recorder.ondataavailable = (e) => {
+        if (e.data && e.data.size > 0) {
+          chatScreeningState.audioChunks.push(e.data);
+        }
+      };
+      recorder.start(200);
+      chatScreeningState.mediaRecorder = recorder;
+    }
+  } catch (micErr) {
+    console.warn('[Screening MediaRecorder Fallback Init]:', micErr);
   }
+
+  chatScreeningState.isRecording = true;
+  updateScreeningMicUI(true);
 }
 
-function stopScreeningVoice() {
-  if (chatScreeningState.recognition && chatScreeningState.isRecording) {
+async function stopScreeningVoice() {
+  if (!chatScreeningState.isRecording) return;
+  chatScreeningState.isRecording = false;
+
+  if (chatScreeningState.recognition) {
     try {
       chatScreeningState.recognition.stop();
     } catch (e) {}
   }
-  chatScreeningState.isRecording = false;
 
-  const orbWrap = document.getElementById('cswMicOrbWrap');
-  const status = document.getElementById('cswMicStatus');
-  const micIcon = document.getElementById('cswMicIcon');
-
-  if (orbWrap) orbWrap.classList.remove('recording');
-  if (status) status.textContent = 'Click microphone to speak your answer';
-  if (micIcon) micIcon.setAttribute('data-lucide', 'mic');
-  if (window.lucide) window.lucide.createIcons();
+  updateScreeningMicUI(false);
   saveCurrentScreeningAnswer();
+
+  // Stop MediaRecorder and audio stream
+  if (chatScreeningState.mediaRecorder && chatScreeningState.mediaRecorder.state !== 'inactive') {
+    try {
+      chatScreeningState.mediaRecorder.stop();
+    } catch (e) {}
+  }
+  if (chatScreeningState.audioStream) {
+    try {
+      chatScreeningState.audioStream.getTracks().forEach(track => track.stop());
+    } catch (e) {}
+    chatScreeningState.audioStream = null;
+  }
+
+  // If input was empty or user spoke briefly, verify with backend Faster-Whisper
+  const input = document.getElementById('cswAnswerInput');
+  if (input && !input.value.trim() && chatScreeningState.audioChunks && chatScreeningState.audioChunks.length > 0) {
+    await transcribeScreeningAudioWithBackend();
+  }
 }
 
-// Text-to-Speech: Read question aloud
+// Fallback: Transcribe audio using backend Faster-Whisper
+async function transcribeScreeningAudioWithBackend() {
+  const status = document.getElementById('cswMicStatus');
+  if (status) status.textContent = 'Transcribing your voice reflection...';
+  try {
+    const blob = new Blob(chatScreeningState.audioChunks, { type: 'audio/webm' });
+    if (blob.size < 800) {
+      if (status) status.textContent = 'Click microphone to speak your answer';
+      return;
+    }
+
+    const fd = new FormData();
+    fd.append('audio', blob, 'screening_answer.webm');
+    fd.append('language', state.language || 'en-US');
+
+    const res = await fetch('/api/transcribe', {
+      method: 'POST',
+      body: fd
+    });
+    const data = await res.json();
+    if (data && data.text && data.text.trim()) {
+      const input = document.getElementById('cswAnswerInput');
+      if (input) {
+        input.value = data.text.trim();
+        updateScreeningWordCount();
+        saveCurrentScreeningAnswer();
+      }
+      if (status) status.textContent = 'Voice captured & transcribed successfully!';
+      setTimeout(() => {
+        if (!chatScreeningState.isRecording && status) {
+          status.textContent = 'Click microphone to speak your answer';
+        }
+      }, 2500);
+    } else {
+      if (status) status.textContent = 'Click microphone to speak your answer';
+    }
+  } catch (err) {
+    console.warn('[Screening Backend Transcribe Error]:', err);
+    if (status) status.textContent = 'Click microphone to speak your answer';
+  }
+}
+
+// ==========================================================================
+// AUTOMATIC & MANUAL TEXT-TO-SPEECH (DR. MINDBRIDGE VOICE SYNTHESIS)
+// ==========================================================================
+
 function toggleSpeakQuestion() {
   if (chatScreeningState.isSpeaking) {
     stopScreeningSpeech();
@@ -1838,26 +1975,54 @@ function speakCurrentScreeningQuestion() {
   const currQ = chatScreeningState.questions[chatScreeningState.currentIndex];
   if (!currQ) return;
 
+  // Stop active voice recording while speaking to prevent feedback
+  stopScreeningVoice();
+
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(currQ.question);
-    utter.rate = 0.95;
+
+    // Construct clear spoken text: Question number + Question text
+    const currNum = chatScreeningState.currentIndex + 1;
+    const spokenText = `Question ${currNum}. ${currQ.question}`;
+    const utter = new SpeechSynthesisUtterance(spokenText);
+    utter.rate = 0.92; // Warm, empathetic pacing
     utter.pitch = 1.0;
 
+    // Pick best neural/natural English voice
     const voices = window.speechSynthesis.getVoices();
-    const soothing = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Female')));
+    const soothing = voices.find(v => 
+      v.lang.startsWith('en') && 
+      (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Female') || v.name.includes('Samantha') || v.name.includes('Google UK English Female') || v.name.includes('Jenny'))
+    ) || voices.find(v => v.lang.startsWith('en'));
+
     if (soothing) utter.voice = soothing;
 
     utter.onstart = () => {
       chatScreeningState.isSpeaking = true;
       const btn = document.getElementById('cswSpeakBtn');
       const label = document.getElementById('cswSpeakLabel');
+      const speakingIndicator = document.getElementById('cswSpeakingIndicator');
+      const micStatus = document.getElementById('cswMicStatus');
+
       if (btn) btn.classList.add('speaking');
       if (label) label.textContent = 'Speaking...';
+      if (speakingIndicator) speakingIndicator.style.display = 'inline-flex';
+      if (micStatus) micStatus.textContent = 'Dr. MindBridge speaking inquiry... (Listening starts when done)';
     };
 
     utter.onend = () => {
       stopScreeningSpeech();
+
+      // Seamless Auto-Listening Hand-off:
+      // When Dr. MindBridge finishes speaking, auto-start listening if in voice mode!
+      if (chatScreeningState.inputMode === 'voice') {
+        setTimeout(() => {
+          const win = document.getElementById('chatScreeningWindow');
+          if (win && win.style.display !== 'none' && !chatScreeningState.isRecording && !chatScreeningState.isSpeaking) {
+            startScreeningVoice();
+          }
+        }, 400);
+      }
     };
 
     utter.onerror = () => {
@@ -1875,8 +2040,15 @@ function stopScreeningSpeech() {
   chatScreeningState.isSpeaking = false;
   const btn = document.getElementById('cswSpeakBtn');
   const label = document.getElementById('cswSpeakLabel');
+  const speakingIndicator = document.getElementById('cswSpeakingIndicator');
+  const micStatus = document.getElementById('cswMicStatus');
+
   if (btn) btn.classList.remove('speaking');
-  if (label) label.textContent = 'Listen';
+  if (label) label.textContent = 'Replay Voice';
+  if (speakingIndicator) speakingIndicator.style.display = 'none';
+  if (!chatScreeningState.isRecording && micStatus) {
+    micStatus.textContent = 'Click microphone to speak your answer';
+  }
 }
 
 // Dynamic Analysis Submission
