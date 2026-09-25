@@ -4226,6 +4226,20 @@ let emergencyAmbulanceMarkers = [];
 let emergencyWatchId = null;
 let lastDispatchedCoords = { lat: null, lon: null };
 
+// Google Maps Platform API & High-Speed Tile Engine State
+let googleMapsApiKey = localStorage.getItem('mindbridge_google_maps_api_key') || '';
+let isGoogleMapsScriptLoaded = false;
+let googleMapsScriptPromise = null;
+let nativeGoogleMapInstance = null;
+let nativeGoogleUserMarker = null;
+let nativeGoogleProviderMarkers = [];
+let nativeGooglePolyline = null;
+let currentMapLayerType = 'google_roadmap'; // 'google_roadmap' | 'google_satellite'
+let activeMapTileLayer = null;
+let lastDispatchedProviders = [];
+let lastDispatchedNearest = null;
+let lastDispatchedAddress = '';
+
 async function broadcastGpsAndDispatchAmbulance(customLat = null, customLon = null, customLocality = null, isAutomaticUpdate = false) {
   const sosLocationBtn = document.getElementById('sosLocationDispatchBtn');
   const emergencyAmbulanceBtn = document.getElementById('emergencyAmbulanceBtn');
