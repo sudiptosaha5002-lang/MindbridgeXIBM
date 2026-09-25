@@ -1271,6 +1271,47 @@ def get_nearest_ambulance():
     result = fetch_live_nearby_emergency_providers(lat, lon, locality, address)
     return jsonify(result)
 
+@app.route("/api/config/maps-key", methods=["GET", "POST", "OPTIONS"])
+def api_maps_key_config():
+    """
+    Get or configure Google Maps Platform API Key for client-side rendering.
+    """
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+
+    if request.method == "POST":
+        data = request.get_json(silent=True) or {}
+        new_key = data.get("api_key", "").strip()
+        if new_key:
+            os.environ["GOOGLE_MAPS_API_KEY"] = new_key
+            try:
+                env_path = os.path.join(BASE_DIR, ".env")
+                lines = []
+                if os.path.exists(env_path):
+                    with open(env_path, "r", encoding="utf-8") as f:
+                        lines = [l for l in f.readlines() if not l.startswith("GOOGLE_MAPS_API_KEY=")]
+                lines.append(f"GOOGLE_MAPS_API_KEY={new_key}\n")
+                with open(env_path, "w", encoding="utf-8") as f:
+                    f.writelines(lines)
+            except Exception as e:
+                logger.warning(f"Could not write GOOGLE_MAPS_API_KEY to .env: {e}")
+        elif "clear" in data:
+            os.environ.pop("GOOGLE_MAPS_API_KEY", None)
+
+        return jsonify({
+            "status": "success",
+            "api_key": os.environ.get("GOOGLE_MAPS_API_KEY", ""),
+            "has_key": bool(os.environ.get("GOOGLE_MAPS_API_KEY"))
+        })
+
+    key = os.environ.get("GOOGLE_MAPS_API_KEY", "")
+    return jsonify({
+        "status": "success",
+        "api_key": key,
+        "has_key": bool(key)
+    })
+
+
 @app.route("/api/consent", methods=["POST"])
 def record_consent():
     """
