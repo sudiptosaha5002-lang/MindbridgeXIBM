@@ -528,7 +528,7 @@
                 </button>
               </div>
 
-              <!-- Voice Input Panel with Animated Microphone Orb -->
+              <!-- Voice Input Panel with Animated Microphone Orb & Live Audio Waves -->
               <div class="csw-voice-panel" id="cswVoicePanel">
                 <div class="csw-mic-orb-row">
                   <div class="csw-mic-orb-wrap" id="cswMicOrbWrap">
@@ -539,8 +539,13 @@
                     </button>
                   </div>
                   <div class="csw-mic-meta">
-                    <div class="csw-mic-status" id="cswMicStatus">Click microphone to speak your answer</div>
-                    <div class="csw-mic-sub">Speak freely. Your speech will be converted to text below in real-time.</div>
+                    <div class="csw-mic-status-row">
+                      <div class="csw-mic-status" id="cswMicStatus">Click microphone to speak your answer</div>
+                      <div class="csw-soundwave-anim" id="cswSoundwaveAnim" style="display: none;">
+                        <span></span><span></span><span></span><span></span><span></span>
+                      </div>
+                    </div>
+                    <div class="csw-mic-sub" id="cswMicSub">Speak clearly into your microphone. Words are transcribed to text below in real-time.</div>
                   </div>
                 </div>
               </div>
