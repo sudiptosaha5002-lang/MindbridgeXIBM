@@ -1246,6 +1246,7 @@ def fetch_live_nearby_emergency_providers(lat, lon, user_locality="", user_addre
     }
 
 @app.route("/api/emergency/nearest-ambulance", methods=["GET", "POST", "OPTIONS"])
+@app.route("/api/emergency/providers", methods=["GET", "POST", "OPTIONS"])
 def get_nearest_ambulance():
     """
     Location-aware endpoint that calculates exact physical proximity
