@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 interface BreathingOrbProps {
   reducedMotion?: boolean;
@@ -21,7 +21,7 @@ export const BreathingOrb: React.FC<BreathingOrbProps> = ({
   }[size];
 
   // Framer Motion variant for gentle parasympathetic breathing (4-6s cycle)
-  const breathingVariants = {
+  const breathingVariants: Variants = {
     animate: {
       scale: [0.95, 1.05, 0.95],
       opacity: [0.72, 0.98, 0.72],
@@ -41,7 +41,7 @@ export const BreathingOrb: React.FC<BreathingOrbProps> = ({
   };
 
   // Subtle outer aura breathing
-  const auraVariants = {
+  const auraVariants: Variants = {
     animate: {
       scale: [0.92, 1.10, 0.92],
       opacity: [0.35, 0.65, 0.35],
