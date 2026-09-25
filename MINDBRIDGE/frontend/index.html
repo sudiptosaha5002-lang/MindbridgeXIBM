@@ -444,8 +444,163 @@
               </div>
             </button>
 
+            <!-- 20-Question Psychological Screening Card -->
+            <button type="button" class="prompt-suggestion-card screening-prompt-card" id="openChatScreeningCardBtn" onclick="openChatScreeningWindow()">
+              <div class="prompt-card-icon-wrap" style="background: rgba(147, 51, 234, 0.15); color: #9333ea;">
+                <i data-lucide="clipboard-check"></i>
+              </div>
+              <div class="prompt-card-text">
+                <span class="prompt-card-title">20-Inquiry Screening</span>
+                <p class="prompt-card-desc">Answer 20 reflective questions via voice/text for an individualized mental state profile.</p>
+              </div>
+            </button>
+
           </div>
 
+        </div>
+
+        <!-- ============================================== -->
+        <!-- CHAT SCREENING WINDOW (20-QUESTION DYNAMIC PSYCHOMETRIC EVALUATION) -->
+        <!-- ============================================== -->
+        <div id="chatScreeningWindow" class="chat-screening-window" style="display: none;">
+          <div class="csw-backdrop" id="cswBackdrop"></div>
+          <div class="csw-dialog animate-scale-up">
+            
+            <!-- Window Top Navigation & Progress Bar -->
+            <div class="csw-header">
+              <div class="csw-header-left">
+                <div class="csw-category-badge" id="cswCategoryBadge">
+                  🟣 A. Inner Emotional Landscape
+                </div>
+                <div class="csw-progress-text">
+                  Question <strong id="cswCurrentNum">1</strong> of <strong id="cswTotalNum">20</strong>
+                  <span class="csw-pct-tag" id="cswPctTag">5%</span>
+                </div>
+              </div>
+              
+              <div class="csw-header-actions">
+                <button type="button" class="csw-tool-btn" id="cswSpeakBtn" title="Listen to question spoken aloud by Dr. MindBridge">
+                  <i data-lucide="volume-2" id="cswSpeakIcon"></i>
+                  <span id="cswSpeakLabel">Listen</span>
+                </button>
+                <button type="button" class="csw-close-btn" id="cswCloseBtn" title="Close / Minimize Screening Window">
+                  <i data-lucide="x"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Progress Bar Track -->
+            <div class="csw-progress-track">
+              <div class="csw-progress-fill" id="cswProgressFill" style="width: 5%;"></div>
+            </div>
+
+            <!-- Category Section Strip (7 Categories A - G) -->
+            <div class="csw-categories-strip" id="cswCategoriesStrip">
+              <button type="button" class="csw-cat-chip active" data-section="A">🟣 A. Emotion</button>
+              <button type="button" class="csw-cat-chip" data-section="B">🟪 B. Stress</button>
+              <button type="button" class="csw-cat-chip" data-section="C">🟨 C. Thoughts</button>
+              <button type="button" class="csw-cat-chip" data-section="D">🟩 D. Past</button>
+              <button type="button" class="csw-cat-chip" data-section="E">🟧 E. Beliefs</button>
+              <button type="button" class="csw-cat-chip" data-section="F">🟫 F. Habits</button>
+              <button type="button" class="csw-cat-chip" data-section="G">🟥 G. Future</button>
+            </div>
+
+            <!-- Active Question Stage -->
+            <div class="csw-body" id="cswQuestionStage">
+              
+              <!-- Question Card -->
+              <div class="csw-question-card">
+                <div class="csw-q-number" id="cswQNumber">Inquiry 01 · 20 Questions</div>
+                <h3 class="csw-question-text" id="cswQuestionText">
+                  If you had to describe how you’re feeling right now in three words, what would they be?
+                </h3>
+                <p class="csw-question-hint" id="cswQuestionHint">
+                  Share any three words that come naturally to mind right now.
+                </p>
+              </div>
+
+              <!-- Input Mode Tabs (Voice & Text) -->
+              <div class="csw-input-tabs">
+                <button type="button" class="csw-tab-btn active" id="cswTabVoice">
+                  <i data-lucide="mic"></i> Voice Input (Speech-to-Text)
+                </button>
+                <button type="button" class="csw-tab-btn" id="cswTabText">
+                  <i data-lucide="edit-3"></i> Text Reflection
+                </button>
+              </div>
+
+              <!-- Voice Input Panel with Animated Microphone Orb -->
+              <div class="csw-voice-panel" id="cswVoicePanel">
+                <div class="csw-mic-orb-row">
+                  <div class="csw-mic-orb-wrap" id="cswMicOrbWrap">
+                    <div class="csw-mic-wave-ring ring-1" id="cswWave1"></div>
+                    <div class="csw-mic-wave-ring ring-2" id="cswWave2"></div>
+                    <button type="button" class="csw-mic-trigger" id="cswMicTrigger" title="Click to Speak / Stop Listening">
+                      <i data-lucide="mic" id="cswMicIcon"></i>
+                    </button>
+                  </div>
+                  <div class="csw-mic-meta">
+                    <div class="csw-mic-status" id="cswMicStatus">Click microphone to speak your answer</div>
+                    <div class="csw-mic-sub">Speak freely. Your speech will be converted to text below in real-time.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reflection Text Area / Live Transcript Box -->
+              <div class="csw-textarea-wrap">
+                <textarea 
+                  id="cswAnswerInput" 
+                  class="csw-answer-input" 
+                  rows="4" 
+                  placeholder="Your spoken or typed reflection will appear here... Share as much or as little detail as feels right for you."
+                ></textarea>
+                <div class="csw-textarea-footer">
+                  <span class="csw-privacy-note"><i data-lucide="shield-check"></i> Private, ethical, dynamic evaluation</span>
+                  <span class="csw-char-counter" id="cswWordCount">0 words</span>
+                </div>
+              </div>
+
+              <!-- Footer Navigation Controls -->
+              <div class="csw-footer-nav">
+                <button type="button" class="csw-nav-btn csw-btn-prev" id="cswPrevBtn" disabled>
+                  <i data-lucide="arrow-left"></i> Previous
+                </button>
+                <div class="csw-footer-right">
+                  <button type="button" class="csw-nav-btn csw-btn-skip" id="cswSkipBtn">
+                    Skip Question
+                  </button>
+                  <button type="button" class="csw-nav-btn csw-btn-next" id="cswNextBtn">
+                    <span id="cswNextBtnLabel">Next Question</span> <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Loading & Analysis Transition Stage -->
+            <div class="csw-loading-stage" id="cswLoadingStage" style="display: none;">
+              <div class="csw-loader-spinner">
+                <div class="csw-spinner-ring ring-1"></div>
+                <div class="csw-spinner-ring ring-2"></div>
+                <div class="csw-spinner-core">🧠</div>
+              </div>
+              <h3 class="csw-loading-title">Synthesizing Your 20 Reflections</h3>
+              <p class="csw-loading-sub" id="cswLoadingSub">
+                Analyzing emotional regulation, cognitive reframing, sleep habits, and resilience metrics...
+              </p>
+              <div class="csw-loading-steps">
+                <span class="csw-step-item active"><i data-lucide="check"></i> 20 Responses Recorded</span>
+                <span class="csw-step-item active"><i data-lucide="loader-2" class="spin"></i> Evaluating Affect &amp; Coping</span>
+                <span class="csw-step-item"><i data-lucide="circle"></i> Individualized Profile Generation</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Mental State Results Stage -->
+            <div class="csw-results-stage" id="cswResultsStage" style="display: none;">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+
+          </div>
         </div>
 
       </section>
