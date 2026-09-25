@@ -10802,15 +10802,186 @@ body.dark-theme .gc-name {
   box-shadow: 0 6px 18px rgba(26, 115, 232, 0.45) !important;
 }
 
+.emergency-map-key-btn {
+  background: rgba(234, 67, 53, 0.08) !important;
+  border-color: rgba(234, 67, 53, 0.3) !important;
+  color: #ea4335 !important;
+  transition: all 0.2s ease;
+}
+
+.emergency-map-key-btn:hover, .emergency-map-key-btn.has-key {
+  background: linear-gradient(135deg, #ea4335, #c5221f) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 12px rgba(234, 67, 53, 0.35) !important;
+}
+
+/* Google Maps API Key Configuration Panel */
+.gmaps-key-panel {
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.95), rgba(255, 255, 255, 0.98));
+  border: 1.5px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+  padding: 1.15rem 1.35rem;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.08);
+  animation: slideDown 0.25s ease-out;
+}
+
+[data-theme="dark"] .gmaps-key-panel {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.85), rgba(15, 23, 42, 0.95));
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gmaps-key-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-bottom: 0.35rem;
+}
+
+.gmaps-key-desc {
+  font-size: 0.84rem;
+  color: #475569;
+  margin: 0 0 0.85rem;
+  line-height: 1.45;
+}
+
+[data-theme="dark"] .gmaps-key-desc {
+  color: #94a3b8;
+}
+
+.gmaps-key-input-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gmaps-key-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+}
+
+.gmaps-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #94a3b8;
+}
+
+.gmaps-key-input {
+  width: 100%;
+  padding: 0.6rem 0.85rem 0.6rem 2.4rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(203, 213, 225, 0.8);
+  font-family: monospace;
+  font-size: 0.86rem;
+  color: #0f172a;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .gmaps-key-input {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(71, 85, 105, 0.6);
+  color: #f8fafc;
+}
+
+.gmaps-key-input:focus {
+  outline: none;
+  border-color: #ea4335;
+  box-shadow: 0 0 0 3px rgba(234, 67, 53, 0.15);
+}
+
+.gmaps-btn-save {
+  padding: 0.6rem 1.15rem;
+  background: linear-gradient(135deg, #ea4335, #c5221f);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(234, 67, 53, 0.3);
+  transition: all 0.2s ease;
+}
+
+.gmaps-btn-save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(234, 67, 53, 0.45);
+}
+
+.gmaps-btn-cancel {
+  padding: 0.6rem 0.95rem;
+  background: rgba(148, 163, 184, 0.12);
+  color: #64748b;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gmaps-btn-cancel:hover {
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.gmaps-key-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.gmaps-status-badge {
+  font-size: 0.76rem;
+  color: #16a34a;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gmaps-clear-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 0.75rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
 .emergency-interactive-map {
   width: 100%;
   height: 380px;
+  min-height: 380px;
   border-radius: 18px;
   overflow: hidden;
   border: 1.5px solid rgba(226, 232, 240, 0.8);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
   z-index: 10;
   position: relative;
+  background: #e5e3df; /* Google Maps default background tint */
 }
 
 [data-theme="dark"] .emergency-interactive-map {
