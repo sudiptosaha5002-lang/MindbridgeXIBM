@@ -404,6 +404,12 @@
         overlay.style.display = 'none';
       }, 800);
     }
+    if (destinationTab === 'screener') {
+      destinationTab = 'chat';
+      if (typeof window.openChatScreeningWindow === 'function') {
+        setTimeout(() => window.openChatScreeningWindow(), 350);
+      }
+    }
     if (destinationTab && typeof window.switchTab === 'function') {
       window.switchTab(destinationTab);
     }
