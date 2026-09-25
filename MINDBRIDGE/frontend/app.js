@@ -1495,7 +1495,8 @@ const chatScreeningState = {
   audioStream: null,
   isSpeaking: false,
   isInitialized: false,
-  evaluationResult: null
+  evaluationResult: null,
+  silenceTimer: null
 };
 
 // Global entry point to open 20-question screening window on chatbot screen
@@ -1863,6 +1864,17 @@ async function startScreeningVoice() {
           chatScreeningState.answers[currQ.id] = liveInput.value;
           localStorage.setItem('mb_screening_20_answers', JSON.stringify(chatScreeningState.answers));
         }
+
+        // Realistic Voice Engine Workflow: Detect Silence to auto-stop
+        if (chatScreeningState.silenceTimer) {
+          clearTimeout(chatScreeningState.silenceTimer);
+        }
+        chatScreeningState.silenceTimer = setTimeout(() => {
+          if (chatScreeningState.isRecording) {
+            console.log('[Screening] Silence detected. Auto-stopping voice capture.');
+            stopScreeningVoice();
+          }
+        }, 4000); // 4 seconds of silence = end of answer
       };
 
       rec.onerror = (err) => {
@@ -1947,11 +1959,25 @@ async function startScreeningVoice() {
 
   chatScreeningState.isRecording = true;
   updateScreeningMicUI(true);
+
+  // Start the initial silence timer in case they never speak at all
+  if (chatScreeningState.silenceTimer) clearTimeout(chatScreeningState.silenceTimer);
+  chatScreeningState.silenceTimer = setTimeout(() => {
+    if (chatScreeningState.isRecording && !chatScreeningState.sessionBaseText && !chatScreeningState._currentSessionFinal) {
+      console.log('[Screening] Initial silence timeout. Auto-stopping voice capture.');
+      stopScreeningVoice();
+    }
+  }, 10000); // Wait up to 10s for them to start speaking initially
 }
 
 async function stopScreeningVoice() {
   if (!chatScreeningState.isRecording) return;
   chatScreeningState.isRecording = false;
+
+  if (chatScreeningState.silenceTimer) {
+    clearTimeout(chatScreeningState.silenceTimer);
+    chatScreeningState.silenceTimer = null;
+  }
 
   // Stop Web Speech API recognition
   if (chatScreeningState.recognition) {
