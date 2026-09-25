@@ -1,0 +1,538 @@
+/* ==========================================================================
+   MINDBRIDGE CALM WELCOME EXPERIENCE - ETHICAL, ACCESSIBLE, NEURO-AESTHETIC
+   ========================================================================== */
+
+:root {
+  --mb-calm-blue: #DCEEFF;
+  --mb-calm-lavender: #E9E2FF;
+  --mb-calm-mint: #DFF5EC;
+  --mb-calm-beige: #F8F3EA;
+  --mb-calm-slate: #2D3748;
+  --mb-calm-dark: #1A202C;
+  --mb-calm-glass: rgba(255, 255, 255, 0.88);
+  --mb-calm-border: rgba(226, 232, 240, 0.9);
+}
+
+/* Fullscreen Welcome Overlay */
+.calm-welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: radial-gradient(ellipse at 50% 30%, var(--mb-calm-lavender) 0%, var(--mb-calm-blue) 40%, var(--mb-calm-mint) 75%, var(--mb-calm-beige) 100%);
+  color: var(--mb-calm-slate);
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Noto Sans Bengali', 'Noto Sans Devanagari', sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.calm-welcome-overlay.fade-out {
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+
+/* Ambient glow blobs */
+.calm-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 1;
+}
+.calm-glow-1 {
+  top: -10%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: var(--mb-calm-blue);
+}
+.calm-glow-2 {
+  bottom: -10%;
+  right: -10%;
+  width: 450px;
+  height: 450px;
+  background: var(--mb-calm-mint);
+}
+
+/* Header toolbar */
+.calm-header-bar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calm-access-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.calm-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  outline: none;
+}
+.calm-pill-btn:hover {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+.calm-pill-btn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+.calm-pill-btn.active {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #4338ca;
+}
+
+/* Emergency Floating & Header Button */
+.calm-emergency-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  background: #e11d48;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid #fda4af;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.calm-emergency-btn:hover {
+  background: #be123c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(225, 29, 72, 0.35);
+}
+.calm-emergency-btn:focus-visible {
+  outline: 3px solid #f43f5e;
+  outline-offset: 2px;
+}
+.calm-emergency-btn .pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: calmPulse 1.8s infinite;
+}
+
+@keyframes calmPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* Centerpiece stage */
+.calm-center-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 780px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Breathing Orb Container */
+.calm-orb-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.calm-orb-aura {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 245, 236, 0.8) 0%, rgba(233, 226, 255, 0.6) 45%, rgba(220, 238, 255, 0) 75%);
+  filter: blur(40px);
+  animation: orbAuraBreath 5.2s ease-in-out infinite;
+}
+
+.calm-orb-core {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.95) 0%, rgba(220, 238, 255, 0.75) 40%, rgba(233, 226, 255, 0.55) 75%, rgba(223, 245, 236, 0.4) 100%);
+  box-shadow: 0 0 60px rgba(186, 215, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  animation: orbCoreBreath 5.2s ease-in-out infinite;
+}
+
+/* Reduced Motion Mode for Orb */
+body.reduce-motion .calm-orb-aura,
+body.reduce-motion .calm-orb-core {
+  animation: none !important;
+  transform: scale(1) !important;
+  opacity: 0.85 !important;
+}
+
+@keyframes orbCoreBreath {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1.0;
+  }
+}
+
+@keyframes orbAuraBreath {
+  0%, 100% {
+    transform: scale(0.92);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+/* Foreground content over orb */
+.calm-content-layer {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo container & animations */
+.calm-logo-box {
+  width: 76px;
+  height: 76px;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(12px) scale(0.92);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.calm-logo-box.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Typography */
+.calm-text-box {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 620px;
+}
+.calm-text-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.calm-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+}
+
+.calm-subtitle {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+}
+
+.calm-supportive-msg {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Actions Section */
+.calm-actions-box {
+  margin-top: 2rem;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.calm-actions-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Language Selection Row */
+.calm-lang-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.calm-lang-btn {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.calm-lang-btn:hover {
+  color: #0f172a;
+  background: rgba(241, 245, 249, 0.8);
+}
+.calm-lang-btn.active {
+  background: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+}
+
+/* Action Buttons (Primary & Secondary) */
+.calm-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+.calm-btn-primary {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.8rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #0d9488 0%, #4f46e5 50%, #0284c7 100%);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.35);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+.calm-btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 30px -5px rgba(79, 70, 229, 0.45);
+}
+.calm-btn-primary:active {
+  transform: scale(0.98);
+}
+.calm-btn-primary:focus-visible {
+  outline: 3px solid #6366f1;
+  outline-offset: 3px;
+}
+
+.calm-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.5rem;
+  border-radius: 1rem;
+  background: #fff1f2;
+  color: #9f1239;
+  font-size: 1.02rem;
+  font-weight: 700;
+  border: 2px solid #fecdd3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.calm-btn-secondary:hover {
+  background: #ffe4e6;
+  border-color: #fda4af;
+  transform: translateY(-2px);
+}
+.calm-btn-secondary:focus-visible {
+  outline: 3px solid #f43f5e;
+  outline-offset: 3px;
+}
+
+/* Audio Consent Banner */
+.calm-audio-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  font-size: 0.8rem;
+  color: #475569;
+  backdrop-filter: blur(6px);
+}
+.calm-audio-optin {
+  background: #f0fdfa;
+  color: #0f766e;
+  border: 1px solid #99f6e4;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.calm-audio-optin:hover {
+  background: #ccfbf1;
+}
+.calm-audio-dismiss {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.5rem;
+}
+.calm-audio-dismiss:hover {
+  color: #0f172a;
+}
+
+/* Ethical Reassurance Pills */
+.calm-ethical-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.calm-ethical-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  font-size: 0.74rem;
+  color: #475569;
+}
+
+/* Footer & Floating Audio Controller */
+.calm-footer-bar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(203, 213, 225, 0.4);
+  font-size: 0.76rem;
+  color: #64748b;
+}
+
+.calm-sound-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.calm-sound-widget input[type="range"] {
+  width: 60px;
+  height: 4px;
+  accent-color: #4f46e5;
+  cursor: pointer;
+}
+
+/* Reduced Motion global rules */
+@media (prefers-reduced-motion: reduce) {
+  .calm-logo-box,
+  .calm-text-box,
+  .calm-actions-box {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .calm-orb-aura,
+  .calm-orb-core {
+    animation: none !important;
+    transform: scale(1) !important;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .calm-title {
+    font-size: 1.65rem;
+  }
+  .calm-subtitle {
+    font-size: 1rem;
+  }
+  .calm-buttons-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .calm-btn-primary,
+  .calm-btn-secondary {
+    width: 100%;
+  }
+  .calm-orb-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+  .calm-header-bar {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+}
