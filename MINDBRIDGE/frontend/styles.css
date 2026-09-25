@@ -11401,23 +11401,25 @@ body.dark-theme .gc-name {
   gap: 0.3rem;
 }
 
-.csw-category-badge {
-  display: inline-flex;
-  align-items: center;
+.csw-screening-title-wrap {
+  display: flex;
+  flex-direction: column;
   gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(59, 130, 246, 0.12));
-  color: #7e22ce;
-  border: 1px solid rgba(147, 51, 234, 0.25);
-  letter-spacing: 0.02em;
 }
 
-[data-theme="dark"] .csw-category-badge {
+.csw-screening-brand-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7e22ce;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] .csw-screening-brand-tag {
   color: #c084fc;
-  border-color: rgba(192, 132, 252, 0.3);
 }
 
 .csw-progress-text {
@@ -11478,6 +11480,18 @@ body.dark-theme .gc-name {
   color: #0284c7;
 }
 
+.csw-tool-btn.active-voice-btn {
+  background: rgba(147, 51, 234, 0.12);
+  border-color: rgba(147, 51, 234, 0.35);
+  color: #7e22ce;
+}
+
+[data-theme="dark"] .csw-tool-btn.active-voice-btn {
+  background: rgba(147, 51, 234, 0.25);
+  border-color: rgba(192, 132, 252, 0.4);
+  color: #c084fc;
+}
+
 .csw-tool-btn.speaking {
   background: rgba(16, 185, 129, 0.15);
   border-color: #10b981;
@@ -11530,61 +11544,6 @@ body.dark-theme .gc-name {
   background: linear-gradient(90deg, #9333ea, #3b82f6, #06b6d4);
   transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 0 8px rgba(147, 51, 234, 0.5);
-}
-
-/* Categories horizontal strip */
-.csw-categories-strip {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.75rem;
-  overflow-x: auto;
-  white-space: nowrap;
-  background: rgba(248, 250, 252, 0.7);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-  scrollbar-width: none;
-}
-
-[data-theme="dark"] .csw-categories-strip {
-  background: rgba(15, 23, 42, 0.6);
-  border-bottom-color: rgba(51, 65, 85, 0.6);
-}
-
-.csw-categories-strip::-webkit-scrollbar {
-  display: none;
-}
-
-.csw-cat-chip {
-  padding: 0.28rem 0.65rem;
-  border-radius: 10px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  border: 1px solid transparent;
-  background: transparent;
-  color: #64748b;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-[data-theme="dark"] .csw-cat-chip {
-  color: #94a3b8;
-}
-
-.csw-cat-chip:hover {
-  background: rgba(147, 51, 234, 0.08);
-  color: #7e22ce;
-}
-
-.csw-cat-chip.active {
-  background: rgba(147, 51, 234, 0.15);
-  color: #7e22ce;
-  border-color: rgba(147, 51, 234, 0.3);
-  font-weight: 700;
-}
-
-[data-theme="dark"] .csw-cat-chip.active {
-  color: #c084fc;
-  border-color: rgba(192, 132, 252, 0.35);
 }
 
 /* Main Body & Question Card */
