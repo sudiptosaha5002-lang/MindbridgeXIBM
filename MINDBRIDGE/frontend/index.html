@@ -1205,13 +1205,41 @@
                   <button type="button" class="emergency-map-btn" id="recenterEmergencyMapBtn" title="Recenter Map to My Exact Location">
                     <i data-lucide="crosshair"></i> My Location
                   </button>
+                  <button type="button" class="emergency-map-btn" id="toggleMapSatelliteBtn" title="Toggle Satellite Hybrid View">
+                    <i data-lucide="layers"></i> <span id="mapLayerBtnText">Satellite</span>
+                  </button>
+                  <button type="button" class="emergency-map-btn emergency-map-key-btn" id="configureGoogleMapsKeyBtn" title="Configure Google Maps Platform API Key">
+                    <i data-lucide="key"></i> <span id="gmapsKeyBtnLabel">Google Maps Key</span>
+                  </button>
                   <a href="https://maps.google.com" target="_blank" rel="noopener" class="emergency-map-btn emergency-map-gmaps-btn" id="openInGoogleMapsBtn" title="Open Full Interactive View in Google Maps">
                     <i data-lucide="map-pin"></i> Open in Google Maps ↗
                   </a>
                 </div>
               </div>
 
-              <!-- Interactive Live Map View -->
+              <!-- Google Maps Platform API Key Configuration Panel -->
+              <div id="googleMapsKeyPanel" class="gmaps-key-panel" style="display: none;">
+                <div class="gmaps-key-panel-body">
+                  <div class="gmaps-key-panel-info">
+                    <div class="gmaps-key-tag"><i data-lucide="shield-check"></i> Google Maps Platform API</div>
+                    <p class="gmaps-key-desc">Enter your Google Maps JavaScript API Key to activate official Google vector tiles, real-time traffic, and Google routing directly inside MindBridge:</p>
+                  </div>
+                  <div class="gmaps-key-input-row">
+                    <div class="gmaps-key-input-wrap">
+                      <i data-lucide="key" class="gmaps-input-icon"></i>
+                      <input type="password" id="googleMapsApiKeyInput" class="gmaps-key-input" placeholder="Paste your AIzaSy... Google Maps API Key here" autocomplete="off" />
+                    </div>
+                    <button type="button" class="gmaps-btn-save" id="saveGoogleMapsKeyBtn">Save &amp; Activate</button>
+                    <button type="button" class="gmaps-btn-cancel" id="closeGoogleMapsKeyPanelBtn">Close</button>
+                  </div>
+                  <div class="gmaps-key-status-row">
+                    <span id="googleMapsKeyStatusText" class="gmaps-status-badge">⚡ Instant Google CDN Edge Tiles Active (0ms Latency)</span>
+                    <button type="button" id="clearGoogleMapsKeyBtn" class="gmaps-clear-btn" style="display: none;">Remove API Key</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Live Map View (Google Maps / High-Speed Radar) -->
               <div id="emergencyInteractiveMap" class="emergency-interactive-map"></div>
 
               <!-- Proximity Telemetry & Dynamic Location Switcher -->
