@@ -108,13 +108,14 @@ export default function MindBridgeHomePage() {
             {/* Question Card */}
             <div className="space-y-4">
               <div className="flex items-center justify-between text-xs text-slate-500 font-medium">
-                <span>Inquiry 1 of 100 • Self-Paced Reflection</span>
-                <span className="text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md">Mood & Emotional Balance</span>
+                <span>Inquiry {currentQuestionIndex + 1} of 20 • Dynamic Psychological Screening</span>
+                <span className="text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md font-semibold">{currentQ.category_badge}</span>
               </div>
 
               <h2 className="text-xl sm:text-2xl font-bold text-slate-800 leading-relaxed">
-                Over the past two weeks, how often have you felt little interest or pleasure in doing things you usually enjoy?
+                {currentQ.question}
               </h2>
+              <p className="text-xs text-slate-500">{currentQ.hint}</p>
 
               {/* Dual Input: Voice or Text */}
               <div className="pt-4 space-y-4">
@@ -154,19 +155,26 @@ export default function MindBridgeHomePage() {
                 <div className="relative">
                   <textarea
                     rows={3}
-                    value={mockAnswer}
-                    onChange={(e) => setMockAnswer(e.target.value)}
-                    placeholder="Or express your feelings in writing at your own pace..."
+                    value={currentAnswer}
+                    onChange={(e) => setCurrentAnswer(e.target.value)}
+                    placeholder="Or express your thoughts in writing at your own pace..."
                     className="w-full p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 text-sm focus:ring-2 focus:ring-indigo-400 focus:bg-white outline-none transition-all resize-none"
                   />
                   <div className="flex items-center justify-between pt-2">
-                    <span className="text-xs text-slate-400">No time limits • Zero score pressure</span>
                     <button
                       type="button"
-                      onClick={() => setMockAnswer('')}
+                      disabled={currentQuestionIndex === 0}
+                      onClick={handlePrevInquiry}
+                      className="px-3.5 py-1.5 rounded-xl border border-slate-300 text-slate-600 text-xs font-medium hover:bg-slate-100 disabled:opacity-40 transition-colors"
+                    >
+                      Previous
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNextInquiry}
                       className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-semibold hover:bg-indigo-700 shadow transition-colors flex items-center gap-1.5"
                     >
-                      <span>Next Inquiry</span>
+                      <span>{currentQuestionIndex === 19 ? 'Complete Reflections' : 'Next Inquiry'}</span>
                       <Send className="w-3.5 h-3.5" />
                     </button>
                   </div>
