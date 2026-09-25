@@ -469,19 +469,23 @@
             <!-- Window Top Navigation & Progress Bar -->
             <div class="csw-header">
               <div class="csw-header-left">
-                <div class="csw-category-badge" id="cswCategoryBadge">
-                  🟣 A. Inner Emotional Landscape
-                </div>
-                <div class="csw-progress-text">
-                  Question <strong id="cswCurrentNum">1</strong> of <strong id="cswTotalNum">20</strong>
-                  <span class="csw-pct-tag" id="cswPctTag">5%</span>
+                <div class="csw-screening-title-wrap">
+                  <span class="csw-screening-brand-tag"><i data-lucide="sparkles"></i> Psychological Screening</span>
+                  <div class="csw-progress-text">
+                    Question <strong id="cswCurrentNum">1</strong> of <strong id="cswTotalNum">20</strong>
+                    <span class="csw-pct-tag" id="cswPctTag">5% Completed</span>
+                  </div>
                 </div>
               </div>
               
               <div class="csw-header-actions">
-                <button type="button" class="csw-tool-btn" id="cswSpeakBtn" title="Listen to question spoken aloud by Dr. MindBridge">
-                  <i data-lucide="volume-2" id="cswSpeakIcon"></i>
-                  <span id="cswSpeakLabel">Listen</span>
+                <button type="button" class="csw-tool-btn active-voice-btn" id="cswAutoVoiceToggleBtn" title="Toggle automatic voice speech for each question">
+                  <i data-lucide="volume-2" id="cswAutoVoiceIcon"></i>
+                  <span id="cswAutoVoiceLabel">Auto-Speech: ON</span>
+                </button>
+                <button type="button" class="csw-tool-btn" id="cswSpeakBtn" title="Re-listen to question spoken aloud">
+                  <i data-lucide="rotate-ccw" id="cswSpeakIcon"></i>
+                  <span id="cswSpeakLabel">Replay Voice</span>
                 </button>
                 <button type="button" class="csw-close-btn" id="cswCloseBtn" title="Close / Minimize Screening Window">
                   <i data-lucide="x"></i>
@@ -494,23 +498,18 @@
               <div class="csw-progress-fill" id="cswProgressFill" style="width: 5%;"></div>
             </div>
 
-            <!-- Category Section Strip (7 Categories A - G) -->
-            <div class="csw-categories-strip" id="cswCategoriesStrip">
-              <button type="button" class="csw-cat-chip active" data-section="A">🟣 A. Emotion</button>
-              <button type="button" class="csw-cat-chip" data-section="B">🟪 B. Stress</button>
-              <button type="button" class="csw-cat-chip" data-section="C">🟨 C. Thoughts</button>
-              <button type="button" class="csw-cat-chip" data-section="D">🟩 D. Past</button>
-              <button type="button" class="csw-cat-chip" data-section="E">🟧 E. Beliefs</button>
-              <button type="button" class="csw-cat-chip" data-section="F">🟫 F. Habits</button>
-              <button type="button" class="csw-cat-chip" data-section="G">🟥 G. Future</button>
-            </div>
-
             <!-- Active Question Stage -->
             <div class="csw-body" id="cswQuestionStage">
               
               <!-- Question Card -->
               <div class="csw-question-card">
-                <div class="csw-q-number" id="cswQNumber">Inquiry 01 · 20 Questions</div>
+                <div class="csw-card-meta-row">
+                  <span class="csw-q-number" id="cswQNumber">Question 01 of 20</span>
+                  <div class="csw-speaking-indicator" id="cswSpeakingIndicator" style="display: none;">
+                    <span class="csw-speaking-wave"><span></span><span></span><span></span></span>
+                    <span>Dr. MindBridge Speaking...</span>
+                  </div>
+                </div>
                 <h3 class="csw-question-text" id="cswQuestionText">
                   If you had to describe how you’re feeling right now in three words, what would they be?
                 </h3>
