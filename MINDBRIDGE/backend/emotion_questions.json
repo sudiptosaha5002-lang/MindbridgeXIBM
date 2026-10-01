@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "theme": "present_state",
+    "question_text": {
+      "en": "How are you feeling right now, in your own words?",
+      "bn": "এখন আপনি কেমন অনুভব করছেন, আপনার নিজের ভাষায় বলুন?",
+      "hi": "अभी आप कैसा महसूस कर रहे हैं, अपने शब्दों में बताएं?"
+    },
+    "gentle_support": {
+      "en": "There are no right or wrong answers. Take a breath and share whatever comes to mind.",
+      "bn": "এখানে কোনো সঠিক বা ভুল উত্তর নেই। একটি দীর্ঘ শ্বাস নিন এবং যা মনে আসে বলুন।",
+      "hi": "यहाँ कोई सही या गलत जवाब नहीं है। गहरी सांस लें और जो भी मन में आए साझा करें।"
+    },
+    "suggested_chips": {
+      "en": ["Tired but trying", "Anxious and on edge", "Feeling heavy and sad", "A bit numb", "Calm and reflective"],
+      "bn": ["ক্লান্ত কিন্তু চেষ্টা করছি", "উদ্বিগ্ন ও অস্থির", "ভারাক্রান্ত ও বিষণ্ণ", "কিছুটা অসাড়", "শান্ত ও সংবেদনশীল"],
+      "hi": ["थका हुआ लेकिन कोशिश जारी है", "बेचैन और चिंतित", "भारीपन और उदासी", "सुन्न महसूस हो रहा है", "शांत और चिंतनशील"]
+    }
+  },
+  {
+    "id": 2,
+    "theme": "positive_anchors",
+    "question_text": {
+      "en": "What kinds of situations or moments usually make you feel genuinely happy or calm?",
+      "bn": "কোন ধরনের পরিস্থিতি বা মুহূর্ত আপনাকে সত্যিই আনন্দিত বা শান্ত বোধ করায়?",
+      "hi": "किस तरह की परिस्थितियाँ या पल आपको वास्तव में खुश या शांत महसूस कराते हैं?"
+    },
+    "gentle_support": {
+      "en": "Think of small, simple moments—like listening to music, nature, or being with someone safe.",
+      "bn": "ছোট এবং সাধারণ মুহূর্তগুলোর কথা ভাবুন—যেমন গান শোনা, প্রকৃতি বা কোনো প্রিয় মানুষের সাথে থাকা।",
+      "hi": "छोटे और सरल पलों के बारे में सोचें—जैसे संगीत सुनना, प्रकृति, या किसी अपने के साथ होना।"
+    },
+    "suggested_chips": {
+      "en": ["Quiet time in nature", "Listening to soft music", "Talking to a trusted friend", "Engaging in creative hobbies", "Being alone with a warm drink"],
+      "bn": ["প্রকৃতির মাঝে নিস্তব্ধ সময়", "শান্ত গান শোনা", "বিশ্বস্ত বন্ধুর সাথে কথা", "সৃজনশীল কাজ", "একান্তে গরম পানীয় উপভোগ"],
+      "hi": ["प्रकृति में शांत समय", "मधुर संगीत सुनना", "किसी भरोसेमंद दोस्त से बात", "रचनात्मक शौक", "अकेले में चाय या कॉफी पीना"]
+    }
+  },
+  {
+    "id": 3,
+    "theme": "overwhelm_coping",
+    "question_text": {
+      "en": "When you experience strong or overwhelming emotions, how do you usually deal with them?",
+      "bn": "যখন তীব্র বা অতিরিক্ত আবেগ অনুভব করেন, তখন সাধারণত আপনি কীভাবে সেগুলোর মোকাবিলা করেন?",
+      "hi": "जब आप तीव्र या बहुत भारी भावनाओं का अनुभव करते हैं, तो आमतौर पर आप उनसे कैसे निपटते हैं?"
+    },
+    "gentle_support": {
+      "en": "Whether you take space, talk to someone, or hold it inside, whatever you do is okay to share.",
+      "bn": "আপনি একটু একা থাকেন, কারো সাথে কথা বলেন, নাকি নিজের মধ্যে চেপে রাখেন—যা সত্য তা নির্দ্বিধায় বলুন।",
+      "hi": "चाहे आप अकेले रहें, किसी से बात करें, या अंदर दबा लें—जो भी सच हो साझा कर सकते हैं।"
+    },
+    "suggested_chips": {
+      "en": ["I withdraw and stay quiet", "I vent to someone I trust", "I try to distract myself", "I take deep breaths or walk", "I tend to bottle it up"],
+      "bn": ["আমি নিজেকে গুটিয়ে নিই", "কাছের মানুষকে খুলে বলি", "মন অন্যদিকে ঘোরানোর চেষ্টা করি", "গভীর শ্বাস নিই বা হাঁটি", "ভেতরে চেপে রাখি"],
+      "hi": ["मैं खुद को अलग कर लेता हूँ", "किसी खास से बात करता हूँ", "ध्यान भटकाने की कोशिश करता हूँ", "गहरी सांस लेता हूँ या टहलता हूँ", "अंदर ही दबा लेता हूँ"]
+    }
+  },
+  {
+    "id": 4,
+    "theme": "past_emotional_echoes",
+    "question_text": {
+      "en": "Is there a memory from your past that still affects you emotionally today?",
+      "bn": "অতীতের এমন কোনো স্মৃতি কি আছে যা আজকেও আপনার আবেগকে গভীরভাবে নাড়া দেয়?",
+      "hi": "क्या आपके अतीत की कोई ऐसी याद है जो आज भी आपको भावनात्मक रूप से प्रभावित करती है?"
+    },
+    "gentle_support": {
+      "en": "You don't need to share painful details—just whether an old memory still carries weight.",
+      "bn": "কষ্টের বিস্তারিত বর্ণনা দেওয়ার দরকার নেই—শুধু স্মৃতিটি এখনও আপনার মনে প্রভাব ফেলে কি না তা বলুন।",
+      "hi": "दर्दनाक विवरण देने की आवश्यकता नहीं है—बस यह बताएं कि क्या पुरानी यादें आज भी भारी लगती हैं।"
+    },
+    "suggested_chips": {
+      "en": ["Yes, a past loss still hurts", "A difficult relationship echo", "A moment where I felt helpless", "Childhood expectations", "No major memory comes to mind"],
+      "bn": ["হ্যাঁ, অতীতের কোনো বিচ্ছেদ কষ্ট দেয়", "সম্পর্কের কঠিন স্মৃতি", "অসহায় বোধ করার মুহূর্ত", "শৈশবের পারিবারিক প্রত্যাশা", "তেমন কোনো বড় স্মৃতি নেই"],
+      "hi": ["हाँ, किसी अपने को खोने का दर्द", "कठिन रिश्ते की पुरानी बातें", "जब मैं बहुत असहाय महसूस हुआ", "बचपन की उम्मीदों का दबाव", "कोई खास याद नहीं"]
+    }
+  },
+  {
+    "id": 5,
+    "theme": "core_values_beliefs",
+    "question_text": {
+      "en": "What beliefs or values influence the way you feel and respond to difficult situations?",
+      "bn": "কোন বিশ্বাস বা মূল্যবোধ কঠিন পরিস্থিতিতে আপনার অনুভূতি ও প্রতিক্রিয়াকে প্রভাবিত করে?",
+      "hi": "कौन से विश्वास या मूल्य कठिन परिस्थितियों में आपकी भावनाओं और प्रतिक्रिया को प्रभावित करते हैं?"
+    },
+    "gentle_support": {
+      "en": "Think about whether you value resilience, empathy, independence, or faith during hard times.",
+      "bn": "ভাবুন কঠিন সময়ে ধৈর্য, সহানুভূতি, আত্মমর্যাদা বা বিশ্বাস আপনাকে শক্তি দেয় কি না।",
+      "hi": "सोचें कि मुश्किल समय में धैर्य, करुणा, आत्मनिर्भरता या विश्वास आपको सहारा देते हैं या नहीं।"
+    },
+    "suggested_chips": {
+      "en": ["I believe everything passes with time", "I must stay strong for others", "Honesty and self-respect", "Faith and inner spirituality", "I often struggle with self-blame"],
+      "bn": ["বিশ্বাস করি সময় সব ঠিক করে দেবে", "অন্যদের জন্য শক্ত থাকতে হবে", "সততা ও আত্মসম্মান", "বিশ্বাস ও আধ্যাত্মিকতা", "নিজেকেই দোষারোপ করার প্রবণতা"],
+      "hi": ["विश्वास है कि समय के साथ सब ठीक होगा", "दूसरों के लिए मजबूत बने रहना", "ईमानदारी और आत्मसम्मान", "ईश्वर या आध्यात्मिकता में भरोसा", "अक्सर खुद को दोष देने की आदत"]
+    }
+  },
+  {
+    "id": 6,
+    "theme": "emotional_regulation",
+    "question_text": {
+      "en": "When you feel angry, sad, or scared, what helps you express or manage those feelings in a healthy way?",
+      "bn": "যখন রাগ, বিষণ্ণতা বা ভয় হয়, তখন কী আপনাকে স্বাস্থ্যকর উপায়ে সেই অনুভূতি প্রকাশ বা সামলাতে সাহায্য করে?",
+      "hi": "जब आप गुस्सा, उदास या डरे हुए होते हैं, तो क्या आपको उन भावनाओं को स्वस्थ तरीके से व्यक्त या संभालने में मदद करता है?"
+    },
+    "gentle_support": {
+      "en": "It could be journaling, physical movement, crying, praying, or talking it through.",
+      "bn": "এটা হতে পারে ডায়েরি লেখা, হাঁটা, কেঁদে মন হালকা করা, প্রার্থনা বা কথা বলা।",
+      "hi": "यह डायरी लिखना, कसरत, रोकर मन हल्का करना, प्रार्थना या खुलकर बात करना हो सकता है।"
+    },
+    "suggested_chips": {
+      "en": ["Writing down my thoughts", "Physical exercise or walking", "Letting myself cry privately", "Listening to soothing audio", "I find it hard to express them"],
+      "bn": ["মনে যা আসে লিখে ফেলা", "ব্যায়াম বা একটু হাঁটা", "একান্তে কেঁদে হালকা হওয়া", "শান্ত গান বা শব্দ শোনা", "প্রকাশ করতে খুব কষ্ট হয়"],
+      "hi": ["अपने विचार लिखना", "व्यायाम या टहलना", "अकेले में रोकर मन हल्का करना", "शांत संगीत सुनना", "व्यक्त करना बहुत कठिन लगता है"]
+    }
+  },
+  {
+    "id": 7,
+    "theme": "emotional_suppression",
+    "question_text": {
+      "en": "Are there emotions you tend to keep inside or avoid expressing? If so, what makes you hold them back?",
+      "bn": "এমন কোনো অনুভূতি কি আছে যা আপনি ভেতরে চেপে রাখেন বা প্রকাশ এড়িয়ে চলেন? কেন তা আটকে রাখেন?",
+      "hi": "क्या ऐसी भावनाएं हैं जिन्हें आप अंदर दबाए रखते हैं या व्यक्त करने से बचते हैं? उन्हें रोकने की क्या वजह है?"
+    },
+    "gentle_support": {
+      "en": "Many people hold back fear of being judged, fear of conflict, or not wanting to burden others.",
+      "bn": "অনেকেই অন্যের উপর বোঝা হওয়ার ভয়, বিচারের ভয় বা কলহ এড়াতে আবেগ চেপে রাখেন।",
+      "hi": "कई लोग दूसरों पर बोझ न बनने, जज होने के डर या विवाद से बचने के लिए भावनाएं दबाते हैं।"
+    },
+    "suggested_chips": {
+      "en": ["I hide sadness so others don't worry", "I suppress anger to avoid conflict", "I feel vulnerable when crying", "Fear of being judged or dismissed", "I express most feelings openly"],
+      "bn": ["কষ্ট গোপন রাখি যাতে অন্যেরা চিন্তা না করে", "ঝগড়া এড়াতে রাগ চেপে রাখি", "কাঁদলে দুর্বল লাগে", "কেউ ভুল বুঝবে সেই ভয়", "বেশিরভাগ অনুভূতি খোলামেলা প্রকাশ করি"],
+      "hi": ["उदासी छिपाता हूँ ताकि दूसरे परेशान न हों", "झगड़े से बचने के लिए गुस्सा दबाता हूँ", "रोने में कमजोरी महसूस होती है", "जज होने का डर", "लगभग सभी भावनाएं खुलकर व्यक्त करता हूँ"]
+    }
+  },
+  {
+    "id": 8,
+    "theme": "self_care_restoration",
+    "question_text": {
+      "en": "What do you do to take care of your emotional well-being when you’re feeling stressed or emotionally tired?",
+      "bn": "যখন আপনি অতিরিক্ত মানসিক চাপ বা আবেগী ক্লান্তি অনুভব করেন, তখন নিজের যত্নে কী করেন?",
+      "hi": "जब आप बहुत तनावग्रस्त या भावनात्मक रूप से थके होते हैं, तो अपनी मानसिक देखभाल के लिए क्या करते हैं?"
+    },
+    "gentle_support": {
+      "en": "Self-care can be sleeping, taking a break from screens, enjoying a meal, or setting boundaries.",
+      "bn": "নিজের যত্ন মানে পর্যাপ্ত ঘুম, স্ক্রিন থেকে বিরতি, প্রিয় খাবার খাওয়া বা বিশ্রাম নেওয়া।",
+      "hi": "खुद की देखभाल का मतलब नींद, फोन से ब्रेक, अच्छा खाना या सुकून से आराम करना हो सकता है।"
+    },
+    "suggested_chips": {
+      "en": ["Taking extra sleep and rest", "Disconnecting from phone/social media", "Spending time outdoors", "Reaching out for emotional support", "I struggle to find time for self-care"],
+      "bn": ["পর্যাপ্ত ঘুম ও বিশ্রাম", "মোবাইল/সোশ্যাল মিডিয়া থেকে দূরে থাকা", "বাইরে সময় কাটানো", "প্রিয়জনের সাথে কথা বলা", "নিজের যত্নের সময় বের করতে পারি না"],
+      "hi": ["भरपूर नींद और आराम", "सोशल मीडिया और फोन से दूरी", "खुली हवा में समय बिताना", "अपनों से बात करके मन हल्का करना", "खुद के लिए समय निकालना मुश्किल होता है"]
+    }
+  },
+  {
+    "id": 9,
+    "theme": "triggers_stressors",
+    "question_text": {
+      "en": "What situations, thoughts, or experiences tend to trigger stress or anxiety for you?",
+      "bn": "কোন ধরনের পরিস্থিতি, চিন্তা বা অভিজ্ঞতা আপনার মধ্যে মানসিক চাপ বা উদ্বেগের সৃষ্টি করে?",
+      "hi": "किन परिस्थितियों, विचारों या अनुभवों से आपको तनाव या चिंता महसूस होने लगती है?"
+    },
+    "gentle_support": {
+      "en": "Noticing your triggers is a powerful step toward emotional awareness and self-compassion.",
+      "bn": "আপনার চাপের কারণগুলো চিনতে পারা আত্মসচেতনতা ও মানসিক সুস্থতার বড় একটি ধাপ।",
+      "hi": "अपने तनाव के कारणों को पहचानना भावनात्मक जागरूकता और आत्म-करुणा की ओर एक बड़ा कदम है।"
+    },
+    "suggested_chips": {
+      "en": ["Uncertainty about future/finances", "Work/academic pressure & deadlines", "Conflict with close people", "Fear of failure or making mistakes", "Feeling isolated or unsupported"],
+      "bn": ["ভবিষ্যত বা অর্থনৈতিক অনিশ্চয়তা", "কাজের চাপ ও ডেডলাইন", "কাছের মানুষের সাথে বিরোধ", "ভুল করা বা ব্যর্থ হওয়ার ভয়", "একা ও নিঃসঙ্গ অনুভব করা"],
+      "hi": ["भविष्य या पैसों की अनिश्चितता", "काम या पढ़ाई का अत्यधिक दबाव", "अपनों के साथ मनमुटाव", "असफल होने या गलती का डर", "अकेलापन और किसी के साथ न होने का अहसास"]
+    }
+  },
+  {
+    "id": 10,
+    "theme": "relational_openness",
+    "question_text": {
+      "en": "How comfortable are you with sharing your genuine emotions with other people?",
+      "bn": "অন্যান্য মানুষের সাথে আপনার আসল অনুভূতি ভাগ করে নেওয়ার ক্ষেত্রে আপনি কতটা স্বাচ্ছন্দ্য বোধ করেন?",
+      "hi": "अन्य लोगों के साथ अपनी वास्तविक भावनाओं को साझा करने में आप कितना सहज महसूस करते हैं?"
+    },
+    "gentle_support": {
+      "en": "It is completely normal to have walls or to be selective about who you open up to.",
+      "bn": "কাউকে বিশ্বাস করতে সময় লাগা বা আবেগে প্রাচীর থাকা একদম স্বাভাবিক একটি বিষয়।",
+      "hi": "हर किसी के सामने न खुलना या केवल चुनिंदा लोगों पर भरोसा करना पूरी तरह स्वाभाविक है।"
+    },
+    "suggested_chips": {
+      "en": ["I only open up to 1-2 close people", "Very guarded; I prefer dealing alone", "Moderately comfortable with friends", "I want to share but find it hard", "Very open with people I trust"],
+      "bn": ["শুধু ১-২ জন কাছের মানুষের কাছেই বলি", "খুব সতর্ক; একাই সামলাতে পছন্দ করি", "বন্ধুদের সাথে মোটামুটি স্বাচ্ছন্দ্য", "বলতে চাই কিন্তু শব্দ পাই না", "বিশ্বস্ত মানুষের সাথে অত্যন্ত খোলামেলা"],
+      "hi": ["केवल 1-2 बहुत करीबी लोगों से साझा करता हूँ", "काफी संकोची; अकेले ही संभालना पसंद है", "दोस्तों के साथ सामान्य रूप से सहज", "साझा करना चाहता हूँ पर कह नहीं पाता", "भरोसेमंद लोगों के साथ बहुत सहज"]
+    }
+  }
+]

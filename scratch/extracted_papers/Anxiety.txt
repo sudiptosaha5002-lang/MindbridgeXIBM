@@ -1,0 +1,177 @@
+=== Page 1 ===
+Administration and Scoring of the  
+Generalized Anxiety Disorder-7 (GAD-7) 
+PAR Staff
+
+
+=== Page 2 ===
+2
+ChecKIT Series
+GAD-7
+Figure 1.  GAD-7 Score Report Figure Example
+None to minimal
+0 5 10 15 20Mild Moderate SevereOVERVIEW
+The Generalized Anxiety Disorder-7 (GAD-7; 
+2006) scale was developed by Robert L. Spitzer, 
+Kurt Kroenke, Janet B. W. Williams, and Bernd 
+Löwe based on the diagnostic criteria for gen -
+eralized anxiety disorder (GAD) in the Diagnostic 
+and Statistical Manual of Mental Disorders, 
+Fourth Edition (DSM-IV ; American Psychiatric 
+Association, 1994). The measure was originally 
+composed of 13 items, but only the 7 items with 
+the highest correlations were included in the 
+final instrument. Since its inception, the GAD-7 
+has become increasingly popular in research 
+(Dear et al., 2011) and clinical practice (Beard 
+and Björgvinsson, 2014). Administration and 
+scoring, available on PARiConnect, take approxi -
+mately 2 minutes.
+ADMINISTRATION
+The GAD-7 is administered using PARiConnect, 
+PAR’s online assessment platform. Examinees 
+can complete the GAD-7 in-office or at a remote 
+location via an email link, which launches the 
+administration. Detailed information on the 
+use of PARiConnect is available under All Help 
+Topics in PARiConnect. Each of the 7 items are 
+displayed one at a time with a progress bar displayed below the response options. Items 
+cannot be skipped during administration. 
+Therefore, an advantage to administering the 
+GAD-7 via PARiConnect is the ability to capture 
+a complete administration each and every time.
+GAD-7 items reflect the DSM-IV  criteria for GAD. 
+Respondents are asked to rate each item for 
+frequency of occurrence using a 4-point Likert 
+scale (Not at all = 0, Several days = 1, More than 
+half the days = 2, and Nearly every day = 3). 
+SCORING
+All responses are summed to calculate the 
+total GAD-7 score. Scores range from 0–21 with 
+increasing scores indicating greater severity of 
+symptoms of anxiety.  
+GAD-7 Score Report
+Severity Ranges 
+After generating a Score Report on PARiConnect, 
+an examinee’s GAD-7 score will be plotted 
+along a number line with shading to represent 
+changes in severity of symptoms of anxiety (see 
+Figure 1). Severity ranges are based on guidance 
+in the initial validation study by Kroenke and 
+colleagues (2006).
+
+=== Page 3 ===
+3
+ChecKIT Series
+GAD-7
+Cut-off Recommendations 
+In the extant literature, several recommended 
+cut-off scores have been suggested. Kroenke et 
+al. (2007) found mean GAD-7 scores were 14.0, 
+12.5, 13.0, 12.0 for GAD, panic disorder, social 
+anxiety disorder, and posttraumatic stress 
+disorder, respectively, compared to 3.0 for 
+individuals with no anxiety disorder. They also 
+examined the sensitivity, specificity, and pos -
+itive likelihood ratios for GAD, panic disorder, 
+social anxiety disorder, posttraumatic stress 
+disorder, and any anxiety disorder using GAD-7 cut-off scores ranging from ≥5 to ≥10. They 
+noted the sensitivity and specificity approached 
+or exceeded 75% for all disorders and the 
+positive likelihood ratio exceeded 3.0 when 
+using a cut-off score of 8 or greater. Based on 
+a recent meta-analysis, Plummer et al. (2016) 
+recommended using a cut-off of 8 or higher 
+to optimize sensitivity without compromising 
+specificity. Table 1 shows the sensitivity, speci -
+ficity, and positive likelihood ratios of the afore -
+mentioned diagnoses using a cut-off score of 8 
+or higher (Kroenke et al., 2007).  
+Treatment Recommendations 
+The GAD-7 Score Report includes treatment recommendations based on an individual’s score. These 
+proposed treatment actions, shown in Table 2, are based on recommendations by Spitzer et al. 
+(2006). Individuals with a score of 8 or higher are considered likely to be diagnosed with an anxiety 
+or related disorder.DiagnosisSensitivity %  
+(95% CI)Specificity %  
+(95% CI)Positive Likelihood Ratio  
+(95% CI)
+Generalized anxiety disorder 92 (83–97) 76 (73–79) 3.8 (3.4–4.4)
+Panic disorder 82 (70–90) 75 (72–78) 3.3 (2.8–3.8)
+Social anxiety disorder 78 (66–88) 74 (71–77) 3.0 (2.6–3.6)
+Posttraumatic stress disorder 76 (65–85) 75 (72–78) 3.1 (2.6–3.6)
+Any anxiety disorder 77 (70–82) 82 (80–85) 4.4 (3.7–5.2)Table 1.  GAD-7 Classification Statistics Using Cut-Off Score of Greater Than or Equal to 8
+Score Severity Recommendations
+0–4 None to minimal No follow-up is warranted at this time.
+5–7 Mild It is recommended to monitor symptoms and follow-up as indicated.
+8–9 Mild This individual is likely to be diagnosed with an anxiety or related 
+disorder. Repeat administration of the GAD-7 every 4 weeks to monitor 
+symptoms. Follow up to determine if current symptoms warrant a 
+referral to a mental health professional.
+10–14 Moderate This individual is likely to be diagnosed with an anxiety or related 
+disorder. Their symptoms are clinically significant and warrant further 
+assessment (including diagnostic interview and mental status examination) 
+and/or referral to a mental health professional is recommended.
+15–21 Severe This individual’s symptoms of anxiety likely warrant active treatment.  
+This individual is likely to be diagnosed with an anxiety or related 
+disorder. Further assessment (including diagnostic interview and mental 
+status examination) and/or referral to a mental health professional is 
+recommended.Table 2.  GAD-7 Recommendations
+
+=== Page 4 ===
+4
+ChecKIT Series
+GAD-7
+American Psychiatric Association. (1994). Diagnostic 
+and statistical manual of mental disorders  (4th ed.). 
+Beard, C., & Björgvinsson, T. (2014). Beyond general -
+ized anxiety disorder: Psychometric properties of 
+the GAD-7 in a heterogeneous psychiatric sample. 
+Journal of Anxiety Disorders , 28, 547–552.  
+https://doi.org/f6fm84
+Dear, B. F., Titov, N., Sunderland, M., McMillan, D., 
+Anderson, T., Lorian, C., & Robinson, E. (2011). 
+Psychometric comparison of the Generalized 
+Anxiety Disorder Scale-7 and the Penn State 
+Worry Questionnaire for measuring response 
+during treatment of generalised anxiety disorder. 
+Cognitive Behavior Therapy, 40,  216–227.  
+https://doi.org/d5k55vKroenke, K., Spitzer, R. L., Williams, J. B. W., 
+Monahan, P. O., & Löwe, B. (2007). Anxiety dis -
+orders in primary care: Prevalence, impairment, 
+comorbidity, and detection.  Annals of Internal 
+Medicine, 146,  317–325. https://doi.org/c8rk 
+Plummer, F., Manea, L., Trepel, D., & McMillan, D. 
+(2016). Screening for anxiety disorders with the 
+GAD-7 and GAD-2: A systematic review and diag -
+nostic metaanalysis. General Hospital Psychiatry, 
+39, 24–31. https://doi.org/f8chmc
+Spitzer, R. L., Kroenke, K., Williams, J. B. W., & Löwe, 
+B. (2006). A brief measure for assessing gener -
+alized anxiety disorder the GAD-7. Archives of 
+Internal Medicine, 166,  1092–1097.  
+https://doi.org/d7z8rzREFERENCES
+
+=== Page 5 ===
+5
+ChecKIT Series
+GAD-7
+APPENDIX
+Generalized Anxiety Disorder-7 (GAD-7)
+Over the last 2 weeks, how often have you been bothered by any of the following problems?
+Not at all = 0            Several days = 1            More than half the days = 2            Nearly every day = 3
+Copyright © 2020 by PAR. All rights reserved. May not be reproduced in whole or in part in any form or by any means without written 
+permission of PAR. 
+To cite this document, use: 
+PAR Staff (2020). Administration and Scoring of the Generalized Anxiety Disorder-7 (GAD-7) [technical supplement]. PAR. 
+Items
+1. Feeling nervous, anxious, or on edge
+2. Not being able to stop or control worrying
+3. Worrying too much about different things
+4. Trouble relaxing
+5. Being so restless that it's hard to sit still
+6. Becoming easily annoyed or irritable
+7. Feeling afraid as if something awful might happen
+
+=== Page 6 ===
+
+

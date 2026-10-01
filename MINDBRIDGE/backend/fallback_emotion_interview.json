@@ -1,0 +1,144 @@
+{
+  "questions": [
+    {
+      "id": "F01",
+      "question_text": {
+        "en": "If you had to describe how you're feeling right now in three words, what would they be?",
+        "bn": "এই মুহূর্তে তোমার মনের অবস্থাকে যদি তিনটি শব্দে প্রকাশ করতে হয়, তাহলে কী বলবে?",
+        "hi": "अगर आपको इस समय अपनी भावनाओं को तीन शब्दों में बताना हो, तो आप कौन-से शब्द चुनेंगे?",
+        "en_short": "How are you feeling right now?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F02",
+      "question_text": {
+        "en": "What kinds of situations or moments usually make you feel genuinely happy?",
+        "bn": "কোন ধরনের পরিস্থিতি বা মুহূর্ত তোমাকে সত্যিই আনন্দিত করে?",
+        "hi": "किस तरह की परिस्थितियाँ या पल आपको सच में खुशी महसूस कराते हैं?",
+        "en_short": "What usually makes you genuinely happy?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F03",
+      "question_text": {
+        "en": "When you experience strong or overwhelming emotions, how do you usually deal with them?",
+        "bn": "যখন তোমার খুব তীব্র বা অনেক বেশি অনুভূতি হয়, তখন তুমি সাধারণত কীভাবে সেগুলো সামলাও?",
+        "hi": "जब आपके अंदर बहुत तेज़ या भारी भावनाएँ होती हैं, तो आप आमतौर पर उन्हें कैसे संभालते हैं?",
+        "en_short": "How do you handle strong emotions?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F04",
+      "question_text": {
+        "en": "Is there a memory from your childhood that still affects you emotionally today?",
+        "bn": "ছোটবেলার এমন কোনো স্মৃতি কি আছে, যেটা এখনও তোমার অনুভূতিতে প্রভাব ফেলে?",
+        "hi": "क्या बचपन की कोई ऐसी याद है जो आज भी आपकी भावनाओं को प्रभावित करती है?",
+        "en_short": "Is there a childhood memory that still affects you emotionally?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F05",
+      "question_text": {
+        "en": "How do your personal beliefs and values influence the way you feel and respond to different situations?",
+        "bn": "তোমার ব্যক্তিগত বিশ্বাস ও মূল্যবোধ বিভিন্ন পরিস্থিতিতে তোমার অনুভূতি এবং প্রতিক্রিয়াকে কীভাবে প্রভাবিত করে?",
+        "hi": "आपकी व्यक्तिगत मान्यताएँ और मूल्य अलग-अलग परिस्थितियों में आपकी भावनाओं और प्रतिक्रियाओं को किस तरह प्रभावित करते हैं?",
+        "en_short": "What beliefs or values influence your emotions and reactions?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F06",
+      "question_text": {
+        "en": "When you feel angry, what helps you express or manage it in a healthy way?",
+        "bn": "যখন তোমার রাগ হয়, তখন সেটাকে সুস্থভাবে প্রকাশ বা নিয়ন্ত্রণ করতে কী তোমাকে সাহায্য করে?",
+        "hi": "जब आपको गुस्सा आता है, तो उसे स्वस्थ तरीके से व्यक्त या संभालने में क्या आपकी मदद करता है?",
+        "en_short": "How do you usually deal with anger?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F07",
+      "question_text": {
+        "en": "Are there any emotions that you tend to keep inside or avoid expressing? If so, what makes you hold them back?",
+        "bn": "এমন কোনো অনুভূতি কি আছে যেগুলো তুমি সাধারণত নিজের মধ্যেই রেখে দাও বা প্রকাশ করতে চাও না? যদি থাকে, তাহলে কেন সেগুলো চেপে রাখো?",
+        "hi": "क्या ऐसी कोई भावनाएँ हैं जिन्हें आप अक्सर अपने अंदर ही रखते हैं या व्यक्त करने से बचते हैं? अगर हाँ, तो ऐसा क्यों?",
+        "en_short": "Are there emotions you tend to keep to yourself?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F08",
+      "question_text": {
+        "en": "How do you think your emotions affect the people you interact with?",
+        "bn": "তোমার মনে হয়, তোমার অনুভূতিগুলো তোমার আশেপাশের মানুষদের ওপর কীভাবে প্রভাব ফেলে?",
+        "hi": "आपको क्या लगता है कि आपकी भावनाओं का आपके आसपास के लोगों पर किस तरह असर पड़ता है?",
+        "en_short": "How do your emotions affect your relationships with others?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F09",
+      "question_text": {
+        "en": "What do you do to take care of your emotional well-being when you're feeling stressed or emotionally tired?",
+        "bn": "যখন তুমি মানসিকভাবে ক্লান্ত বা চাপে থাকো, তখন নিজের মানসিক সুস্থতার যত্ন নেওয়ার জন্য তুমি কী করো?",
+        "hi": "जब आप मानसिक रूप से थके हुए या तनाव में होते हैं, तो अपनी भावनात्मक सेहत का ध्यान रखने के लिए आप क्या करते हैं?",
+        "en_short": "What helps you take care of your emotional well-being?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F10",
+      "question_text": {
+        "en": "Are there particular situations, thoughts, or experiences that tend to trigger stress or anxiety for you?",
+        "bn": "এমন কোনো নির্দিষ্ট পরিস্থিতি, চিন্তা বা অভিজ্ঞতা কি আছে যেগুলো তোমার মধ্যে মানসিক চাপ বা উদ্বেগ তৈরি করে?",
+        "hi": "क्या आपके जीवन में ऐसी कोई खास परिस्थितियाँ, विचार या अनुभव हैं जो आपके अंदर तनाव या चिंता पैदा करते हैं?",
+        "en_short": "What situations tend to cause you stress or anxiety?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F11",
+      "question_text": {
+        "en": "How do you usually recognize whether a feeling genuinely comes from within you or has been influenced by something around you?",
+        "bn": "কোনো অনুভূতি সত্যিই তোমার নিজের ভেতর থেকে আসছে, নাকি আশেপাশের কোনো পরিস্থিতি বা মানুষের প্রভাবে তৈরি হচ্ছে—এটা তুমি কীভাবে বুঝতে পারো?",
+        "hi": "आप कैसे समझते हैं कि कोई भावना वास्तव में आपके अंदर से आ रही है या आसपास की परिस्थितियों या दूसरे लोगों से प्रभावित है?",
+        "en_short": "How do you know when a feeling is truly your own?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F12",
+      "question_text": {
+        "en": "Is there anything you would like to work on to become emotionally stronger or more resilient?",
+        "bn": "মানসিকভাবে আরও শক্ত ও স্থিতিশীল হওয়ার জন্য তুমি নিজের মধ্যে কোনো বিষয় নিয়ে কাজ করতে চাও?",
+        "hi": "भावनात्मक रूप से और मजबूत बनने के लिए आप अपने अंदर किस चीज़ पर काम करना चाहेंगे?",
+        "en_short": "What would you like to improve about your emotional resilience?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F13",
+      "question_text": {
+        "en": "How comfortable are you with being vulnerable and showing your genuine emotions to other people?",
+        "bn": "অন্য মানুষের সামনে নিজের দুর্বলতা বা সত্যিকারের অনুভূতি প্রকাশ করতে তুমি কতটা স্বচ্ছন্দ বোধ করো?",
+        "hi": "दूसरे लोगों के सामने अपनी कमजोरी या अपनी सच्ची भावनाएँ दिखाने में आप कितने सहज महसूस करते हैं?",
+        "en_short": "How comfortable are you with being vulnerable?"
+      },
+      "type": "open"
+    },
+    {
+      "id": "F14",
+      "question_text": {
+        "en": "How does taking time to reflect on yourself help you understand and manage your emotions?",
+        "bn": "নিজের অনুভূতিগুলো নিয়ে একটু সময় নিয়ে ভাবা বা আত্মবিশ্লেষণ করা কীভাবে তোমাকে সেগুলো বুঝতে এবং নিয়ন্ত্রণ করতে সাহায্য করে?",
+        "hi": "अपने बारे में और अपनी भावनाओं के बारे में सोचने के लिए समय निकालना आपको उन्हें समझने और संभालने में किस तरह मदद करता है?",
+        "en_short": "How does self-reflection help you understand yourself better?"
+      },
+      "type": "open"
+    }
+  ]
+}

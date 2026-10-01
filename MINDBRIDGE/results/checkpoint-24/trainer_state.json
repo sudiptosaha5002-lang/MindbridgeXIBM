@@ -1,0 +1,78 @@
+{
+  "best_global_step": 24,
+  "best_metric": 1.1557319164276123,
+  "best_model_checkpoint": "./results\\checkpoint-24",
+  "epoch": 3.0,
+  "eval_steps": 500,
+  "global_step": 24,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "eval_accuracy": 0.5,
+      "eval_loss": 1.448777675628662,
+      "eval_macro_f1": 0.4822222222222222,
+      "eval_runtime": 1.1424,
+      "eval_samples_per_second": 26.261,
+      "eval_steps_per_second": 3.501,
+      "step": 8
+    },
+    {
+      "epoch": 1.2666666666666666,
+      "grad_norm": 4.926016330718994,
+      "learning_rate": 1.8750000000000002e-05,
+      "loss": 2.9191728591918946,
+      "step": 10
+    },
+    {
+      "epoch": 2.0,
+      "eval_accuracy": 0.8333333333333334,
+      "eval_loss": 1.251961588859558,
+      "eval_macro_f1": 0.7917582417582418,
+      "eval_runtime": 0.8192,
+      "eval_samples_per_second": 36.623,
+      "eval_steps_per_second": 4.883,
+      "step": 16
+    },
+    {
+      "epoch": 2.533333333333333,
+      "grad_norm": 6.278260231018066,
+      "learning_rate": 6.25e-06,
+      "loss": 2.401615333557129,
+      "step": 20
+    },
+    {
+      "epoch": 3.0,
+      "eval_accuracy": 0.8666666666666667,
+      "eval_loss": 1.1557319164276123,
+      "eval_macro_f1": 0.85,
+      "eval_runtime": 0.8263,
+      "eval_samples_per_second": 36.306,
+      "eval_steps_per_second": 4.841,
+      "step": 24
+    }
+  ],
+  "logging_steps": 10,
+  "max_steps": 24,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 3,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": true
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 3166968175200.0,
+  "train_batch_size": 8,
+  "trial_name": null,
+  "trial_params": null
+}

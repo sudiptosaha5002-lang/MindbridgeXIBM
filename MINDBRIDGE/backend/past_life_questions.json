@@ -1,0 +1,275 @@
+[
+  {
+    "id": 1,
+    "theme": "emotional_safety_boundaries",
+    "is_short_interview": true,
+    "category": "Emotional Safety & Comfort",
+    "question_text": {
+      "en": "To begin gently, is there anything from your past that you prefer not to talk about today? Please know you are always in control here.",
+      "bn": "শুরুতেই জানিয়ে রাখি, অতীতের এমন কোনো অভিজ্ঞতা কি আছে যা নিয়ে আজ তুমি কথা বলতে স্বচ্ছন্দ বোধ করছো না? মনে রাখবে, এখানে তুমি সম্পূর্ণ নিরাপদ ও স্বাধীন।",
+      "hi": "शुरुआत में बहुत सहजता से, क्या आपके अतीत में ऐसी कोई बात है जिसके बारे में आज आप बात करने में असहज महसूस करते हैं? याद रखें, यहाँ आप पूरी तरह सुरक्षित हैं और नियंत्रण आपके हाथ में है।"
+    },
+    "gentle_support": {
+      "en": "Honoring your personal boundaries is an act of self-care. Feel free to say 'Skip' or share only what feels right.",
+      "bn": "তোমার সীমানাকে সম্মান জানানোই তোমার মানসিক যত্নের প্রথম ধাপ। ইচ্ছে হলে তুমি 'Skip' বলতে পারো বা যতটুকু সহজ মনে হয় ততটুকুই বলতে পারো।",
+      "hi": "अपनी सीमाओं का सम्मान करना स्वयं की देखभाल का पहला कदम है। आप बेझिझक 'Skip' कह सकते हैं या केवल उतना ही साझा कर सकते हैं जितना आपको सही लगे।"
+    },
+    "suggested_chips": {
+      "en": ["I'm open to sharing", "There are a few sensitive topics", "I prefer to keep it light today", "Skip to next question"],
+      "bn": ["আমি কথা বলতে স্বাচ্ছন্দ্য বোধ করছি", "কিছু সংবেদনশীল বিষয় আছে", "আজ হালকা বিষয় নিয়েই কথা বলি", "পরের প্রশ্নে যাই"],
+      "hi": ["मैं खुलकर बात करने के लिए तैयार हूँ", "कुछ संवेदनशील बातें हैं", "आज हल्की-फुल्की बातें करते हैं", "अगले सवाल पर चलें"]
+    }
+  },
+  {
+    "id": 2,
+    "theme": "early_years_first_impressions",
+    "is_short_interview": false,
+    "category": "Childhood Landscape",
+    "question_text": {
+      "en": "When you gently look back at your early childhood years, what sensations, images, or thoughts naturally come to your mind?",
+      "bn": "ছোটবেলার ফেলে আসা দিনগুলোর কথা ভাবলে সবার আগে তোমার মনে কেমন অনুভূতি, দৃশ্য বা ভাবনা ভেসে ওঠে?",
+      "hi": "जब आप सहजता से अपने बचपन के दिनों को याद करते हैं, तो सबसे पहले आपके मन में कैसी भावनाएं, दृश्य या विचार आते हैं?"
+    },
+    "gentle_support": {
+      "en": "There is no right or wrong answer—just notice what surfaces with kindness.",
+      "bn": "এখানে কোনো সঠিক বা ভুল উত্তর নেই—মন যা বলতে চায় কেবল তা প্রকাশ করো।",
+      "hi": "यहाँ कोई सही या गलत जवाब नहीं है—बस जो भावनाएं मन में आएं, उन्हें सहजता से साझा करें।"
+    },
+    "suggested_chips": {
+      "en": ["Warm and peaceful feelings", "A mix of playfulness and curiosity", "Some confusing or lonely moments", "A blur of fast memories"],
+      "bn": ["শান্ত আর মিষ্টি অনুভূতি", "খেলাধুলো আর কৌতূহল", "কিছু একাকীত্ব বা দ্বিধার স্মৃতি", "স্মৃতিগুলো একটু অস্পষ্ট"],
+      "hi": ["सुकून और शांति का अहसास", "खेलकूद और जिज्ञासा", "कुछ अकेलापन या उलझन", "यादें थोड़ी धुंधली हैं"]
+    }
+  },
+  {
+    "id": 3,
+    "theme": "happiest_memories",
+    "is_short_interview": true,
+    "category": "Joy & Nourishing Memories",
+    "question_text": {
+      "en": "What are one or two of your warmest, happiest, or most comforting childhood memories that still bring a smile to your face?",
+      "bn": "ছোটবেলার এমন এক বা দুটি আনন্দময় বা মিষ্টি স্মৃতির কথা বলো যা মনে পড়লে আজও তোমার মুখে মৃদু হাসি ফুটে ওঠে?",
+      "hi": "बचपन की ऐसी एक या दो सुखद और प्यारी यादें कौन-सी हैं, जिन्हें याद करके आज भी आपके चेहरे पर मुस्कान आ जाती है?"
+    },
+    "gentle_support": {
+      "en": "Connecting with moments of joy helps anchor our inner resilience and warmth.",
+      "bn": "সুখের স্মৃতিগুলো মনে করা আমাদের মনের ভেতর সাহস আর প্রশান্তি জোগায়।",
+      "hi": "खुशी के पलों से जुड़ना हमारे मन को अंदरूनी ताकत और सुकून देता है।"
+    },
+    "suggested_chips": {
+      "en": ["Playing freely outdoors with friends", "A special festival or family gathering", "A quiet cozy moment at home", "Learning something new with excitement"],
+      "bn": ["বন্ধুদের সাথে মন খুলে খেলা", "কোনো উৎসব বা পারিবারিক অনুষ্ঠান", "বাড়ির শান্ত-মধুর কোনো মুহূর্ত", "নতুন কিছু শেখার আনন্দ"],
+      "hi": ["दोस्तों के साथ खुले मन से खेलना", "कोई खास त्योहार या पारिवारिक पल", "घर का कोई शांत और सुकून भरा पल", "उत्साह से कुछ नया सीखना"]
+    }
+  },
+  {
+    "id": 4,
+    "theme": "personality_shaping",
+    "is_short_interview": false,
+    "category": "Identity & Core Beliefs",
+    "question_text": {
+      "en": "In what ways do you feel your upbringing and past experiences have shaped your core values, kindness, or the way you look at the world?",
+      "bn": "তোমার বেড়ে ওঠা এবং অতীতের অভিজ্ঞতাগুলো তোমার স্বভাব, মূল্যবোধ ও পৃথিবীকে দেখার দৃষ্টিভঙ্গিকে কীভাবে রূপ দিয়েছে বলে তোমার মনে হয়?",
+      "hi": "आपको क्या लगता है कि आपके बचपन और अतीत के अनुभवों ने आपके संस्कारों, सोच और ज़िंदगी को देखने के नज़रिए को किस तरह संवारा है?"
+    },
+    "gentle_support": {
+      "en": "Every experience adds a brushstroke to who we are becoming today.",
+      "bn": "জীবনের প্রতিটি অভিজ্ঞতাই আমাদের আজকের ব্যক্তিসত্তাকে একটু একটু করে তৈরি করে।",
+      "hi": "जिंदगी का हर अनुभव हमें आज का इंसान बनाने में एक महत्वपूर्ण भूमिका निभाता है।"
+    },
+    "suggested_chips": {
+      "en": ["Taught me empathy & patience", "Made me independent and observant", "Helped me value deep relationships", "Made me more cautious and resilient"],
+      "bn": ["সহানুভূতি ও ধৈর্য শিখিয়েছে", "আমাকে স্বাবলম্বী করেছে", "গভীর সম্পর্কের মূল্য বুঝিয়েছে", "সচেতন ও সহনশীল করেছে"],
+      "hi": ["सहानुभूति और धैर्य सिखाया", "मुझे आत्मनिर्भर बनाया", "गहरे रिश्तों की अहमियत समझाई", "अधिक सतर्क और मजबूत बनाया"]
+    }
+  },
+  {
+    "id": 5,
+    "theme": "turning_point_moments",
+    "is_short_interview": true,
+    "category": "Pivotal Moments & Perspectives",
+    "question_text": {
+      "en": "Was there a meaningful moment or chapter in your journey that gently shifted the way you think, feel, or understand yourself?",
+      "bn": "তোমার জীবনে কি এমন কোনো বিশেষ মুহূর্ত বা অধ্যায় ছিল, যা নিজেকে বা জীবনকে বোঝার ক্ষেত্রে তোমার ভাবনায় এক বড় পরিবর্তন এনে দিয়েছিল?",
+      "hi": "क्या आपकी ज़िंदगी में ऐसा कोई खास पल या मोड़ आया था, जिसने आपको खुद को या ज़िंदगी को एक नए नज़रिए से समझना सिखाया?"
+    },
+    "gentle_support": {
+      "en": "Turning points often mark the quiet moments our wisdom begins to deepen.",
+      "bn": "জীবনের মোড় বদলানোর মুহূর্তগুলোতেই আমাদের ভেতরের পরিণত বোধ ও প্রজ্ঞা জন্ম নেয়।",
+      "hi": "जिंदगी के मोड़ ही अक्सर वह समय होते हैं जब हमारी आंतरिक समझ गहरी होती है।"
+    },
+    "suggested_chips": {
+      "en": ["Moving to a new place or school", "Overcoming a personal challenge", "Meeting someone who inspired me", "A quiet realization of self-worth"],
+      "bn": ["নতুন কোনো জায়গায় স্থানান্তর", "একটি ব্যক্তিগত বাধা অতিক্রম করা", "অনুপ্রেরণাদায়ী কারো সাথে পরিচয়", "নিজের আত্মমর্যাদা উপলব্ধি করা"],
+      "hi": ["किसी नए शहर या स्कूल में जाना", "किसी कठिन चुनौती को पार करना", "किसी प्रेरणादायक व्यक्ति से मिलना", "अपने आत्मसम्मान को पहचानना"]
+    }
+  },
+  {
+    "id": 6,
+    "theme": "carrying_difficult_experiences",
+    "is_short_interview": true,
+    "category": "Resilience & Carrying Weight",
+    "question_text": {
+      "en": "Do you ever notice echoes of difficult times from your past still affecting your energy or mood today? How does that feel when it happens?",
+      "bn": "অতীতের কোনো কঠিন বা আঘাতের অভিজ্ঞতার রেশ কি আজও মাঝে মাঝে তোমার মন বা শক্তিকে প্রভাবিত করে? সেই সময়টা কেমন কাটে?",
+      "hi": "क्या अतीत के किसी कठिन या दर्द भरे अनुभव का असर आज भी कभी-कभी आपके मन या ऊर्जा पर पड़ता है? उस समय आपको कैसा महसूस होता है?"
+    },
+    "gentle_support": {
+      "en": "Carrying past burdens is tender work. It is okay to acknowledge pain without being defined by it.",
+      "bn": "অতীতের কষ্ট বয়ে বেড়ানো সহজ নয়। আঘাতকে মেনে নেওয়া মানেই তা দ্বারা নিঃশেষিত হওয়া নয়।",
+      "hi": "अतीत के भारी अनुभवों को ढोना आसान नहीं होता। दर्द को स्वीकार करना ही उपचार की शुरुआत है।"
+    },
+    "suggested_chips": {
+      "en": ["Sometimes brings anxiety or fatigue", "I've learned to manage it with time", "It rarely bothers me now", "I'm working on gentle healing"],
+      "bn": ["মাঝে মাঝে উদ্বেগ বা ক্লান্তি আনে", "সময়ের সাথে সামলাতে শিখেছি", "এখন আর তেমন প্রভাব ফেলে না", "আস্তে আস্তে সেরে উঠছি"],
+      "hi": ["कभी-कभी घबराहट या थकान होती है", "समय के साथ संभालना सीख लिया है", "अब ज्यादा परेशान नहीं करता", "धीरे-धीरे इससे उबर रहा हूँ"]
+    }
+  },
+  {
+    "id": 7,
+    "theme": "revisiting_past_moments",
+    "is_short_interview": false,
+    "category": "Reflection & Yearning",
+    "question_text": {
+      "en": "If you could tenderly revisit any single moment from your past just to embrace it once more, which moment would you choose?",
+      "bn": "যদি অতীতের কোনো একটি সুন্দর মুহূর্তে ফিরে গিয়ে তাকে আবারও ভালোবাসায় জড়িয়ে নেওয়ার সুযোগ পেতে, তবে কোন মুহূর্তটিকে বেছে নিতে?",
+      "hi": "अगर आपको अपने अतीत के किसी एक प्यारे पल में वापस जाकर उसे एक बार फिर से महसूस करने का मौका मिले, तो आप किसे चुनेंगे?"
+    },
+    "gentle_support": {
+      "en": "Yearning for comforting moments reminds us of our deep capacity for love and gratitude.",
+      "bn": "অতীতের মধুর মুহূর্তের প্রতি ভালোবাসা আমাদের মনকে কৃতজ্ঞতা ও মমতায় ভরিয়ে তোলে।",
+      "hi": "पुराने प्यारे पलों की चाहत हमें याद दिलाती है कि हमारे भीतर प्यार और कृतज्ञता की कितनी गहरी क्षमता है।"
+    },
+    "suggested_chips": {
+      "en": ["A peaceful evening with family", "A carefree childhood vacation", "A conversation with someone I miss", "A moment of personal achievement"],
+      "bn": ["পরিবারের সাথে শান্ত কোনো সন্ধ্যা", "ছোটবেলার আনন্দময় ছুটির দিন", "কাছের কারো সাথে শেষ কথা", "নিজের কোনো সাফল্যের মুহূর্ত"],
+      "hi": ["परिवार के साथ बिताई कोई सुकून भरी शाम", "बचपन की कोई बेफिक्र छुट्टियां", "किसी प्रियजन से दिल की बात", "अपनी किसी उपलब्धि का पल"]
+    }
+  },
+  {
+    "id": 8,
+    "theme": "family_traditions_rituals",
+    "is_short_interview": false,
+    "category": "Roots & Cultural Anchor",
+    "question_text": {
+      "en": "Was there any small family tradition, home-cooked dish, or bedtime ritual from your childhood that still warms your heart?",
+      "bn": "ছোটবেলার কোনো পারিবারিক প্রথা, মায়ের হাতের রান্না বা কোনো ছোট্ট মিষ্টি অভ্যাস কি আজও তোমার মনকে ভরিয়ে দেয়?",
+      "hi": "क्या बचपन की कोई ऐसी पारिवारिक परंपरा, घर का बना कोई खास खाना या छोटी-सी आदत है जो आज भी आपके दिल को छू लेती है?"
+    },
+    "gentle_support": {
+      "en": "These small rituals often serve as our earliest emotional anchors of safety.",
+      "bn": "ছোটবেলার এই ছোট্ট অভ্যাসগুলোই আমাদের মনের নিরাপত্তার সবচেয়ে আদি আশ্রয়।",
+      "hi": "ये छोटी-छोटी आदतें और परंपराएं ही हमारे मन के सुकून और सुरक्षा का आधार होती हैं।"
+    },
+    "suggested_chips": {
+      "en": ["Festival celebrations & food", "Storytelling before bedtime", "Sunday mornings together", "A comforting song or habit"],
+      "bn": ["উৎসবের আনন্দ আর পছন্দের রান্না", "রাতে ঘুমানোর আগে গল্প শোনা", "রবিবারের সকালের আনন্দ", "কোনো প্রিয় গান বা মিষ্টি অভ্যাস"],
+      "hi": ["त्योहारों की रौनक और पकवान", "सोने से पहले कहानियाँ सुनना", "रविवार की सुकून भरी सुबह", "कोई प्यारा गाना या आदत"]
+    }
+  },
+  {
+    "id": 9,
+    "theme": "recurring_life_patterns",
+    "is_short_interview": false,
+    "category": "Self-Awareness & Patterns",
+    "question_text": {
+      "en": "When you look across the chapters of your life, do you notice any emotional patterns or habits that seem to repeat? How do you support yourself through them now?",
+      "bn": "জীবনের পেছনের পৃষ্ঠাগুলো দেখলে কি মনে হয় কোনো আবেগ বা পরিস্থিতি বারবার ঘুরে ফিরে এসেছে? এখন তুমি সেগুলোকে কীভাবে সামলাও?",
+      "hi": "जब आप अपनी ज़िंदगी के पन्नों को पलटते हैं, तो क्या आपको कोई ऐसी आदतें या भावनाएं दिखती हैं जो बार-बार दोहराई जाती हैं? आज आप उनका सामना कैसे करते हैं?"
+    },
+    "gentle_support": {
+      "en": "Noticing patterns with curiosity rather than self-judgment is where profound healing begins.",
+      "bn": "নিজেকে দোষারোপ না করে সচেতনভাবে এই ধরনগুলো বুঝতে পারাই আরোগ্যের সূচনা।",
+      "hi": "खुद को दोषी ठहराए बिना इन पैटर्न्स को समझना ही सच्ची समझ और राहत का रास्ता है।"
+    },
+    "suggested_chips": {
+      "en": ["People-pleasing or overthinking", "Holding on too tightly to things", "Withdrawing when stressed", "I'm setting healthier boundaries now"],
+      "bn": ["অতিরিক্ত চিন্তা বা সবাইকে খুশি রাখার চেষ্টা", "সবকিছু আঁকড়ে ধরে থাকার প্রবণতা", "চাপে পড়লে নিজেকে গুটিয়ে নেওয়া", "এখন সুন্দর সীমানা তৈরি করতে শিখেছি"],
+      "hi": ["अधिक सोचना या सबको खुश रखने की कोशिश", "चीजों को बहुत कसकर थामे रहना", "तनाव में खुद को अलग-थलग कर लेना", "अब बेहतर सीमाएं तय करना सीख रहा हूँ"]
+    }
+  },
+  {
+    "id": 10,
+    "theme": "nostalgia_and_emotions",
+    "is_short_interview": false,
+    "category": "Emotional Resonance & Nostalgia",
+    "question_text": {
+      "en": "How does nostalgia usually make you feel—does thinking about the past bring more warmth and comfort, or a gentle bittersweet longing?",
+      "bn": "অতীতের স্মৃতি বা নস্টালজিয়া তোমার ভেতর কেমন অনুভূতি জাগায়—বেশি প্রশান্তি ও উষ্ণতা আনে, নাকি কিছুটা মিষ্টি বিষণ্ণতা?",
+      "hi": "जब आपको पुराने दिन याद आते हैं, तो नॉस्टैल्जिया आपको कैसा अहसास कराता है—सुकून और अपनापन, या एक मीठा-सा खालीपन?"
+    },
+    "gentle_support": {
+      "en": "Bittersweet feelings show how deeply you value the journey you have traveled.",
+      "bn": "এই মিষ্টি অনুভূতিগুলো প্রমাণ করে তুমি তোমার পথচলাকে কতটা গভীরভাবে ভালোবেসেছো।",
+      "hi": "यह मीठा अहसास बताता है कि आपने अपने सफर और यादों को कितने दिल से जिया है।"
+    },
+    "suggested_chips": {
+      "en": ["Comforting and warm", "Bittersweet and thoughtful", "Sometimes makes me feel a bit lost", "Gives me hope and appreciation"],
+      "bn": ["উষ্ণ ও আরামদায়ক", "মিষ্টি ও চিন্তাশীল", "মাঝে মাঝে একটু শূন্যতা লাগে", "নতুন কৃতজ্ঞতা ও সাহস দেয়"],
+      "hi": ["सुकून और गर्माहट भरा", "मीठा-सा और गहरा", "कभी-कभी थोड़ा अकेलापन लगता है", "उम्मीद और कृतज्ञता से भर देता है"]
+    }
+  },
+  {
+    "id": 11,
+    "theme": "unresolved_experiences_healing",
+    "is_short_interview": true,
+    "category": "Gentle Closure & Healing",
+    "question_text": {
+      "en": "Are there any unresolved memories, unspoken words, or unfinished chapters from your past that still ask for gentle closure or forgiveness?",
+      "bn": "অতীতের এমন কোনো অমীমাংসিত অধ্যায়, না-বলা কথা বা ক্ষমা আছে কি, যা এখনও তোমার মনে কিছুটা প্রশান্তি বা উপশম খুঁজছে?",
+      "hi": "क्या आपके अतीत में ऐसी कोई अनकही बातें, अधूरी यादें या बातें हैं जो आज भी आपके मन में सुकून या क्षमा की उम्मीद रखती हैं?"
+    },
+    "gentle_support": {
+      "en": "Healing does not mean erasing the past; it means creating room to breathe with grace today.",
+      "bn": "আরোগ্য মানে অতীতকে মুছে ফেলা নয়; এর অর্থ হলো আজ শান্তিতে নিশ্বাস নেওয়ার জায়গা তৈরি করা।",
+      "hi": "उपचार का मतलब अतीत को मिटाना नहीं, बल्कि आज सुकून से जीने का रास्ता बनाना है।"
+    },
+    "suggested_chips": {
+      "en": ["Some things I wish I could say", "Learning to forgive myself", "Letting go step by step", "I feel mostly at peace"],
+      "bn": ["কিছু কথা যা বলা হয়নি", "নিজেকে ক্ষমা করতে শিখছি", "আস্তে আস্তে ভারমুক্ত হচ্ছি", "এখন অনেকটাই শান্তিতে আছি"],
+      "hi": ["कुछ बातें जो कही नहीं जा सकीं", "खुद को माफ करना सीख रहा हूँ", "धीरे-धीरे मन को हल्का कर रहा हूँ", "अब काफी हद तक शांति में हूँ"]
+    }
+  },
+  {
+    "id": 12,
+    "theme": "successes_mistakes_wisdom",
+    "is_short_interview": false,
+    "category": "Wisdom & Decision Making",
+    "question_text": {
+      "en": "Looking at both your triumphs and missteps, how have they helped you build wisdom and self-trust in the decisions you make today?",
+      "bn": "অতীতের সাফল্য আর ভুলগুলোর দিকে তাকালে, আজ জীবনের সিদ্ধান্ত নেওয়ার ক্ষেত্রে সেগুলো তোমাকে কীভাবে আরো বিচক্ষণ ও আত্মবিশ্বাসী করেছে?",
+      "hi": "अपनी सफलताओं और गलतियों को देखते हुए, आज फैसले लेते समय उन्होंने आपके अंदर समझदारी और खुद पर भरोसा कैसे बढ़ाया है?"
+    },
+    "gentle_support": {
+      "en": "Mistakes are simply tuition paid for the wisdom you carry today.",
+      "bn": "আমাদের জীবনের ভুলগুলো আসলে আজকের প্রজ্ঞার পথ তৈরি করে দেয়।",
+      "hi": "गलतियां दरअसल उस समझदारी की सीढ़ी हैं जो आज आपके पास है।"
+    },
+    "suggested_chips": {
+      "en": ["Taught me to trust my gut", "Made me pause and reflect more", "Helped me be kinder to myself", "Reduced my fear of failing"],
+      "bn": ["নিজের অন্তরের ডাকে ভরসা করতে শিখিয়েছে", "ধৈর্য ধরে ভাবতে শিখিয়েছে", "নিজের প্রতি আরো সদয় হতে শিখিয়েছে", "ব্যর্থতার ভয় দূর করেছে"],
+      "hi": ["अपने अंतर्मन पर भरोसा करना सिखाया", "सोच-समझकर कदम उठाना सिखाया", "खुद के प्रति अधिक दयालु बनाया", "असफलता का डर कम किया"]
+    }
+  },
+  {
+    "id": 13,
+    "theme": "relational_trust_connection",
+    "is_short_interview": true,
+    "category": "Relational Trust & Connection",
+    "question_text": {
+      "en": "To conclude our reflection, how have your past relationships—the nurturing ones and the painful ones—shaped the way you trust and connect with others today?",
+      "bn": "আমাদের এই সুন্দর ভাবনার ইতি টানতে, অতীতের সম্পর্কগুলো—ভালোবাসার বা কষ্টের—মানুষের ওপর বিশ্বাস রাখা ও মন খুলে মেশার ক্ষেত্রে তোমাকে কীভাবে গড়ে তুলেছে?",
+      "hi": "इस सुंदर बातचीत के समापन पर, अतीत के रिश्तों ने—चाहे वे प्यार भरे रहे हों या दुखदायी—आज लोगों पर भरोसा करने और उनसे जुड़ने के आपके तरीके को कैसे प्रभावित किया है?"
+    },
+    "gentle_support": {
+      "en": "Our capacity to love, protect our peace, and stay genuine is one of our most resilient human gifts.",
+      "bn": "ভালোবাসতে পারা, নিজের আত্মসম্মান রক্ষা করা আর খাঁটি থাকার দক্ষতাই মানুষের সেরা গুণ।",
+      "hi": "प्यार करना, अपनी शांति की रक्षा करना और सच्चे बने रहना हमारी सबसे खूबसूरत ताकत है।"
+    },
+    "suggested_chips": {
+      "en": ["I choose quality connections over quantity", "I'm learning to open up gradually", "I have stronger boundaries and deeper empathy", "I value genuine, safe bonds"],
+      "bn": ["অল্প কিন্তু খাঁটি সম্পর্কে বিশ্বাসী", "ধীরে ধীরে বিশ্বাস স্থাপন করতে শিখছি", "সহানুভূতি এবং নিজের সীমানা দুটোই বেড়েছে", "নিরাপদ ও আন্তরিক সম্পর্ককে মূল্যবান মনে করি"],
+      "hi": ["दिखावे की जगह सच्चे रिश्तों को चुनता हूँ", "धीरे-धीरे विश्वास करना सीख रहा हूँ", "सहानुभूति और अपनी सीमाएं दोनों समझी हैं", "सुरक्षित और सच्चे रिश्तों को महत्व देता हूँ"]
+    }
+  }
+]

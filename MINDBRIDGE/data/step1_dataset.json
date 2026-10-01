@@ -1,0 +1,1332 @@
+[
+  {
+    "id": "MB-NORM-0001",
+    "raw_text": "I am sooooo tensed​ about my finals tmmrw tbh!!",
+    "normalized_text": "I am soo tensed about my finals tmmrw tbh!",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0002",
+    "raw_text": "im having a full blown panic attck pls hlp",
+    "normalized_text": "im having a full blown panic attck pls hlp",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0003",
+    "raw_text": "feeling super boreeeee nd lonely today",
+    "normalized_text": "feeling super boree nd lonely today",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0004",
+    "raw_text": "cant slp properly since weeks, severe burnout scene at work",
+    "normalized_text": "cant slp properly since weeks, severe burnout scene at work",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0005",
+    "raw_text": "my parents expectations are way too mch for me to handleeee",
+    "normalized_text": "my parents expectations are way too mch for me to handlee",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0006",
+    "raw_text": "why is everybody ignoring me??? im literally begging for attention!!",
+    "normalized_text": "why is everybody ignoring me? im literally begging for attention!",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0007",
+    "raw_text": "this anxiety is killing meee from inside",
+    "normalized_text": "this anxiety is killing mee from inside",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0008",
+    "raw_text": "idk what to do with my life anymore it sucks!!!",
+    "normalized_text": "idk what to do with my life anymore it sucks!",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0009",
+    "raw_text": "just had a massive breakdown in the washroom again!!",
+    "normalized_text": "just had a massive breakdown in the washroom again!",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0010",
+    "raw_text": "feeling completely numb and empty inside today‍",
+    "normalized_text": "feeling completely numb and empty inside today",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0011",
+    "raw_text": "nobody understands how much pain im in right now",
+    "normalized_text": "nobody understands how much pain im in right now",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0012",
+    "raw_text": "tired of pretending that everything is okkaaayyy",
+    "normalized_text": "tired of pretending that everything is okkaayy",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0013",
+    "raw_text": "just wanna disappear from this world forever",
+    "normalized_text": "just wanna disappear from this world forever",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0014",
+    "raw_text": "constantly worrying about the future is exhausting meee",
+    "normalized_text": "constantly worrying about the future is exhausting mee",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0015",
+    "raw_text": "im so drained physically and emotionally",
+    "normalized_text": "im so drained physically and emotionally",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0016",
+    "raw_text": "overthinking every single tiny detail is ruining my peace!",
+    "normalized_text": "overthinking every single tiny detail is ruining my peace!",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0017",
+    "raw_text": "I hate myself for being so weak and pathetic",
+    "normalized_text": "I hate myself for being so weak and pathetic",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0018",
+    "raw_text": "my head is hurting sooooo bad from all the crying",
+    "normalized_text": "my head is hurting soo bad from all the crying",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0019",
+    "raw_text": "cant stop my hands from shaking, pls make it stop!!",
+    "normalized_text": "cant stop my hands from shaking, pls make it stop!",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0020",
+    "raw_text": "losing motivation to even get out of bed",
+    "normalized_text": "losing motivation to even get out of bed",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0021",
+    "raw_text": "everything feels so overwhelming right now​",
+    "normalized_text": "everything feels so overwhelming right now",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0022",
+    "raw_text": "I feel like a massive failure to my family",
+    "normalized_text": "I feel like a massive failure to my family",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0023",
+    "raw_text": "totally exhausted, brain fog is real bad today",
+    "normalized_text": "totally exhausted, brain fog is real bad today",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0024",
+    "raw_text": "the pressure to perform perfectly is choking meee",
+    "normalized_text": "the pressure to perform perfectly is choking mee",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0025",
+    "raw_text": "heart is racing so fast for no reason???",
+    "normalized_text": "heart is racing so fast for no reason?",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0026",
+    "raw_text": "just want someone to hold me and say it will be fiiiine",
+    "normalized_text": "just want someone to hold me and say it will be fiine",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0027",
+    "raw_text": "dealing with severe trust issues, cant open up to anyone",
+    "normalized_text": "dealing with severe trust issues, cant open up to anyone",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0028",
+    "raw_text": "why am I always the one getting hurt in the end?",
+    "normalized_text": "why am I always the one getting hurt in the end?",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0029",
+    "raw_text": "I feel so alienated even in a room full of people!!",
+    "normalized_text": "I feel so alienated even in a room full of people!",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0030",
+    "raw_text": "please tell me this dark phase will end sooooon",
+    "normalized_text": "please tell me this dark phase will end soon",
+    "script": "Latin",
+    "label": "en"
+  },
+  {
+    "id": "MB-NORM-0031",
+    "raw_text": "एग्जाम को लेकर बोहोत टेंशन हो रही है यार!!",
+    "normalized_text": "एग्जाम को लेकर बोहोत टेंशन हो रही है यार!",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0032",
+    "raw_text": "ऑफिस में दिमाग का दही‌ हो गया है बिलकुल, क्या करूँ???",
+    "normalized_text": "ऑफिस में दिमाग का दही हो गया है बिलकुल, क्या करूँ?",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0033",
+    "raw_text": "नींद नहीं आती रातों को, बहुत परेशान हो गयी हूँ",
+    "normalized_text": "नींद नहीं आती रातों को, बहुत परेशान हो गयी हूँ",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0034",
+    "raw_text": "मुझे अकेलापन बहुत डराता है आजकल",
+    "normalized_text": "मुझे अकेलापन बहुत डराता है आजकल",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0035",
+    "raw_text": "बर्नआउट की वजह से काम करने का एकदम मन नहीं करता",
+    "normalized_text": "बर्नआउट की वजह से काम करने का एकदम मन नहीं करता",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0036",
+    "raw_text": "घर वालों की उम्मीदों ने मुझे पागल कर दिया है!!!",
+    "normalized_text": "घर वालों की उम्मीदों ने मुझे पागल कर दिया है!",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0037",
+    "raw_text": "समझ नहीं आ रहा ज़िन्दगी कहाँ जा रही है...",
+    "normalized_text": "समझ नहीं आ रहा ज़िन्दगी कहाँ जा रही है..",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0038",
+    "raw_text": "आज फिर से पैनिक अटैक आ गया था, बहुत डर लग रहा है",
+    "normalized_text": "आज फिर से पैनिक अटैक आ गया था, बहुत डर लग रहा है",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0039",
+    "raw_text": "सब कुछ बहुत अजीब लग रहा है, कुछ भी अच्छा नहीं लगता",
+    "normalized_text": "सब कुछ बहुत अजीब लग रहा है, कुछ भी अच्छा नहीं लगता",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0040",
+    "raw_text": "खुद पर बहुत गुस्सा आता है, क्यों हूँ मैं ऐसी??​",
+    "normalized_text": "खुद पर बहुत गुस्सा आता है, क्यों हूँ मैं ऐसी?",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0041",
+    "raw_text": "कोई मेरी परेशानी समझने की कोशिश ही नहीं करता!",
+    "normalized_text": "कोई मेरी परेशानी समझने की कोशिश ही नहीं करता!",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0042",
+    "raw_text": "मन करता है सब कुछ छोड़ छाड़ कर कहीं दूर चली जाऊँ",
+    "normalized_text": "मन करता है सब कुछ छोड़ छाड़ कर कहीं दूर चली जाऊँ",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0043",
+    "raw_text": "दिमाग फटने वाला है ओवरथिंकिंग की वजह से!!",
+    "normalized_text": "दिमाग फटने वाला है ओवरथिंकिंग की वजह से!",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0044",
+    "raw_text": "हर छोटी बात पे रोना आ जाता है मुझे आजकल",
+    "normalized_text": "हर छोटी बात पे रोना आ जाता है मुझे आजकल",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0045",
+    "raw_text": "ज़िन्दगी एक बोझ लगने लगी है अब तो",
+    "normalized_text": "ज़िन्दगी एक बोझ लगने लगी है अब तो",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0046",
+    "raw_text": "घबराहट के मारे हाथ पैर कांप रहे हैं मेरे!!!",
+    "normalized_text": "घबराहट के मारे हाथ पैर कांप रहे हैं मेरे!",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0047",
+    "raw_text": "किसी से बात करने की हिम्मत नहीं बची है मुझमे",
+    "normalized_text": "किसी से बात करने की हिम्मत नहीं बची है मुझमे",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0048",
+    "raw_text": "ऐसा लग रहा है जैसे दम घुट रहा हो मेरा‍",
+    "normalized_text": "ऐसा लग रहा है जैसे दम घुट रहा हो मेरा",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0049",
+    "raw_text": "पता नहीं ये बुरा वक़्त कब ख़तम होगा???",
+    "normalized_text": "पता नहीं ये बुरा वक़्त कब ख़तम होगा?",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0050",
+    "raw_text": "खुद को बहुत अकेला और असहाय महसूस कर रही हूँ",
+    "normalized_text": "खुद को बहुत अकेला और असहाय महसूस कर रही हूँ",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0051",
+    "raw_text": "मुझे बस रोने का मन कर रहा है ज़ोर ज़ोर से!",
+    "normalized_text": "मुझे बस रोने का मन कर रहा है ज़ोर ज़ोर से!",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0052",
+    "raw_text": "हर कोई मुझे नीचा दिखाने में लगा हुआ है",
+    "normalized_text": "हर कोई मुझे नीचा दिखाने में लगा हुआ है",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0053",
+    "raw_text": "मेरे अंदर का सारा आत्मविश्वास ख़तम हो चूका है",
+    "normalized_text": "मेरे अंदर का सारा आत्मविश्वास ख़तम हो चूका है",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0054",
+    "raw_text": "भविष्य को लेकर बहुत ज़्यादा डर लगता है यार",
+    "normalized_text": "भविष्य को लेकर बहुत ज़्यादा डर लगता है यार",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0055",
+    "raw_text": "दिल की धड़कन एकदम से बहुत तेज़ हो जाती है",
+    "normalized_text": "दिल की धड़कन एकदम से बहुत तेज़ हो जाती है",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0056",
+    "raw_text": "थकान इतनी है कि बिस्तर से उठने का मन नहीं कर रहा",
+    "normalized_text": "थकान इतनी है कि बिस्तर से उठने का मन नहीं कर रहा",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0057",
+    "raw_text": "मैं किसी काम की नहीं हूँ, सब कुछ खराब कर देती हूँ",
+    "normalized_text": "मैं किसी काम की नहीं हूँ, सब कुछ खराब कर देती हूँ",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0058",
+    "raw_text": "काश कोई मुझे आकर गले लगा ले कसके...",
+    "normalized_text": "काश कोई मुझे आकर गले लगा ले कसके..",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0059",
+    "raw_text": "दिमाग में अजीब अजीब से ख्याल आते रहते हैं!",
+    "normalized_text": "दिमाग में अजीब अजीब से ख्याल आते रहते हैं!",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0060",
+    "raw_text": "मैं अंदर से पूरी तरह से टूट चुकी हूँ अब",
+    "normalized_text": "मैं अंदर से पूरी तरह से टूट चुकी हूँ अब",
+    "script": "Devanagari",
+    "label": "hi"
+  },
+  {
+    "id": "MB-NORM-0061",
+    "raw_text": "পরীক্ষার জন্য খুব্ব্ব ভয় লাগছে, মাথা কাজ করছে না একদম!!",
+    "normalized_text": "পরীক্ষার জন্য খুব্ব্ব ভয় লাগছে, মাথা কাজ করছে না একদম!",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0062",
+    "raw_text": "অফিসের ডেডলাইনের চাপে আমার বুক ফেটে যাচ্ছে‌",
+    "normalized_text": "অফিসের ডেডলাইনের চাপে আমার বুক ফেটে যাচ্ছে",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0063",
+    "raw_text": "ঘুমাতে পারছি না কদিন ধরে, মেজাজ খুব খারাব",
+    "normalized_text": "ঘুমাতে পারছি না কদিন ধরে, মেজাজ খুব খারাব",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0064",
+    "raw_text": "নিজেকে খুব একা লাগে এখন, কেউ বোঝার নেই???",
+    "normalized_text": "নিজেকে খুব একা লাগে এখন, কেউ বোঝার নেই?",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0065",
+    "raw_text": "বাবা মার এত আশা আমার পক্ষে পূরণ করা সম্ভব নাআআ",
+    "normalized_text": "বাবা মার এত আশা আমার পক্ষে পূরণ করা সম্ভব নাআআ",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0066",
+    "raw_text": "কেন যে আমার সাথে সবসময় এরকম হয়!!",
+    "normalized_text": "কেন যে আমার সাথে সবসময় এরকম হয়!",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0067",
+    "raw_text": "আমার বাঁচার আর কোনো ইচ্ছা নেই এখন",
+    "normalized_text": "আমার বাঁচার আর কোনো ইচ্ছা নেই এখন",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0068",
+    "raw_text": "বারবার প্যানিক অ্যাটাক হচ্ছে, খুব ভয় করছে আমার!!!",
+    "normalized_text": "বারবার প্যানিক অ্যাটাক হচ্ছে, খুব ভয় করছে আমার!",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0069",
+    "raw_text": "সারাদিন শুধু কান্না পাচ্ছে আমার, কিচ্ছু ভালো লাগছে না",
+    "normalized_text": "সারাদিন শুধু কান্না পাচ্ছে আমার, কিচ্ছু ভালো লাগছে না",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0070",
+    "raw_text": "কেউ আমার কষ্টটা একবারও বোঝার চেষ্টা করলো না!‍",
+    "normalized_text": "কেউ আমার কষ্টটা একবারও বোঝার চেষ্টা করলো না!",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0071",
+    "raw_text": "মনে হচ্ছে সব ছেড়ে ছুঁড়ে কোথাও পালিয়ে যাই",
+    "normalized_text": "মনে হচ্ছে সব ছেড়ে ছুঁড়ে কোথাও পালিয়ে যাই",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0072",
+    "raw_text": "আমি আর এই মানসিক চাপ নিতে পারছি নাআআ",
+    "normalized_text": "আমি আর এই মানসিক চাপ নিতে পারছি নাআআ",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0073",
+    "raw_text": "নিজেকে খুব অসহায় আর মূল্যহীন মনে হচ্ছে",
+    "normalized_text": "নিজেকে খুব অসহায় আর মূল্যহীন মনে হচ্ছে",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0074",
+    "raw_text": "ভবিষ্যৎ নিয়ে ভেবে ভেবে আমার মাথা খারাপ হয়ে যাচ্ছে",
+    "normalized_text": "ভবিষ্যৎ নিয়ে ভেবে ভেবে আমার মাথা খারাপ হয়ে যাচ্ছে",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0075",
+    "raw_text": "আমার ভেতরে সব যেন শেষ হয়ে গেছে...",
+    "normalized_text": "আমার ভেতরে সব যেন শেষ হয়ে গেছে..",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0076",
+    "raw_text": "এত ওভারথিঙ্কিং করি যে পাগল হয়ে যাবো মনে হয়!!",
+    "normalized_text": "এত ওভারথিঙ্কিং করি যে পাগল হয়ে যাবো মনে হয়!",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0077",
+    "raw_text": "দম বন্ধ হয়ে আসছে আমার, একটু শান্তি চাই",
+    "normalized_text": "দম বন্ধ হয়ে আসছে আমার, একটু শান্তি চাই",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0078",
+    "raw_text": "কারোর সাথে কথা বলতে ইচ্ছে করছে না একটুও",
+    "normalized_text": "কারোর সাথে কথা বলতে ইচ্ছে করছে না একটুও",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0079",
+    "raw_text": "আমি সব দিক থেকে হেরে গেছি জীবনে​",
+    "normalized_text": "আমি সব দিক থেকে হেরে গেছি জীবনে",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0080",
+    "raw_text": "এই খারাপ সময়টা কি কোনোদিনও শেষ হবে না???",
+    "normalized_text": "এই খারাপ সময়টা কি কোনোদিনও শেষ হবে না?",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0081",
+    "raw_text": "নিজের ওপর খুব রাগ হচ্ছে, কেন আমি এত দুর্বল!",
+    "normalized_text": "নিজের ওপর খুব রাগ হচ্ছে, কেন আমি এত দুর্বল!",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0082",
+    "raw_text": "বুকটা ধড়ফড় করছে খুব, মনে হচ্ছে মরে যাব",
+    "normalized_text": "বুকটা ধড়ফড় করছে খুব, মনে হচ্ছে মরে যাব",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0083",
+    "raw_text": "শরীর আর মন দুটোই খুব ক্লান্ত হয়ে পড়েছে",
+    "normalized_text": "শরীর আর মন দুটোই খুব ক্লান্ত হয়ে পড়েছে",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0084",
+    "raw_text": "একটুও কনফিডেন্স পাচ্ছি না কোনো কাজে",
+    "normalized_text": "একটুও কনফিডেন্স পাচ্ছি না কোনো কাজে",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0085",
+    "raw_text": "আমি শুধু সবার বোঝা হয়ে বেঁচে আছি",
+    "normalized_text": "আমি শুধু সবার বোঝা হয়ে বেঁচে আছি",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0086",
+    "raw_text": "কেউ নেই যাকে আমি মনের কথা খুলে বলতে পারি",
+    "normalized_text": "কেউ নেই যাকে আমি মনের কথা খুলে বলতে পারি",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0087",
+    "raw_text": "আমার দ্বারা আর কিচ্ছু হবে না জীবনে!!!",
+    "normalized_text": "আমার দ্বারা আর কিচ্ছু হবে না জীবনে!",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0088",
+    "raw_text": "খুব কান্না পাচ্ছে, কিন্তু চোখ দিয়ে জল পড়ছে না",
+    "normalized_text": "খুব কান্না পাচ্ছে, কিন্তু চোখ দিয়ে জল পড়ছে না",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0089",
+    "raw_text": "দিনের পর দিন একই কষ্ট আর সহ্য হচ্ছে না",
+    "normalized_text": "দিনের পর দিন একই কষ্ট আর সহ্য হচ্ছে না",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0090",
+    "raw_text": "চারপাশটা খুব ফাঁকা আর অন্ধকার লাগছে আমার",
+    "normalized_text": "চারপাশটা খুব ফাঁকা আর অন্ধকার লাগছে আমার",
+    "script": "Bengali",
+    "label": "bn"
+  },
+  {
+    "id": "MB-NORM-0091",
+    "raw_text": "exam ka bohottt pressure hai, samajh nahi aara kya karuuu!!",
+    "normalized_text": "exam ka bohott pressure hai, samajh nahi aara kya karuu!",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0092",
+    "raw_text": "office me deadlines ki wajah se anxiety trigger ho rahi hai bht",
+    "normalized_text": "office me deadlines ki wajah se anxiety trigger ho rahi hai bht",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0093",
+    "raw_text": "neend aati hi nahi hai aajkal, dimag ka dahi ho rakha h",
+    "normalized_text": "neend aati hi nahi hai aajkal, dimag ka dahi ho rakha h",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0094",
+    "raw_text": "akela feel hota h kabhi kabhi, bohot pareshan ho gayiiii",
+    "normalized_text": "akela feel hota h kabhi kabhi, bohot pareshan ho gayii",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0095",
+    "raw_text": "parents ki expectations itni zyada hai ki full panic attack aaraha hai pls helppp",
+    "normalized_text": "parents ki expectations itni zyada hai ki full panic attack aaraha hai pls helpp",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0096",
+    "raw_text": "kyu sab mere hi sath bura karte hain???",
+    "normalized_text": "kyu sab mere hi sath bura karte hain?",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0097",
+    "raw_text": "life itni jhand kyu ho gayi hai meri yaar!!‌",
+    "normalized_text": "life itni jhand kyu ho gayi hai meri yaar!",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0098",
+    "raw_text": "koi meri problem samajhne ka try hi nahi karta",
+    "normalized_text": "koi meri problem samajhne ka try hi nahi karta",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0099",
+    "raw_text": "overthinking ne dimaag ki waat laga di hai puri tarah!",
+    "normalized_text": "overthinking ne dimaag ki waat laga di hai puri tarah!",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0100",
+    "raw_text": "aaj firse bathroom me baithke bht royi mai",
+    "normalized_text": "aaj firse bathroom me baithke bht royi mai",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0101",
+    "raw_text": "mann karta h sab chhodke bhag jau kahi dur",
+    "normalized_text": "mann karta h sab chhodke bhag jau kahi dur",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0102",
+    "raw_text": "andhar se pura khali and numb feel ho raha h mujhe",
+    "normalized_text": "andhar se pura khali and numb feel ho raha h mujhe",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0103",
+    "raw_text": "kya ye dark phase kabhi khatam hoga meri life se???",
+    "normalized_text": "kya ye dark phase kabhi khatam hoga meri life se?",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0104",
+    "raw_text": "anxiety ke mare hath per kaanp rahe hain mere!!",
+    "normalized_text": "anxiety ke mare hath per kaanp rahe hain mere!",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0105",
+    "raw_text": "future ka tension le leke baal safed ho gaye hain​",
+    "normalized_text": "future ka tension le leke baal safed ho gaye hain",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0106",
+    "raw_text": "kisi se baat karne ka mann hi nahi karta ab",
+    "normalized_text": "kisi se baat karne ka mann hi nahi karta ab",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0107",
+    "raw_text": "I am feeling like a total loser right now",
+    "normalized_text": "I am feeling like a total loser right now",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0108",
+    "raw_text": "breathlessness ho rahi hai panic ki wajah se!!!",
+    "normalized_text": "breathlessness ho rahi hai panic ki wajah se!",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0109",
+    "raw_text": "rone ka mann kar raha hai bht zor zor se",
+    "normalized_text": "rone ka mann kar raha hai bht zor zor se",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0110",
+    "raw_text": "khud pe bht gussa aata hai mujhe kabhi kabhi",
+    "normalized_text": "khud pe bht gussa aata hai mujhe kabhi kabhi",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0111",
+    "raw_text": "dil bht tezi se dhadak raha hai bina kisi reason ke",
+    "normalized_text": "dil bht tezi se dhadak raha hai bina kisi reason ke",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0112",
+    "raw_text": "I wish koi mujhe aake tight hug kar le",
+    "normalized_text": "I wish koi mujhe aake tight hug kar le",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0113",
+    "raw_text": "bed se uthne ka bhi motivation nahi bacha hai ab",
+    "normalized_text": "bed se uthne ka bhi motivation nahi bacha hai ab",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0114",
+    "raw_text": "confidence pura zero ho gaya hai mera",
+    "normalized_text": "confidence pura zero ho gaya hai mera",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0115",
+    "raw_text": "sabkuch itna overwhelming kyu lag raha hai aajkal???",
+    "normalized_text": "sabkuch itna overwhelming kyu lag raha hai aajkal?",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0116",
+    "raw_text": "kya mai sach me itni buri hu??",
+    "normalized_text": "kya mai sach me itni buri hu?",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0117",
+    "raw_text": "bohot zyada thak chuki hu mai is mental torture se!!",
+    "normalized_text": "bohot zyada thak chuki hu mai is mental torture se!",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0118",
+    "raw_text": "dimaag kaam karna band kar chuka hai mera",
+    "normalized_text": "dimaag kaam karna band kar chuka hai mera",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0119",
+    "raw_text": "samajh nahi aata kisse share karu apni feelings",
+    "normalized_text": "samajh nahi aata kisse share karu apni feelings",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0120",
+    "raw_text": "please bhagwan mujhe is sab se nikal do!!",
+    "normalized_text": "please bhagwan mujhe is sab se nikal do!",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0121",
+    "raw_text": "exam niye khubbb chap jacche, matha kaj korche naaa!!",
+    "normalized_text": "exam niye khubb chap jacche, matha kaj korche naa!",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0122",
+    "raw_text": "office er kaaj e puro burnout hocche amar, kicho bhalo lagena",
+    "normalized_text": "office er kaaj e puro burnout hocche amar, kicho bhalo lagena",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0123",
+    "raw_text": "raat e ghum aschena ekdom, buk fete jacche kosto te",
+    "normalized_text": "raat e ghum aschena ekdom, buk fete jacche kosto te",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0124",
+    "raw_text": "khub lonely lage ajkal, keu bujhte chay na amar obostha",
+    "normalized_text": "khub lonely lage ajkal, keu bujhte chay na amar obostha",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0125",
+    "raw_text": "family r eto expectations hbena amake diye, ami ar parchi naaaa",
+    "normalized_text": "family r eto expectations hbena amake diye, ami ar parchi naa",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0126",
+    "raw_text": "keno amar sathe shob shomoy erokom hoy???",
+    "normalized_text": "keno amar sathe shob shomoy erokom hoy?",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0127",
+    "raw_text": "beche thakar r kono icche nei amar ekdom!!",
+    "normalized_text": "beche thakar r kono icche nei amar ekdom!",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0128",
+    "raw_text": "eka eka ghore boshe shudu kanna pachche amar​",
+    "normalized_text": "eka eka ghore boshe shudu kanna pachche amar",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0129",
+    "raw_text": "abar panic attack hocche, khub bhoy korche amar!!!",
+    "normalized_text": "abar panic attack hocche, khub bhoy korche amar!",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0130",
+    "raw_text": "amar kosto keu konodin o bujhbe na e jibon e",
+    "normalized_text": "amar kosto keu konodin o bujhbe na e jibon e",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0131",
+    "raw_text": "icche korche shob chere chure kothao hariye jai",
+    "normalized_text": "icche korche shob chere chure kothao hariye jai",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0132",
+    "raw_text": "ei mental chap ami r nite parchi naaa!",
+    "normalized_text": "ei mental chap ami r nite parchi naa!",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0133",
+    "raw_text": "nijeke khub osahay ar mullohin lagche",
+    "normalized_text": "nijeke khub osahay ar mullohin lagche",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0134",
+    "raw_text": "future niye bhebe bhebe matha kharap hoye jacche amar",
+    "normalized_text": "future niye bhebe bhebe matha kharap hoye jacche amar",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0135",
+    "raw_text": "bhetor theke pura faka lagche nijeke‍",
+    "normalized_text": "bhetor theke pura faka lagche nijeke",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0136",
+    "raw_text": "eto overthinking kori je pagol hoye jabo ami!!",
+    "normalized_text": "eto overthinking kori je pagol hoye jabo ami!",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0137",
+    "raw_text": "dom bondho hoye asche amar, aktu shanti chai",
+    "normalized_text": "dom bondho hoye asche amar, aktu shanti chai",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0138",
+    "raw_text": "karur sathe kotha bolte icche korche na r",
+    "normalized_text": "karur sathe kotha bolte icche korche na r",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0139",
+    "raw_text": "jibon e shob dik theke here gechi ami",
+    "normalized_text": "jibon e shob dik theke here gechi ami",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0140",
+    "raw_text": "ei kharap shomoy ta ki kokhono shesh hobe na???",
+    "normalized_text": "ei kharap shomoy ta ki kokhono shesh hobe na?",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0141",
+    "raw_text": "nijer upor khub raag hocche, ami eto durbol keno!",
+    "normalized_text": "nijer upor khub raag hocche, ami eto durbol keno!",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0142",
+    "raw_text": "buk ta dhorphor korche khub, mone hocche more jabo",
+    "normalized_text": "buk ta dhorphor korche khub, mone hocche more jabo",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0143",
+    "raw_text": "shorir r mon duto e khub klanto hoye poreche",
+    "normalized_text": "shorir r mon duto e khub klanto hoye poreche",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0144",
+    "raw_text": "kono kaje ektu o confidence pacchi na ami",
+    "normalized_text": "kono kaje ektu o confidence pacchi na ami",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0145",
+    "raw_text": "ami shudhu sobar bojha hoye beche achi",
+    "normalized_text": "ami shudhu sobar bojha hoye beche achi",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0146",
+    "raw_text": "keu nei jake moner kotha khule bolte pari amar",
+    "normalized_text": "keu nei jake moner kotha khule bolte pari amar",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0147",
+    "raw_text": "amar dara r kichhu hobe na jibon e!!!",
+    "normalized_text": "amar dara r kichhu hobe na jibon e!",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0148",
+    "raw_text": "khub kanna pachche, kintu chokh diye jol porche na",
+    "normalized_text": "khub kanna pachche, kintu chokh diye jol porche na",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0149",
+    "raw_text": "diner por din eki kosto r sojjo hocche na",
+    "normalized_text": "diner por din eki kosto r sojjo hocche na",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0150",
+    "raw_text": "charpash ta khub faka r ondhokar lagche amar",
+    "normalized_text": "charpash ta khub faka r ondhokar lagche amar",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0151",
+    "raw_text": "main kya karun samajh nahi aa raha",
+    "normalized_text": "main kya karun samajh nahi aa raha",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0152",
+    "raw_text": "woh kal aayega mujhe lagta hai",
+    "normalized_text": "woh kal aayega mujhe lagta hai",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0153",
+    "raw_text": "sab theek ho gaya tha par achanak problem aayi",
+    "normalized_text": "sab theek ho gaya tha par achanak problem aayi",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0154",
+    "raw_text": "kya chal raha hai bhai aaj kal",
+    "normalized_text": "kya chal raha hai bhai aaj kal",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0155",
+    "raw_text": "exam ka pressure bahut zyada ho gaya hai",
+    "normalized_text": "exam ka pressure bahut zyada ho gaya hai",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0156",
+    "raw_text": "mujhe lagta hai ye theek nahi ho raha",
+    "normalized_text": "mujhe lagta hai ye theek nahi ho raha",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0157",
+    "raw_text": "woh toh aise hi bol raha tha",
+    "normalized_text": "woh toh aise hi bol raha tha",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0158",
+    "raw_text": "kuch samajh nahi aa raha kya karu ab",
+    "normalized_text": "kuch samajh nahi aa raha kya karu ab",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0159",
+    "raw_text": "mera dimaag kharab ho raha hai sach me",
+    "normalized_text": "mera dimaag kharab ho raha hai sach me",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0160",
+    "raw_text": "kal se main yahi soch raha hu",
+    "normalized_text": "kal se main yahi soch raha hu",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0161",
+    "raw_text": "mujhe nahi lagta ki ye kaam ho payega",
+    "normalized_text": "mujhe nahi lagta ki ye kaam ho payega",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0162",
+    "raw_text": "tension ke maare neend nahi aa rahi",
+    "normalized_text": "tension ke maare neend nahi aa rahi",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0163",
+    "raw_text": "kisi ne kuch nahi kaha toh main chala gaya",
+    "normalized_text": "kisi ne kuch nahi kaha toh main chala gaya",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0164",
+    "raw_text": "agar wo nahi aaya toh main kya karun",
+    "normalized_text": "agar wo nahi aaya toh main kya karun",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0165",
+    "raw_text": "mujhe ye sab pasand nahi aa raha",
+    "normalized_text": "mujhe ye sab pasand nahi aa raha",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0166",
+    "raw_text": "kya mujhe doctor ke paas jana chahiye",
+    "normalized_text": "kya mujhe doctor ke paas jana chahiye",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0167",
+    "raw_text": "mera sir dard kar raha hai subah se",
+    "normalized_text": "mera sir dard kar raha hai subah se",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0168",
+    "raw_text": "woh log aapas me baat kar rahe the",
+    "normalized_text": "woh log aapas me baat kar rahe the",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0169",
+    "raw_text": "mai thak gaya hu ye sab sunte sunte",
+    "normalized_text": "mai thak gaya hu ye sab sunte sunte",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0170",
+    "raw_text": "mujhe samjhne ki koshish kyu nahi karte ho",
+    "normalized_text": "mujhe samjhne ki koshish kyu nahi karte ho",
+    "script": "Latin",
+    "label": "hi-Latn"
+  },
+  {
+    "id": "MB-NORM-0171",
+    "raw_text": "ami ki korbo kicho bujhte parchi na",
+    "normalized_text": "ami ki korbo kicho bujhte parchi na",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0172",
+    "raw_text": "amar ektu o bhalo lagche na ekhon",
+    "normalized_text": "amar ektu o bhalo lagche na ekhon",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0173",
+    "raw_text": "kalke ki hobe ke jane, vabbe e bhoy korche",
+    "normalized_text": "kalke ki hobe ke jane, vabbe e bhoy korche",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0174",
+    "raw_text": "amake ektu bolun na ki korle theek hobe",
+    "normalized_text": "amake ektu bolun na ki korle theek hobe",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0175",
+    "raw_text": "kalo theke amar matha betha korche",
+    "normalized_text": "kalo theke amar matha betha korche",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0176",
+    "raw_text": "ekdom bhalo lagche na amar ei shob",
+    "normalized_text": "ekdom bhalo lagche na amar ei shob",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0177",
+    "raw_text": "tumi ki korcho ekhon amar bari te",
+    "normalized_text": "tumi ki korcho ekhon amar bari te",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0178",
+    "raw_text": "amar bhetore kemon jeno ekta kosto hocche",
+    "normalized_text": "amar bhetore kemon jeno ekta kosto hocche",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0179",
+    "raw_text": "kothay jabo kicho bujhte parchi na",
+    "normalized_text": "kothay jabo kicho bujhte parchi na",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0180",
+    "raw_text": "shob kichu theek hoye jabe ami jani",
+    "normalized_text": "shob kichu theek hoye jabe ami jani",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0181",
+    "raw_text": "or kotha shune amar khub kharap laglo",
+    "normalized_text": "or kotha shune amar khub kharap laglo",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0182",
+    "raw_text": "ami eka keno eto kosto pachhi",
+    "normalized_text": "ami eka keno eto kosto pachhi",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0183",
+    "raw_text": "r koto din erokom cholbe amar jibon e",
+    "normalized_text": "r koto din erokom cholbe amar jibon e",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0184",
+    "raw_text": "amar theke shobai dure soriye jacche",
+    "normalized_text": "amar theke shobai dure soriye jacche",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0185",
+    "raw_text": "ajke sondhay ki kora jay boloto",
+    "normalized_text": "ajke sondhay ki kora jay boloto",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0186",
+    "raw_text": "amar bhishon bhoy korche raat er bela",
+    "normalized_text": "amar bhishon bhoy korche raat er bela",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0187",
+    "raw_text": "amake eka chere dao ami thakte parchi na",
+    "normalized_text": "amake eka chere dao ami thakte parchi na",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0188",
+    "raw_text": "mone hocche jeno ami r bachbo na",
+    "normalized_text": "mone hocche jeno ami r bachbo na",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0189",
+    "raw_text": "amar kono kaje e mon boshche na aaj",
+    "normalized_text": "amar kono kaje e mon boshche na aaj",
+    "script": "Latin",
+    "label": "bn-Latn"
+  },
+  {
+    "id": "MB-NORM-0190",
+    "raw_text": "tumi jodi theek koro tahole theek e hobe",
+    "normalized_text": "tumi jodi theek koro tahole theek e hobe",
+    "script": "Latin",
+    "label": "bn-Latn"
+  }
+]

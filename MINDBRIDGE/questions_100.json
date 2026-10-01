@@ -1,0 +1,2102 @@
+[
+  {
+    "question_id": "q1",
+    "question_text": "Over the last two weeks, how often have you had little interest or pleasure in doing things?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "phq9_item_1",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 1 Anhedonia)"
+  },
+  {
+    "question_id": "q2",
+    "question_text": "Over the last two weeks, how often have you felt down, depressed, or hopeless?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "phq9_item_2",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 2 Depressed Mood)"
+  },
+  {
+    "question_id": "q3",
+    "question_text": "Over the last two weeks, how often have you felt tired or had little energy?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "phq9_item_4",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 4 Fatigue)"
+  },
+  {
+    "question_id": "q4",
+    "question_text": "Over the last two weeks, how often have you felt bad about yourself — or that you are a failure or have let yourself or your family down?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "phq9_item_6",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 6 Guilt/Worthlessness)"
+  },
+  {
+    "question_id": "q5",
+    "question_text": "Over the last two weeks, how often have you had trouble concentrating on things, such as reading or working?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "phq9_item_7",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 7 Concentration)"
+  },
+  {
+    "question_id": "q6",
+    "question_text": "Over the past week, how much did you feel that you couldn't seem to experience any positive feeling at all?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "dass21_dep_positive_affect",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 3)"
+  },
+  {
+    "question_id": "q7",
+    "question_text": "Over the past week, how much did you feel that you had nothing to look forward to?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "dass21_dep_hopelessness",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 10)"
+  },
+  {
+    "question_id": "q8",
+    "question_text": "Over the past week, how much did you feel down-hearted and blue?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "dass21_dep_blue",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 13)"
+  },
+  {
+    "question_id": "q9",
+    "question_text": "Over the past week, how much did you feel that you weren't worth much as a person?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "dass21_dep_self_worth",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 17)"
+  },
+  {
+    "question_id": "q10",
+    "question_text": "Over the past two weeks, how often have you felt cheerful and in good spirits?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "At no time",
+        "score": 3
+      },
+      {
+        "label": "B",
+        "text": "Some of the time",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "More than half the time",
+        "score": 1
+      },
+      {
+        "label": "D",
+        "text": "All of the time",
+        "score": 0
+      }
+    ],
+    "domain": "mood",
+    "scoring_rule": "who5_cheerful",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (WHO-5 Item 1)"
+  },
+  {
+    "question_id": "q11",
+    "question_text": "Over the last two weeks, how often have you been bothered by feeling nervous, anxious, or on edge?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "gad7_item_1",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf (GAD-7 Item 1 Nervousness)"
+  },
+  {
+    "question_id": "q12",
+    "question_text": "Over the last two weeks, how often have you not been able to stop or control worrying?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "gad7_item_2",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf (GAD-7 Item 2 Uncontrollable Worry)"
+  },
+  {
+    "question_id": "q13",
+    "question_text": "Over the last two weeks, how often have you worried too much about different things?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "gad7_item_3",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf (GAD-7 Item 3 Excessive Worry)"
+  },
+  {
+    "question_id": "q14",
+    "question_text": "Over the last two weeks, how often have you had trouble relaxing?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "gad7_item_4",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf (GAD-7 Item 4 Trouble Relaxing)"
+  },
+  {
+    "question_id": "q15",
+    "question_text": "Over the past week, how aware were you of dryness in your mouth or somatic tension?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "dass21_anx_dry_mouth",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 2)"
+  },
+  {
+    "question_id": "q16",
+    "question_text": "Over the past week, how often did you experience breathing difficulty (e.g., excessively rapid breathing in the absence of physical exertion)?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "dass21_anx_breathing",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 4)"
+  },
+  {
+    "question_id": "q17",
+    "question_text": "Over the past week, how often did you experience trembling or shakiness in your hands?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "dass21_anx_trembling",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 7)"
+  },
+  {
+    "question_id": "q18",
+    "question_text": "Over the past week, how often did you feel worried about situations in which you might panic and make a fool of yourself?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "anxiety",
+    "scoring_rule": "dass21_anx_panic_worry",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 9)"
+  },
+  {
+    "question_id": "q19",
+    "question_text": "Over the past week, how often did you find it hard to wind down after a demanding day?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "dass21_stress_wind_down",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 1)"
+  },
+  {
+    "question_id": "q20",
+    "question_text": "Over the past week, how often did you tend to over-react to unexpected situations?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "dass21_stress_overreact",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 6)"
+  },
+  {
+    "question_id": "q21",
+    "question_text": "Over the past week, how often did you feel that you were burning a lot of nervous energy?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "dass21_stress_nervous_energy",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 8)"
+  },
+  {
+    "question_id": "q22",
+    "question_text": "Over the past week, how often did you find yourself getting agitated or irritable with minor delays?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "dass21_stress_agitated",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 11)"
+  },
+  {
+    "question_id": "q23",
+    "question_text": "Over the past week, how often were you intolerant of anything that kept you from getting on with what you were doing?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "dass21_stress_intolerant",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 14)"
+  },
+  {
+    "question_id": "q24",
+    "question_text": "Over the past week, how often did you feel touchy, sensitive, or easily provoked?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Did not apply to me at all (Never)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Applied to some degree / occasionally",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Applied to a considerable degree / often",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Applied very much / almost constantly",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "dass21_stress_touchy",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 18)"
+  },
+  {
+    "question_id": "q25",
+    "question_text": "When feeling intensely stressed, what describes your primary coping response?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "I proactively take a calm pause or practice self-care",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "I tend to push through while feeling internal tension",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "I withdraw from people and delay tasks",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "I feel overwhelmed and struggle to cope",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "coping_response_pattern",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Coping Mechanisms)"
+  },
+  {
+    "question_id": "q26",
+    "question_text": "Over the past two weeks, how often have you felt calm and relaxed?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "All of the time",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "More than half the time",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Some of the time",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "At no time",
+        "score": 3
+      }
+    ],
+    "domain": "stress",
+    "scoring_rule": "who5_calm_relaxed",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (WHO-5 Item 2)"
+  },
+  {
+    "question_id": "q27",
+    "question_text": "Over the last two weeks, how often have you had trouble falling or staying asleep, or sleeping too much?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Several days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "More than half the days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Nearly every day",
+        "score": 3
+      }
+    ],
+    "domain": "sleep",
+    "scoring_rule": "phq9_item_3",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 3 Sleep Disturbance)"
+  },
+  {
+    "question_id": "q28",
+    "question_text": "Over the past two weeks, how often did you wake up feeling fresh and fully rested?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "All of the time",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "More than half the time",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Some of the time",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "At no time",
+        "score": 3
+      }
+    ],
+    "domain": "sleep",
+    "scoring_rule": "who5_rested_sleep",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (WHO-5 Item 4)"
+  },
+  {
+    "question_id": "q29",
+    "question_text": "How long does it typically take you to fall asleep after getting into bed at night?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Under 20 minutes (normal onset)",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "20 to 45 minutes (mild delay)",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "45 to 90 minutes (moderate insomnia)",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "More than 90 minutes / severe difficulty",
+        "score": 3
+      }
+    ],
+    "domain": "sleep",
+    "scoring_rule": "sleep_onset_latency",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf & WHO WELLBEING.pdf (Sleep Disturbance)"
+  },
+  {
+    "question_id": "q30",
+    "question_text": "How frequently do you wake up in the middle of the night or early morning unable to get back to sleep?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Rarely or never",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "1 or 2 nights per week",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "3 to 5 nights per week",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Almost every single night",
+        "score": 3
+      }
+    ],
+    "domain": "sleep",
+    "scoring_rule": "sleep_fragmentation",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf & PHQ-9 Literature"
+  },
+  {
+    "question_id": "q31",
+    "question_text": "During daytime hours, how significantly does sleepiness or mental fatigue impact your alertness?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No noticeable daytime drowsiness",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Mild afternoon tiredness but manageable",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Frequent sluggishness affecting attention",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Severe exhaustion requiring multiple rests",
+        "score": 3
+      }
+    ],
+    "domain": "sleep",
+    "scoring_rule": "daytime_somnolence",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf & PHQ-9 Literature"
+  },
+  {
+    "question_id": "q32",
+    "question_text": "How would you describe the overall restorative quality of your sleep over the past week?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Deep, peaceful, and restorative",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Fair, though occasionally light",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Fragmented and unrestful",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Completely unrefreshing / exhausting",
+        "score": 3
+      }
+    ],
+    "domain": "sleep",
+    "scoring_rule": "sleep_restorative_quality",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (WHO-5 Restorative Quality)"
+  },
+  {
+    "question_id": "q33",
+    "question_text": "Over the past month, have unsettling dreams, nightmares, or night awakenings caused noticeable distress?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Once or twice a month",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Once or twice a week",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Several times each week",
+        "score": 3
+      }
+    ],
+    "domain": "sleep",
+    "scoring_rule": "sleep_nightmare_distress",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Insomnia & Night Sweats)"
+  },
+  {
+    "question_id": "q34",
+    "question_text": "Over the past two weeks, how difficult have any emotional problems made it for you to do your work, take care of things at home, or get along with people?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not difficult at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Somewhat difficult",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Very difficult",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Extremely difficult",
+        "score": 3
+      }
+    ],
+    "domain": "functioning",
+    "scoring_rule": "phq_functional_difficulty",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Functional Impairment"
+  },
+  {
+    "question_id": "q35",
+    "question_text": "Over the past two weeks, how often was your daily life filled with things that interest you?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "All of the time",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "More than half the time",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Some of the time",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "At no time",
+        "score": 3
+      }
+    ],
+    "domain": "functioning",
+    "scoring_rule": "who5_daily_interest",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (WHO-5 Item 5)"
+  },
+  {
+    "question_id": "q36",
+    "question_text": "How much difficulty have you experienced in initiating and completing your essential daily responsibilities?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No difficulty starting tasks",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Occasional procrastination but completed",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Noticeable struggle to mobilize effort",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Significant inability to initiate basic tasks",
+        "score": 3
+      }
+    ],
+    "domain": "functioning",
+    "scoring_rule": "executive_inertia",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 5 Inertia)"
+  },
+  {
+    "question_id": "q37",
+    "question_text": "How would you describe your engagement with social connections, family, and colleagues over the past two weeks?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Active, warm, and meaningful engagement",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Mild withdrawal but still connected",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Selective isolation and avoiding conversations",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Complete social withdrawal and isolation",
+        "score": 3
+      }
+    ],
+    "domain": "functioning",
+    "scoring_rule": "social_connectedness_functioning",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Social Isolation)"
+  },
+  {
+    "question_id": "q38",
+    "question_text": "Have changes in your physical health or chronic body discomfort hindered your daily activities recently?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Not hindered at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Mildly noticeable on certain days",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Moderately limiting work or routines",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Significantly debilitating",
+        "score": 3
+      }
+    ],
+    "domain": "functioning",
+    "scoring_rule": "physical_health_impairment",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Physical Health & Pain)"
+  },
+  {
+    "question_id": "q39",
+    "question_text": "Over the past week, how often have you felt enthusiastic about activities you usually participate in?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Consistently enthusiastic",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Enthusiastic about certain projects",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Struggling to find enthusiasm",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Completely unable to feel enthusiastic",
+        "score": 3
+      }
+    ],
+    "domain": "functioning",
+    "scoring_rule": "functional_enthusiasm",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 16)"
+  },
+  {
+    "question_id": "q40",
+    "question_text": "In the past month, have you wished you were dead or wished you could go to sleep and not wake up?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No, never had this wish",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "A fleeting thought that passed immediately",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Yes, I have wished this on some days",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Yes, I frequently or strongly wish this",
+        "score": 3
+      }
+    ],
+    "domain": "safety",
+    "scoring_rule": "cssrs_wish_to_be_dead",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE 1.pdf (C-SSRS Item 1) & BASELINE SCREENING.pdf"
+  },
+  {
+    "question_id": "q41",
+    "question_text": "In the past month, have you actually had any thoughts of killing yourself?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No, not at all",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Brief passive thought without desire",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Yes, active thoughts have occurred",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Yes, frequent active thoughts of ending my life",
+        "score": 3
+      }
+    ],
+    "domain": "safety",
+    "scoring_rule": "cssrs_active_ideation",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE 1.pdf (C-SSRS Item 2) & BASELINE SCREENING.pdf"
+  },
+  {
+    "question_id": "q42",
+    "question_text": "Have you been thinking about a specific way or method you might use to hurt or end your life?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No, no thoughts of any method",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Vague idea with no specific plan or intent to act",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Yes, thought of a method without worked out details",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Yes, concrete method and details formulated",
+        "score": 3
+      }
+    ],
+    "domain": "safety",
+    "scoring_rule": "cssrs_suicide_method",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE 1.pdf (C-SSRS Item 3) & BASELINE SCREENING.pdf"
+  },
+  {
+    "question_id": "q43",
+    "question_text": "Have you had any intention of acting on thoughts of ending your life, as opposed to having thoughts you would never act on?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No intent whatsoever to act",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Definite thoughts that I would never act upon",
+        "score": 0
+      },
+      {
+        "label": "C",
+        "text": "Unsure whether I might act on them",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Yes, clear intention to act upon them",
+        "score": 3
+      }
+    ],
+    "domain": "safety",
+    "scoring_rule": "cssrs_suicide_intent",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE 1.pdf (C-SSRS Item 4) & BASELINE SCREENING.pdf"
+  },
+  {
+    "question_id": "q44",
+    "question_text": "Have you started to work out or worked out the details of how to kill yourself, with intent to carry out this plan?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No plan worked out",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "General thought without planning details",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Have begun thinking of timing or place",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Yes, specific plan worked out with intent to carry it out",
+        "score": 3
+      }
+    ],
+    "domain": "safety",
+    "scoring_rule": "cssrs_suicide_plan",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE 1.pdf (C-SSRS Item 5) & BASELINE SCREENING.pdf"
+  },
+  {
+    "question_id": "q45",
+    "question_text": "Do you currently have immediate access to lethal means, medications, or instruments that could cause severe self-harm?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "No access to harmful means",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Normal household items with no harmful intention",
+        "score": 0
+      },
+      {
+        "label": "C",
+        "text": "Means available nearby which causes me concern",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Yes, immediate ready access to lethal means with intention",
+        "score": 3
+      }
+    ],
+    "domain": "safety",
+    "scoring_rule": "safety_means_access",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Lethal Means Access)"
+  },
+  {
+    "question_id": "q46",
+    "question_text": "When you face emotional distress, how supported do you feel by friends, family, or your community?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Strongly supported by caring people",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Somewhat supported by one or two people",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Limited support; often feel alone",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Completely unsupported and isolated",
+        "score": 3
+      }
+    ],
+    "domain": "protective",
+    "scoring_rule": "protective_social_support",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Social Support & Buffers)"
+  },
+  {
+    "question_id": "q47",
+    "question_text": "What represents the strongest anchor or reason for continuing forward when life feels difficult?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Loved ones, family, pets, or personal aspirations",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Personal sense of responsibility or curiosity about the future",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Faith, personal values, or commitments",
+        "score": 1
+      },
+      {
+        "label": "D",
+        "text": "Currently struggling to identify anchors",
+        "score": 3
+      }
+    ],
+    "domain": "protective",
+    "scoring_rule": "protective_reasons_for_living",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & SUICIDE IDENTATION.pdf"
+  },
+  {
+    "question_id": "q48",
+    "question_text": "How open do you feel toward speaking with a licensed mental health professional or counselor?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Very open and willing to seek guidance",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Open if given clear, confidential support",
+        "score": 0
+      },
+      {
+        "label": "C",
+        "text": "Hesitant due to stigma or uncertainty",
+        "score": 1
+      },
+      {
+        "label": "D",
+        "text": "Reluctant or feeling unready right now",
+        "score": 2
+      }
+    ],
+    "domain": "protective",
+    "scoring_rule": "protective_help_seeking_readiness",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Help-Seeking Attitudes)"
+  },
+  {
+    "question_id": "q49",
+    "question_text": "When you recall past challenges you have overcome, how confident are you in your internal resilience?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "High confidence in my ability to recover",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Moderate confidence with support",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Low confidence; currently feeling drained",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "Feel that my coping abilities are depleted",
+        "score": 3
+      }
+    ],
+    "domain": "protective",
+    "scoring_rule": "protective_resilience_belief",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf & SUICIDE IDENTATION.pdf"
+  },
+  {
+    "question_id": "q50",
+    "question_text": "Do you have a trusted person or safe space you can reach out to in a moment of distress?",
+    "question_type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Yes, someone I can contact anytime",
+        "score": 0
+      },
+      {
+        "label": "B",
+        "text": "Yes, though I might hesitate to reach out",
+        "score": 1
+      },
+      {
+        "label": "C",
+        "text": "Uncertain who would be available",
+        "score": 2
+      },
+      {
+        "label": "D",
+        "text": "No safe contact or place currently",
+        "score": 3
+      }
+    ],
+    "domain": "protective",
+    "scoring_rule": "protective_safe_person",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Trusted Contacts)"
+  },
+  {
+    "question_id": "q51",
+    "question_text": "Over the last two weeks, how often have you had poor appetite or found yourself overeating? (0: Not at all, 1: Several days, 2: More than half the days, 3: Nearly every day)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "phq9_item_5",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 5 Appetite)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q52",
+    "question_text": "Over the last two weeks, have you noticed moving or speaking so slowly that other people noticed, or being unusually fidgety and restless? (0: Not at all, 1: Several days, 2: More than half the days, 3: Nearly every day)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "phq9_item_8",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 8 Psychomotor)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q53",
+    "question_text": "Over the last two weeks, how often have you felt active and vigorous throughout your day? (0: All the time, 1: More than half the time, 2: Some of the time, 3: At no time)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "who5_active_vigorous",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (WHO-5 Item 3 Vitality)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q54",
+    "question_text": "Over the past week, did you find it difficult to work up the initiative to do things? (0: Did not apply, 1: Applied somewhat, 2: Applied considerably, 3: Applied very much)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "dass21_dep_initiative",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 5)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q55",
+    "question_text": "Over the past week, did you feel that life was meaningless or devoid of purpose? (0: Did not apply, 1: Applied somewhat, 2: Applied considerably, 3: Applied very much)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "dass21_dep_meaningless",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 21)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q56",
+    "question_text": "When you wake up in the morning, do you experience a persistent feeling of emotional heaviness? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "mood_morning_heaviness",
+    "is_safety_question": false,
+    "source_paper": "PHQ-9 Literature & DASS-21",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q57",
+    "question_text": "Have you found yourself crying or feeling tearful without an identifiable reason recently? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "mood_tearfulness",
+    "is_safety_question": false,
+    "source_paper": "DASS-21 Depression Clinical Probes",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q58",
+    "question_text": "In one or two words, how would you describe your overall mood over the past few days? (e.g., calm, exhausted, hopeful, drained)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "mood",
+    "scoring_rule": "mood_descriptor_word",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (Qualitative Affect)",
+    "answer_format": "short_text"
+  },
+  {
+    "question_id": "q59",
+    "question_text": "Over the last two weeks, how often have you been so restless that it is hard to sit still? (0: Not at all, 1: Several days, 2: More than half the days, 3: Nearly every day)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "gad7_item_5",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf (GAD-7 Item 5 Restlessness)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q60",
+    "question_text": "Over the last two weeks, how often have you become easily annoyed or irritable? (0: Not at all, 1: Several days, 2: More than half the days, 3: Nearly every day)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "gad7_item_6",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf (GAD-7 Item 6 Irritability)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q61",
+    "question_text": "Over the last two weeks, how often have you felt afraid, as if something awful might happen? (0: Not at all, 1: Several days, 2: More than half the days, 3: Nearly every day)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "gad7_item_7",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf (GAD-7 Item 7 Dread/Fear)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q62",
+    "question_text": "Over the past week, how close did you feel to panic or losing control? (0: Not at all, 1: Sometimes, 2: Often, 3: Most of the time)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "dass21_anx_panic_feeling",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 15)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q63",
+    "question_text": "Over the past week, did you notice rapid or pounding heartbeats when not exercising? (0: Not at all, 1: Sometimes, 2: Often, 3: Most of the time)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "dass21_anx_heart_rate",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 19)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q64",
+    "question_text": "Over the past week, did you feel scared without any good reason? (0: Not at all, 1: Sometimes, 2: Often, 3: Most of the time)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "dass21_anx_unfounded_fear",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 20)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q65",
+    "question_text": "Do sudden unexpected noises or surprises cause you to startle excessively? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "anxiety_startle_response",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf & DASS-21",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q66",
+    "question_text": "Do you frequently experience tightness in your jaw, shoulders, or chest from muscle tension? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "anxiety",
+    "scoring_rule": "anxiety_muscle_tension",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf & DASS-21 Somatic Arousal",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q67",
+    "question_text": "Over the past week, did you find it difficult to relax when trying to unwind? (0: Did not apply, 1: Applied somewhat, 2: Applied considerably, 3: Applied very much)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "dass21_stress_difficult_relax",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 12)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q68",
+    "question_text": "On a scale of 0 to 10, what is your average perceived stress level during a typical working day?",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "stress_scale_numeric_0_10",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Stress Dimension)",
+    "answer_format": "numeric_0_10"
+  },
+  {
+    "question_id": "q69",
+    "question_text": "Do you frequently feel like your thoughts are racing so fast that you cannot keep up? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "stress_racing_thoughts",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf & Anxiety.pdf",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q70",
+    "question_text": "Do you feel mentally exhausted before your work day or study hours even start? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "stress_anticipatory_burnout",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (Stress/Exhaustion)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q71",
+    "question_text": "Do unexpected schedule changes or small interruptions trigger immediate irritation? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "stress_frustration_threshold",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (DASS-21 Item 14 Intolerance)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q72",
+    "question_text": "In a brief sentence, what is currently the biggest source of stress in your daily life? (e.g., workload, family, health, uncertainty)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "stress_primary_stressor_text",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Life Events)",
+    "answer_format": "short_text"
+  },
+  {
+    "question_id": "q73",
+    "question_text": "Do you feel like you have enough personal boundary time each week to decompress? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "stress_boundary_rest_adequacy",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (Rest & Regeneration)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q74",
+    "question_text": "Have you noticed changes in your digestion, stomach aches, or headaches related to mental stress? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "stress",
+    "scoring_rule": "stress_somatic_somatization",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Physical Symptoms)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q75",
+    "question_text": "On average, approximately how many hours of actual sleep do you get per night? (e.g., 6.5)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "sleep",
+    "scoring_rule": "sleep_average_hours",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf & PHQ-9 (Sleep Duration)",
+    "answer_format": "numeric_hours"
+  },
+  {
+    "question_id": "q76",
+    "question_text": "Do you rely on caffeine, energy drinks, or medication to stay awake throughout the day? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "sleep",
+    "scoring_rule": "sleep_stimulant_dependency",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Sleep & Substances)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q77",
+    "question_text": "Do you frequently wake up earlier in the morning than desired without being able to return to sleep? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "sleep",
+    "scoring_rule": "sleep_early_morning_awakening",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Sleep Disturbances",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q78",
+    "question_text": "Do you regularly sleep more than 10 hours a day and still wake up feeling completely fatigued? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "sleep",
+    "scoring_rule": "sleep_hypersomnia_fatigue",
+    "is_safety_question": false,
+    "source_paper": "PHQ-9 Literature (Hypersomnia)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q79",
+    "question_text": "Do you find yourself ruminating or worrying about past or future events while lying in bed? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "sleep",
+    "scoring_rule": "sleep_bedtime_rumination",
+    "is_safety_question": false,
+    "source_paper": "Anxiety.pdf & Q FOR DEPRESSION,ANXIETY.pdf",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q80",
+    "question_text": "How satisfied are you with your current sleep pattern overall? (0: Very dissatisfied, 1: Dissatisfied, 2: Satisfied, 3: Very satisfied)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "sleep",
+    "scoring_rule": "sleep_overall_satisfaction",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (Sleep Quality Metric)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q81",
+    "question_text": "Have you noticed difficulty staying awake while driving, working, or sitting in meetings? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "sleep",
+    "scoring_rule": "sleep_severe_somnolence_risk",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf & WHO WELLBEING.pdf",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q82",
+    "question_text": "Have you missed work, school, or important responsibilities in the past month due to emotional distress? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "functioning",
+    "scoring_rule": "functioning_absenteeism",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf & SUICIDE IDENTATION.pdf",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q83",
+    "question_text": "Are you able to maintain basic daily self-care routines, such as bathing, meals, and hydration? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "functioning",
+    "scoring_rule": "functioning_basic_self_care",
+    "is_safety_question": false,
+    "source_paper": "BASELINE SCREENING.pdf (Daily Living Activities)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q84",
+    "question_text": "Have friends or loved ones expressed concern about your recent withdrawal or mood changes? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "functioning",
+    "scoring_rule": "functioning_others_concern",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Social Feedback)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q85",
+    "question_text": "Do you find yourself procrastinating on simple tasks until they become emergencies? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "functioning",
+    "scoring_rule": "functioning_procrastination_stress",
+    "is_safety_question": false,
+    "source_paper": "Q FOR DEPRESSION,ANXIETY.pdf (Inertia)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q86",
+    "question_text": "How much does emotional fatigue hinder your ability to make clear decisions? (0: None, 1: Mild, 2: Moderate, 3: Severe)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "functioning",
+    "scoring_rule": "functioning_decision_making",
+    "is_safety_question": false,
+    "source_paper": "PHQ-9 Literature (Concentration & Indecisiveness)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q87",
+    "question_text": "Are you able to enjoy downtime or hobbies when you have free time? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "functioning",
+    "scoring_rule": "functioning_recreational_anhedonia",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf & PHQ-9 Item 1",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q88",
+    "question_text": "Over the last two weeks, how often have you had thoughts that you would be better off dead, or of hurting yourself in some way? (0: Not at all, 1: Several days, 2: More than half the days, 3: Nearly every day)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "safety",
+    "scoring_rule": "phq9_item_9_suicidality",
+    "is_safety_question": true,
+    "source_paper": "BASELINE SCREENING.pdf & PHQ-9 Literature (Item 9 Self-Harm)",
+    "answer_format": "Likert_0_3"
+  },
+  {
+    "question_id": "q89",
+    "question_text": "Have you ever done anything, started to do anything, or prepared to do anything to end your life? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "safety",
+    "scoring_rule": "cssrs_suicidal_behavior",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE 1.pdf (C-SSRS Item 6) & BASELINE SCREENING.pdf",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q90",
+    "question_text": "If you answered yes to past self-harm or attempts, did this behavior occur within the past 3 months? (Answer: Yes / No / Not Applicable)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "safety",
+    "scoring_rule": "cssrs_recent_attempt_3mo",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE 1.pdf (C-SSRS Recent Behavior Probe)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q91",
+    "question_text": "Have you engaged in any deliberate self-injury or cutting without intent to die in the past month? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "safety",
+    "scoring_rule": "safety_non_suicidal_self_injury",
+    "is_safety_question": true,
+    "source_paper": "BASELINE SCREENING.pdf & Saini et al., 2024 (Non-Suicidal Self-Injury)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q92",
+    "question_text": "Are you currently experiencing any physical danger, domestic violence, or abuse in your living environment? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "safety",
+    "scoring_rule": "safety_domestic_violence_abuse",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Abuse & Domestic Risk)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q93",
+    "question_text": "Do you have any active thoughts or urges to harm another person? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "safety",
+    "scoring_rule": "safety_harm_to_others",
+    "is_safety_question": true,
+    "source_paper": "BASELINE SCREENING.pdf & Clinical Triage Standards",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q94",
+    "question_text": "Do you feel that you cannot keep yourself safe right now? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "safety",
+    "scoring_rule": "safety_cannot_keep_safe",
+    "is_safety_question": true,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Imminent Risk Probe)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q95",
+    "question_text": "Can you name at least one person you could speak with honestly if you were in severe pain? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "protective",
+    "scoring_rule": "protective_confidant_presence",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Social Connection)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q96",
+    "question_text": "Do you believe that with appropriate psychological care and life changes, your current situation can improve? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "protective",
+    "scoring_rule": "protective_optimism_belief",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf & WHO WELLBEING.pdf",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q97",
+    "question_text": "What is one self-care activity or grounding practice that brings you relief when you are stressed? (e.g., walking, music, deep breathing)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "protective",
+    "scoring_rule": "protective_grounding_habit",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (Grounding Strategies)",
+    "answer_format": "short_text"
+  },
+  {
+    "question_id": "q98",
+    "question_text": "Have you ever engaged with a counselor, therapist, or doctor for mental health support in the past? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "protective",
+    "scoring_rule": "protective_prior_therapy_experience",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Clinical History)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q99",
+    "question_text": "Are you currently interested in receiving structured guidance, self-care exercises, or a professional referral? (Answer: Yes / No)",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "protective",
+    "scoring_rule": "protective_referral_readiness",
+    "is_safety_question": false,
+    "source_paper": "SUICIDE IDENTATION.pdf (Saini et al., 2024 Referral Pathways)",
+    "answer_format": "yes_no"
+  },
+  {
+    "question_id": "q100",
+    "question_text": "On a scale from 0 to 10, how motivated do you feel today to take small positive steps for your well-being?",
+    "question_type": "VSAQ",
+    "options": null,
+    "domain": "protective",
+    "scoring_rule": "protective_motivation_score_0_10",
+    "is_safety_question": false,
+    "source_paper": "WHO WELLBEING.pdf (Well-being Self-Agency)",
+    "answer_format": "numeric_0_10"
+  }
+]
